@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import {
+//   Route,
+//   BrowserRouter as Router,
+//   Switch,
+//   Redirect,
+// } from "react-router-dom";
+// import Signup from './components/signup';
+// import Login from './components/login';
+import { SignInScreen } from './firebase.js'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+
+const App = () => {
+    return (
+      <div id="firebaseui">
+        <SignInScreen/>
+      </div>
+    );
+
 }
 
+
+
+
+
+// function PrivateRoute({ component: Component, authenticated, ...rest }) {
+//   return (
+//     <Route
+//       {...rest}
+//       render={(props) => authenticated === true
+//         ? <Component {...props} />
+//         : <Redirect to={{ pathname: '/login', state: { from: props.location } }} />}
+//     />
+//   )
+// }
 export default App;
