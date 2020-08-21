@@ -6,7 +6,7 @@ const StartGame = (props) => {
     <>
       <div id='start-container'>
         <Link to='/test-puzzle'>
-          <div>START YOUR JOURNEY...</div>
+          <div>start your journey...</div>
         </Link>
       </div>
     </>

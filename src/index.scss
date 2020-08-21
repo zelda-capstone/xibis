@@ -5,6 +5,12 @@
   align-items: center;
 }
 
+@mixin canvas($color) {
+  width: 100vw;
+  height: 100vh;
+  background: $color;
+}
+
 body {
   margin: 0;
   font-family: "Anonymous Pro";
@@ -17,6 +23,13 @@ code {
     monospace;
 }
 
+#menu {
+  position: absolute;
+  //color: white;
+  background: white;
+  z-index: 999;
+}
+
 #start-container {
   @include flexCenter(column);
   width: 100vw;
@@ -26,6 +39,51 @@ code {
     color: white;
     font-size: 3rem;
     margin: 1rem;
+  }
+}
+.puzzle-container {
+  @include flexCenter(column);
+  @include canvas(rgb(20, 20, 72));
+}
+
+.puzzle {
+  color: white;
+}
+
+.bubo-container {
+  @include flexCenter(row);
+  justify-content: flex-start;
+}
+
+.bubo {
+  @include flexCenter(row);
+  width: 3rem;
+  height: 5rem;
+  margin-top: 10rem;
+  border-radius: 50%;
+  background: rgb(194, 194, 194);
+  animation-name: walk-through;
+  animation-duration: 3000;
+  div {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    margin: 2px;
+    background: rgb(34, 111, 9);
+    div {
+      color: black;
+      width: .5rem;
+    }
+  }
+}
+
+@keyframes walk-through {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(100%);
   }
 }
 

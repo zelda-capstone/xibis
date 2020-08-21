@@ -9,6 +9,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+#menu {
+  position: absolute;
+  background: white;
+  z-index: 999;
+}
+
 #start-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -32,5 +38,83 @@ code {
   color: white;
   font-size: 3rem;
   margin: 1rem;
+}
+
+.puzzle-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: #141448;
+}
+
+.puzzle {
+  color: white;
+}
+
+.bubo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 3rem;
+  height: 5rem;
+  margin-top: 10rem;
+  border-radius: 50%;
+  background: #c2c2c2;
+  -webkit-animation-name: walk-through;
+          animation-name: walk-through;
+  -webkit-animation-duration: 3000;
+          animation-duration: 3000;
+}
+
+.bubo div {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 7px;
+  margin: 2px;
+  background: #226f09;
+}
+
+@-webkit-keyframes walk-through {
+  from {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  to {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+}
+
+@keyframes walk-through {
+  from {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  to {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
 }
 /*# sourceMappingURL=index.css.map */

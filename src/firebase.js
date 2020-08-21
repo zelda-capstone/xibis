@@ -4,7 +4,7 @@ import "firebase/auth"
 import React from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
-import StartGame from './components/start-game'
+//import StartGame from './components/start-game'
 
 
 // Your web app's Firebase configuration
