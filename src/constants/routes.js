@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import { StartGame, Map, TestPuzzle } from '../components'
+import { StartGame, Map, TestPuzzle, Menu } from '../components'
 
 const Routes = () => {
   return (
@@ -8,7 +8,7 @@ const Routes = () => {
       <Route exact path='/map' component={Map}/>
       <Route exact path='/play' component={StartGame}/>
       <Route exact path='/test-puzzle' component={TestPuzzle}/>
-      {/* <Route component={Menu} /> */}
+      <Route component={Menu} />
     </>
   )
 }
