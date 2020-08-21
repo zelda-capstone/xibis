@@ -4,6 +4,8 @@ import "firebase/auth"
 import React from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
+import StartGame from './components/start-game'
+
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -38,12 +40,12 @@ firebase.initializeApp(firebaseConfig);
 
 
 export class SignInScreen extends React.Component {
- 
+
   // The component's Local state.
   state = {
     isSignedIn: false // Local signed-in state.
   };
- 
+
   // Configure FirebaseUI.
   uiConfig = {
     // Popup signin flow rather than redirect flow.
@@ -59,19 +61,19 @@ export class SignInScreen extends React.Component {
       signInSuccessWithAuthResult: () => false
     }
   };
- 
+
   // Listen to the Firebase Auth state and set the local state.
   componentDidMount() {
     this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(
         (user) => this.setState({isSignedIn: !!user})
     );
   }
-  
+
   // Make sure we un-register Firebase observers when the component unmounts.
   componentWillUnmount() {
     this.unregisterAuthObserver();
   }
- 
+
   render() {
     if (!this.state.isSignedIn) {
       return (
@@ -85,8 +87,9 @@ export class SignInScreen extends React.Component {
     return (
       <div>
         <h1>My App</h1>
-        <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
+        {/* <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p> */}
         <button onClick={() => firebase.auth().signOut()}>Sign-out</button>
+        {/* <StartGame /> */}
       </div>
     );
   }
@@ -123,4 +126,4 @@ export class SignInScreen extends React.Component {
 
 // export const auth = firebase.auth();
 export const db = firebase.firestore();
-export default firebase 
+export default firebase
