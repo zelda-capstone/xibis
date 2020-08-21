@@ -14,7 +14,6 @@ const TestPuzzle = (props) => {
               <div></div>
             </div>
           </div>
-          <div className='body'></div>
         </div>
       </div>
     </>
