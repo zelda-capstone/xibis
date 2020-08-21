@@ -18,10 +18,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+// code {
+//   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+//     monospace;
+// }
 
 #menu {
   position: absolute;
@@ -37,7 +37,7 @@ code {
   background: black;
   div {
     color: white;
-    font-size: 3rem;
+    font-size: 2rem;
     margin: 1rem;
   }
 }
@@ -48,6 +48,7 @@ code {
 
 .puzzle {
   color: white;
+  width: 70vw;
 }
 
 .bubo-container {
@@ -58,24 +59,34 @@ code {
 .bubo {
   @include flexCenter(row);
   width: 3rem;
-  height: 5rem;
+  height: 4rem;
   margin-top: 10rem;
   border-radius: 50%;
-  background: rgb(194, 194, 194);
+  background: rgb(134, 186, 232);
   animation-name: walk-through;
   animation-duration: 3000;
   div {
+    @include flexCenter(row);
+    justify-content: flex-end;
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
     margin: 2px;
-    background: rgb(34, 111, 9);
+    background: rgb(242, 242, 239);
     div {
-      color: black;
+      background: rgb(3, 3, 46);
       width: .5rem;
+      height: .5rem;
     }
   }
 }
+
+// .body {
+//   //@include flexCenter(column);
+//   width: 1rem;
+//   height: 4rem;
+//   background: yellow;
+// }
 
 @keyframes walk-through {
   from {
