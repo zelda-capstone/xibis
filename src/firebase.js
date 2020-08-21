@@ -86,41 +86,16 @@ export class SignInScreen extends React.Component {
       <div>
         <h1>My App</h1>
         <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
+          {/* <Play user={firebase.auth().currentUser}/> */}
         <button onClick={() => firebase.auth().signOut()}>Sign-out</button>
       </div>
     );
   }
 }
 
-// export class SignInScreen extends React.Component {
-//   render() {
-//     return (
-//       <div>
-//         <h1>My App</h1>
-//         <p>Please sign-in:</p>
-//         <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()}/>
-//       </div>
-//     );
-//   }
-// }
 
 
 
-// // Initialize the FirebaseUI Widget using Firebase.
-// var ui = new firebaseui.auth.AuthUI(firebase.auth());
-
-
-// // ui.start('#firebaseui-auth-container', {
-// //   signInOptions: [
-// //     // List of OAuth providers supported.
-// //     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-// //     firebase.auth.EmailAuthProvider.PROVIDER_ID
-// //   ],
-// //   // Other config options...
-// // });
-
-
-
-// export const auth = firebase.auth();
+export const auth = firebase.auth();
 export const db = firebase.firestore();
 export default firebase 

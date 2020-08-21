@@ -1,22 +1,35 @@
-import React from 'react';
-// import {
-//   Route,
-//   BrowserRouter as Router,
-//   Switch,
-//   Redirect,
-// } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import {
+  Route,
+  BrowserRouter as Router,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 // import Signup from './components/signup';
 // import Login from './components/login';
-import { SignInScreen } from './firebase.js'
-
+import firebase, { auth, db, SignInScreen } from './firebase.js'
+import Play from './components/play'
 
 
 
 const App = () => {
+  const [user, loading, error, uid] = useAuthState(firebase.auth());
+  
     return (
-      <div id="firebaseui">
-        <SignInScreen/>
-      </div>
+      <>
+      <Router>
+      { !user
+          ?<div id="firebaseui">
+            <SignInScreen/>
+          </div>
+          :
+        <Switch>
+          <Route path="/play" render={(props) => (<Play {...props} user={user}/>)}></Route>
+        </Switch>
+      }
+      </Router>
+      </>
     );
 
 }
