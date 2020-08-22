@@ -8,18 +8,18 @@ import React from 'react';
 // import Signup from './components/signup';
 // import Login from './components/login';
 import { SignInScreen } from './firebase.js'
-import Routes from './constants/routes'
 //import StartGame from './components/start-game'
 //import Intro from './components/intro'
 
 
 
 const App = () => {
+    //if (user) console.log(user);
+
     return (
       <>
         <div id="firebaseui">
           <SignInScreen/>
-          <Routes />
         </div>
       </>
     );

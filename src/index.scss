@@ -1,3 +1,5 @@
+$gameFont: "Anonymous Pro";
+
 @mixin plainLink {
   text-decoration: none;
   color: white;
@@ -7,6 +9,7 @@
   flex-direction: $direction;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 @mixin canvas($colorOne, $colorTwo) {
@@ -15,26 +18,46 @@
   background: linear-gradient($colorOne, $colorTwo);
 }
 
-@keyframes hover {
-  from {
-    transform: translateY(10%);
-  }
-  to {
-    transform: translateY(35%);
-  }
-}
-
 body {
   margin: 0;
-  font-family: "Anonymous Pro";
+  font-family: $gameFont;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-// code {
-//   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-//     monospace;
-// }
+#navbar {
+  position: fixed;
+  top: 1rem;
+  left: 70rem;
+  // justify-content: flex-start;
+  // background: white;
+  z-index: 9;
+  button {
+    font-family: $gameFont;
+    font-size: 1rem;
+  }
+}
+
+#menu {
+  @include flexCenter(column);
+  margin: 2rem;
+  position: fixed;
+  bottom: 1vh;
+  left: 88vw;
+  z-index: 999;
+  div {
+    @include flexCenter(column);
+    margin: .75rem;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 5px;
+    background: linear-gradient(whitesmoke, rgb(176, 167, 167));
+  }
+  a {
+    @include plainLink;
+    color: black;
+  }
+}
 
 #map-container {
   @include flexCenter(column);
@@ -63,37 +86,18 @@ body {
   font-size: 2rem;
 }
 
-#menu {
-  @include flexCenter(column);
-  margin: 2rem;
-  position: fixed;
-  bottom: 1vh;
-  left: 88vw;
-  color: white;
-  color: white;
-  z-index: 999;
-  div {
-    @include flexCenter(column);
-    margin: .75rem;
-    width: 4rem;
-    height: 4rem;
-    border-radius: 5px;
-    background: linear-gradient(whitesmoke, rgb(82, 78, 78));
-  }
-  a {
-    @include plainLink;
-  }
-}
 
 #start-container {
   @include flexCenter(column);
   width: 100vw;
-  height: 100vh;
-  background: linear-gradient(black, rgb(20, 20, 72));
+  height: 80vh;
+  //background: linear-gradient(black, rgb(20, 20, 72));
   div {
     color: white;
     font-size: 2rem;
     margin: 1rem;
+    position: absolute;
+    z-index: 999;
   }
   a {
     @include plainLink;
@@ -102,29 +106,47 @@ body {
 
 .puzzle-container {
   @include flexCenter(column);
+  align-items: center;
   @include canvas(black, rgb(20, 20, 72));
+  position: absolute;
 }
 
 .puzzle {
   color: white;
   width: 70vw;
+  position: absolute;
+  z-index: 9;
 }
 
-.bubo-container {
+.bubos-container {
+  position: absolute;
   @include flexCenter(row);
-  justify-content: flex-start;
+  justify-content: space-around;
+  width: 25vw;
+  z-index: 999;
+}
+
+@keyframes hover {
+  from {
+    transform: translateY(10%);
+  }
+  to {
+    transform: translateY(35%);
+  }
 }
 
 .bubo {
   @include flexCenter(row);
   width: 3rem;
   height: 4rem;
-  margin-top: 10rem;
+  margin-top: 1rem;
+  margin-left: 1.5rem;
   border-radius: 50%;
   background: rgb(134, 186, 232);
   animation: hover 3s infinite;
   animation-duration: 1500ms;
   animation-direction: alternate;
+  z-index: 999;
   div {
     @include flexCenter(row);
     justify-content: flex-end;
@@ -139,6 +161,50 @@ body {
       height: .5rem;
     }
   }
+}
+
+@keyframes move-twink-back {
+  from {background-position:0 0;}
+  to {background-position:-10000px 5000px;}
+}
+
+@keyframes move-clouds-back {
+  from {background-position:0 0;}
+  to {background-position:10000px 0;}
+}
+
+.space-sky {
+  width: 100%;
+  height: 100%;
+}
+
+.stars, .twinkling, .clouds {
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  width:100%;
+  height:100%;
+  //display:block;
+}
+
+.stars {
+  background:#000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+  z-index:0;
+}
+
+.twinkling{
+  background:transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+  z-index:1;
+
+  animation:move-twink-back 200s linear infinite;
+}
+
+.clouds{
+    background:transparent url(http://www.script-tutorials.com/demos/360/images/clouds3.png) repeat top center;
+    z-index:3;
+
+  animation:move-clouds-back 200s linear infinite;
 }
 
 

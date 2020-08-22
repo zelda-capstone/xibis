@@ -6,7 +6,7 @@ const Map = (props) => {
   return (
     <>
       <div id='map-container'>
-        <h1>Game Map</h1>
+        <h1>Map</h1>
         <img id='map-background' alt='space-background' src='map-background.jpg' />
             <div id='map'>
               <div>

@@ -1,30 +1,73 @@
-@-webkit-keyframes hover {
-  from {
-    -webkit-transform: translateY(10%);
-            transform: translateY(10%);
-  }
-  to {
-    -webkit-transform: translateY(35%);
-            transform: translateY(35%);
-  }
-}
-
-@keyframes hover {
-  from {
-    -webkit-transform: translateY(10%);
-            transform: translateY(10%);
-  }
-  to {
-    -webkit-transform: translateY(35%);
-            transform: translateY(35%);
-  }
-}
-
 body {
   margin: 0;
   font-family: "Anonymous Pro";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#navbar {
+  position: fixed;
+  top: 1rem;
+  left: 70rem;
+  z-index: 9;
+}
+
+#navbar button {
+  font-family: "Anonymous Pro";
+  font-size: 1rem;
+}
+
+#menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 2rem;
+  position: fixed;
+  bottom: 1vh;
+  left: 88vw;
+  z-index: 999;
+}
+
+#menu div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: .75rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 5px;
+  background: -webkit-gradient(linear, left top, left bottom, from(whitesmoke), to(#b0a7a7));
+  background: linear-gradient(whitesmoke, #b0a7a7);
+}
+
+#menu a {
+  text-decoration: none;
+  color: white;
+  color: black;
 }
 
 #map-container {
@@ -41,6 +84,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   width: 100vw;
   height: 100vh;
   width: 100vw;
@@ -80,61 +125,13 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   position: absolute;
   font-size: 2rem;
-}
-
-#menu {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 2rem;
-  position: fixed;
-  bottom: 1vh;
-  left: 88vw;
-  color: white;
-  color: white;
-  z-index: 999;
-}
-
-#menu div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: .75rem;
-  width: 4rem;
-  height: 4rem;
-  border-radius: 5px;
-  background: -webkit-gradient(linear, left top, left bottom, from(whitesmoke), to(#524e4e));
-  background: linear-gradient(whitesmoke, #524e4e);
-}
-
-#menu a {
-  text-decoration: none;
-  color: white;
 }
 
 #start-container {
@@ -151,16 +148,18 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   width: 100vw;
-  height: 100vh;
-  background: -webkit-gradient(linear, left top, left bottom, from(black), to(#141448));
-  background: linear-gradient(black, #141448);
+  height: 80vh;
 }
 
 #start-container div {
   color: white;
   font-size: 2rem;
   margin: 1rem;
+  position: absolute;
+  z-index: 999;
 }
 
 #start-container a {
@@ -182,18 +181,25 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  align-items: center;
   width: 100vw;
   height: 100vh;
   background: -webkit-gradient(linear, left top, left bottom, from(black), to(#141448));
   background: linear-gradient(black, #141448);
+  position: absolute;
 }
 
 .puzzle {
   color: white;
   width: 70vw;
+  position: absolute;
+  z-index: 9;
 }
 
-.bubo-container {
+.bubos-container {
+  position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -207,9 +213,34 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 25vw;
+  z-index: 999;
+}
+
+@-webkit-keyframes hover {
+  from {
+    -webkit-transform: translateY(10%);
+            transform: translateY(10%);
+  }
+  to {
+    -webkit-transform: translateY(35%);
+            transform: translateY(35%);
+  }
+}
+
+@keyframes hover {
+  from {
+    -webkit-transform: translateY(10%);
+            transform: translateY(10%);
+  }
+  to {
+    -webkit-transform: translateY(35%);
+            transform: translateY(35%);
+  }
 }
 
 .bubo {
@@ -226,9 +257,12 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   width: 3rem;
   height: 4rem;
-  margin-top: 10rem;
+  margin-top: 1rem;
+  margin-left: 1.5rem;
   border-radius: 50%;
   background: #86bae8;
   -webkit-animation: hover 3s infinite;
@@ -237,6 +271,7 @@ body {
           animation-duration: 1500ms;
   -webkit-animation-direction: alternate;
           animation-direction: alternate;
+  z-index: 999;
 }
 
 .bubo div {
@@ -253,6 +288,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
@@ -267,5 +304,74 @@ body {
   background: #03032e;
   width: .5rem;
   height: .5rem;
+}
+
+@-webkit-keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+@keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+@-webkit-keyframes move-clouds-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
+}
+
+@keyframes move-clouds-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
+}
+
+.space-sky {
+  width: 100%;
+  height: 100%;
+}
+
+.stars, .twinkling, .clouds {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.stars {
+  background: #000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+  z-index: 0;
+}
+
+.twinkling {
+  background: transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+  z-index: 1;
+  -webkit-animation: move-twink-back 200s linear infinite;
+          animation: move-twink-back 200s linear infinite;
+}
+
+.clouds {
+  background: transparent url(http://www.script-tutorials.com/demos/360/images/clouds3.png) repeat top center;
+  z-index: 3;
+  -webkit-animation: move-clouds-back 200s linear infinite;
+          animation: move-clouds-back 200s linear infinite;
 }
 /*# sourceMappingURL=index.css.map */

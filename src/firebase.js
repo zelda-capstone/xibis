@@ -3,6 +3,7 @@ import 'firebase/firestore'
 import "firebase/auth"
 import React from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import Routes from './constants/routes'
 
 //import StartGame from './components/start-game'
 
@@ -85,12 +86,9 @@ export class SignInScreen extends React.Component {
       );
     }
     return (
-      <div>
-        <h1>My App</h1>
-        {/* <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p> */}
-        <button onClick={() => firebase.auth().signOut()}>Sign-out</button>
-        {/* <StartGame /> */}
-      </div>
+      <>
+      <Routes />
+      </>
     );
   }
 }
