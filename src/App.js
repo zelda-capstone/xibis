@@ -6,46 +6,36 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-// import Signup from './components/signup';
-// import Login from './components/login';
-import firebase, { auth, db, SignInScreen } from './firebase.js'
+import Login from './components/login';
+import LandingPage from './components/landing'
+import * as ROUTES from './constants/routes';
+import { withAuthentication } from './components/Auth';
+import firebase, { auth, db } from './firebase/firebase.js'
 import Play from './components/play'
+import SignUpPage from './components/signup';
 
 
 
-const App = () => {
-  const [user, loading, error, uid] = useAuthState(firebase.auth());
+class App extends React.Component{
   
-    return (
-      <>
+  constructor(props) {
+    super(props);
+    this.state = {}
+  }
+
+  render(){
+    return(
       <Router>
-      { !user
-          ?<div id="firebaseui">
-            <SignInScreen/>
-          </div>
-          :
-        <Switch>
-          <Route path="/play" render={(props) => (<Play {...props} user={user}/>)}></Route>
-        </Switch>
-      }
+        <div className="container">
+          <Route exact path={ROUTES.LANDING} component={LandingPage} />
+          <Route path={ROUTES.LOG_IN} component={Login} />
+          <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+          <Route path={ROUTES.HOME} component={Play} />`
+        </div>
       </Router>
-      </>
-    );
-
+    )
+  }
 }
-
-
-
-
-
-// function PrivateRoute({ component: Component, authenticated, ...rest }) {
-//   return (
-//     <Route
-//       {...rest}
-//       render={(props) => authenticated === true
-//         ? <Component {...props} />
-//         : <Redirect to={{ pathname: '/login', state: { from: props.location } }} />}
-//     />
-//   )
-// }
-export default App;
+  
+  
+export default withAuthentication(App);

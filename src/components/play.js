@@ -1,20 +1,17 @@
 import React from 'react';
-import firebase, { auth, db } from '../firebase'
+//import { withFirebase } from '../Firebase';
+import firebase, { auth, db, withFirebase } from '../firebase'
 
 
 const Play = (props) => {
-    const {currentUser} = auth
-    if(currentUser){
-        console.log("USER", currentUser)
-    }
+    // const user = props
+    // console.log(props)
     return (
         <>
             <div>
-                Hello, {props.user.displayName}
+                Hello, USER!
             </div>
-
         </>
-
     )
 }
 
