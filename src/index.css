@@ -59,7 +59,7 @@ body {
     width: 0;
   }
   to {
-    width: 100%;
+    width: 55%;
   }
 }
 @keyframes typing {
@@ -67,7 +67,7 @@ body {
     width: 0;
   }
   to {
-    width: 100%;
+    width: 55%;
   }
 }
 
@@ -87,6 +87,30 @@ body {
   50% {
     border-color: orange;
   }
+}
+
+.story {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 15rem;
+}
+
+.story div {
+  color: white;
+  z-index: 9;
 }
 
 .typewriter {
@@ -273,30 +297,6 @@ body {
 #start-container a {
   text-decoration: none;
   color: white;
-}
-
-.story {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin: 15rem;
-}
-
-.story div {
-  color: white;
-  z-index: 9;
 }
 
 .puzzle-container {

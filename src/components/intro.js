@@ -4,7 +4,8 @@ const Intro = () => {
   return (
     <>
       <div className='story'>
-        <div className='typewriter'>Here, our initial story will begin. Set the scene for the journey to come...
+        <div className='typewriter'>
+          Here, our initial story will begin...
         </div>
       </div>
     </>
