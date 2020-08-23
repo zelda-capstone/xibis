@@ -150,11 +150,8 @@ body {
   overflow: hidden;
   border-right: .15em solid orange;
   white-space: nowrap;
-  /* Keeps the content on a single line */
   margin: 0 auto;
-  /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .15em;
-  /* Adjust as needed */
+  letter-spacing: .20em;
   -webkit-animation: typing 3s steps(40, end), cursor 0.75s step-end infinite;
           animation: typing 3s steps(40, end), cursor 0.75s step-end infinite;
 }
@@ -194,6 +191,8 @@ body {
 .button {
   font-family: "Anonymous Pro";
   font-size: 1rem;
+  border: none;
+  margin: .5rem;
 }
 
 .button a {
@@ -201,7 +200,7 @@ body {
   color: black;
 }
 
-.bubos-selector-container {
+.bubo-selector-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -220,22 +219,31 @@ body {
   height: 80vh;
 }
 
-.bubos-selector-container h2 {
+.bubo-selector-container h2 {
   color: white;
 }
 
 .bubo-selector {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   height: 20rem;
   width: 25rem;
-  position: relative;
   background: white;
-  padding: 1.5rem;
+  padding: 1.25rem;
   border-radius: 10px;
-}
-
-.bubo-selector div {
-  height: 2rem;
-  padding-left: 1rem;
 }
 
 .bubo-selector span {
@@ -260,11 +268,11 @@ body {
       flex-wrap: wrap;
   height: 10rem;
   width: 10rem;
+  -webkit-animation: hover 2s alternate infinite;
+          animation: hover 2s alternate infinite;
 }
 
 .custom-bubo {
-  border-radius: 50%;
-  background: grey;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -280,18 +288,11 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 10rem;
-  height: 10em;
-  margin-top: 1rem;
-  margin-left: 1.5rem;
   border-radius: 50%;
-  background: #86bae8;
-  -webkit-animation: hover 3s infinite;
-          animation: hover 3s infinite;
-  -webkit-animation-duration: 1500ms;
-          animation-duration: 1500ms;
-  -webkit-animation-direction: alternate;
-          animation-direction: alternate;
+  margin-bottom: 5rem;
+  width: 5rem;
+  height: 5rem;
+  background: #a9abae;
 }
 
 .custom-bubo div {
@@ -310,11 +311,9 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  width: 1rem;
-  height: 1rem;
+  justify-content: center;
+  width: 1.3rem;
+  height: 1.3rem;
   border-radius: 50%;
   margin: 2px;
   background: #f2f2ef;
@@ -324,6 +323,33 @@ body {
   background: #03032e;
   width: .5rem;
   height: .5rem;
+}
+
+.sparkle {
+  position: absolute;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin-top: 2rem;
+  width: 1rem;
+  height: 2rem;
+  background: pink;
+}
+
+.antennae {
+  position: absolute;
+  margin-bottom: 10rem;
+  background: black;
+  width: .5rem;
+  height: 3rem;
+}
+
+.hat {
+  position: absolute;
+  margin-bottom: 10rem;
+  background: #350505;
+  width: 3rem;
+  height: 1rem;
 }
 
 #menu {

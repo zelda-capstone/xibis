@@ -5,6 +5,7 @@ const CustomizableBubo = (props) => {
   return (
     <>
       <div className='custom-bubo-container'>
+        <div className={props.accessory}></div>
         <div style={{background: props.color}} className='custom-bubo'>
           <div>
             <div></div>
@@ -13,6 +14,7 @@ const CustomizableBubo = (props) => {
             <div></div>
           </div>
         </div>
+      <div style={{background: props.sparkle}} className='sparkle'></div>
     </div>
   </>
   )

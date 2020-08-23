@@ -1,5 +1,5 @@
 import React from 'react'
-import {CustomizableBubo} from '../components'
+import {CustomizableBubo, SelectTrait} from '../components'
 import firebase from '../firebase'
 
 //after combination options are chosen, bubo will be assigned a specific imageUrl matching that particular combo, from the sprite sheet?
@@ -12,16 +12,14 @@ class BuboSelector extends React.Component {
       sparkle: '',
       accessory: '',
       personality: [],
-      bubos: [] // map these to a line at the bottom
+      bubos: [] // map these to join a line at the bottom?
       // should retrigger every time 'create' is called
       // when users collection length is 10, move to next page
     }
   }
 
   handleColor = (evt) => {
-    console.log(evt.target.value)
     this.setState({ color: evt.target.value })
-    console.log(this.state.color)
   }
 
   handleSparkle = (evt) => {
@@ -52,23 +50,23 @@ class BuboSelector extends React.Component {
   render() {
   return (
     <>
-      <div className='bubos-selector-container'>
-        <h2>Assemble your bubos.</h2>
+      <div className='bubo-selector-container'>
+        <h2>assemble your bubos</h2>
         <div className='bubo-selector'>
           <div>color:
-            <button onClick={this.handleColor} value='navy'>navy</button>
-            <button onClick={this.handleColor} value='maroon'>maroon</button>
-            <button onClick={this.handleColor} value='lavender'>lavender</button>
-            <button onClick={this.handleColor} value='silver'>silver</button>
+            <SelectTrait handleClick={this.handleColor} value='maroon'/>
+            <SelectTrait handleClick={this.handleColor} value='lavender'/>
+            <SelectTrait handleClick={this.handleColor} value='silver'/>
+            <SelectTrait handleClick={this.handleColor} value='navy'/>
           </div>
           <div>sparkle:
-            <span>green</span>
-            <span>yellow</span>
+            <SelectTrait handleClick={this.handleSparkle} value='green'/>
+            <SelectTrait handleClick={this.handleSparkle} value='yellow'/>
           </div>
           <div>accessory:
-            <span>antennae</span>
-            <span>hat</span>
-            <span>glasses</span>
+            <SelectTrait handleClick={this.handleAccessory} value='antennae'/>
+            <SelectTrait handleClick={this.handleAccessory} value='hat'/>
+            <SelectTrait handleClick={this.handleAccessory} value='glasses'/>
           </div>
           <div>personality (choose two):</div>
             <div>
