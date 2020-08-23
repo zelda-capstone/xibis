@@ -1,6 +1,6 @@
 import React from 'react'
-import {CustomizableBubo, SelectTrait} from '../components'
-import firebase from '../firebase'
+import {CustomizableBubo, SelectTrait, Bubo} from '../components'
+//import firebase from '../firebase'
 
 //after combination options are chosen, bubo will be assigned a specific imageUrl matching that particular combo, from the sprite sheet?
 
@@ -14,6 +14,7 @@ class BuboSelector extends React.Component {
       personality: [],
       bubos: [] // map these to join a line at the bottom?
       // should retrigger every time 'create' is called
+      //should draw on the global state of bubos in user's db collection
       // when users collection length is 10, move to next page
     }
   }
@@ -41,13 +42,25 @@ class BuboSelector extends React.Component {
 
   handleCreate = async () => {
     //send state to DB and add bubo to user's bubo collection
-    //animate bubo to join the line at the bottom of the screen
-    const db = firebase.firestore();
-    console.log(db.collection('bubos').doc('1'));
+    //add bubo to bubos array on state to join the line at the bottom of the screen
+    const { color, sparkle, accessory } = this.state
+    const bubo = {
+      color, sparkle, accessory
+    }
+    //const db = firebase.firestore();
+    //console.log( await db.collection('bubos').doc('1'));
     //db.collection('users').doc().set({})
+    this.setState({
+      color: '',
+      sparkle: '',
+      accessory: '',
+      personality: [],
+      bubos: [...this.state.bubos, bubo]
+    })
   }
 
   render() {
+    const bubos = this.state.bubos;
   return (
     <>
       <div className='bubo-selector-container'>
@@ -84,6 +97,17 @@ class BuboSelector extends React.Component {
         </div>
         <div>
           <button className='button' onClick={this.handleCreate}>create</button>
+        </div>
+        <div className='line-bottom'>
+          {
+            bubos ? (bubos.map((bubo, index) => {
+              return (
+                <div key={index}>
+                  <CustomizableBubo {...bubo} />
+                </div>
+              )
+            })) : null
+          }
         </div>
       </div>
     </>

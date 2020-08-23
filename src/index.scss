@@ -156,6 +156,13 @@ body {
   }
 }
 
+.line-bottom {
+  @include flexCenter(row);
+  justify-content: flex-start;
+  position: absolute;
+  //top: 70%;
+}
+
 .sparkle {
   position: absolute;
   align-self: center;
