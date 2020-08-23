@@ -77,9 +77,9 @@ export class SignInScreen extends React.Component {
   render() {
     if (!this.state.isSignedIn) {
       return (
-        <div>
-          <h1>My App</h1>
-          <p>Please sign-in/up:</p>
+        <div id='sign-in'>
+          <h1>Bubos</h1>
+          <p>Please sign-in/up to begin your journey</p>
           <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
         </div>
       );

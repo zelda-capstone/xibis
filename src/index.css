@@ -1,8 +1,44 @@
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 body {
   margin: 0;
   font-family: "Anonymous Pro";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#sign-in {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 #navbar {
@@ -15,6 +51,57 @@ body {
 #navbar button {
   font-family: "Anonymous Pro";
   font-size: 1rem;
+}
+
+/* The typing effect */
+@-webkit-keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* The typewriter cursor effect */
+@-webkit-keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}
+
+.typewriter {
+  overflow: hidden;
+  /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange;
+  /* The typwriter cursor */
+  white-space: nowrap;
+  /* Keeps the content on a single line */
+  margin: 0 auto;
+  /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em;
+  /* Adjust as needed */
+  -webkit-animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+          animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
 }
 
 #menu {
@@ -171,6 +258,8 @@ body {
           align-items: space-around;
   width: 100vw;
   height: 80vh;
+  -webkit-transition: opacity 2s linear;
+  transition: opacity 2s linear;
 }
 
 #start-container div {
@@ -211,6 +300,7 @@ body {
 }
 
 .puzzle-container {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -231,7 +321,6 @@ body {
   height: 100vh;
   background: -webkit-gradient(linear, left top, left bottom, from(black), to(#141448));
   background: linear-gradient(black, #141448);
-  position: relative;
 }
 
 .puzzle {
@@ -260,10 +349,12 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  width: 25vw;
-  z-index: 999;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 30vw;
+  z-index: 9;
+  margin: 3rem;
 }
 
 @-webkit-keyframes hover {
@@ -403,7 +494,7 @@ body {
 }
 
 .stars {
-  background: #000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+  background: black url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
   z-index: 0;
 }
 

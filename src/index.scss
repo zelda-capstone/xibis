@@ -18,11 +18,25 @@ $gameFont: "Anonymous Pro";
   background: linear-gradient($colorOne, $colorTwo);
 }
 
+@keyframes fade-in {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
 body {
   margin: 0;
   font-family: $gameFont;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#sign-in {
+  @include flexCenter(column);
 }
 
 #navbar {
@@ -36,6 +50,30 @@ body {
     font-family: $gameFont;
     font-size: 1rem;
   }
+}
+
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+
+.typewriter {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation:
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
 }
 
 #menu {
@@ -98,6 +136,8 @@ body {
   align-items: space-around;
   width: 100vw;
   height: 80vh;
+  transition: opacity 2s linear;
+  //animation: fade-in 1s linear;
   //background: linear-gradient(black, rgb(20, 20, 72));
   div {
     color: white;
@@ -121,10 +161,10 @@ body {
 }
 
 .puzzle-container {
+  position: relative;
   @include flexCenter(column);
   align-items: center;
   @include canvas(black, rgb(20, 20, 72));
-  position: relative;
 }
 
 .puzzle {
@@ -138,9 +178,10 @@ body {
   position: relative;
   align-self: flex-start;
   @include flexCenter(row);
-  justify-content: space-around;
-  width: 25vw;
-  z-index: 999;
+  justify-content: space-evenly;
+  width: 30vw;
+  z-index: 9;
+  margin: 3rem;
 }
 
 @keyframes hover {
@@ -197,28 +238,28 @@ body {
 }
 
 .stars, .twinkling, .clouds {
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
-  width:100%;
-  height:100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
   //display:block;
 }
 
 .stars {
-  background:#000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
-  z-index:0;
+  background: black url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+  z-index: 0;
 }
 
-.twinkling{
+.twinkling {
   background:transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
-  z-index:1;
+  z-index: 1;
 
-  animation:move-twink-back 200s linear infinite;
+  animation: move-twink-back 200s linear infinite;
 }
 
-.clouds{
+.clouds {
     background:transparent url(http://www.script-tutorials.com/demos/360/images/clouds3.png) repeat top center;
     z-index:3;
 

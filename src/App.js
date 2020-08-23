@@ -8,7 +8,7 @@ import React from 'react';
 // import Signup from './components/signup';
 // import Login from './components/login';
 import { SignInScreen } from './firebase.js'
-//import StartGame from './components/start-game'
+import { Twinkle } from './components'
 //import Intro from './components/intro'
 
 
@@ -18,7 +18,7 @@ const App = () => {
 
     return (
       <>
-        <div id="firebaseui">
+        <div>
           <SignInScreen/>
         </div>
       </>

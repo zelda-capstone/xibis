@@ -17,4 +17,7 @@ const Routes = () => {
   )
 }
 
+//the menu option is currently rendering all the time
+//but should only render after bubos are selected and the game is begun
+
 export default Routes
