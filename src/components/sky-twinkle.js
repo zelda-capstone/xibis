@@ -6,7 +6,7 @@ const Twinkle = (props) => {
       <div className="space-sky">
         <div className="stars"></div>
         <div className="twinkling"></div>
-        <div className="clouds"></div>
+        {/* <div className="clouds"></div> */}
         {
           props.clouds ?   <div className="clouds"></div> : null
         }

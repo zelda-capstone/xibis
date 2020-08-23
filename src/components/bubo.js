@@ -4,7 +4,7 @@ const Bubo = (props) => {
   return (
     <>
       <div className='bubo-container'>
-        <div className='bubo'>
+        <div draggable className='bubo'>
           <div>
             <div></div>
           </div>

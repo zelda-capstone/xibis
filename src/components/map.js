@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { MapIcon } from '../components'
 
+//map user.gameState.completedPuzzles in a list here
+
 const Map = (props) => {
   return (
     <>
@@ -33,5 +35,6 @@ const Map = (props) => {
     </>
   )
 }
+
 
 export default Map

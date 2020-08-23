@@ -1,11 +1,13 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import { NavBar, StartGame, Intro, Map, TestPuzzle, Menu, Hint } from '../components'
+import { NavBar, StartGame, Intro, BuboSelector, Map, TestPuzzle, Menu, Hint, User } from '../components'
 
 const Routes = () => {
   return (
     <>
       <Route component={NavBar} />
+      <Route exact path='/home' component={User} />
+      <Route exact path='/bubos' component={BuboSelector} />
       <Route exact path='/intro' component={Intro} />
       <Route exact path='/hint' component={Hint} />
       <Route exact path='/map' component={Map}/>

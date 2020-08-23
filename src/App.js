@@ -8,8 +8,6 @@ import React from 'react';
 // import Signup from './components/signup';
 // import Login from './components/login';
 import { SignInScreen } from './firebase.js'
-import { Twinkle } from './components'
-//import Intro from './components/intro'
 
 
 
