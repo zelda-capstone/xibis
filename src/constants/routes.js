@@ -11,6 +11,7 @@ const Routes = () => {
       <Route exact path='/map' component={Map}/>
       <Route exact path='/play' component={StartGame}/>
       <Route exact path='/test-puzzle' component={TestPuzzle}/>
+      <Route exact path='/' component={StartGame}/>
       <Route component={Menu} />
     </>
   )

@@ -8,7 +8,7 @@ body {
 #navbar {
   position: fixed;
   top: 1rem;
-  left: 70rem;
+  left: 90vw;
   z-index: 9;
 }
 
@@ -64,10 +64,41 @@ body {
   background: linear-gradient(whitesmoke, #b0a7a7);
 }
 
+#menu div:hover {
+  background: grey;
+}
+
 #menu a {
   text-decoration: none;
   color: white;
   color: black;
+}
+
+.hint-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 10rem;
+}
+
+.hint-container div {
+  z-index: 9;
+  color: black;
+  background: radial-gradient(whitesmoke, #d3d3d2);
+  padding: 8rem;
+  border-radius: 10px;
 }
 
 #map-container {
@@ -86,29 +117,12 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 100vw;
-  height: 100vh;
-  width: 100vw;
-  height: 100vh;
-  background: -webkit-gradient(linear, left top, left bottom, from(black), to(#141448));
-  background: linear-gradient(black, #141448);
 }
 
 #map-container h1 {
   color: whitesmoke;
   text-shadow: 2px 2px #414460;
-}
-
-#map-container a {
-  text-decoration: none;
-  color: white;
-}
-
-#map-background {
-  width: 70vw;
-  border-radius: 20px;
-  -webkit-box-shadow: 5px 5px 5px 5px #2c3250;
-          box-shadow: 5px 5px 5px 5px #2c3250;
+  z-index: 9;
 }
 
 #map {
@@ -130,8 +144,10 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  position: absolute;
+  margin: 5rem;
+  position: relative;
   font-size: 2rem;
+  z-index: 9;
 }
 
 #start-container {
@@ -150,6 +166,9 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-align: space-around;
+      -ms-flex-align: space-around;
+          align-items: space-around;
   width: 100vw;
   height: 80vh;
 }
@@ -158,13 +177,37 @@ body {
   color: white;
   font-size: 2rem;
   margin: 1rem;
-  position: absolute;
-  z-index: 999;
+  position: relative;
+  z-index: 9;
 }
 
 #start-container a {
   text-decoration: none;
   color: white;
+}
+
+.story {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 15rem;
+}
+
+.story div {
+  color: white;
+  z-index: 9;
 }
 
 .puzzle-container {
@@ -188,18 +231,20 @@ body {
   height: 100vh;
   background: -webkit-gradient(linear, left top, left bottom, from(black), to(#141448));
   background: linear-gradient(black, #141448);
-  position: absolute;
+  position: relative;
 }
 
 .puzzle {
   color: white;
   width: 70vw;
-  position: absolute;
+  position: relative;
   z-index: 9;
 }
 
 .bubos-container {
-  position: absolute;
+  position: relative;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -345,6 +390,7 @@ body {
 .space-sky {
   width: 100%;
   height: 100%;
+  z-index: 0;
 }
 
 .stars, .twinkling, .clouds {

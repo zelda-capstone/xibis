@@ -4,8 +4,7 @@ import "firebase/auth"
 import React from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import Routes from './constants/routes'
-
-//import StartGame from './components/start-game'
+import {Twinkle} from './components'
 
 
 // Your web app's Firebase configuration
@@ -87,6 +86,7 @@ export class SignInScreen extends React.Component {
     }
     return (
       <>
+      <Twinkle />
       <Routes />
       </>
     );

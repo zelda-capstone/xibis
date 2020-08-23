@@ -7,7 +7,7 @@ const Hint = (props) => {
 
   return (
     <div className='hint-container'>
-      <div className='hint'>A hint for the user based on the current puzzle. We should render this as a popup instead of its own page.</div>
+      <div className='hint'>A hint for the user based on the current puzzle. We should render this as a popup instead of its own page?</div>
     </div>
   )
 }

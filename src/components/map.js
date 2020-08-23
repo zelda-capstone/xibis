@@ -7,29 +7,28 @@ const Map = (props) => {
     <>
       <div id='map-container'>
         <h1>Map</h1>
-        <img id='map-background' alt='space-background' src='map-background.jpg' />
-            <div id='map'>
-              <div>
-                <Link to='/test-puzzle'>
-                    <MapIcon />
-                </Link>
-               </div>
-              <div>
-                <Link to='/test-puzzle'>
+          <div id='map'>
+            <div>
+              <Link to='/test-puzzle'>
                   <MapIcon />
-                </Link>
-                </div>
-              <div>
-                <Link to='/test-puzzle'>
-                  <MapIcon />
-                </Link>
+              </Link>
               </div>
-              <div>
-                <Link to='/test-puzzle'>
-                  <MapIcon />
-                </Link>
+            <div>
+              <Link to='/test-puzzle'>
+                <MapIcon />
+              </Link>
               </div>
-          </div>
+            <div>
+              <Link to='/test-puzzle'>
+                <MapIcon />
+              </Link>
+            </div>
+            <div>
+              <Link to='/test-puzzle'>
+                <MapIcon />
+              </Link>
+            </div>
+        </div>
       </div>
     </>
   )
