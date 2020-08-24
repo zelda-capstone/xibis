@@ -16,7 +16,6 @@ var firebaseConfig = {
 
 
 
-
 // Initialize Firebase
 class Firebase {
   constructor(){
@@ -60,7 +59,6 @@ class Firebase {
 
 
   doSignOut = () => this.auth.signOut();
-
 
 
   onAuthUserListener = (next, fallback) =>
@@ -122,12 +120,12 @@ users = () => this.db.collection('users');
 
 
 // export class SignInScreen extends React.Component {
- 
+
 //   // The component's Local state.
 //   state = {
 //     isSignedIn: false // Local signed-in state.
 //   };
- 
+
 //   // Configure FirebaseUI.
 //   uiConfig = {
 //     // Popup signin flow rather than redirect flow.
@@ -143,19 +141,19 @@ users = () => this.db.collection('users');
 //       signInSuccessWithAuthResult: () => false
 //     }
 //   };
- 
+
 //   // Listen to the Firebase Auth state and set the local state.
 //   componentDidMount() {
 //     this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(
 //         (user) => this.setState({isSignedIn: !!user})
 //     );
 //   }
-  
+
 //   // Make sure we un-register Firebase observers when the component unmounts.
 //   componentWillUnmount() {
 //     this.unregisterAuthObserver();
 //   }
- 
+
 //   render() {
 //     if (!this.state.isSignedIn) {
 //       return (
@@ -182,4 +180,4 @@ users = () => this.db.collection('users');
 
 // export const auth = firebase.auth();
 // export const db = firebase.firestore();
-export default Firebase 
+export default Firebase

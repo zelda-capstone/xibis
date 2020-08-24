@@ -6,8 +6,6 @@ import { withFirebase } from '../firebase';
 import * as ROUTES from '../constants/routes';
 import {SignUpLink} from './signup'
 
-
-
 const Login = () => (
     <div>
       <h1>SignIn</h1>
@@ -16,14 +14,11 @@ const Login = () => (
     </div>
   );
 
-
 const INITIAL_STATE = {
     email: "",
     password: "",
     error: null
 };
-
-
 
 
 class LogInFormBase extends Component {
@@ -99,13 +94,10 @@ class LogInFormBase extends Component {
 }
 
 
-
 const LogInForm = compose(
 withRouter,
 withFirebase,
 )(LogInFormBase);
-
-
 
 
 export default Login;
