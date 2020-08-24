@@ -1,38 +1,41 @@
-import React from 'react';
-// import {
-//   Route,
-//   BrowserRouter as Router,
-//   Switch,
-//   Redirect,
-// } from "react-router-dom";
-// import Signup from './components/signup';
-// import Login from './components/login';
-import { SignInScreen } from './firebase.js'
+import React, { useState, useEffect } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import {
+  Route,
+  BrowserRouter as Router,
+  Switch,
+  Redirect,
+} from "react-router-dom";
+import Login from './components/login';
+import LandingPage from './components/landing'
+import * as ROUTES from './constants/routes';
+import { withAuthentication } from './components/Auth';
+import firebase, { auth, db } from './firebase/firebase.js'
+import Play from './components/play'
+import SignUpPage from './components/signup';
 
 
 
+class App extends React.Component{
+  
+  constructor(props) {
+    super(props);
+    this.state = {}
+  }
 
-const App = () => {
-    return (
-      <div id="firebaseui">
-        <SignInScreen/>
-      </div>
-    );
-
+  render(){
+    return(
+      <Router>
+        <div className="container">
+          <Route exact path={ROUTES.LANDING} component={LandingPage} />
+          <Route path={ROUTES.LOG_IN} component={Login} />
+          <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+          <Route path={ROUTES.HOME} component={Play} />`
+        </div>
+      </Router>
+    )
+  }
 }
-
-
-
-
-
-// function PrivateRoute({ component: Component, authenticated, ...rest }) {
-//   return (
-//     <Route
-//       {...rest}
-//       render={(props) => authenticated === true
-//         ? <Component {...props} />
-//         : <Redirect to={{ pathname: '/login', state: { from: props.location } }} />}
-//     />
-//   )
-// }
-export default App;
+  
+  
+export default withAuthentication(App);
