@@ -117,6 +117,7 @@ body {
   @include flexCenter(column);
   height: 20rem;
   width: 25rem;
+  box-shadow: 3px 3px rgb(198, 160, 160);
   //position: relative;
   background: white;
   padding: 1.25rem;
@@ -128,15 +129,15 @@ body {
 
 .custom-bubo-container {
   @include flexCenter(column);
-  height: 10rem;
-  width: 10rem;
+  height: 9rem;
+  width: 6rem;
   animation: hover 2s alternate infinite;
 }
 
 .custom-bubo {
   @include flexCenter(row);
   border-radius: 50%;
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
   width: 5rem;
   height: 5rem;
   background: rgb(169, 171, 174);
@@ -159,8 +160,6 @@ body {
 .line-bottom {
   @include flexCenter(row);
   justify-content: flex-start;
-  position: absolute;
-  //top: 70%;
 }
 
 .sparkle {
@@ -369,11 +368,11 @@ body {
   animation: twinkle 200s linear infinite;
 }
 
-.clouds {
-    background:transparent url(http://www.script-tutorials.com/demos/360/images/clouds3.png) repeat top center;
-    z-index: 0;
+// .clouds {
+//     background:transparent url('red-yellow-cloud.png') repeat top center;
+//     z-index: 0;
 
-  animation: clouds-passing 200s linear infinite;
-}
+//   animation: clouds-passing 200s linear infinite;
+// }
 
 

@@ -241,6 +241,8 @@ body {
       flex-wrap: wrap;
   height: 20rem;
   width: 25rem;
+  -webkit-box-shadow: 3px 3px #c6a0a0;
+          box-shadow: 3px 3px #c6a0a0;
   background: white;
   padding: 1.25rem;
   border-radius: 10px;
@@ -266,8 +268,8 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  height: 10rem;
-  width: 10rem;
+  height: 9rem;
+  width: 6rem;
   -webkit-animation: hover 2s alternate infinite;
           animation: hover 2s alternate infinite;
 }
@@ -289,7 +291,7 @@ body {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   border-radius: 50%;
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
   width: 5rem;
   height: 5rem;
   background: #a9abae;
@@ -344,7 +346,6 @@ body {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  position: absolute;
 }
 
 .sparkle {
@@ -749,12 +750,5 @@ body {
   z-index: -1;
   -webkit-animation: twinkle 200s linear infinite;
           animation: twinkle 200s linear infinite;
-}
-
-.clouds {
-  background: transparent url(http://www.script-tutorials.com/demos/360/images/clouds3.png) repeat top center;
-  z-index: 0;
-  -webkit-animation: clouds-passing 200s linear infinite;
-          animation: clouds-passing 200s linear infinite;
 }
 /*# sourceMappingURL=index.css.map */

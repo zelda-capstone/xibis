@@ -98,7 +98,8 @@ class BuboSelector extends React.Component {
         <div>
           <button className='button' onClick={this.handleCreate}>create</button>
         </div>
-        <div className='line-bottom'>
+      </div>
+      <div className='line-bottom'>
           {
             bubos ? (bubos.map((bubo, index) => {
               return (
@@ -109,7 +110,6 @@ class BuboSelector extends React.Component {
             })) : null
           }
         </div>
-      </div>
     </>
   )
   }
