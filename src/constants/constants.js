@@ -1,1 +1,0 @@
-export const MAP_TRANSITION_DELAY = 500;

@@ -1,5 +1,5 @@
 import React from 'react'
-import {CustomizableBubo, SelectTrait, Bubo} from '../components'
+import {CustomizableBubo, SelectTrait} from '../components'
 //import firebase from '../firebase'
 
 //after combination options are chosen, bubo will be assigned a specific imageUrl matching that particular combo, from the sprite sheet?

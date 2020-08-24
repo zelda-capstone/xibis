@@ -1,25 +1,14 @@
-import React from 'react'
-import { Route } from 'react-router-dom'
-import { NavBar, StartGame, Intro, BuboSelector, Map, TestPuzzle, Menu, Hint, User } from '../components'
+export const LANDING = '/'
+export const SIGN_UP = '/signup'
+export const LOG_IN = '/login'
 
-const Routes = () => {
-  return (
-    <>
-      <Route component={NavBar} />
-      <Route exact path='/home' component={User} />
-      <Route exact path='/bubos' component={BuboSelector} />
-      <Route exact path='/intro' component={Intro} />
-      <Route exact path='/hint' component={Hint} />
-      <Route exact path='/map' component={Map}/>
-      <Route exact path='/play' component={StartGame}/>
-      <Route exact path='/test-puzzle' component={TestPuzzle}/>
-      <Route exact path='/' component={StartGame}/>
-      <Route component={Menu} />
-    </>
-  )
-}
+export const START = '/play'
+export const INTRO = '/intro'
+export const ASSEMBLE_BUBOS = '/assemble-bubos'
+export const HINT = '/hint'
+export const MAP = '/map'
+export const USER = '/user'
+export const TEST = '/test-puzzle'
 
-//the menu option is currently rendering all the time
-//but should only render after bubos are selected and the game is begun
 
-export default Routes
+

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import * as ROUTES from '../constants/routes'
 
 const Intro = () => {
   return (
@@ -12,7 +13,7 @@ const Intro = () => {
           Are you ready to get started?
         </div>
         <div className='buttons-container'>
-          <button><Link to='/bubos' className='button'>Yes</Link></button>
+          <button><Link to={ROUTES.ASSEMBLE_BUBOS} className='button'>Yes</Link></button>
           <button><Link to='/play' className='button'>No</Link></button>
         </div>
       </div>

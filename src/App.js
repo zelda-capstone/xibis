@@ -1,41 +1,47 @@
 import React from 'react';
-// import {
-//   Route,
-//   BrowserRouter as Router,
-//   Switch,
-//   Redirect,
-// } from "react-router-dom";
-// import Signup from './components/signup';
-// import Login from './components/login';
-import { SignInScreen } from './firebase.js'
+//import { useAuthState } from 'react-firebase-hooks/auth';
+import {
+  Route,
+  BrowserRouter as Router
+} from "react-router-dom";
+import Login from './components/login';
+import LandingPage from './components/landing'
+import * as ROUTES from './constants/routes';
+import { withAuthentication } from './components/Auth';
+//import firebase, { auth, db } from './firebase/firebase.js'
+import SignUpPage from './components/signup';
+import { Twinkle, NavBar, StartGame, Intro, BuboSelector, Map, TestPuzzle, Menu, Hint, User } from './components'
 
 
+class App extends React.Component{
 
-const App = () => {
-    //if (user) console.log(user);
+  constructor(props) {
+    super(props);
+    this.state = {}
+  }
 
-    return (
-      <>
-        <div>
-          <SignInScreen/>
+  render(){
+    return(
+      <Router>
+        <div className="container">
+          <Route exact path={ROUTES.LANDING} component={LandingPage} />
+          <Route path={ROUTES.LOG_IN} component={Login} />
+          <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+          <Route component={Twinkle} />
+          <Route component={NavBar} />
+          <Route path={ROUTES.START} component={StartGame} />
+          <Route exact path={ROUTES.USER} component={User} />
+          <Route exact path={ROUTES.ASSEMBLE_BUBOS} component={BuboSelector} />
+          <Route exact path={ROUTES.INTRO} component={Intro} />
+          <Route exact path={ROUTES.HINT} component={Hint} />
+          <Route exact path={ROUTES.MAP} component={Map}/>
+          <Route exact path={ROUTES.TEST} component={TestPuzzle}/>
+          <Route component={Menu} />
         </div>
-      </>
-    );
-
+      </Router>
+    )
+  }
 }
 
 
-
-
-
-// function PrivateRoute({ component: Component, authenticated, ...rest }) {
-//   return (
-//     <Route
-//       {...rest}
-//       render={(props) => authenticated === true
-//         ? <Component {...props} />
-//         : <Redirect to={{ pathname: '/login', state: { from: props.location } }} />}
-//     />
-//   )
-// }
-export default App;
+export default withAuthentication(App);

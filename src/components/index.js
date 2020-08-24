@@ -13,3 +13,5 @@ export {default as MapIcon} from './map-icon'
 export {default as Hint} from './hint'
 export {default as Twinkle} from './sky-twinkle'
 export {default as User} from './user'
+export {default as Login } from './login';
+export {default as SignUpPage } from './signup';
