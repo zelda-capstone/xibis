@@ -1,11 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 //import { withFirebase } from '../Firebase';
-import firebase, { auth, db, withFirebase } from '../firebase'
+import firebase, { auth, db, withFirebase, FirebaseContext } from '../firebase'
 
 
 const Play = (props) => {
-    // const user = props
-    // console.log(props)
+    //const firebase = useContext(FirebaseContext)
     return (
         <>
             <div>

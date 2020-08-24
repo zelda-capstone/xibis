@@ -8,10 +8,10 @@ import {SignUpLink} from './signup'
 
 
 
-const SignInPage = () => (
+const Login = () => (
     <div>
       <h1>SignIn</h1>
-      <SignInForm />
+      <LogInForm />
       <SignUpLink />
     </div>
   );
@@ -26,7 +26,7 @@ const INITIAL_STATE = {
 
   
 
-class SignInFormBase extends Component {
+class LogInFormBase extends Component {
     constructor(props) {
       super(props);
   
@@ -100,14 +100,14 @@ class SignInFormBase extends Component {
   
 
 
-const SignInForm = compose(
+const LogInForm = compose(
 withRouter,
 withFirebase,
-)(SignInFormBase);
+)(LogInFormBase);
 
 
 
 
-export default SignInPage;
+export default Login;
 
-export {SignInForm} 
+export {LogInForm} 
