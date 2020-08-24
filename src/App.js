@@ -1,27 +1,34 @@
-import React from 'react';
+import React from 'react'
 //import { useAuthState } from 'react-firebase-hooks/auth';
-import {
-  Route,
-  BrowserRouter as Router
-} from "react-router-dom";
-import Login from './components/login';
+import {Route, BrowserRouter as Router} from 'react-router-dom'
+import Login from './components/login'
 import LandingPage from './components/landing'
-import * as ROUTES from './constants/routes';
-import { withAuthentication } from './components/Auth';
+import * as ROUTES from './constants/routes'
+import {withAuthentication} from './components/Auth'
 //import firebase, { auth, db } from './firebase/firebase.js'
-import SignUpPage from './components/signup';
-import { Twinkle, NavBar, StartGame, Intro, BuboSelector, Map, TestPuzzle, Menu, Hint, User } from './components'
+import SignUpPage from './components/signup'
+import {
+  Twinkle,
+  NavBar,
+  StartGame,
+  Intro,
+  BuboSelector,
+  Map,
+  TestPuzzle,
+  Menu,
+  Hint,
+  User,
+  BlockPuzzle,
+} from './components'
 
-
-class App extends React.Component{
-
+class App extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {}
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <Router>
         <div className="container">
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
@@ -34,8 +41,9 @@ class App extends React.Component{
           <Route exact path={ROUTES.ASSEMBLE_BUBOS} component={BuboSelector} />
           <Route exact path={ROUTES.INTRO} component={Intro} />
           <Route exact path={ROUTES.HINT} component={Hint} />
-          <Route exact path={ROUTES.MAP} component={Map}/>
-          <Route exact path={ROUTES.TEST} component={TestPuzzle}/>
+          <Route exact path={ROUTES.MAP} component={Map} />
+          <Route exact path={ROUTES.TEST} component={TestPuzzle} />
+          <Route exact path={ROUTES.BLOCK_PUZZLE} component={BlockPuzzle} />
           <Route component={Menu} />
         </div>
       </Router>
@@ -43,5 +51,4 @@ class App extends React.Component{
   }
 }
 
-
-export default withAuthentication(App);
+export default withAuthentication(App)
