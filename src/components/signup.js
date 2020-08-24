@@ -36,18 +36,18 @@ const ERROR_MSG_ACCOUNT_EXISTS = `
 class SignUpFormBase extends Component {
     constructor(props) {
       super(props);
-  
+
       this.state = { ...INITIAL_STATE };
     }
-  
+
     onSubmit = event => {
       const { username, email, passwordOne, isAdmin } = this.state;
       const roles = {};
-  
+
       if (isAdmin) {
         roles[ROLES.ADMIN] = ROLES.ADMIN;
       }
-  
+
       this.props.firebase
         .doCreateUserWithEmailAndPassword(email, passwordOne)
         .then(authUser => {
@@ -63,27 +63,27 @@ class SignUpFormBase extends Component {
         })
         .then(() => {
           this.setState({ ...INITIAL_STATE });
-          this.props.history.push(ROUTES.HOME);
+          this.props.history.push(ROUTES.START);
         })
         .catch(error => {
           if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
             error.message = ERROR_MSG_ACCOUNT_EXISTS;
           }
-  
+
           this.setState({ error });
         });
-  
+
       event.preventDefault();
     };
-  
+
     onChange = event => {
       this.setState({ [event.target.name]: event.target.value });
     };
-  
+
     onChangeCheckbox = event => {
       this.setState({ [event.target.name]: event.target.checked });
     };
-  
+
     render() {
       const {
         username,
@@ -92,13 +92,13 @@ class SignUpFormBase extends Component {
         passwordTwo,
         error,
       } = this.state;
-  
+
       const isInvalid =
         passwordOne !== passwordTwo ||
         passwordOne === '' ||
         email === '' ||
         username === '';
-  
+
       return (
         <form onSubmit={this.onSubmit}>
           <input
@@ -132,13 +132,13 @@ class SignUpFormBase extends Component {
           <button disabled={isInvalid} type="submit">
             Sign Up
           </button>
-  
+
           {error && <p>{error.message}</p>}
         </form>
       );
     }
   }
-  
+
 const SignUpLink = () => (
     <p>
         Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
