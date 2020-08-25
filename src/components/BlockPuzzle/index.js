@@ -10,7 +10,7 @@ export default function BlockPuzzle() {
         width: '95vh',
         height: '95vh',
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: 'column',
       }}
     >
       <div style={{width: '95%', height: '95%'}}>
@@ -19,17 +19,11 @@ export default function BlockPuzzle() {
       <div
         style={{
           display: 'flex',
-          flexDirection: 'column',
+          flexDirection: 'row',
           width: '25%',
           height: '95%',
         }}
       >
-        <Icon />
-        <Icon />
-        <Icon />
-        <Icon />
-        <Icon />
-        <Icon />
         <Icon />
       </div>
     </div>

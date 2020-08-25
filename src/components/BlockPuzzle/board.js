@@ -1,6 +1,7 @@
 import React from 'react'
 import Square from './square'
 import Icon from './icon'
+import PuzzleGrid from './puzzle-grid.svg'
 
 export default class Board extends React.Component {
   constructor() {
@@ -53,7 +54,11 @@ export default class Board extends React.Component {
           flexWrap: 'wrap',
         }}
       >
-        {squares}
+        <img
+          alt="game board"
+          src={PuzzleGrid}
+          style={{width: '100%', height: '100%'}}
+        />
       </div>
     )
   }
