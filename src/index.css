@@ -635,7 +635,7 @@ body {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  background: transparent url("https://ibb.co/XDgfYT6") repeat top center;
+  background: transparent url(https://ibb.co/XDgfYT6) repeat top center;
   width: 100vw;
   height: 100vh;
 }

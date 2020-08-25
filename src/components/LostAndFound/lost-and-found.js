@@ -8,7 +8,7 @@ class LostAndFound extends Component {
     this.state = {
       interlude: true,
       random: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-      lost: new Array(10).fill(<CustomizableBubo />),
+      lost: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       found: 0
     }
      // we will initially fill the lost array with all the bubos in user collection
@@ -35,11 +35,11 @@ class LostAndFound extends Component {
     this.setState({ interlude: false })
   }
 
-  handleFind = (name) => {
+  handleFind = (key) => {
     this.sounds.play('LF_correct');
     this.setState({
       found: this.state.found + 1,
-      lost: this.state.lost.filter(bubo => bubo.name !== name)
+      lost: this.state.lost.filter(bubo => bubo !== key)
     })
   }
 
@@ -61,7 +61,7 @@ class LostAndFound extends Component {
         <div className='clouds'></div>
         <div className='lost-and-found'>
         <div>
-          The bubos need to find themselves in the Great Fog of Doubt. Don't let the mirrors play tricks on them.. or you! You have 30 seconds to locate your bubos and dissipate the fog, or your bubos emotional health will start to suffer...
+          The bubos need to find themselves in the Great Fog of Doubt. Don't let the mirrors play tricks on them.. or you! You have 30 seconds to locate your bubos and dissipate the fog, or your bubos emotional health will suffer...
         </div>
         <div>
           <Timer />
@@ -77,18 +77,18 @@ class LostAndFound extends Component {
             )
           })
         }
-        </div>
         {
           lostBubos.length ? (
-            lostBubos.map((bubo, index) => {
+            lostBubos.map(bubo => {
               return (
-                <div key={index} className='lost-bubo' onClick={() => this.handleFind(bubo.name)}>
+                <div key={bubo} className='lost-bubo' onClick={() => this.handleFind(bubo)}>
                   <CustomizableBubo {...bubo} />
                 </div>
               )
             })
           ) : null
         }
+        </div>
         </div>
       </>
     )
