@@ -15,6 +15,7 @@ import {
   BuboSelector,
   Map,
   TestPuzzle,
+  LostAndFound,
   Menu,
   Hint,
   User
@@ -25,30 +26,34 @@ class App extends React.Component{
 
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      userRef: {},
+      user: {}
+    }
   }
 
-  // login = async userId => {
-  //   const userRef = this.props.firebase.user(userId)
-  //   this.setState({ userRef })
+  setUserOnState = async (userId) => {
+    const userRef = this.props.firebase.user(userId)
+    const user = await userRef.get()
+    //right now this gets the whole user but we probably just want their game state subcollection
+    const data = user.data();
+    this.setState({ user: data })
 
-  //   const user = await userRef.get()
-  //   const data = user.data();
-  //   this.setState({ user: data })
-
-  //   userRef.onSnapshot(snapshot => {
-  //     this.setState({ user: snapshot.data() })
-  //   })
-  // }
+    userRef.onSnapshot(snapshot => {
+      this.setState({ user: snapshot.data() })
+    })
+    //console.log('user on app state: ', this.state.user);
+  }
 
   render() {
-    // const firebase = this.props.firebase;
-
     return(
       <>
         <Router>
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
-          <Route path={ROUTES.LOG_IN} component={Login} />
+          <Route
+            path={ROUTES.LOG_IN}
+            render={() => <Login setUserOnState={this.setUserOnState}/>}
+          />
           <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route component={Twinkle} />
           <Route component={NavBar} />
@@ -58,6 +63,7 @@ class App extends React.Component{
           <Route exact path={ROUTES.HINT} component={Hint} />
           <Route exact path={ROUTES.MAP} component={Map}/>
           <Route exact path={ROUTES.TEST} component={TestPuzzle}/>
+          <Route exact path={ROUTES.LOST_AND_FOUND} component={LostAndFound}/>
           <Route exact path={ROUTES.USER} component={User} />
           <Route component={Menu} />
         </Router>

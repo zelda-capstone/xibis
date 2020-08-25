@@ -26,12 +26,17 @@ $gameFont: "Anonymous Pro";
 body {
   margin: 0;
   font-family: $gameFont;
+  color: white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 #sign-in {
   @include flexCenter(column);
+}
+
+.auth {
+  color: white;
 }
 
 #navbar {
@@ -59,7 +64,6 @@ body {
   from, to { border-color: transparent }
   50% { border-color: orange; }
 }
-
 
 .story {
   @include flexCenter(column);
@@ -279,6 +283,12 @@ body {
   margin: 3rem;
 }
 
+.lost-and-found {
+  @include flexCenter(column);
+  width: 80%;
+  margin-top: 20rem;
+}
+
 @keyframes hover {
   from {
     transform: translateY(10%);
@@ -358,21 +368,21 @@ body {
 
 .stars {
   background: black url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
-  z-index: -2;
+  z-index: -3;
 }
 
 .twinkling {
   background:transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
-  z-index: -1;
+  z-index: -2;
 
   animation: twinkle 200s linear infinite;
 }
 
-// .clouds {
-//     background:transparent url('red-yellow-cloud.png') repeat top center;
-//     z-index: 0;
+.clouds {
+    background:transparent url(http://www.script-tutorials.com/demos/360/images/clouds3.png) repeat top center;
+    z-index: -1;
 
-//   animation: clouds-passing 200s linear infinite;
-// }
+    animation: clouds-passing 200s linear infinite;
+}
 
 

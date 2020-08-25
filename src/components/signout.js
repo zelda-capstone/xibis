@@ -9,7 +9,7 @@ const SignOut = props => {
       type='button'
       onClick={() => {
         props.firebase.doSignOut();
-        //props.updateState({ user: {} })
+        // also should reset the user on game state to {}
         props.history.push(ROUTES.LANDING)
       }}>
         Sign-out

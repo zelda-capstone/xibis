@@ -47,6 +47,7 @@ class Firebase {
 
 
   doSignInWithGoogle = () =>
+    //to get rid of popup, is there a signin w ridirect method?
     this.auth.signInWithPopup(this.googleProvider).then(authUser => {
       if (authUser.additionalUserInfo.isNewUser) {
         this.user(authUser.user.uid).set({
@@ -98,7 +99,7 @@ user = uid => this.db.collection("users").doc(uid);
 
 users = () => this.db.collection('users');
 
-
+puzzle = name => this.db.collection('puzzles').doc(name);
 
 }
 // firebase.initializeApp(firebaseConfig);
