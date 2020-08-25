@@ -55,12 +55,12 @@ class BuboSelector extends React.Component {
 
     if (this.state.bubos.length === 10) {
       //write the array to the user's bubo array in db
-      console.log(this.props.user)
+      console.log(this.props.user.bubos)
     }
   }
 
   render() {
-    console.log(this.props)
+    //console.log(this.props)
     const bubos = this.state.bubos;
     if (bubos.length === 10) {
       return <Redirect to='/map'/>

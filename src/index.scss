@@ -288,10 +288,20 @@ body {
 
 .lost-and-found {
   @include flexCenter(column);
-  background:transparent url(https://ibb.co/XDgfYT6) repeat top center;
-  z-index: 5;
+  justify-content: flex-start;
+  background:transparent url('https://ibb.co/XDgfYT6') repeat top center;
   width: 100vw;
   height: 100vh;
+}
+
+.lost-bubos-container {
+  @include flexCenter(row);
+  justify-content: space-between;
+  z-index: 5;
+}
+
+.lost-bubo {
+  margin: 1rem;
 }
 
 @keyframes hover {

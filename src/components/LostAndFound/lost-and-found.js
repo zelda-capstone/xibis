@@ -7,23 +7,28 @@ class LostAndFound extends Component {
     super(props);
     this.state = {
       interlude: true,
-      random: new Array(10).fill(<Bubo />),
+      random: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
       lost: new Array(10).fill(<CustomizableBubo />),
       found: 0
     }
-    this.music = new Howl({
+     // we will initially fill the lost array with all the bubos in user collection
+    this.sounds = new Howl({
       src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
+      volume: 0.2,
       sprite: {
         'bubos_atmosphere': [ 0,
-          122932.24489795919]
+          122932.24489795919],
+        'LF_correct': [124000,
+          2000],
+        'LF_incorrect': [127000,
+          2000]
       }
     })
-    this.source = 0;
-    // we will initially fill the lost array with all the bubos in user collection
+    //this.source = 0;
   }
 
   componentDidMount() {
-    this.music.play('bubos_atmosphere');
+    this.sounds.play('bubos_atmosphere');
   }
 
   endInterlude = () => {
@@ -31,11 +36,15 @@ class LostAndFound extends Component {
   }
 
   handleFind = (name) => {
+    this.sounds.play('LF_correct');
     this.setState({
       found: this.state.found + 1,
       lost: this.state.lost.filter(bubo => bubo.name !== name)
     })
+  }
 
+  handleIncorrect = () => {
+    this.sounds.play('LF_incorrect')
   }
 
   render() {
@@ -60,10 +69,10 @@ class LostAndFound extends Component {
         </div>
         <div className='lost-bubos-container'>
         {
-          this.state.random.map((bubo, index) => {
+          this.state.random.map(bubo => {
             return (
-              <div key={index} className='lost-bubo'>
-                {bubo}
+              <div key={bubo} onClick={this.handleIncorrect} className='lost-bubo'>
+                <Bubo />
               </div>
             )
           })
