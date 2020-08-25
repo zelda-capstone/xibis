@@ -9,7 +9,7 @@ import {SignUpLink} from './signup'
 const Login = (props) => (
     <div>
       <h1>SignIn</h1>
-      <LogInForm setUserOnState={props.setUserOnState}/>
+      <LogInForm />
       <SignUpLink />
     </div>
   );
@@ -33,7 +33,7 @@ class LogInFormBase extends Component {
       this.props.firebase
         .doSignInWithEmailAndPassword(email, password)
         .then(authUser => {
-          this.props.setUserOnState(authUser.user.uid)
+          this.props.setUser(authUser.user.uid)
         })
         .then(() => {
           this.setState({ ...INITIAL_STATE });

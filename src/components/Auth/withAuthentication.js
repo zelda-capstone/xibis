@@ -1,25 +1,30 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { compose } from 'recompose'
 
-import AuthUserContext from './context';
+//import AuthUserContext from './context';
 import { withFirebase } from '../../firebase';
+import SET_AUTH_USER from '../../store/reducers/session'
 
 const withAuthentication = Component => {
   class WithAuthentication extends React.Component {
     constructor(props) {
       super(props);
 
-      this.state = {
-        authUser: ''
-      };
+      this.props.onSetAuthUser(
+        JSON.parse(localStorage.getItem('authUser'))
+      )
     }
 
     componentDidMount() {
       this.listener = this.props.firebase.onAuthUserListener(
         authUser => {
-          this.setState({ authUser });
+          localStorage.setItem('authUser', JSON.stringify(authUser))
+          this.props.onSetAuthUser('authUser')
         },
         () => {
-          this.setState({ authUser: null });
+          localStorage.removeItem('authUser')
+          this.props.onSetAuthUser(null)
         },
       );
     }
@@ -30,14 +35,24 @@ const withAuthentication = Component => {
 
     render() {
       return (
-        <AuthUserContext.Provider value={this.state.authUser}>
-          <Component {...this.props} />
-        </AuthUserContext.Provider>
+        <Component {...this.props} />
       );
     }
   }
 
-  return withFirebase(WithAuthentication);
+  const mapDispatchToProps = dispatch => {
+    return {
+      onSetAuthUser: authUser => dispatch({ type: SET_AUTH_USER, authUser})
+    }
+  }
+
+  return compose(
+    withFirebase,
+    connect(
+      null, mapDispatchToProps
+    ),
+    )(WithAuthentication);
 };
+
 
 export default withAuthentication;

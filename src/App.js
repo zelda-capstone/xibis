@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import { withAuthentication } from './components/Auth';
 import * as ROUTES from './constants/routes';
+import './index.css'
 
 import {
   Login,
@@ -24,28 +25,11 @@ import {
 class App extends React.Component{
   constructor(props) {
     super(props);
-    this.state = {
-      userRef: {},
-      user: {}
-    }
+    this.state = {}
   }
 
-  setUserOnState = async (userId) => {
-    const userRef = this.props.firebase.gameState(userId)
-    const user = await userRef.get()
-    //right now this gets the whole user but we probably just want their game state subcollection
-    const data = user.data();
-    this.setState({ user: data })
-
-    // commented out code 'subscribes' to changes in user state
-    // userRef.onSnapshot(snapshot => {
-    //   this.setState({ user: snapshot.data() })
-    // })
-    console.log('user on app state: ', this.state.user);
-  }
-
-  render() {
-    return(
+  render () {
+    return (
       <>
         <Router>
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
@@ -75,3 +59,18 @@ class App extends React.Component{
 
 
 export default withAuthentication(App);
+
+
+  // setUserOnState = async (userId) => {
+  //   const userRef = this.props.firebase.gameState(userId)
+  //   const user = await userRef.get()
+  //   //right now this gets the whole user but we probably just want their game state subcollection
+  //   const data = user.data();
+  //   this.setState({ user: data })
+
+  //   // commented out code 'subscribes' to changes in user state
+  //   // userRef.onSnapshot(snapshot => {
+  //   //   this.setState({ user: snapshot.data() })
+  //   // })
+  //   console.log('user on app state: ', this.state.user);
+  // }

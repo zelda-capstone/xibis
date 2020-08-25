@@ -15,7 +15,6 @@ var firebaseConfig = {
   };
 
 
-
 // Initialize Firebase
 class Firebase {
   constructor(){
@@ -31,7 +30,6 @@ class Firebase {
 
     this.auth = firebase.auth();
     this.db = firebase.firestore();
-
     /* Social Sign In Method Provider */
 
     this.googleProvider = new firebase.auth.GoogleAuthProvider();
@@ -178,9 +176,4 @@ puzzle = name => this.db.collection('puzzles').doc(name);
 //   }
 // }
 
-
-
-
-// export const auth = firebase.auth();
-// export const db = firebase.firestore();
 export default Firebase
