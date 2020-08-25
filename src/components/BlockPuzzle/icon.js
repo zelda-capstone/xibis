@@ -2,8 +2,13 @@ import React from 'react'
 
 export default function Icon() {
   return (
-    <span role="img" alt="an image of a coffee cup">
-      ☕
-    </span>
+    <div
+      style={{
+        width: '95%',
+        height: '95%',
+        backgroundColor: 'green',
+        borderRadius: '50%',
+      }}
+    ></div>
   )
 }

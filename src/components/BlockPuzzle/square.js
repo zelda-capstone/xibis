@@ -6,6 +6,9 @@ export default function Square({dark, children}) {
   return (
     <div
       style={{
+        display: 'flex',
+        justifyContent: 'space-around',
+        alignItems: 'center',
         backgroundColor: fill,
         color: stroke,
         width: '100%',
