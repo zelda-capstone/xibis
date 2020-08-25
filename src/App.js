@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import { withAuthentication } from './components/Auth';
 import * as ROUTES from './constants/routes';
-//import firebase, { auth, db } from './firebase/firebase.js'
 
 import {
   Login,
@@ -23,7 +22,6 @@ import {
 
 
 class App extends React.Component{
-
   constructor(props) {
     super(props);
     this.state = {
@@ -33,16 +31,17 @@ class App extends React.Component{
   }
 
   setUserOnState = async (userId) => {
-    const userRef = this.props.firebase.user(userId)
+    const userRef = this.props.firebase.gameState(userId)
     const user = await userRef.get()
     //right now this gets the whole user but we probably just want their game state subcollection
     const data = user.data();
     this.setState({ user: data })
 
-    userRef.onSnapshot(snapshot => {
-      this.setState({ user: snapshot.data() })
-    })
-    //console.log('user on app state: ', this.state.user);
+    // commented out code 'subscribes' to changes in user state
+    // userRef.onSnapshot(snapshot => {
+    //   this.setState({ user: snapshot.data() })
+    // })
+    console.log('user on app state: ', this.state.user);
   }
 
   render() {
@@ -59,7 +58,9 @@ class App extends React.Component{
           <Route component={NavBar} />
           <Route path={ROUTES.START} component={StartGame} />
           <Route exact path={ROUTES.INTRO} component={Intro} />
-          <Route exact path={ROUTES.ASSEMBLE_BUBOS} component={BuboSelector} />
+          <Route
+            exact path={ROUTES.ASSEMBLE_BUBOS}
+            render={() => <BuboSelector user={this.state.user} />} />
           <Route exact path={ROUTES.HINT} component={Hint} />
           <Route exact path={ROUTES.MAP} component={Map}/>
           <Route exact path={ROUTES.TEST} component={TestPuzzle}/>

@@ -1,0 +1,12 @@
+{
+  "urls": [
+    "sounds.webm",
+    "sounds.mp3"
+  ],
+  "sprite": {
+    "bubos_atmosphere": [
+      0,
+      122932.24489795919
+    ]
+  }
+}

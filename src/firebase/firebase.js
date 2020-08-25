@@ -101,6 +101,8 @@ users = () => this.db.collection('users');
 
 puzzle = name => this.db.collection('puzzles').doc(name);
 
+//gameState = uid => this.db.collection('users').doc(uid).collection('game-state')
+
 }
 // firebase.initializeApp(firebaseConfig);
 // //firebase.analytics();

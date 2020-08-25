@@ -4,6 +4,7 @@ $gameFont: "Anonymous Pro";
   text-decoration: none;
   color: black;
 }
+
 @mixin flexCenter($direction) {
   display: flex;
   flex-direction: $direction;
@@ -23,6 +24,11 @@ $gameFont: "Anonymous Pro";
   to { opacity: 1 }
 }
 
+@keyframes fade-out {
+  from { opacity: 1 }
+  to { opacity: 0 }
+}
+
 body {
   margin: 0;
   font-family: $gameFont;
@@ -35,9 +41,9 @@ body {
   @include flexCenter(column);
 }
 
-.auth {
-  color: white;
-}
+// .auth {
+//   color: white;
+// }
 
 #navbar {
   @include flexCenter(row);
@@ -67,19 +73,15 @@ body {
 
 .story {
   @include flexCenter(column);
-  margin: 15rem;
-  div {
-    color: white;
-    z-index: 9;
-  }
+  margin-top: 15rem;
 }
 
 .typewriter {
   overflow: hidden;
   border-right: .15em solid orange;
-  white-space: nowrap;
-  margin: 0 auto;
-  letter-spacing: .20em;
+  margin-left: 10rem;
+  margin-right: 10rem;
+  letter-spacing: .10em;
   animation:
     typing 3s steps(40, end),
     cursor .75s step-end infinite;
@@ -124,6 +126,7 @@ body {
   box-shadow: 3px 3px rgb(198, 160, 160);
   //position: relative;
   background: white;
+  color: black;
   padding: 1.25rem;
   border-radius: 10px;
   span {
@@ -247,7 +250,7 @@ body {
   width: 100vw;
   height: 80vh;
   transition: opacity 2s linear;
-  //animation: fade-in 1s linear;
+  animation: fade-in 2s linear;
   //background: linear-gradient(black, rgb(20, 20, 72));
   div {
     color: white;
@@ -285,8 +288,10 @@ body {
 
 .lost-and-found {
   @include flexCenter(column);
-  width: 80%;
-  margin-top: 20rem;
+  background:transparent url(https://ibb.co/XDgfYT6) repeat top center;
+  z-index: 5;
+  width: 100vw;
+  height: 100vh;
 }
 
 @keyframes hover {

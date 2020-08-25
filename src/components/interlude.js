@@ -1,5 +1,5 @@
 import React from 'react'
-import { withFirebase } from '../../firebase'
+import { withFirebase } from '../firebase'
 
 class Interlude extends React.Component {
   async componentDidMount() {
@@ -10,8 +10,10 @@ class Interlude extends React.Component {
 
   render() {
   return (
+    <div className='story'>
       <div className='typewriter'>
-        {this.interlude}
+          {this.interlude}
+      </div>
     </div>
   )
   }
