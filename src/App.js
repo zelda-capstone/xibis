@@ -34,10 +34,14 @@ class App extends React.Component{
 
   setUser = async (userId) => {
     const userRef = this.props.firebase.user(userId)
-    const user = await userRef.get()
+    const bubosRef = this.props.firebase.bubos(userId)
 
+    const user = await userRef.get()
     const data = user.data();
+
     data.id = userId;
+    data.userRef = userRef;
+    data.bubosRef = bubosRef
 
     this.props.setUserOnState(data)
   }

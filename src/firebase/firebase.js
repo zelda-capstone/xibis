@@ -99,7 +99,7 @@ users = () => this.db.collection('users');
 
 puzzle = name => this.db.collection('puzzles').doc(name);
 
-bubos = uid => this.db.collection('users').doc(uid).collection('game-state').doc('bubos')
+bubos = uid => this.db.collection('users').doc(uid).collection('bubos')
 
 }
 // firebase.initializeApp(firebaseConfig);

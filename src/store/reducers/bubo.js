@@ -1,12 +1,54 @@
-const SET_BUBOS = 'SET_BUBOS'
+
+const ADD_BUBO = 'ADD_BUBO'
+const UPDATE_BUBO = 'UPDATE_BUBO'
+
+const addBubo = bubo => {
+  return {
+    type: ADD_BUBO,
+    bubo
+  }
+}
+
+const updateBubo = bubo => {
+  return {
+    type: UPDATE_BUBO,
+    bubo
+  }
+}
+
+export const addBuboToDb = (bubo, bubosRef) => {
+  return async function (dispatch) {
+    try {
+      await bubosRef.add(bubo)
+      dispatch(addBubo(bubo))
+    } catch(err) {
+      console.error(err)
+    }
+  }
+}
+
+export const updateBuboInDb = (bubo, buboRef) => {
+  return async function (dispatch) {
+    try {
+      const buboRes = await buboRef.update(bubo)
+      dispatch(updateBubo(buboRes.data()))
+    } catch (err) {
+      console.error(err)
+    }
+  }
+}
+
 
 const INITIAL_STATE = []
 
-
 function messageReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case SET_BUBOS: {
-      return action.bubos;
+    case ADD_BUBO: {
+      return [...state, action.bubo]
+    }
+    case UPDATE_BUBO: {
+      const newState = state.filter(bubo => bubo.id !== action.bubo.id)
+      return [...newState, action.bubo]
     }
     default:
       return state;

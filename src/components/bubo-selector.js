@@ -3,6 +3,7 @@ import {Redirect} from 'react-router-dom'
 import {CustomizableBubo, SelectTrait} from '../components'
 import { withFirebase } from '../firebase'
 import { connect } from 'react-redux'
+import { addBuboToDb } from '../store/reducers/bubo'
 
 //after combination options are chosen, bubo will be assigned a specific imageUrl matching that particular combo, from the sprite sheet?
 
@@ -22,7 +23,7 @@ class BuboSelector extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.user)
+    console.log('user props passed from app', this.props.user)
   }
 
   handleColor = (evt) => {
@@ -47,8 +48,12 @@ class BuboSelector extends React.Component {
   }
 
   handleCreate = async () => {
-    const { color, sparkle, accessory } = this.state
-    const bubo = { color, sparkle, accessory }
+    const { color, sparkle, accessory, personality } = this.state
+    const bubo = { color, sparkle, accessory, personality }
+
+    //a reference to a user's whole subcollection of bubos
+    const bubosRef = this.props.user.bubosRef
+    this.props.addBubo(bubo, bubosRef)
 
     this.setState({
       color: '',
@@ -57,19 +62,11 @@ class BuboSelector extends React.Component {
       personality: [],
       bubos: [...this.state.bubos, bubo]
     })
-
-    if (this.state.bubos.length === 9) {
-      const user = this.props.user
-      const buboRef = this.props.firebase.bubos(user.id);
-      //write the array to the user's bubo array in db
-      const bubos = await buboRef.get()
-      console.log(bubos);
-    }
   }
 
   render() {
     const bubos = this.state.bubos;
-    if (bubos.length >= 10) {
+    if (bubos.length === 10) {
       return <Redirect to='/map'/>
     }
     return (
@@ -136,4 +133,10 @@ const mapState = state => {
   }
 }
 
-export default connect(mapState)(withFirebase(BuboSelector))
+const mapDispatch = dispatch => {
+  return {
+    addBubo: (bubo, buboRef) => dispatch(addBuboToDb(bubo, buboRef))
+  }
+}
+
+export default connect(mapState, mapDispatch)(withFirebase(BuboSelector))
