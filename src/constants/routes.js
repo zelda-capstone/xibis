@@ -10,6 +10,7 @@ export const MAP = '/map'
 export const USER = '/user'
 export const TEST = '/test-puzzle'
 export const WORMHOLE = '/wormhole'
+export const LOST_AND_FOUND = '/lost-and-found'
 
 
 

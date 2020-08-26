@@ -10,14 +10,7 @@ class TestPuzzle extends React.Component {
       crossed: []
     }
   }
-
-  onDragStart = (evt) => {
-
-  }
-
-  onDragOver = (evt) => {
-    evt.preventDefault();
-  }
+  //eventually this will map the array bubos from state below instead of listing individual Bubo components
 
   render() {
   return (
@@ -42,7 +35,5 @@ class TestPuzzle extends React.Component {
   )
   }
 }
-
-//eventually this will map the bubos from state onto here instead of listing individual components
 
 export default TestPuzzle

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { MapIcon, } from '../components'
 import Wormhole from './Wormhole/wormhole'
 
-//map user.gameState.completedPuzzles in a list here (hardcoded for now)
+//map user.gameState.completedPuzzles + next available puzzle in a list here (hardcoded for now)
 
 const Map = (props) => {
   return (
@@ -20,7 +20,12 @@ const Map = (props) => {
               <Link to='/wormhole'>
                 <MapIcon/>
               </Link>
-              </div>
+            </div>
+            <div>
+              <Link to='/lost-and-found'>
+                <MapIcon />
+              </Link>
+            </div>
             <div>
               <Link to='/test-puzzle'>
                 <MapIcon />
