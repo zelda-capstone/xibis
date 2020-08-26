@@ -38,7 +38,9 @@ export const getBubosCollection = (bubosRef) => {
   return async function (dispatch) {
     try {
       const bubosCollection = await bubosRef.get()
-      dispatch(getBubos(bubosCollection.data()))
+      console.log(bubosCollection.docs);
+      const bubos = bubosCollection.docs.map(doc => doc.data())
+      dispatch(getBubos(bubos))
     } catch(err) {
       console.error(err)
     }

@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import * as ROUTES from './constants/routes';
 import './index.css'
 
+import { setUserOnState } from './store/reducers/user'
+
 import {
   Login,
   SignUpPage,
@@ -30,8 +32,19 @@ class App extends React.Component{
     this.state = {}
   }
 
+  componentDidMount() {
+    const authUser = JSON.parse(localStorage.getItem('authUser'))
+
+    const user = {
+      // id: authUser.uid,
+      username: authUser.username,
+      userRef: this.props.firebase.user(authUser.uid),
+      bubosRef: this.props.firebase.bubos(authUser.uid)
+    }
+    this.props.setUser(user);
+  }
+
   render () {
-    console.log(this.props.user)
     return (
       <>
         <Router>
@@ -62,11 +75,18 @@ class App extends React.Component{
 
 const mapState = state => {
   return {
-    user: state.user
+    user: state.user,
+    session: state.session
+  }
+}
+
+const mapDispatch = dispatch => {
+  return {
+    setUser: userId => dispatch(setUserOnState(userId))
   }
 }
 
 
-export default compose(connect(mapState), withAuthentication)(App);
+export default compose(connect(mapState, mapDispatch), withAuthentication)(App);
 
 
