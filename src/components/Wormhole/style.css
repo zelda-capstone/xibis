@@ -1,21 +1,28 @@
 .background {
     display: flex;
-    background-position: center;
-    background-repeat: no-repeat;
     background-size: cover;
-    height: 720px;
+    background-position: center;
+    min-width: 1177px;
+    min-height: 663px;
     background-image: url('./wormhole-background.jpg');
-    justify-content: flex-start;
-    align-content: center;
+    margin: 1%;
+    align-self: center
 }
 
-/* @-webkit-keyframes move{
-    from {background-position: bottom right;}
-    to {background-position: bottom left;}
-}
+
+
+.star {
     
-div{
-    -webkit-animation:move 5s; */
+    display: flex;
+    flex-wrap: wrap;
+    background-image:transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png);
+    background-size: cover;
+    z-index: -2;
+    justify-content: center;
+    overflow: visible;
+    background-repeat: repeat;
+}
+
 
 
 .bubos-container {

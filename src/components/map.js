@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { MapIcon, } from '../components'
-import Wormhole from './Wormhole/wormhole'
 
 //map user.gameState.completedPuzzles + next available puzzle in a list here (hardcoded for now)
 

@@ -1,32 +1,31 @@
 import React from 'react'
-import { Bubo } from '../index'
-import { useDropzone } from "react-dropzone";
+import Draggable, {DraggableCore} from 'react-draggable';
 import  './style.css'
 import Spritesheet from 'react-responsive-spritesheet';
 import Green from './Green-Portal-Sprite.png'
 import Purple from './Purple-Portal-Sprite.png'
 import PurpleUpsd from './Purple-Portal-Sprite-UpsD-1.png'
 import GreenRev from './Green-Portal-Sprite-Rev.png'
-
+import { withFirebase } from '../../firebase'
+import { connect } from 'react-redux'
+import { updateBuboToDb } from '../../store'
+import * as ROUTES from '../../constants/routes';
+import CustomizableBubo from '../customizable-bubo'
+import {Link} from 'react-router-dom'
 
 
 
 
 class Wormhole extends React.Component{
 
-    
-    Dropzone = ({ onDrop, accept }) => {
-        // Initializing useDropzone hooks with options
-        const { getRootProps, getInputProps, isDragActive } = useDropzone({
-          onDrop,
-          accept
-    });
-
 
     render(){
-        return (
+        const user = this.props.user;
+        const bubos = this.props.bubos;
 
-            <div className="background" >
+        return (
+            <div className="star">
+             <div className="background" >
                     <div className="portal" >
                     <Spritesheet
                         image={PurpleUpsd}
@@ -42,8 +41,16 @@ class Wormhole extends React.Component{
                     </div>
                     <div className="bubos-puzzle-container">
                         <div className="bubos-container">
-                        <Bubo />
-                        <Bubo/>
+                            {bubos.id
+                            ? bubos.map(bubo => (
+                                <div key={bubo.id}>
+                                    <CustomizableBubo props={bubo}/>
+                                </div>
+                            ))
+                            : <h1>You lost all your Bubos!
+                                <Link to={ROUTES.ASSEMBLE_BUBOS}>Get more.</Link>
+                            </h1> 
+                            }
                         </div>
                         <Spritesheet
                         image={Green}
@@ -87,6 +94,7 @@ class Wormhole extends React.Component{
                             spritesheet.play()}}
                     />  
                     </div>
+             </div>
             </div>
           );
     }
@@ -94,8 +102,19 @@ class Wormhole extends React.Component{
 }
 
 
+const MapState = (state) => {
+    return{
+        bubos: state.bubos,
+        user: state.user
+    }
+}
 
 
+const MapDispatch = (dispatch) => {
+    return{
+
+    }
+}
 
 
-export default Wormhole
+export default connect(MapState, MapDispatch)(Wormhole)
