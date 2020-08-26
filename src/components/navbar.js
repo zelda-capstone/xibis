@@ -1,11 +1,11 @@
 import React from 'react'
-import firebase from "firebase/app"
 import {Link} from "react-router-dom"
+import {SignOut} from '../components'
 
-const NavBar = () => {
+const NavBar = (props) => {
   return (
     <div id='navbar'>
-      <button onClick={() => firebase.auth().signOut()}>Sign-out</button>
+      <SignOut />
       <Link to='/home'><button>Progress</button></Link>
     </div>
   )

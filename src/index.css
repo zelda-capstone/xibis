@@ -16,9 +16,28 @@
   }
 }
 
+@-webkit-keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 body {
   margin: 0;
   font-family: "Anonymous Pro";
+  color: white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -138,20 +157,15 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin: 15rem;
-}
-
-.story div {
-  color: white;
-  z-index: 9;
+  margin-top: 15rem;
 }
 
 .typewriter {
   overflow: hidden;
   border-right: .15em solid orange;
-  white-space: nowrap;
-  margin: 0 auto;
-  letter-spacing: .20em;
+  margin-left: 10rem;
+  margin-right: 10rem;
+  letter-spacing: .10em;
   -webkit-animation: typing 3s steps(40, end), cursor 0.75s step-end infinite;
           animation: typing 3s steps(40, end), cursor 0.75s step-end infinite;
 }
@@ -244,6 +258,7 @@ body {
   -webkit-box-shadow: 3px 3px #c6a0a0;
           box-shadow: 3px 3px #c6a0a0;
   background: white;
+  color: black;
   padding: 1.25rem;
   border-radius: 10px;
 }
@@ -526,6 +541,8 @@ body {
   height: 80vh;
   -webkit-transition: opacity 2s linear;
   transition: opacity 2s linear;
+  -webkit-animation: fade-in 2s linear;
+          animation: fade-in 2s linear;
 }
 
 #start-container div {
@@ -597,6 +614,56 @@ body {
           justify-content: space-evenly;
   width: 30vw;
   margin: 3rem;
+}
+
+.lost-and-found {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  background: transparent url(https://ibb.co/XDgfYT6) repeat top center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.lost-bubos-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  z-index: 5;
+}
+
+.lost-bubo {
+  margin: 1rem;
 }
 
 @-webkit-keyframes hover {
@@ -742,13 +809,20 @@ body {
 
 .stars {
   background: black url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
-  z-index: -2;
+  z-index: -3;
 }
 
 .twinkling {
   background: transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
-  z-index: -1;
+  z-index: -2;
   -webkit-animation: twinkle 200s linear infinite;
           animation: twinkle 200s linear infinite;
+}
+
+.clouds {
+  background: transparent url(http://www.script-tutorials.com/demos/360/images/clouds3.png) repeat top center;
+  z-index: -1;
+  -webkit-animation: clouds-passing 200s linear infinite;
+          animation: clouds-passing 200s linear infinite;
 }
 /*# sourceMappingURL=index.css.map */

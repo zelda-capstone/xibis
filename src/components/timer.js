@@ -1,0 +1,47 @@
+import React, { Component } from 'react'
+
+class Timer extends Component {
+  constructor() {
+    super();
+    this.state = {
+      seconds: 30
+    }
+  }
+
+  countDown = () => {
+    const seconds = this.state.seconds - 1;
+    this.setState({
+      seconds
+    });
+  }
+
+  startTimer = () => {
+    this.timer = setInterval(() => {
+      if (this.state.seconds === 0) {
+        clearInterval(this.timer)
+        return
+      }
+      this.countDown()
+    }, 1000)
+  }
+
+  resetTimer = () => {
+    this.setState({ timer: 30 })
+  }
+
+  render() {
+    return (
+      <>
+        <button onClick={this.startTimer}>start</button>
+        <div>{this.state.seconds} sec</div>
+        {
+          this.state.seconds === 0 ? (
+            <div>Time's up!</div>
+          ) : null
+        }
+      </>
+    )
+  }
+}
+
+export default Timer
