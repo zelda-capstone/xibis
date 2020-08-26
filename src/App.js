@@ -64,7 +64,8 @@ class App extends React.Component{
           <Route exact path={ROUTES.HINT} component={Hint} />
           <Route exact path={ROUTES.MAP} component={Map}/>
           <Route exact path={ROUTES.TEST} component={TestPuzzle}/>
-          <Route exact path={ROUTES.LOST_AND_FOUND} component={LostAndFound}/>
+          <Route exact path={ROUTES.LOST_AND_FOUND}
+            render={() => <LostAndFound user={this.props.user}/>} />
           <Route exact path={ROUTES.USER} component={User} />
           <Route component={Menu} />
         </Router>
