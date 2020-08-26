@@ -6,16 +6,13 @@ import { withFirebase } from '../firebase';
 import * as ROUTES from '../constants/routes';
 import {SignUpLink} from './signup'
 
-
-
-const Login = () => (
+const Login = (props) => (
     <div>
       <h1>SignIn</h1>
       <LogInForm />
       <SignUpLink />
     </div>
   );
-
 
 const INITIAL_STATE = {
     email: "",
@@ -24,12 +21,9 @@ const INITIAL_STATE = {
 };
 
 
-
-
 class LogInFormBase extends Component {
     constructor(props) {
       super(props);
-
       this.state = { ...INITIAL_STATE };
     }
 
@@ -59,7 +53,7 @@ class LogInFormBase extends Component {
       const isInvalid = password === '' || email === '';
 
       return (
-        <>
+        <div className='auth'>
         <form onSubmit={this.onSubmit}>
           <input
             name="email"
@@ -93,7 +87,7 @@ class LogInFormBase extends Component {
               Sign In With Google
             </button>
           </div>
-        </>
+        </div>
       );
     }
 }
@@ -101,11 +95,9 @@ class LogInFormBase extends Component {
 
 
 const LogInForm = compose(
-withRouter,
-withFirebase,
+  withRouter,
+  withFirebase,
 )(LogInFormBase);
-
-
 
 
 export default Login;

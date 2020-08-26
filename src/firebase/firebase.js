@@ -15,8 +15,6 @@ var firebaseConfig = {
   };
 
 
-
-
 // Initialize Firebase
 class Firebase {
   constructor(){
@@ -32,7 +30,6 @@ class Firebase {
 
     this.auth = firebase.auth();
     this.db = firebase.firestore();
-
     /* Social Sign In Method Provider */
 
     this.googleProvider = new firebase.auth.GoogleAuthProvider();
@@ -48,6 +45,7 @@ class Firebase {
 
 
   doSignInWithGoogle = () =>
+    //to get rid of popup, is there a signin w ridirect method?
     this.auth.signInWithPopup(this.googleProvider).then(authUser => {
       if (authUser.additionalUserInfo.isNewUser) {
         this.user(authUser.user.uid).set({
@@ -62,7 +60,6 @@ class Firebase {
   doSignOut = () => this.auth.signOut();
 
 
-
   onAuthUserListener = (next, fallback) =>
   this.auth.onAuthStateChanged(authUser => {
     if (authUser) {
@@ -70,7 +67,6 @@ class Firebase {
         .get()
         .then(snapshot => {
           const dbUser = snapshot.data();
-
           // // default empty roles
           // if (!dbUser.roles) {
           //   dbUser.roles = {};
@@ -100,7 +96,9 @@ user = uid => this.db.collection("users").doc(uid);
 
 users = () => this.db.collection('users');
 
+puzzle = name => this.db.collection('puzzles').doc(name);
 
+bubos = uid => this.db.collection('users').doc(uid).collection('bubos')
 
 }
 // firebase.initializeApp(firebaseConfig);
@@ -122,12 +120,12 @@ users = () => this.db.collection('users');
 
 
 // export class SignInScreen extends React.Component {
- 
+
 //   // The component's Local state.
 //   state = {
 //     isSignedIn: false // Local signed-in state.
 //   };
- 
+
 //   // Configure FirebaseUI.
 //   uiConfig = {
 //     // Popup signin flow rather than redirect flow.
@@ -143,19 +141,19 @@ users = () => this.db.collection('users');
 //       signInSuccessWithAuthResult: () => false
 //     }
 //   };
- 
+
 //   // Listen to the Firebase Auth state and set the local state.
 //   componentDidMount() {
 //     this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(
 //         (user) => this.setState({isSignedIn: !!user})
 //     );
 //   }
-  
+
 //   // Make sure we un-register Firebase observers when the component unmounts.
 //   componentWillUnmount() {
 //     this.unregisterAuthObserver();
 //   }
- 
+
 //   render() {
 //     if (!this.state.isSignedIn) {
 //       return (
@@ -177,9 +175,4 @@ users = () => this.db.collection('users');
 //   }
 // }
 
-
-
-
-// export const auth = firebase.auth();
-// export const db = firebase.firestore();
-export default Firebase 
+export default Firebase
