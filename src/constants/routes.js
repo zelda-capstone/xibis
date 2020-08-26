@@ -9,6 +9,7 @@ export const HINT = '/hint'
 export const MAP = '/map'
 export const USER = '/user'
 export const TEST = '/test-puzzle'
+export const WORMHOLE = '/wormhole'
 
 
 

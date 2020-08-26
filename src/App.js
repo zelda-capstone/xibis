@@ -10,9 +10,7 @@ import * as ROUTES from './constants/routes';
 import { withAuthentication } from './components/Auth';
 //import firebase, { auth, db } from './firebase/firebase.js'
 import SignUpPage from './components/signup';
-import { Twinkle, NavBar, StartGame, Intro, BuboSelector, Map, TestPuzzle, Menu, Hint, User } from './components'
-
-
+import { Twinkle, NavBar, StartGame, Intro, BuboSelector, Map, TestPuzzle, Menu, Hint, User, Wormhole } from './components'
 class App extends React.Component{
 
   constructor(props) {
@@ -26,9 +24,10 @@ class App extends React.Component{
         <div className="container">
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           <Route path={ROUTES.LOG_IN} component={Login} />
-          <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+          <Route path={ROUTES.SIGN_UP} component={SignUpPage}/>
           <Route component={Twinkle} />
           <Route component={NavBar} />
+          <Route component={Menu} />
           <Route path={ROUTES.START} component={StartGame} />
           <Route exact path={ROUTES.USER} component={User} />
           <Route exact path={ROUTES.ASSEMBLE_BUBOS} component={BuboSelector} />
@@ -36,7 +35,7 @@ class App extends React.Component{
           <Route exact path={ROUTES.HINT} component={Hint} />
           <Route exact path={ROUTES.MAP} component={Map}/>
           <Route exact path={ROUTES.TEST} component={TestPuzzle}/>
-          <Route component={Menu} />
+          <Route exact path={ROUTES.WORMHOLE} component={Wormhole}/>
         </div>
       </Router>
     )

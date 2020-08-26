@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { MapIcon } from '../components'
+import { MapIcon, } from '../components'
+import Wormhole from './Wormhole/wormhole'
 
 //map user.gameState.completedPuzzles in a list here (hardcoded for now)
 
@@ -16,8 +17,8 @@ const Map = (props) => {
               </Link>
               </div>
             <div>
-              <Link to='/test-puzzle'>
-                <MapIcon />
+              <Link to='/wormhole'>
+                <MapIcon/>
               </Link>
               </div>
             <div>

@@ -9,10 +9,12 @@ import {SignUpLink} from './signup'
 
 
 const Login = () => (
-    <div>
+    <div className="container">
       <h1>SignIn</h1>
-      <LogInForm />
-      <SignUpLink />
+      <div id="sign-in">
+        <LogInForm />
+        <SignUpLink />
+      </div>
     </div>
   );
 
