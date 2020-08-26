@@ -9,7 +9,5 @@ export const HINT = '/hint'
 export const MAP = '/map'
 export const USER = '/user'
 export const TEST = '/test-puzzle'
+export const BLOCK_PUZZLE = '/block-puzzle'
 export const LOST_AND_FOUND = '/lost-and-found'
-
-
-
