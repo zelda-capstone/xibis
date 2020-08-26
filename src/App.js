@@ -23,8 +23,6 @@ import {
   User
 } from './components'
 
-//import setUser from './store/reducers/user'
-
 
 class App extends React.Component{
   constructor(props) {
@@ -32,28 +30,15 @@ class App extends React.Component{
     this.state = {}
   }
 
-  setUser = async (userId) => {
-    const userRef = this.props.firebase.user(userId)
-    const bubosRef = this.props.firebase.bubos(userId)
-
-    const user = await userRef.get()
-    const data = user.data();
-
-    data.id = userId;
-    data.userRef = userRef;
-    data.bubosRef = bubosRef
-
-    this.props.setUserOnState(data)
-  }
-
   render () {
+    console.log(this.props.user)
     return (
       <>
         <Router>
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           <Route
             path={ROUTES.LOG_IN}
-            render={() => <Login setUser={this.setUser}/>}
+            render={() => <Login />}
           />
           <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route component={Twinkle} />
@@ -81,13 +66,7 @@ const mapState = state => {
   }
 }
 
-const mapDispatch = dispatch => {
-  return {
-    setUserOnState: userData => dispatch({ type: 'SET_USER', user: userData })
-  }
-}
 
-
-export default compose(connect(mapState, mapDispatch), withAuthentication)(App);
+export default compose(connect(mapState), withAuthentication)(App);
 
 

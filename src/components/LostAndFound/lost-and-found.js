@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Timer, Interlude, Bubo, CustomizableBubo } from '..'
+import { getBubosCollection } from '../../store/reducers/bubo'
 import {Howl} from 'howler'
 
 class LostAndFound extends Component {
@@ -28,6 +30,8 @@ class LostAndFound extends Component {
   }
 
   componentDidMount() {
+    this.props.getBubos(this.props.user.buboRef);
+    //console.log(this.props.bubos)
     this.sounds.play('bubos_atmosphere');
   }
 
@@ -95,4 +99,17 @@ class LostAndFound extends Component {
   }
 }
 
-export default LostAndFound
+const mapState = state => {
+  return {
+    user: state.user,
+    bubos: state.bubos
+  }
+}
+
+const mapDispatch = dispatch => {
+  return {
+    getBubos: buboRef => dispatch(getBubosCollection(buboRef))
+  }
+}
+
+export default connect(mapState, mapDispatch)(LostAndFound)
