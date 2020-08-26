@@ -2,6 +2,7 @@ import React from 'react'
 import {Redirect} from 'react-router-dom'
 import {CustomizableBubo, SelectTrait} from '../components'
 import { withFirebase } from '../firebase'
+import { connect } from 'react-redux'
 
 //after combination options are chosen, bubo will be assigned a specific imageUrl matching that particular combo, from the sprite sheet?
 
@@ -18,6 +19,10 @@ class BuboSelector extends React.Component {
       //should draw on the global state of bubos in user's db collection
       // when users collection length is 10, move to next page
     }
+  }
+
+  componentDidMount() {
+    console.log(this.props.user)
   }
 
   handleColor = (evt) => {
@@ -53,16 +58,18 @@ class BuboSelector extends React.Component {
       bubos: [...this.state.bubos, bubo]
     })
 
-    if (this.state.bubos.length === 10) {
+    if (this.state.bubos.length === 9) {
+      const user = this.props.user
+      const buboRef = this.props.firebase.bubos(user.id);
       //write the array to the user's bubo array in db
-      console.log(this.props.user.bubos)
+      const bubos = await buboRef.get()
+      console.log(bubos);
     }
   }
 
   render() {
-    //console.log(this.props)
     const bubos = this.state.bubos;
-    if (bubos.length === 10) {
+    if (bubos.length >= 10) {
       return <Redirect to='/map'/>
     }
     return (
@@ -109,9 +116,9 @@ class BuboSelector extends React.Component {
         </div>
         <div className='line-bottom'>
             {
-              bubos ? (bubos.map((bubo) => {
+              bubos ? (bubos.map((bubo, index) => {
                 return (
-                  <div key={bubo.name}>
+                  <div key={index}>
                     <CustomizableBubo {...bubo} />
                   </div>
                 )
@@ -123,4 +130,10 @@ class BuboSelector extends React.Component {
   }
 }
 
-export default withFirebase(BuboSelector)
+const mapState = state => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapState)(withFirebase(BuboSelector))

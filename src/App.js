@@ -37,6 +37,7 @@ class App extends React.Component{
     const user = await userRef.get()
 
     const data = user.data();
+    data.id = userId;
 
     this.props.setUserOnState(data)
   }
@@ -57,7 +58,7 @@ class App extends React.Component{
           <Route exact path={ROUTES.INTRO} component={Intro} />
           <Route
             exact path={ROUTES.ASSEMBLE_BUBOS}
-            render={() => <BuboSelector user={this.state.user} />} />
+            render={() => <BuboSelector user={this.props.user} />} />
           <Route exact path={ROUTES.HINT} component={Hint} />
           <Route exact path={ROUTES.MAP} component={Map}/>
           <Route exact path={ROUTES.TEST} component={TestPuzzle}/>

@@ -28,7 +28,6 @@ class LogInFormBase extends Component {
     }
 
     onSubmit = event => {
-      console.log(this.props)
       const { email, password } = this.state;
 
       this.props.firebase

@@ -1,18 +1,12 @@
-const SET_BUBOS = 'SET_MESSAGES'
+const SET_BUBOS = 'SET_BUBOS'
 
-const INITIAL_STATE = {
-  bubos: []
-};
+const INITIAL_STATE = []
 
-const setBubos = (state, action) => ({
-  ...state,
-  messages: action.bubos,
-});
 
 function messageReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case SET_BUBOS: {
-      return setBubos(state, action);
+      return action.bubos;
     }
     default:
       return state;

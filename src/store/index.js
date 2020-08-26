@@ -1,18 +1,17 @@
-import { createStore, combineReducers } from 'redux';
+import { applyMiddleware, createStore, combineReducers } from 'redux';
+import { createLogger } from 'redux-logger'
 import sessionReducer from './reducers/session'
 import userReducer from './reducers/user'
 import buboReducer from './reducers/bubo'
 
-
-// Add Firebase to reducers
 const rootReducer = combineReducers({
-  sessionState: sessionReducer,
+  session: sessionReducer,
   user: userReducer,
   bubos: buboReducer
 });
 
-// Create store with reducers and initial state
-const initialState = {};
-const store = createStore(rootReducer, initialState);
+
+const store = createStore(rootReducer, applyMiddleware(createLogger(
+  { collapsed: true })));
 
 export default store

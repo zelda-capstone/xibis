@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 const StartGame = (props) => {
-  console.log('start game props: ', props)
+  //console.log('start game props: ', props)
 
   return (
     <>
