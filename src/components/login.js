@@ -9,7 +9,7 @@ import {SignUpLink} from './signup'
 const Login = (props) => (
     <div>
       <h1>SignIn</h1>
-      <LogInForm />
+      <LogInForm setUser={props.setUser} />
       <SignUpLink />
     </div>
   );
@@ -28,6 +28,7 @@ class LogInFormBase extends Component {
     }
 
     onSubmit = event => {
+      console.log(this.props)
       const { email, password } = this.state;
 
       this.props.firebase
@@ -96,9 +97,10 @@ class LogInFormBase extends Component {
 }
 
 
+
 const LogInForm = compose(
-withRouter,
-withFirebase,
+  withRouter,
+  withFirebase,
 )(LogInFormBase);
 
 

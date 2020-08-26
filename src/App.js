@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import { withAuthentication } from './components/Auth';
+import { compose } from 'recompose';
+import { connect } from 'react-redux';
 import * as ROUTES from './constants/routes';
 import './index.css'
 
@@ -21,11 +23,22 @@ import {
   User
 } from './components'
 
+//import setUser from './store/reducers/user'
+
 
 class App extends React.Component{
   constructor(props) {
     super(props);
     this.state = {}
+  }
+
+  setUser = async (userId) => {
+    const userRef = this.props.firebase.user(userId)
+    const user = await userRef.get()
+
+    const data = user.data();
+
+    this.props.setUserOnState(data)
   }
 
   render () {
@@ -35,7 +48,7 @@ class App extends React.Component{
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           <Route
             path={ROUTES.LOG_IN}
-            render={() => <Login setUserOnState={this.setUserOnState}/>}
+            render={() => <Login setUser={this.setUser}/>}
           />
           <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route component={Twinkle} />
@@ -57,20 +70,19 @@ class App extends React.Component{
   }
 }
 
+const mapState = state => {
+  return {
+    user: state.user
+  }
+}
 
-export default withAuthentication(App);
+const mapDispatch = dispatch => {
+  return {
+    setUserOnState: userData => dispatch({ type: 'SET_USER', user: userData })
+  }
+}
 
 
-  // setUserOnState = async (userId) => {
-  //   const userRef = this.props.firebase.gameState(userId)
-  //   const user = await userRef.get()
-  //   //right now this gets the whole user but we probably just want their game state subcollection
-  //   const data = user.data();
-  //   this.setState({ user: data })
+export default compose(connect(mapState, mapDispatch), withAuthentication)(App);
 
-  //   // commented out code 'subscribes' to changes in user state
-  //   // userRef.onSnapshot(snapshot => {
-  //   //   this.setState({ user: snapshot.data() })
-  //   // })
-  //   console.log('user on app state: ', this.state.user);
-  // }
+

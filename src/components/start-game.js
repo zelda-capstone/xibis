@@ -1,10 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
-//currently linking straight to map, but in future will be linking
-//to initial narration text, then bubos selector
+import { connect } from 'react-redux'
 
 const StartGame = (props) => {
+  console.log('start game props: ', props)
 
   return (
     <>
@@ -20,4 +19,10 @@ const StartGame = (props) => {
   )
 }
 
-export default StartGame;
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(StartGame);
