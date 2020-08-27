@@ -30,8 +30,8 @@ class LostAndFound extends Component {
   }
 
   componentDidMount() {
-    // const bubosRef = this.props.user.bubosRef
-    // this.props.getBubos(bubosRef)
+    const bubosRef = this.props.user.bubosRef
+    this.props.getBubos(bubosRef)
     this.sounds.play('bubos_atmosphere');
   }
 
@@ -53,10 +53,6 @@ class LostAndFound extends Component {
 
   render() {
     const lostBubos = this.state.lost;
-    // if (this.props.user) {
-    //   const bubosRef = this.props.user.bubosRef
-    //   this.props.getBubos(bubosRef)
-    // }
 
     if (this.state.interlude) return (
       <div className='lost-and-found'>
