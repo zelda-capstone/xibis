@@ -5,7 +5,7 @@ import { MapIcon, } from '../components'
 
 import { fetchPuzzles } from '../store/reducers/puzzle'
 
-//map user.gameState.completedPuzzles + next available puzzle in a list here (hardcoded for now)
+//write an 'unlock puzzle' thunk for when they complete a puzzle?
 
 class Map extends React.Component {
   componentDidMount() {

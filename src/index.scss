@@ -405,7 +405,7 @@ body {
 .clouds {
     background: transparent url(https://i.ibb.co/1ZK2Vpc/purple-fog.png) repeat top center;
     //background:transparent url(https://i.ibb.co/bBbK5by/heavy-fog.png) repeat top center;
-    z-index: 0;
+    z-index: -1;
 
     animation: clouds-passing 300s linear infinite;
 }
