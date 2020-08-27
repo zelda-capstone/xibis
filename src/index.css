@@ -336,14 +336,6 @@ body {
   background: #f2f2ef;
 }
 
-.eyes {
-  width: 1.3rem;
-  height: 1.3rem;
-  border-radius: 50%;
-  margin: 2px;
-  background: #f2f2ef;
-}
-
 .custom-bubo div div {
   background: #03032e;
   width: .5rem;
@@ -676,7 +668,7 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  z-index: 5;
+  z-index: 1;
 }
 
 .lost-bubo {
@@ -832,6 +824,7 @@ body {
 .twinkling {
   background: transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
   z-index: -2;
+  background-repeat: repeat;
   -webkit-animation: twinkle 200s linear infinite;
           animation: twinkle 200s linear infinite;
 }

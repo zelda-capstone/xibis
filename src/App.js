@@ -29,32 +29,33 @@ import {
 
 
 class App extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.authUser = JSON.parse(localStorage.getItem('authUser'))
+  constructor(props) {
+    super(props)
+    this.authUser = JSON.parse(localStorage.getItem('authUser'))
+    if (this.authUser) {
+      this.user = {
+        username: this.authUser.username,
+        userRef: this.props.firebase.user(this.authUser.uid),
+        bubosRef: this.props.firebase.bubos(this.authUser.uid),
+        puzzlesRef: this.props.firebase.puzzles(this.authUser.uid)
+      }
+      this.props.setUser(this.user);
+    }
+  }
+
+  // UNSAFE_componentWillMount() {
+  //   const authUser = JSON.parse(localStorage.getItem('authUser'))
   //   //console.log(this.authUser)
-  //   if (this.authUser) {
-  //     this.user = {
+  //   if (authUser) {
+  //     const user = {
   //       //username: this.authUser.username,
-  //       userRef: this.props.firebase.user(this.authUser.uid),
-  //       bubosRef: this.props.firebase.bubos(this.authUser.uid)
+  //       userRef: this.props.firebase.user(authUser.uid),
+  //       bubosRef: this.props.firebase.bubos(authUser.uid)
   //     }
-  //     console.log(this.user)
-  //     this.props.setUser(this.user);
+  //     //console.log(this.user)
+  //     this.props.setUser(user);
   //   }
   // }
-
-  UNSAFE_componentWillMount() {
-    this.authUser = JSON.parse(localStorage.getItem('authUser'))
-    //console.log(this.authUser)
-      this.user = {
-        //username: this.authUser.username,
-        userRef: this.props.firebase.user(this.authUser.uid),
-        bubosRef: this.props.firebase.bubos(this.authUser.uid)
-      }
-      //console.log(this.user)
-      this.props.setUser(this.user);
-  }
 
   render () {
     const user = this.props.user
