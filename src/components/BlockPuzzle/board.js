@@ -57,7 +57,7 @@ export default class Board extends React.Component {
         <img
           alt="game board"
           src={PuzzleGrid}
-          style={{width: '100%', height: '100%'}}
+          style={{width: '100%', height: 'auto'}}
         />
       </div>
     )
