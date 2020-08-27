@@ -23,7 +23,7 @@ class BuboSelector extends React.Component {
   }
 
   componentDidMount() {
-    console.log('user props passed from app', this.props.user)
+    //this.props.getUser()
   }
 
   handleColor = (evt) => {

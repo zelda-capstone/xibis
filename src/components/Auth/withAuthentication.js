@@ -19,6 +19,12 @@ const withAuthentication = Component => {
         authUser => {
           localStorage.setItem('authUser', JSON.stringify(authUser))
           this.props.setAuthUser('authUser');
+          this.props.setUser({
+            id: authUser.uid,
+            username: authUser.username,
+            userRef: this.props.firebase.user(authUser.uid),
+            bubosRef: this.props.firebase.bubos(authUser.uid)
+          })
         },
         () => {
           localStorage.removeItem('authUser')
