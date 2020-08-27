@@ -17,7 +17,11 @@ const withAuthentication = Component => {
       this.listener = this.props.firebase.auth.onAuthStateChanged(
         authUser => {
           localStorage.setItem('authUser', JSON.stringify(authUser))
-          
+          this.props.setUser({
+            id: authUser.uid,
+            userRef: this.props.firebase.user(authUser.uid),
+            bubosRef: this.props.firebase.bubos(authUser.uid)
+          })
           this.props.setAuthUser('authUser');
         },
         () => {

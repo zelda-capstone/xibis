@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route, BrowserRouter as Router, Switch} from 'react-router-dom'
+import {Route, BrowserRouter as Router } from 'react-router-dom'
 import {withAuthentication} from './components/Auth'
 import {compose} from 'recompose'
 import {connect} from 'react-redux'
@@ -29,51 +29,43 @@ import {
 
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   // constructor(props) {
   //   super(props)
   //   this.authUser = JSON.parse(localStorage.getItem('authUser'))
-  //   if (this.authUser) {
-  //     this.user = {
-  //       username: this.authUser.displayName,
+  //   console.log(this.authUser)
+  //   this.user = {
+  //       //username: this.authUser.displayName,
   //       userRef: this.props.firebase.user(this.authUser.uid),
   //       bubosRef: this.props.firebase.bubos(this.authUser.uid)
   //     }
-  //     this.props.setUser(this.user);
-  //   }
+  //   this.props.setUser(this.user);
   // }
 
 
-  UNSAFE_componentWillMount() {
-    const authUser = JSON.parse(localStorage.getItem('authUser'))
+  // componentDidMount() {
+  //   const authUser = JSON.parse(localStorage.getItem('authUser'))
 
-    if (authUser) {
-      const user = {
-        username: authUser.displayName,
-        userRef: this.props.firebase.user(authUser.uid),
-        bubosRef: this.props.firebase.bubos(authUser.uid)
-      }
-      this.props.setUser(user);
-    }
-  }
+  //   const user = {
+  //     username: authUser.displayName,
+  //     userRef: this.props.firebase.user(authUser.uid),
+  //     bubosRef: this.props.firebase.bubos(authUser.uid)
+  //   }
+  //   this.props.setUser(user);
+  // }
 
 
   render () {
-    const user = this.props.user
+    //const user = this.props.user
+
     return (
       <>
         <Router>
           <Route component={Twinkle} />
           <Route component={NavBar} />
           <Route component={Menu} />
-          {!user
-          ? <Router>
               <Route path={ROUTES.LOG_IN} render={() => <Login />} />
               <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-            </Router>
-          : <Router>
+
               <Route exact path={ROUTES.LANDING} component={LandingPage} />
               <Route path={ROUTES.START} component={StartGame} />
               <Route exact path={ROUTES.INTRO} component={Intro} />
@@ -92,8 +84,6 @@ class App extends React.Component {
               <Route exact path={ROUTES.BLOCK_PUZZLE} component={BlockPuzzle} />
               <Route component={Menu} />
             </Router>
-          }
-        </Router>
       </>
     )
   }

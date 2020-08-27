@@ -26,13 +26,17 @@ class LostAndFound extends Component {
           2000]
       }
     })
-    //this.source = 0;
+    this.source = 0;
   }
 
   componentDidMount() {
     const bubosRef = this.props.user.bubosRef
     this.props.getBubos(bubosRef)
-    this.sounds.play('bubos_atmosphere');
+    this.source = this.sounds.play('bubos_atmosphere');
+  }
+
+  componentWillUnmount() {
+    this.sounds.pause(this.source)
   }
 
   endInterlude = () => {
