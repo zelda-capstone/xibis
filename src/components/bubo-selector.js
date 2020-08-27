@@ -1,5 +1,5 @@
 import React from 'react'
-import {Redirect} from 'react-router-dom'
+//import {Redirect} from 'react-router-dom'
 import {CustomizableBubo, SelectTrait} from '../components'
 import { withFirebase } from '../firebase'
 import { connect } from 'react-redux'
@@ -15,15 +15,8 @@ class BuboSelector extends React.Component {
       sparkle: '',
       accessory: '',
       personality: [],
-      bubos: [] // map these to join a line at the bottom?
-      // should retrigger every time 'create' is called
-      //should draw on the global state of bubos in user's db collection
-      // when users collection length is 10, move to next page
+      bubos: this.props.bubos || []
     }
-  }
-
-  componentDidMount() {
-    //this.props.getUser()
   }
 
   handleColor = (evt) => {
@@ -51,27 +44,29 @@ class BuboSelector extends React.Component {
     const { color, sparkle, accessory, personality } = this.state
     const bubo = { color, sparkle, accessory, personality }
 
-    //a reference to a user's whole subcollection of bubos
-    const bubosRef = this.props.user.bubosRef
-    this.props.addBubo(bubo, bubosRef)
+    if (this.state.bubos.length < 10) {
+      const bubosRef = this.props.user.bubosRef
+      this.props.addBubo(bubo, bubosRef)
 
-    this.setState({
-      color: '',
-      sparkle: '',
-      accessory: '',
-      personality: [],
-      bubos: [...this.state.bubos, bubo]
-    })
+      this.setState({
+        color: '',
+        sparkle: '',
+        accessory: '',
+        personality: [],
+        bubos: [...this.state.bubos, bubo]
+      })
+    }
   }
 
   render() {
-    const bubos = this.state.bubos;
-    if (bubos.length === 10) {
-      return <Redirect to='/map'/>
-    }
+    const bubos = this.props.bubos;
+
     return (
       <>
         <div className='bubo-selector-container'>
+        {
+          bubos.length === 10 ? <div>No more than 10 bubos allowed</div> : null
+        }
           <h2>assemble your bubos</h2>
           <div className='bubo-selector'>
             <div>color:
@@ -129,7 +124,8 @@ class BuboSelector extends React.Component {
 
 const mapState = state => {
   return {
-    user: state.user
+    user: state.user,
+    bubos: state.bubos
   }
 }
 

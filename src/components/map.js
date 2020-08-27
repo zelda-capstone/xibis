@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { MapIcon } from '../components'
+import { MapIcon, } from '../components'
 
 //map user.gameState.completedPuzzles + next available puzzle in a list here (hardcoded for now)
 
@@ -16,10 +16,15 @@ const Map = (props) => {
               </Link>
               </div>
             <div>
+              <Link to='/wormhole'>
+                <MapIcon/>
+              </Link>
+            </div>
+            <div>
               <Link to='/lost-and-found'>
                 <MapIcon />
               </Link>
-              </div>
+            </div>
             <div>
               <Link to='/test-puzzle'>
                 <MapIcon />

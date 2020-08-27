@@ -336,6 +336,14 @@ body {
   background: #f2f2ef;
 }
 
+.eyes {
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 50%;
+  margin: 2px;
+  background: #f2f2ef;
+}
+
 .custom-bubo div div {
   background: #03032e;
   width: .5rem;
@@ -635,7 +643,6 @@ body {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  background: transparent url(https://ibb.co/XDgfYT6) repeat top center;
   width: 100vw;
   height: 100vh;
 }
