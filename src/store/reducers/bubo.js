@@ -1,6 +1,7 @@
 const ADD_BUBO = 'ADD_BUBO'
 const GET_BUBOS = 'GET_BUBOS'
 const UPDATE_BUBO = 'UPDATE_BUBO'
+const RESET_BUBOS = 'RESET_BUBOS'
 
 const addBubo = bubo => {
   return {
@@ -12,6 +13,13 @@ const addBubo = bubo => {
 const getBubos = bubos => {
   return {
     type: GET_BUBOS,
+    bubos
+  }
+}
+
+const resetBubos = bubos => {
+  return {
+    type: RESET_BUBOS,
     bubos
   }
 }
@@ -34,14 +42,32 @@ export const addBuboToDb = (bubo, bubosRef) => {
   }
 }
 
-export const getBubosCollection = (bubosRef) => {
+export const getBubosCollection = bubosRef => {
   return async function (dispatch) {
     try {
-      console.log("in bubos thunk", bubosRef)
       const bubosCollection = await bubosRef.get()
-      console.log("Getting bubos", bubosCollection)
-      dispatch(getBubos(bubosCollection.data()))
+      const bubos = bubosCollection.docs.map(doc => doc.data())
+      dispatch(getBubos(bubos))
     } catch(err) {
+      console.error(err)
+    }
+  }
+}
+
+export const resetBubosCollection = bubosRef => {
+  return async function (dispatch) {
+    try {
+      const bubosCollection = await bubosRef.get();
+
+      bubosCollection.docs.forEach(doc => {
+        doc.ref.delete().then(() => {
+          console.log('success!')
+        }).catch(err => {
+          console.log('error removing: ', err)
+        })
+      })
+      dispatch(resetBubos([]))
+    } catch (err) {
       console.error(err)
     }
   }

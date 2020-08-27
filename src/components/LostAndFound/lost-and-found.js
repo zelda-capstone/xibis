@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Timer, Interlude, Bubo, CustomizableBubo } from '..'
+import { Timer, Interlude, CustomizableBubo } from '..'
 import { getBubosCollection } from '../../store/reducers/bubo'
 import {Howl} from 'howler'
 
@@ -10,7 +10,7 @@ class LostAndFound extends Component {
     this.state = {
       interlude: true,
       random: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-      lost: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      lost: this.props.bubos,
       found: 0
     }
      // we will initially fill the lost array with all the bubos in user collection
@@ -30,8 +30,8 @@ class LostAndFound extends Component {
   }
 
   componentDidMount() {
-    this.props.getBubos(this.props.user.buboRef);
-    //console.log(this.props.bubos)
+    const bubosRef = this.props.user.bubosRef
+    this.props.getBubos(bubosRef)
     this.sounds.play('bubos_atmosphere');
   }
 
@@ -53,6 +53,8 @@ class LostAndFound extends Component {
 
   render() {
     const lostBubos = this.state.lost;
+
+
     if (this.state.interlude) return (
       <div className='lost-and-found'>
         <Interlude name='reflection' />
@@ -73,19 +75,19 @@ class LostAndFound extends Component {
         </div>
         <div className='lost-bubos-container'>
         {
-          this.state.random.map(bubo => {
+          this.state.random.map((bubo, index) => {
             return (
-              <div key={bubo} onClick={this.handleIncorrect} className='lost-bubo'>
-                <Bubo />
+              <div key={index} onClick={this.handleIncorrect} className='lost-bubo'>
+                <CustomizableBubo {...bubo} />
               </div>
             )
           })
         }
         {
           lostBubos.length ? (
-            lostBubos.map(bubo => {
+            lostBubos.map((bubo, index) => {
               return (
-                <div key={bubo} className='lost-bubo' onClick={() => this.handleFind(bubo)}>
+                <div key={index} className='lost-bubo' onClick={() => this.handleFind(bubo)}>
                   <CustomizableBubo {...bubo} />
                 </div>
               )

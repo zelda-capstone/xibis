@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import Draggable, {DraggableCore} from 'react-draggable';
 import  './style.css'
 import Spritesheet from 'react-responsive-spritesheet';
@@ -6,7 +6,6 @@ import Green from './Green-Portal-Sprite.png'
 import Purple from './Purple-Portal-Sprite.png'
 import PurpleUpsd from './Purple-Portal-Sprite-UpsD-1.png'
 import GreenRev from './Green-Portal-Sprite-Rev.png'
-import { withFirebase } from '../../firebase'
 import { connect } from 'react-redux'
 import { updateBuboToDb } from '../../store'
 import * as ROUTES from '../../constants/routes';
@@ -21,9 +20,8 @@ class Wormhole extends React.Component{
 
     componentDidMount(){
         const user = this.props.user;
-        console.log("USER", user)
-        this.props.getBubos(user.buboRef);
-        console.log("MOUNT console", this.props.bubos)
+        this.props.getBubos(user.bubosRef);
+        
     }
 
     render(){
@@ -33,6 +31,8 @@ class Wormhole extends React.Component{
         return (
             <div className="star">
              <div className="background" >
+                 {user
+                 ?(<>
                     <div className="portal" >
                     <Spritesheet
                         image={PurpleUpsd}
@@ -49,9 +49,8 @@ class Wormhole extends React.Component{
                     <div className="bubos-puzzle-container">
                         <div className="bubos-container">
                             {bubos
-                            ? bubos.map(bubo => (
-                                <div key={bubo}>
-                                    <h1>HELLOOOO IN Bubo map</h1>
+                            ? bubos.map((bubo, i) => (
+                                <div key={i}>
                                     <CustomizableBubo {...bubo}/>
                                 </div>
                             ))
@@ -102,6 +101,10 @@ class Wormhole extends React.Component{
                             spritesheet.play()}}
                     />  
                     </div>
+                  </>
+                 )
+                : <h1>loading.....</h1> 
+                }
              </div>
             </div>
           );
