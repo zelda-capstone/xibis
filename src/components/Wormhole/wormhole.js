@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import Draggable, {DraggableCore} from 'react-draggable';
 import  './style.css'
 import Spritesheet from 'react-responsive-spritesheet';
@@ -12,12 +12,19 @@ import { updateBuboToDb } from '../../store'
 import * as ROUTES from '../../constants/routes';
 import CustomizableBubo from '../customizable-bubo'
 import {Link} from 'react-router-dom'
+import { getBubosCollection } from '../../store/reducers/bubo'
 
 
 
 
 class Wormhole extends React.Component{
 
+    componentDidMount(){
+        const user = this.props.user;
+        console.log("USER", user)
+        this.props.getBubos(user.buboRef);
+        console.log("MOUNT console", this.props.bubos)
+    }
 
     render(){
         const user = this.props.user;
@@ -41,10 +48,11 @@ class Wormhole extends React.Component{
                     </div>
                     <div className="bubos-puzzle-container">
                         <div className="bubos-container">
-                            {bubos.id
+                            {bubos
                             ? bubos.map(bubo => (
-                                <div key={bubo.id}>
-                                    <CustomizableBubo props={bubo}/>
+                                <div key={bubo}>
+                                    <h1>HELLOOOO IN Bubo map</h1>
+                                    <CustomizableBubo {...bubo}/>
                                 </div>
                             ))
                             : <h1>You lost all your Bubos!
@@ -57,7 +65,7 @@ class Wormhole extends React.Component{
                         widthFrame={64}
                         heightFrame={64}
                         steps={24}
-                        fps={2.5}
+                        fps={3}
                         autoplay={true}
                         loop={true}
                         onClick={spritesheet => {
@@ -71,7 +79,7 @@ class Wormhole extends React.Component{
                         heightFrame={64}
                         direction="rewind"
                         steps={24}
-                        fps={2.5}
+                        fps={3}
                         autoplay={true}
                         loop={true}
                         onClick={spritesheet => {
@@ -86,7 +94,7 @@ class Wormhole extends React.Component{
                         heightFrame={64}
                         direction="rewind"
                         steps={24}
-                        fps={2.5}
+                        fps={3}
                         autoplay={true}
                         loop={true}
                         onClick={spritesheet => {
@@ -110,11 +118,10 @@ const MapState = (state) => {
 }
 
 
-const MapDispatch = (dispatch) => {
-    return{
-
+const MapDispatch = dispatch => {
+    return {
+      getBubos: ((buboRef) => dispatch(getBubosCollection(buboRef)))
     }
-}
-
+  }
 
 export default connect(MapState, MapDispatch)(Wormhole)

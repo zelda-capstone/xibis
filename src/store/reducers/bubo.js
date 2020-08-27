@@ -37,7 +37,9 @@ export const addBuboToDb = (bubo, bubosRef) => {
 export const getBubosCollection = (bubosRef) => {
   return async function (dispatch) {
     try {
+      console.log("in bubos thunk", bubosRef)
       const bubosCollection = await bubosRef.get()
+      console.log("Getting bubos", bubosCollection)
       dispatch(getBubos(bubosCollection.data()))
     } catch(err) {
       console.error(err)

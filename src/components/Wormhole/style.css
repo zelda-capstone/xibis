@@ -27,8 +27,8 @@
 
 .bubos-container {
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    flex-direction: row;
+    justify-content: over;
     flex-wrap: wrap;
 }
 
