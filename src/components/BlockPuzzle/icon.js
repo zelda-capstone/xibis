@@ -13,14 +13,15 @@ export default function Icon() {
     <div
       style={{
         display: 'flex',
-        flexFlow: 'row-wrap',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
       }}
     >
       {PiecesArray.map((piece) => {
         return (
           <Draggable
             grid={[100, 100]}
-            defaultPosition={{x: 0, y: 22}}
+            defaultPosition={{x: 0, y: 15}}
             key={piece.index}
           >
             <div

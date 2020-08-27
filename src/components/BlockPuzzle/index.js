@@ -16,11 +16,7 @@ export default function BlockPuzzle() {
       <div style={{width: '95%', height: '95%'}}>
         <Board />
       </div>
-      <div
-        style={{
-          display: 'flex',
-        }}
-      >
+      <div style={{width: '95%', height: '95%'}}>
         <Icon />
       </div>
     </div>
