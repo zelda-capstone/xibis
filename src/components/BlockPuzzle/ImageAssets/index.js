@@ -7,6 +7,9 @@ import Piece06 from './puzzle-piece-06.svg'
 import Piece07 from './puzzle-piece-07.svg'
 import Piece08 from './puzzle-piece-08.svg'
 import Piece09 from './puzzle-piece-09.svg'
+import Piece10 from './puzzle-piece-10.svg'
+import Piece11 from './puzzle-piece-11.svg'
+import Piece12 from './puzzle-piece-12.svg'
 
 function Piece(index, image, width, height) {
   this.index = index
@@ -33,6 +36,12 @@ const PieceObj08 = new Piece(8, Piece08, 300, 300)
 
 const PieceObj09 = new Piece(9, Piece09, 300, 200)
 
+const PieceObj10 = new Piece(10, Piece10, 300, 300)
+
+const PieceObj11 = new Piece(11, Piece11, 300, 300)
+
+const PieceObj12 = new Piece(12, Piece12, 300, 300)
+
 export const PiecesArray = [
   PieceObj01,
   PieceObj02,
@@ -43,4 +52,7 @@ export const PiecesArray = [
   PieceObj07,
   PieceObj08,
   PieceObj09,
+  PieceObj10,
+  PieceObj11,
+  PieceObj12,
 ]
