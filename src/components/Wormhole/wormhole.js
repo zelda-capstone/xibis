@@ -13,9 +13,6 @@ import CustomizableBubo from '../customizable-bubo'
 import {Link} from 'react-router-dom'
 import { getBubosCollection } from '../../store/reducers/bubo'
 
-
-
-
 class Wormhole extends React.Component{
 
     componentDidMount(){
