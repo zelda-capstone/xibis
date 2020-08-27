@@ -398,7 +398,7 @@ body {
 .twinkling {
   background:transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
   z-index: -2;
-
+  background-repeat: repeat;
   animation: twinkle 200s linear infinite;
 }
 

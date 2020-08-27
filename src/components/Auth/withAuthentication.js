@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { compose } from 'recompose'
-
 import { withFirebase } from '../../firebase';
 
 const withAuthentication = Component => {
@@ -15,9 +14,10 @@ const withAuthentication = Component => {
     }
 
     componentDidMount() {
-      this.listener = this.props.firebase.onAuthUserListener(
+      this.listener = this.props.firebase.auth.onAuthStateChanged(
         authUser => {
           localStorage.setItem('authUser', JSON.stringify(authUser))
+          
           this.props.setAuthUser('authUser');
         },
         () => {

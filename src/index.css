@@ -336,6 +336,14 @@ body {
   background: #f2f2ef;
 }
 
+.eyes {
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 50%;
+  margin: 2px;
+  background: #f2f2ef;
+}
+
 .custom-bubo div div {
   background: #03032e;
   width: .5rem;
