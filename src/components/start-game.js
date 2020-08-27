@@ -5,10 +5,14 @@ import { connect } from 'react-redux'
 import { resetBubosCollection } from '../store/reducers/bubo'
 
 class StartGame extends React.Component {
-  //console.log('start game props: ', props)
   startGame = async () => {
     const bubosRef = this.props.user.bubosRef;
-    this.props.resetBubos(bubosRef)
+    if (bubosRef) {
+      this.props.resetBubos(bubosRef)
+    } else {
+      //create a bubo collection
+      //this.props.createBuboCollection(userRef)
+    }
   }
 
   render() {

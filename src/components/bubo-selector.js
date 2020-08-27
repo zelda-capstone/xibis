@@ -44,7 +44,6 @@ class BuboSelector extends React.Component {
     const { color, sparkle, accessory, personality } = this.state
     const bubo = { color, sparkle, accessory, personality }
 
-    //a reference to the user's whole subcollection of bubos
     if (this.state.bubos.length < 10) {
       const bubosRef = this.props.user.bubosRef
       this.props.addBubo(bubo, bubosRef)
@@ -61,7 +60,6 @@ class BuboSelector extends React.Component {
 
   render() {
     const bubos = this.props.bubos;
-    console.log('bubos in render', bubos)
 
     return (
       <>
