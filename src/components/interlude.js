@@ -11,7 +11,8 @@ class Interlude extends React.Component {
   render() {
   return (
     <div className='story'>
-      <div className='typewriter'>
+      <div>
+      {/* <div className='typewriter'> */}
           {this.interlude}
       </div>
     </div>

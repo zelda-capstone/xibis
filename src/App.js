@@ -29,20 +29,13 @@ import {
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
-  }
-
-
-  componentDidMount() {
-    const authUser = JSON.parse(localStorage.getItem('authUser'))
-
-    const user = {
-      // id: authUser.uid,
-      username: authUser.username,
-      userRef: this.props.firebase.user(authUser.uid),
-      bubosRef: this.props.firebase.bubos(authUser.uid)
+    this.authUser = JSON.parse(localStorage.getItem('authUser'))
+    this.user = {
+      username: this.authUser.username,
+      userRef: this.props.firebase.user(this.authUser.uid),
+      bubosRef: this.props.firebase.bubos(this.authUser.uid)
     }
-    this.props.setUser(user);
+    this.props.setUser(this.user);
   }
 
   render () {
