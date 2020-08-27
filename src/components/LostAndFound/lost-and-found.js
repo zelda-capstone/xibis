@@ -53,7 +53,10 @@ class LostAndFound extends Component {
 
   render() {
     const lostBubos = this.state.lost;
-
+    // if (this.props.user) {
+    //   const bubosRef = this.props.user.bubosRef
+    //   this.props.getBubos(bubosRef)
+    // }
 
     if (this.state.interlude) return (
       <div className='lost-and-found'>
@@ -65,7 +68,7 @@ class LostAndFound extends Component {
     return (
       <>
         <div className='clouds'></div>
-        <div className='lost-and-found'>
+        <div className='lost-and-found' >
         <div>
           The bubos need to find themselves in the Great Fog of Doubt. Don't let the mirrors play tricks on them.. or you! You have 30 seconds to locate your bubos and dissipate the fog, or your bubos emotional health will suffer...
         </div>

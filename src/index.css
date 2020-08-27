@@ -616,6 +616,13 @@ body {
   margin: 3rem;
 }
 
+.mirror {
+  background: transparent url(https://i.ibb.co/nBvqPS4/mirror.png) repeat top center;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
 .lost-and-found {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -635,6 +642,9 @@ body {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  color: #5a5a5a;
+  background: transparent url(https://i.ibb.co/nBvqPS4/mirror.png) repeat top center;
+  z-index: -1;
   width: 100vw;
   height: 100vh;
 }
@@ -819,9 +829,9 @@ body {
 }
 
 .clouds {
-  background: transparent url(http://www.script-tutorials.com/demos/360/images/clouds3.png) repeat top center;
-  z-index: -1;
-  -webkit-animation: clouds-passing 200s linear infinite;
-          animation: clouds-passing 200s linear infinite;
+  background: transparent url(https://i.ibb.co/1ZK2Vpc/purple-fog.png) repeat top center;
+  z-index: 0;
+  -webkit-animation: clouds-passing 300s linear infinite;
+          animation: clouds-passing 300s linear infinite;
 }
 /*# sourceMappingURL=index.css.map */

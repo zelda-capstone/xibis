@@ -286,11 +286,19 @@ body {
   margin: 3rem;
 }
 
+.mirror {
+  background: transparent url(https://i.ibb.co/nBvqPS4/mirror.png) repeat top center;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
 .lost-and-found {
   @include flexCenter(column);
   justify-content: flex-start;
-  //background: transparent url(https://ibb.co/XDgfYT6) repeat top center;
-  //z-index: 2;
+  color: rgb(90, 90, 90);
+  background: transparent url(https://i.ibb.co/nBvqPS4/mirror.png) repeat top center;
+  z-index: -1;
   width: 100vw;
   height: 100vh;
 }
@@ -395,10 +403,11 @@ body {
 }
 
 .clouds {
-    background:transparent url(http://www.script-tutorials.com/demos/360/images/clouds3.png) repeat top center;
-    z-index: -1;
+    background: transparent url(https://i.ibb.co/1ZK2Vpc/purple-fog.png) repeat top center;
+    //background:transparent url(https://i.ibb.co/bBbK5by/heavy-fog.png) repeat top center;
+    z-index: 0;
 
-    animation: clouds-passing 200s linear infinite;
+    animation: clouds-passing 300s linear infinite;
 }
 
 
