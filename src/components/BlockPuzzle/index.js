@@ -19,7 +19,6 @@ export default function BlockPuzzle() {
       <div
         style={{
           display: 'flex',
-          flexDirection: 'row',
         }}
       >
         <Icon />
