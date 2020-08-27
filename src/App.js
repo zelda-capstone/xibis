@@ -29,6 +29,9 @@ import {
 
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   // constructor(props) {
   //   super(props)
   //   this.authUser = JSON.parse(localStorage.getItem('authUser'))
@@ -45,15 +48,15 @@ class App extends React.Component {
 
   UNSAFE_componentWillMount() {
     const authUser = JSON.parse(localStorage.getItem('authUser'))
-    console.log(authUser)
 
+    if (authUser) {
       const user = {
         username: authUser.displayName,
         userRef: this.props.firebase.user(authUser.uid),
         bubosRef: this.props.firebase.bubos(authUser.uid)
       }
       this.props.setUser(user);
-    console.log('user: ', this.props.user)
+    }
   }
 
 
@@ -63,35 +66,34 @@ class App extends React.Component {
       <>
         <Router>
           <Route component={Twinkle} />
-          {!user ?
-              <Router>
-                <Route path={ROUTES.LOG_IN} render={() => <Login />} />
-                <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-              </Router>
-              :
-              <Router>
-                <Route component={NavBar} />
-                <Route component={Menu} />
-                <Route exact path={ROUTES.LANDING} component={LandingPage} />
-                <Route path={ROUTES.START} component={StartGame} />
-                <Route exact path={ROUTES.INTRO} component={Intro} />
-                <Route
-                  exact
-                  path={ROUTES.ASSEMBLE_BUBOS}
-                  render={() => <BuboSelector user={this.props.user} />}
-                />
-                <Route exact path={ROUTES.HINT} component={Hint} />
-                <Route exact path={ROUTES.MAP} component={Map}/>
-                <Route exact path={ROUTES.TEST} component={TestPuzzle}/>
-                <Route exact path={ROUTES.WORMHOLE} component={Wormhole}/>
-                <Route exact path={ROUTES.LOST_AND_FOUND}
-                  render={() => <LostAndFound user={this.props.user}/>} />
-                <Route exact path={ROUTES.USER} component={User} />
-                <Route exact path={ROUTES.BLOCK_PUZZLE} component={BlockPuzzle} />
-                <Route component={Menu} />
-              </Router>
-            }
+          <Route component={NavBar} />
+          <Route component={Menu} />
+          {!user
+          ? <Router>
+              <Route path={ROUTES.LOG_IN} render={() => <Login />} />
+              <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
             </Router>
+          : <Router>
+              <Route exact path={ROUTES.LANDING} component={LandingPage} />
+              <Route path={ROUTES.START} component={StartGame} />
+              <Route exact path={ROUTES.INTRO} component={Intro} />
+              <Route
+                exact
+                path={ROUTES.ASSEMBLE_BUBOS}
+                render={() => <BuboSelector user={this.props.user} />}
+              />
+              <Route exact path={ROUTES.HINT} component={Hint} />
+              <Route exact path={ROUTES.MAP} component={Map}/>
+              <Route exact path={ROUTES.TEST} component={TestPuzzle}/>
+              <Route exact path={ROUTES.WORMHOLE} component={Wormhole}/>
+              <Route exact path={ROUTES.LOST_AND_FOUND}
+                render={() => <LostAndFound user={this.props.user}/>} />
+              <Route exact path={ROUTES.USER} component={User} />
+              <Route exact path={ROUTES.BLOCK_PUZZLE} component={BlockPuzzle} />
+              <Route component={Menu} />
+            </Router>
+          }
+        </Router>
       </>
     )
   }
