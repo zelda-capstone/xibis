@@ -5,9 +5,7 @@ import BlueBuboSprites from '../pixelArt/blue-bubo-base.png'
 import Spritesheet from 'react-responsive-spritesheet'
 
 const CustomizableBubo = (props) => {
-  //console.log(props);
-  const testFace = BuboOptions.color.blue
-  console.log(testFace)
+  const buboColor = props.color
   return (
     <>
       <div className="custom-bubo-container">
@@ -15,7 +13,7 @@ const CustomizableBubo = (props) => {
         <div
           className="custom-bubo"
           style={{
-            backgroundImage: `url(${testFace})`,
+            backgroundImage: `url(${BuboOptions.color[buboColor]})`,
           }}
         ></div>
         <div style={{background: props.sparkle}} className="sparkle"></div>
