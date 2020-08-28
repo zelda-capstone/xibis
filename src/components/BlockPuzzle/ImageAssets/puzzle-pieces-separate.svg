@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1600" shape-rendering="crispEdges">
+
+<g id='puzzle-shape-01'>
+  <rect x='0' y='0' width="200" height="100" fill="rebeccapurple" />
+
+  <rect x='0' y='100' width="300" height="100" fill="rebeccapurple" />
+</g>
+
+<g id='puzzle-shape-02'>
+  <rect x='500' y='0' width='500' height='100' fill='lightgreen' />
+</g>
+
+
+
+</svg>
