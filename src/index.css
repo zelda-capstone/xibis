@@ -672,10 +672,25 @@ body {
 }
 
 .mirror {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   background: transparent url(https://i.ibb.co/nBvqPS4/mirror.png) repeat top center;
   height: 100vh;
   width: 100vw;
-  z-index: -1;
+  z-index: -2;
 }
 
 .lost-and-found {
@@ -694,11 +709,17 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  text-align: center;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  color: #5a5a5a;
+  color: #4b4848;
   z-index: 0;
+  margin: 12rem;
+}
+
+.lf-text {
+  margin: 1rem;
 }
 
 .lost-bubos-container {
@@ -825,7 +846,7 @@ body {
 
 .clouds {
   background: transparent url(https://i.ibb.co/1ZK2Vpc/purple-fog.png) repeat top center;
-  z-index: -1;
+  z-index: 0;
   -webkit-animation: clouds-passing 300s linear infinite;
           animation: clouds-passing 300s linear infinite;
 }

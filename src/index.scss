@@ -316,20 +316,24 @@ body {
 }
 
 .mirror {
+  @include flexCenter(column);
   background: transparent url(https://i.ibb.co/nBvqPS4/mirror.png) repeat top center;
   height: 100vh;
   width: 100vw;
-  z-index: -1;
+  z-index: -2;
 }
 
 .lost-and-found {
   @include flexCenter(column);
+  text-align: center;
   justify-content: flex-start;
-  color: rgb(90, 90, 90);
-  //background: transparent url(https://i.ibb.co/nBvqPS4/mirror.png) repeat top center;
+  color: rgb(75, 72, 72);
   z-index: 0;
-  // width: 100vw;
-  // height: 100vh;
+  margin: 12rem;
+}
+
+.lf-text {
+  margin: 1rem;
 }
 
 .lost-bubos-container {
@@ -406,8 +410,7 @@ body {
 
 .clouds {
     background: transparent url(https://i.ibb.co/1ZK2Vpc/purple-fog.png) repeat top center;
-    //background:transparent url(https://i.ibb.co/bBbK5by/heavy-fog.png) repeat top center;
-    z-index: -1;
+    z-index: 0;
 
     animation: clouds-passing 300s linear infinite;
 }

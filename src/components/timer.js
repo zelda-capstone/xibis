@@ -4,7 +4,7 @@ class Timer extends Component {
   constructor() {
     super();
     this.state = {
-      seconds: 30
+      seconds: 20
     }
   }
 
@@ -12,6 +12,7 @@ class Timer extends Component {
     this.timer = setInterval(() => {
       if (this.state.seconds === 0) {
         clearInterval(this.timer)
+        this.props.endGame();
         return
       }
       this.countDown()
@@ -25,16 +26,6 @@ class Timer extends Component {
     });
   }
 
-  // startTimer = () => {
-  //   this.timer = setInterval(() => {
-  //     if (this.state.seconds === 0) {
-  //       clearInterval(this.timer)
-  //       return
-  //     }
-  //     this.countDown()
-  //   }, 1000)
-  // }
-
   resetTimer = () => {
     this.setState({ timer: 30 })
   }
@@ -47,11 +38,6 @@ class Timer extends Component {
     return (
       <>
         <div>{this.state.seconds} sec</div>
-        {
-          this.state.seconds === 0 ? (
-            <div>Time's up!</div>
-          ) : null
-        }
       </>
     )
   }

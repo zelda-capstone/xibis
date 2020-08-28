@@ -8,7 +8,9 @@ class LostAndFound extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showBubos: false,
+      playing: false,
+      gameOver: false,
+      won: false,
       random: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       lost: this.props.bubos,
       found: 0
@@ -38,12 +40,21 @@ class LostAndFound extends Component {
     this.sounds.fade(this.sounds.volume(), 0, 1000, this.source)
   }
 
-  showBubos = () => {
-    this.setState({ showBubos: true })
+  startGame = () => {
+    this.setState({ playing: true })
+  }
+
+  endGame = () => {
+    this.setState({ playing: false, gameOver: true })
   }
 
   handleFind = (key) => {
     this.sounds.play('LF_correct');
+    if (this.state.found === 9) {
+      this.setState({ won: true })
+      this.endGame()
+    }
+
     this.setState({
       found: this.state.found + 1,
       lost: this.state.lost.filter(bubo => bubo !== key)
@@ -57,57 +68,91 @@ class LostAndFound extends Component {
   render() {
     const lostBubos = this.state.lost;
 
-    if (!this.state.showBubos) return (
+    if (!this.state.playing && !this.state.gameOver) return (
       <>
-        <div className='clouds'></div>
-        <div className='mirror'></div>
-        <div className='lost-and-found'>
-          <div>
-          On the planet Aguilera, things aren't always as they seem. The mirrored terrain casts uncertain glances over every shoulder. Will the reflections cast shadows of doubt, or will they show your bubos who they truly are inside?
+        <div className='mirror'>
+          <div className='clouds'>
+            <div className='lost-and-found'>
+              <div className='lf-text'>
+              On the planet Aguilera, things aren't always as they seem. The mirrored terrain casts uncertain glances over every shoulder. Will the reflections cast shadows of doubt, or will they show your bubos who they truly are inside?
+              </div>
+              <div className='lf-text'>
+                The bubos need to find themselves in the Great Fog of Doubt. Don't let the mirrors play tricks on them--or you! You have 30 seconds to locate your bubos and dissipate the fog...
+              </div>
+              <button onClick={this.startGame}>start</button>
+            </div>
           </div>
-          <div>
-            The bubos need to find themselves in the Great Fog of Doubt. Don't let the mirrors play tricks on them--or you! You have 30 seconds to locate your bubos and dissipate the fog...
-          </div>
-          <button onClick={this.showBubos}>start</button>
         </div>
       </>
     )
 
-    return (
+    if (this.state.gameOver) {
+      return (
+        <>
+          <div className='mirror'>
+            <div className='clouds'>
+              <div className='lost-and-found'>
+                <div className='lf-text'></div>
+                {
+                  this.state.won ? (
+                    <h3>You did it! Your bubos self-esteem goes up +3</h3>
+                  ) : (
+                    <>
+                      <h3>Time's up! </h3>
+                      <h4>You found {this.state.found} bubos</h4>
+                    </>
+                  )
+                }
+                </div>
+            </div>
+          </div>
+        </>
+        )
+    }
+
+
+      return (
       <>
         <div className='clouds'></div>
-        <div className='mirror'></div>
-        <div className='lost-and-found' >
-          <div>
-            <Timer />
-            FOUND {this.state.found}
-          </div>
-        {
-          this.state.showBubos ? (
-            <div className='lost-bubos-container'>
-              {
-                this.state.random.map((bubo, index) => {
-                  return (
-                    <div key={index} onClick={this.handleIncorrect} className='lost-bubo'>
-                      <CustomizableBubo {...lostBubos[index]} />
-                    </div>
-                  )
-                })
-              }
-              {
-                lostBubos.length ? (
-                  lostBubos.map((bubo, index) => {
-                    return (
-                      <div key={index} className='lost-bubo' onClick={() => this.handleFind(bubo)}>
-                        <CustomizableBubo {...bubo} />
-                      </div>
-                    )
-                  })
-                ) : null
-              }
+        <div className='mirror'>
+            <div className='lost-and-found' >
+              <div>
+                <Timer
+                  endGame={this.endGame} />
+                    FOUND {this.state.found}
               </div>
-          ) : null
-        }
+            {
+              this.state.playing ? (
+                <div className='lost-bubos-container'>
+                  {
+                    this.state.random.map((bubo, index) => {
+                      return (
+                        <div
+                          key={index}
+                          onClick={this.handleIncorrect}
+                          className='lost-bubo'>
+                            <CustomizableBubo {...lostBubos[index]} />
+                        </div>
+                      )
+                    })
+                  }
+                  {
+                    lostBubos.length ? (
+                      lostBubos.map((bubo, index) => {
+                        return (
+                          <div key={index}
+                            className='lost-bubo'
+                            onClick={() => this.handleFind(bubo)}>
+                              <CustomizableBubo {...bubo} />
+                          </div>
+                        )
+                      })
+                    ) : null
+                  }
+                  </div>
+              ) : null
+            }
+            </div>
         </div>
       </>
     )
