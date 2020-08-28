@@ -1,12 +1,13 @@
 import React from 'react'
 import BuboOptions from '../pixelArt'
-import BlueBuboFace from '../pixelArt/blue-bubo-face-only.svg'
-import BlueBuboSprites from '../pixelArt/blue-bubo-base.png'
+//may not end up using spritesheet, trying with still images at first
 import Spritesheet from 'react-responsive-spritesheet'
 
 const CustomizableBubo = (props) => {
   let buboColor
   props.color ? (buboColor = props.color) : (buboColor = 'blank')
+  let sparkleColor
+  props.sparkle ? (sparkleColor = props.sparkle) : (sparkleColor = 'blank')
   return (
     <>
       <div className="custom-bubo-container">
@@ -17,7 +18,14 @@ const CustomizableBubo = (props) => {
             backgroundImage: `url(${BuboOptions.color[buboColor]})`,
           }}
         ></div>
-        <div style={{background: props.sparkle}} className="sparkle"></div>
+        <Spritesheet
+          image={`${BuboOptions.sparkles.yellow}`}
+          widthFrame={320}
+          heightFrame={320}
+          steps={2}
+          fps={5}
+          className="sparkle"
+        />
       </div>
     </>
   )
