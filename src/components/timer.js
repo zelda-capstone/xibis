@@ -29,6 +29,10 @@ class Timer extends Component {
     this.setState({ timer: 30 })
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timer)
+  }
+
   render() {
     return (
       <>

@@ -200,6 +200,7 @@ body {
   position: fixed;
   bottom: 1vh;
   left: 88vw;
+  z-index: 5;
   div {
     @include flexCenter(column);
     margin: .75rem;
@@ -286,19 +287,19 @@ body {
   margin: 3rem;
 }
 
-.mirror {
-  background: transparent url(https://i.ibb.co/nBvqPS4/mirror.png) repeat top center;
-  height: 100%;
-  width: 100%;
-  z-index: -1;
-}
+// .mirror {
+//   background: transparent url(https://i.ibb.co/nBvqPS4/mirror.png) repeat top center;
+//   height: 100%;
+//   width: 100%;
+//   z-index: -1;
+// }
 
 .lost-and-found {
   @include flexCenter(column);
   justify-content: flex-start;
   color: rgb(90, 90, 90);
   background: transparent url(https://i.ibb.co/nBvqPS4/mirror.png) repeat top center;
-  z-index: -1;
+  //z-index: -1;
   width: 100vw;
   height: 100vh;
 }
@@ -392,12 +393,12 @@ body {
 
 .stars {
   background: black url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
-  z-index: -3;
+  z-index: -4;
 }
 
 .twinkling {
   background:transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
-  z-index: -2;
+  z-index: -3;
   background-repeat: repeat;
   animation: twinkle 200s linear infinite;
 }

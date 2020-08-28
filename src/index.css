@@ -410,6 +410,7 @@ body {
   position: fixed;
   bottom: 1vh;
   left: 88vw;
+  z-index: 5;
 }
 
 #menu div {
@@ -616,13 +617,6 @@ body {
   margin: 3rem;
 }
 
-.mirror {
-  background: transparent url(https://i.ibb.co/nBvqPS4/mirror.png) repeat top center;
-  height: 100%;
-  width: 100%;
-  z-index: -1;
-}
-
 .lost-and-found {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -644,7 +638,6 @@ body {
           justify-content: flex-start;
   color: #5a5a5a;
   background: transparent url(https://i.ibb.co/nBvqPS4/mirror.png) repeat top center;
-  z-index: -1;
   width: 100vw;
   height: 100vh;
 }
@@ -818,12 +811,12 @@ body {
 
 .stars {
   background: black url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
-  z-index: -3;
+  z-index: -4;
 }
 
 .twinkling {
   background: transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
-  z-index: -2;
+  z-index: -3;
   background-repeat: repeat;
   -webkit-animation: twinkle 200s linear infinite;
           animation: twinkle 200s linear infinite;

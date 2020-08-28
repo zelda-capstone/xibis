@@ -9,11 +9,10 @@ class LostAndFound extends Component {
     super(props);
     this.state = {
       interlude: true,
-      random: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+      random: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       lost: this.props.bubos,
       found: 0
     }
-     // we will initially fill the lost array with all the bubos in user collection
     this.sounds = new Howl({
       src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
       volume: 0.2,
@@ -36,7 +35,8 @@ class LostAndFound extends Component {
   }
 
   componentWillUnmount() {
-    this.sounds.pause(this.source)
+    this.sounds.fade( this.sounds.volume(), 0, 1000, this.source )
+    // this.sounds.pause(this.source)
   }
 
   endInterlude = () => {
@@ -81,7 +81,7 @@ class LostAndFound extends Component {
           this.state.random.map((bubo, index) => {
             return (
               <div key={index} onClick={this.handleIncorrect} className='lost-bubo'>
-                <CustomizableBubo {...bubo} />
+                <CustomizableBubo {...lostBubos[index]} />
               </div>
             )
           })
