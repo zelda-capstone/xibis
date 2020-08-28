@@ -4,12 +4,14 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import { createLogger } from 'redux-logger'
 import sessionReducer from './reducers/session'
 import userReducer from './reducers/user'
-import buboReducer from './reducers/bubo'
+import bubosReducer from './reducers/bubo'
+import puzzlesReducer from './reducers/puzzle'
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   user: userReducer,
-  bubos: buboReducer
+  bubos: bubosReducer,
+  puzzles: puzzlesReducer
 });
 
 const middleware = composeWithDevTools(

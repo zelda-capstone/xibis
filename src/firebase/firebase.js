@@ -96,9 +96,9 @@ user = uid => this.db.collection("users").doc(uid);
 
 users = () => this.db.collection('users');
 
-puzzle = name => this.db.collection('puzzles').doc(name);
+puzzles = uid => this.db.collection('users').doc(uid).collection('puzzles');
 
-bubos = uid => this.db.collection('users').doc(uid).collection('bubos')
+bubos = uid => this.db.collection('users').doc(uid).collection('bubos');
 
 }
 // firebase.initializeApp(firebaseConfig);

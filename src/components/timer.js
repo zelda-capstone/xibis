@@ -8,14 +8,7 @@ class Timer extends Component {
     }
   }
 
-  countDown = () => {
-    const seconds = this.state.seconds - 1;
-    this.setState({
-      seconds
-    });
-  }
-
-  startTimer = () => {
+  componentDidMount() {
     this.timer = setInterval(() => {
       if (this.state.seconds === 0) {
         clearInterval(this.timer)
@@ -25,14 +18,35 @@ class Timer extends Component {
     }, 1000)
   }
 
+  countDown = () => {
+    const seconds = this.state.seconds - 1;
+    this.setState({
+      seconds
+    });
+  }
+
+  // startTimer = () => {
+  //   this.timer = setInterval(() => {
+  //     if (this.state.seconds === 0) {
+  //       clearInterval(this.timer)
+  //       return
+  //     }
+  //     this.countDown()
+  //   }, 1000)
+  // }
+
   resetTimer = () => {
     this.setState({ timer: 30 })
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer)
   }
 
   render() {
     return (
       <>
-        <button onClick={this.startTimer}>start</button>
+        <button>start</button>
         <div>{this.state.seconds} sec</div>
         {
           this.state.seconds === 0 ? (
