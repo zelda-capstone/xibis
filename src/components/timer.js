@@ -36,7 +36,7 @@ class Timer extends Component {
   render() {
     return (
       <>
-        <button onClick={this.startTimer}>start</button>
+        <button onClick={this.startTimer}>start searching</button>
         <div>{this.state.seconds} sec</div>
         {
           this.state.seconds === 0 ? (

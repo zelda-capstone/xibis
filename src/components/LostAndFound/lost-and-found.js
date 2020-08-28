@@ -9,6 +9,7 @@ class LostAndFound extends Component {
     super(props);
     this.state = {
       interlude: true,
+      timer: false,
       random: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       lost: this.props.bubos,
       found: 0
@@ -35,8 +36,7 @@ class LostAndFound extends Component {
   }
 
   componentWillUnmount() {
-    this.sounds.fade( this.sounds.volume(), 0, 1000, this.source )
-    // this.sounds.pause(this.source)
+    this.sounds.fade(this.sounds.volume(), 0, 1000, this.source)
   }
 
   endInterlude = () => {
@@ -61,16 +61,20 @@ class LostAndFound extends Component {
     if (this.state.interlude) return (
       <div className='lost-and-found'>
         <Interlude name='reflection' />
-        <div onClick={this.endInterlude} >what soulseeking awaits...</div>
+        <div onClick={this.endInterlude} >what soulseeking awaits?</div>
       </div>
     )
+
+    // if (!this.state.bubos) return (
+    //   <div>
+    // )
 
     return (
       <>
         <div className='clouds'></div>
         <div className='lost-and-found' >
         <div>
-          The bubos need to find themselves in the Great Fog of Doubt. Don't let the mirrors play tricks on them.. or you! You have 30 seconds to locate your bubos and dissipate the fog, or your bubos emotional health will suffer...
+          The bubos need to find themselves in the Great Fog of Doubt. Don't let the mirrors play tricks on them.. or you! You have 30 seconds to locate your bubos and dissipate the fog...
         </div>
         <div>
           <Timer />

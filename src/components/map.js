@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { MapIcon, } from '../components'
 
-import { fetchPuzzles } from '../store/reducers/puzzle'
+import { getPuzzlesCollection } from '../store/reducers/puzzle'
 
 //write an 'unlock puzzle' thunk for when they complete a puzzle?
 
@@ -56,7 +56,7 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    getPuzzles: puzzleRef => dispatch(fetchPuzzles(puzzleRef))
+    getPuzzles: puzzleRef => dispatch(getPuzzlesCollection(puzzleRef))
   }
 }
 
