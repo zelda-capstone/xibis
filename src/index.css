@@ -408,6 +408,7 @@ body {
   position: fixed;
   bottom: 1vh;
   left: 88vw;
+  z-index: 5;
 }
 
 #menu div {
@@ -633,6 +634,8 @@ body {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  color: #5a5a5a;
+  background: transparent url(https://i.ibb.co/nBvqPS4/mirror.png) repeat top center;
   width: 100vw;
   height: 100vh;
 }
@@ -656,7 +659,7 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  z-index: 5;
+  z-index: 1;
 }
 
 .lost-bubo {
@@ -808,21 +811,21 @@ body {
 
 .stars {
   background: black url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
-  z-index: -3;
+  z-index: -4;
 }
 
 .twinkling {
   background: transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
-  z-index: -2;
+  z-index: -3;
   background-repeat: repeat;
   -webkit-animation: twinkle 200s linear infinite;
           animation: twinkle 200s linear infinite;
 }
 
 .clouds {
-  background: transparent url(http://www.script-tutorials.com/demos/360/images/clouds3.png) repeat top center;
+  background: transparent url(https://i.ibb.co/1ZK2Vpc/purple-fog.png) repeat top center;
   z-index: -1;
-  -webkit-animation: clouds-passing 200s linear infinite;
-          animation: clouds-passing 200s linear infinite;
+  -webkit-animation: clouds-passing 300s linear infinite;
+          animation: clouds-passing 300s linear infinite;
 }
 /*# sourceMappingURL=index.css.map */

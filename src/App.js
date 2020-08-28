@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route, BrowserRouter as Router} from 'react-router-dom'
+import {Route, BrowserRouter as Router, Switch} from 'react-router-dom'
 import {withAuthentication} from './components/Auth'
 import {compose} from 'recompose'
 import {connect} from 'react-redux'
@@ -30,24 +30,21 @@ import {
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
-  }
-
-  UNSAFE_componentWillMount() {
-    const authUser = JSON.parse(localStorage.getItem('authUser'))
-    if (authUser) {
-      const user = {
+    this.authUser = JSON.parse(localStorage.getItem('authUser'))
+    if (this.authUser) {
+      this.user = {
         username: this.authUser.username,
-        userRef: this.props.firebase.user(authUser.uid),
-        bubosRef: this.props.firebase.bubos(authUser.uid),
-        puzzlesRef: this.props.firebase.puzzles(authUser.uid),
+        userRef: this.props.firebase.user(this.authUser.uid),
+        bubosRef: this.props.firebase.bubos(this.authUser.uid),
+        puzzlesRef: this.props.firebase.puzzles(this.authUser.uid),
       }
-      this.props.setUser(user)
+      this.props.setUser(this.user)
     }
   }
 
   render() {
     const user = this.props.user
+
     return (
       <>
         <Router>
@@ -55,12 +52,15 @@ class App extends React.Component {
           <Route component={NavBar} />
           <Route component={Menu} />
           {!user ? (
-            <Router>
+            <Switch>
               <Route path={ROUTES.LOG_IN} render={() => <Login />} />
               <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-            </Router>
+            </Switch>
           ) : (
-            <Router>
+            <Switch>
+              <Route path={ROUTES.LOG_IN} render={() => <Login />} />
+              <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+
               <Route exact path={ROUTES.LANDING} component={LandingPage} />
               <Route path={ROUTES.START} component={StartGame} />
               <Route exact path={ROUTES.INTRO} component={Intro} />
@@ -81,7 +81,7 @@ class App extends React.Component {
               <Route exact path={ROUTES.USER} component={User} />
               <Route exact path={ROUTES.BLOCK_PUZZLE} component={BlockPuzzle} />
               <Route component={Menu} />
-            </Router>
+            </Switch>
           )}
         </Router>
       </>
