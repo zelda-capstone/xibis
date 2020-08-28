@@ -5,7 +5,8 @@ import BlueBuboSprites from '../pixelArt/blue-bubo-base.png'
 import Spritesheet from 'react-responsive-spritesheet'
 
 const CustomizableBubo = (props) => {
-  const buboColor = props.color
+  let buboColor
+  props.color ? (buboColor = props.color) : (buboColor = 'blank')
   return (
     <>
       <div className="custom-bubo-container">
