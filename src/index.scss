@@ -159,8 +159,10 @@ body {
 .custom-bubo {
   @include flexCenter(row);
   margin-bottom: 4rem;
-  width: 5rem;
-  height: 5rem;
+  width: 7rem;
+  height: 7rem;
+  background-size: contain;
+  background-repeat: no-repeat;
   div {
     @include flexCenter(row);
     justify-content: center;

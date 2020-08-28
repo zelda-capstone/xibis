@@ -308,8 +308,10 @@ body {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin-bottom: 4rem;
-  width: 5rem;
-  height: 5rem;
+  width: 7rem;
+  height: 7rem;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .custom-bubo div {
