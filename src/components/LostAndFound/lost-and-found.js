@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Timer, Interlude, CustomizableBubo } from '..'
+import { Timer, CustomizableBubo } from '..'
 import { getBubosCollection } from '../../store/reducers/bubo'
-import {Howl} from 'howler'
+import { Howl } from 'howler'
 
 class LostAndFound extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      interlude: true,
       showBubos: false,
       random: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       lost: this.props.bubos,
@@ -43,10 +42,6 @@ class LostAndFound extends Component {
     this.setState({ showBubos: true })
   }
 
-  endInterlude = () => {
-    this.setState({ interlude: false })
-  }
-
   handleFind = (key) => {
     this.sounds.play('LF_correct');
     this.setState({
@@ -62,28 +57,31 @@ class LostAndFound extends Component {
   render() {
     const lostBubos = this.state.lost;
 
-    if (this.state.interlude) return (
-      <div className='lost-and-found'>
-        <Interlude name='reflection' />
-        <div onClick={this.endInterlude} >what soulseeking awaits?</div>
-      </div>
+    if (!this.state.showBubos) return (
+      <>
+        <div className='clouds'></div>
+        <div className='mirror'></div>
+        <div className='lost-and-found'>
+          <div>
+          On the planet Aguilera, things aren't always as they seem. The mirrored terrain casts uncertain glances over every shoulder. Will the reflections cast shadows of doubt, or will they show your bubos who they truly are inside?
+          </div>
+          <div>
+            The bubos need to find themselves in the Great Fog of Doubt. Don't let the mirrors play tricks on them--or you! You have 30 seconds to locate your bubos and dissipate the fog...
+          </div>
+          <button onClick={this.showBubos}>start</button>
+        </div>
+      </>
     )
-
-    // if (!this.state.bubos) return (
-    //   <div>
-    // )
 
     return (
       <>
         <div className='clouds'></div>
+        <div className='mirror'></div>
         <div className='lost-and-found' >
-        <div>
-          The bubos need to find themselves in the Great Fog of Doubt. Don't let the mirrors play tricks on them--or you! You have 30 seconds to locate your bubos and dissipate the fog...
-        </div>
-        <div>
-          <Timer onClick={this.showBubos} />
-          FOUND {this.state.found}
-        </div>
+          <div>
+            <Timer />
+            FOUND {this.state.found}
+          </div>
         {
           this.state.showBubos ? (
             <div className='lost-bubos-container'>
@@ -125,7 +123,7 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    getBubos: buboRef => dispatch(getBubosCollection(buboRef))
+    getBubos: bubosRef => dispatch(getBubosCollection(bubosRef))
   }
 }
 

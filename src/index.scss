@@ -29,6 +29,43 @@ $gameFont: "Anonymous Pro";
   to { opacity: 0 }
 }
 
+@keyframes typing {
+  from { width: 0 }
+  to { width: 55% }
+}
+
+@keyframes cursor {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+
+@keyframes hover {
+  from {
+    transform: translateY(10%);
+  }
+  to {
+    transform: translateY(35%);
+  }
+}
+
+@keyframes twinkle {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+@keyframes clouds-passing {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
+}
+
 body {
   margin: 0;
   font-family: $gameFont;
@@ -61,15 +98,6 @@ body {
   color: white;
 }
 
-@keyframes typing {
-  from { width: 0 }
-  to { width: 55% }
-}
-
-@keyframes cursor {
-  from, to { border-color: transparent }
-  50% { border-color: orange; }
-}
 
 .story {
   @include flexCenter(column);
@@ -268,7 +296,7 @@ body {
   position: relative;
   @include flexCenter(column);
   align-items: space-between;
-  @include canvas(black, rgb(12, 12, 36));
+  //@include canvas(black, rgb(12, 12, 36));
 }
 
 .puzzle {
@@ -287,21 +315,21 @@ body {
   margin: 3rem;
 }
 
-// .mirror {
-//   background: transparent url(https://i.ibb.co/nBvqPS4/mirror.png) repeat top center;
-//   height: 100%;
-//   width: 100%;
-//   z-index: -1;
-// }
+.mirror {
+  background: transparent url(https://i.ibb.co/nBvqPS4/mirror.png) repeat top center;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+}
 
 .lost-and-found {
   @include flexCenter(column);
   justify-content: flex-start;
   color: rgb(90, 90, 90);
-  background: transparent url(https://i.ibb.co/nBvqPS4/mirror.png) repeat top center;
-  //z-index: -1;
-  width: 100vw;
-  height: 100vh;
+  //background: transparent url(https://i.ibb.co/nBvqPS4/mirror.png) repeat top center;
+  z-index: 0;
+  // width: 100vw;
+  // height: 100vh;
 }
 
 .lost-bubos-container {
@@ -312,15 +340,6 @@ body {
 
 .lost-bubo {
   margin: 1rem;
-}
-
-@keyframes hover {
-  from {
-    transform: translateY(10%);
-  }
-  to {
-    transform: translateY(35%);
-  }
 }
 
 .bubo {
@@ -358,24 +377,6 @@ body {
   //margin-right: 30rem;
 }
 
-@keyframes twinkle {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: -10000px 5000px;
-  }
-}
-
-@keyframes clouds-passing {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 10000px 0;
-  }
-}
-
 .space-sky {
   width: 100%;
   height: 100%;
@@ -410,5 +411,3 @@ body {
 
     animation: clouds-passing 300s linear infinite;
 }
-
-

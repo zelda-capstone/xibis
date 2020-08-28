@@ -34,6 +34,100 @@
   }
 }
 
+@-webkit-keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 55%;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 55%;
+  }
+}
+
+@-webkit-keyframes cursor {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}
+
+@keyframes cursor {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}
+
+@-webkit-keyframes hover {
+  from {
+    -webkit-transform: translateY(10%);
+            transform: translateY(10%);
+  }
+  to {
+    -webkit-transform: translateY(35%);
+            transform: translateY(35%);
+  }
+}
+
+@keyframes hover {
+  from {
+    -webkit-transform: translateY(10%);
+            transform: translateY(10%);
+  }
+  to {
+    -webkit-transform: translateY(35%);
+            transform: translateY(35%);
+  }
+}
+
+@-webkit-keyframes twinkle {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+@keyframes twinkle {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+@-webkit-keyframes clouds-passing {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
+}
+
+@keyframes clouds-passing {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
+}
+
 body {
   margin: 0;
   font-family: "Anonymous Pro";
@@ -103,42 +197,6 @@ body {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   color: white;
-}
-
-@-webkit-keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 55%;
-  }
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 55%;
-  }
-}
-
-@-webkit-keyframes cursor {
-  from, to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: orange;
-  }
-}
-
-@keyframes cursor {
-  from, to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: orange;
-  }
 }
 
 .story {
@@ -578,10 +636,6 @@ body {
   -webkit-box-align: space-between;
       -ms-flex-align: space-between;
           align-items: space-between;
-  width: 100vw;
-  height: 100vh;
-  background: -webkit-gradient(linear, left top, left bottom, from(black), to(#0c0c24));
-  background: linear-gradient(black, #0c0c24);
 }
 
 .puzzle {
@@ -617,6 +671,13 @@ body {
   margin: 3rem;
 }
 
+.mirror {
+  background: transparent url(https://i.ibb.co/nBvqPS4/mirror.png) repeat top center;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+}
+
 .lost-and-found {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -637,9 +698,7 @@ body {
       -ms-flex-pack: start;
           justify-content: flex-start;
   color: #5a5a5a;
-  background: transparent url(https://i.ibb.co/nBvqPS4/mirror.png) repeat top center;
-  width: 100vw;
-  height: 100vh;
+  z-index: 0;
 }
 
 .lost-bubos-container {
@@ -666,28 +725,6 @@ body {
 
 .lost-bubo {
   margin: 1rem;
-}
-
-@-webkit-keyframes hover {
-  from {
-    -webkit-transform: translateY(10%);
-            transform: translateY(10%);
-  }
-  to {
-    -webkit-transform: translateY(35%);
-            transform: translateY(35%);
-  }
-}
-
-@keyframes hover {
-  from {
-    -webkit-transform: translateY(10%);
-            transform: translateY(10%);
-  }
-  to {
-    -webkit-transform: translateY(35%);
-            transform: translateY(35%);
-  }
 }
 
 .bubo {
@@ -757,42 +794,6 @@ body {
   height: 10rem;
   background: radial-gradient(#1a0f0f, #522f1d);
   border-radius: 10px;
-}
-
-@-webkit-keyframes twinkle {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: -10000px 5000px;
-  }
-}
-
-@keyframes twinkle {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: -10000px 5000px;
-  }
-}
-
-@-webkit-keyframes clouds-passing {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 10000px 0;
-  }
-}
-
-@keyframes clouds-passing {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 10000px 0;
-  }
 }
 
 .space-sky {

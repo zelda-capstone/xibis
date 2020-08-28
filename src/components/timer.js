@@ -46,7 +46,6 @@ class Timer extends Component {
   render() {
     return (
       <>
-        <button>start</button>
         <div>{this.state.seconds} sec</div>
         {
           this.state.seconds === 0 ? (
