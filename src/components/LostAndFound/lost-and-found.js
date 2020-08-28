@@ -9,7 +9,7 @@ class LostAndFound extends Component {
     super(props);
     this.state = {
       interlude: true,
-      timer: false,
+      showBubos: false,
       random: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       lost: this.props.bubos,
       found: 0
@@ -37,6 +37,10 @@ class LostAndFound extends Component {
 
   componentWillUnmount() {
     this.sounds.fade(this.sounds.volume(), 0, 1000, this.source)
+  }
+
+  showBubos = () => {
+    this.setState({ showBubos: true })
   }
 
   endInterlude = () => {
@@ -74,34 +78,38 @@ class LostAndFound extends Component {
         <div className='clouds'></div>
         <div className='lost-and-found' >
         <div>
-          The bubos need to find themselves in the Great Fog of Doubt. Don't let the mirrors play tricks on them.. or you! You have 30 seconds to locate your bubos and dissipate the fog...
+          The bubos need to find themselves in the Great Fog of Doubt. Don't let the mirrors play tricks on them--or you! You have 30 seconds to locate your bubos and dissipate the fog...
         </div>
         <div>
-          <Timer />
+          <Timer onClick={this.showBubos} />
           FOUND {this.state.found}
         </div>
-        <div className='lost-bubos-container'>
         {
-          this.state.random.map((bubo, index) => {
-            return (
-              <div key={index} onClick={this.handleIncorrect} className='lost-bubo'>
-                <CustomizableBubo {...lostBubos[index]} />
+          this.state.showBubos ? (
+            <div className='lost-bubos-container'>
+              {
+                this.state.random.map((bubo, index) => {
+                  return (
+                    <div key={index} onClick={this.handleIncorrect} className='lost-bubo'>
+                      <CustomizableBubo {...lostBubos[index]} />
+                    </div>
+                  )
+                })
+              }
+              {
+                lostBubos.length ? (
+                  lostBubos.map((bubo, index) => {
+                    return (
+                      <div key={index} className='lost-bubo' onClick={() => this.handleFind(bubo)}>
+                        <CustomizableBubo {...bubo} />
+                      </div>
+                    )
+                  })
+                ) : null
+              }
               </div>
-            )
-          })
-        }
-        {
-          lostBubos.length ? (
-            lostBubos.map((bubo, index) => {
-              return (
-                <div key={index} className='lost-bubo' onClick={() => this.handleFind(bubo)}>
-                  <CustomizableBubo {...bubo} />
-                </div>
-              )
-            })
           ) : null
         }
-        </div>
         </div>
       </>
     )

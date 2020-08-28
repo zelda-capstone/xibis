@@ -31,8 +31,13 @@ export const resetPuzzlesCollection = puzzlesRef => {
   return async function (dispatch) {
     try {
       const puzzlesCollection = await puzzlesRef.get()
-      const updatedPuzzles = puzzlesCollection.docs.map(doc =>  doc.update({ unlocked: false }))
-      //update the puzzles collection to "lock" all puzzles
+      puzzlesCollection.forEach(doc => {
+        let puzzle = puzzlesRef.doc(doc.id)
+        return puzzle.update({ unlocked: false })
+      })
+       //update the puzzles collection to "lock" all puzzles
+      const updatedPuzzles = puzzlesCollection.docs.map(doc => doc.data())
+      // get the array of puzzles again and send it
       dispatch (resetPuzzles(updatedPuzzles))
     } catch (err) {
       console.error(err)
@@ -45,6 +50,8 @@ const INITIAL_STATE = []
 const puzzlesReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case GET_PUZZLES:
+      return action.puzzles
+    case RESET_PUZZLES:
       return action.puzzles
     default:
       return state
