@@ -3,53 +3,52 @@ const GET_BUBOS = 'GET_BUBOS'
 const UPDATE_BUBO = 'UPDATE_BUBO'
 const RESET_BUBOS = 'RESET_BUBOS'
 
-const getBubos = bubos => {
+const getBubos = (bubos) => {
   return {
     type: GET_BUBOS,
-    bubos
+    bubos,
   }
 }
 
-const addBubo = bubo => {
+const addBubo = (bubo) => {
   return {
     type: ADD_BUBO,
-    bubo
+    bubo,
   }
 }
 
-const updateBubo = bubo => {
+const updateBubo = (bubo) => {
   return {
     type: UPDATE_BUBO,
-    bubo
+    bubo,
   }
 }
 
-const resetBubos = bubos => {
+const resetBubos = (bubos) => {
   return {
     type: RESET_BUBOS,
-    bubos
+    bubos,
   }
 }
 
-export const getBubosCollection = bubosRef => {
+export const getBubosCollection = (bubosRef) => {
   return async function (dispatch) {
     try {
       const bubosCollection = await bubosRef.get()
-      const bubos = bubosCollection.docs.map(doc => doc.data())
+      const bubos = bubosCollection.docs.map((doc) => doc.data())
       dispatch(getBubos(bubos))
-    } catch(err) {
+    } catch (err) {
       console.error(err)
     }
   }
 }
-
 
 export const addBuboToDb = (bubo, bubosRef) => {
   return async function (dispatch) {
     try {
       await bubosRef.add(bubo)
       dispatch(addBubo(bubo))
-    } catch(err) {
+    } catch (err) {
       console.error(err)
     }
   }
@@ -66,17 +65,20 @@ export const updateBuboInDb = (bubo, buboRef) => {
   }
 }
 
-export const resetBubosCollection = bubosRef => {
+export const resetBubosCollection = (bubosRef) => {
   return async function (dispatch) {
     try {
-      const bubosCollection = await bubosRef.get();
+      const bubosCollection = await bubosRef.get()
 
-      bubosCollection.docs.forEach(doc => {
-        doc.ref.delete().then(() => {
-          console.log('success!')
-        }).catch(err => {
-          console.log('error removing: ', err)
-        })
+      bubosCollection.docs.forEach((doc) => {
+        doc.ref
+          .delete()
+          .then(() => {
+            console.log('success!')
+          })
+          .catch((err) => {
+            console.log('error removing: ', err)
+          })
       })
       dispatch(resetBubos([]))
     } catch (err) {
@@ -84,7 +86,6 @@ export const resetBubosCollection = bubosRef => {
     }
   }
 }
-
 
 const INITIAL_STATE = []
 
@@ -97,15 +98,15 @@ function bubosReducer(state = INITIAL_STATE, action) {
       return [...state, action.bubo]
     }
     case UPDATE_BUBO: {
-      const newState = state.filter(bubo => bubo.id !== action.bubo.id)
+      const newState = state.filter((bubo) => bubo.id !== action.bubo.id)
       return [...newState, action.bubo]
     }
     case RESET_BUBOS: {
       return action.bubos
     }
     default:
-      return state;
+      return state
   }
 }
 
-export default bubosReducer;
+export default bubosReducer

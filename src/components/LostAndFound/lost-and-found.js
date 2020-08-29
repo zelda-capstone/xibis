@@ -111,48 +111,48 @@ class LostAndFound extends Component {
     }
 
 
-      return (
-      <>
-        <div className='clouds'></div>
-        <div className='mirror'>
-            <div className='lost-and-found' >
-              <div>
-                <Timer
-                  endGame={this.endGame} />
-                    FOUND {this.state.found}
-              </div>
-            {
-              this.state.playing ? (
-                <div className='lost-bubos-container'>
-                  {
-                    this.state.random.map((bubo, index) => {
+    return (
+    <>
+      <div className='clouds'></div>
+      <div className='mirror'>
+          <div className='lost-and-found' >
+            <div>
+              <Timer
+                endGame={this.endGame} />
+                  FOUND {this.state.found}
+            </div>
+          {
+            this.state.playing ? (
+              <div className='lost-bubos-container'>
+                {
+                  this.state.random.map((bubo, index) => {
+                    return (
+                      <div
+                        key={index}
+                        onClick={this.handleIncorrect}
+                        className='lost-bubo'>
+                          <CustomizableBubo {...lostBubos[index]} />
+                      </div>
+                    )
+                  })
+                }
+                {
+                  lostBubos.length ? (
+                    lostBubos.map((bubo, index) => {
                       return (
-                        <div
-                          key={index}
-                          onClick={this.handleIncorrect}
-                          className='lost-bubo'>
-                            <CustomizableBubo {...lostBubos[index]} />
+                        <div key={index}
+                          className='lost-bubo'
+                          onClick={() => this.handleFind(bubo)}>
+                            <CustomizableBubo {...bubo} />
                         </div>
                       )
                     })
-                  }
-                  {
-                    lostBubos.length ? (
-                      lostBubos.map((bubo, index) => {
-                        return (
-                          <div key={index}
-                            className='lost-bubo'
-                            onClick={() => this.handleFind(bubo)}>
-                              <CustomizableBubo {...bubo} />
-                          </div>
-                        )
-                      })
-                    ) : null
-                  }
-                  </div>
-              ) : null
-            }
-            </div>
+                  ) : null
+                }
+                </div>
+            ) : null
+          }
+          </div>
         </div>
       </>
     )

@@ -199,6 +199,44 @@ body {
   color: white;
 }
 
+@-webkit-keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 55%;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 55%;
+  }
+}
+
+@-webkit-keyframes cursor {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}
+
+@keyframes cursor {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}
+
 .story {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -220,10 +258,10 @@ body {
 
 .typewriter {
   overflow: hidden;
-  border-right: .15em solid orange;
+  border-right: 0.15em solid orange;
   margin-left: 10rem;
   margin-right: 10rem;
-  letter-spacing: .10em;
+  letter-spacing: 0.1em;
   -webkit-animation: typing 3s steps(40, end), cursor 0.75s step-end infinite;
           animation: typing 3s steps(40, end), cursor 0.75s step-end infinite;
 }
@@ -264,7 +302,7 @@ body {
   font-family: "Anonymous Pro";
   font-size: 1rem;
   border: none;
-  margin: .5rem;
+  margin: 0.5rem;
 }
 
 .button a {
@@ -322,7 +360,7 @@ body {
 }
 
 .bubo-selector span {
-  margin: .75rem;
+  margin: 0.75rem;
 }
 
 .custom-bubo-container {
@@ -363,11 +401,11 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  border-radius: 50%;
   margin-bottom: 4rem;
-  width: 5rem;
-  height: 5rem;
-  background: #a9abae;
+  width: 7rem;
+  height: 7rem;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .custom-bubo div {
@@ -389,15 +427,13 @@ body {
   justify-content: center;
   width: 1.3rem;
   height: 1.3rem;
-  border-radius: 50%;
   margin: 2px;
-  background: #f2f2ef;
 }
 
 .custom-bubo div div {
   background: #03032e;
-  width: .5rem;
-  height: .5rem;
+  width: 0.5rem;
+  height: 0.5rem;
 }
 
 .line-bottom {
@@ -429,23 +465,13 @@ body {
   margin-top: 2rem;
   width: 1rem;
   height: 2rem;
-  background: pink;
 }
 
-.antennae {
+.accessory {
   position: absolute;
-  margin-bottom: 10rem;
-  background: black;
-  width: .5rem;
-  height: 3rem;
-}
-
-.hat {
-  position: absolute;
-  margin-bottom: 10rem;
-  background: #350505;
-  width: 3rem;
-  height: 1rem;
+  margin-bottom: 3.5rem;
+  width: 100px;
+  height: 100px;
 }
 
 #menu {
@@ -487,7 +513,7 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin: .75rem;
+  margin: 0.75rem;
   width: 4rem;
   height: 4rem;
   border-radius: 5px;
@@ -806,8 +832,8 @@ body {
 
 .bubo div div {
   background: #03032e;
-  width: .5rem;
-  height: .5rem;
+  width: 0.5rem;
+  height: 0.5rem;
 }
 
 .raft {
@@ -822,7 +848,9 @@ body {
   height: 100%;
 }
 
-.stars, .twinkling, .clouds {
+.stars,
+.twinkling,
+.clouds {
   position: absolute;
   left: 0;
   right: 0;
