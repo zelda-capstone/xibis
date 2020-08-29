@@ -87,7 +87,7 @@ export const updateBuboInDb = (bubo, buboRef) => {
 
 const INITIAL_STATE = []
 
-function messageReducer(state = INITIAL_STATE, action) {
+function bubosReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case ADD_BUBO: {
       return [...state, action.bubo]
@@ -104,4 +104,4 @@ function messageReducer(state = INITIAL_STATE, action) {
   }
 }
 
-export default messageReducer;
+export default bubosReducer;

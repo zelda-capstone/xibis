@@ -37,13 +37,14 @@ class App extends React.Component {
 
   UNSAFE_componentWillMount() {
     const authUser = JSON.parse(localStorage.getItem('authUser'))
-
-    const user = {
-      username: authUser.displayName,
-      userRef: this.props.firebase.user(authUser.uid),
-      bubosRef: this.props.firebase.bubos(authUser.uid)
+    if(authUser){
+      const user = {
+        username: authUser.displayName,
+        userRef: this.props.firebase.user(authUser.uid),
+        bubosRef: this.props.firebase.bubos(authUser.uid)
+      }
+      this.props.setUser(user);
     }
-    this.props.setUser(user);
   }
 
 
@@ -61,6 +62,8 @@ class App extends React.Component {
               <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
             </Router>
           : <Router>
+              <Route path={ROUTES.LOG_IN} render={() => <Login />} />
+              <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
               <Route exact path={ROUTES.LANDING} component={LandingPage} />
               <Route path={ROUTES.START} component={StartGame} />
               <Route exact path={ROUTES.INTRO} component={Intro} />

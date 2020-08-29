@@ -2,17 +2,14 @@ import React from 'react'
 import Draggable, {DraggableCore} from 'react-draggable';
 import  './style.css'
 import Spritesheet from 'react-responsive-spritesheet';
-import Green from './Green-Portal-Sprite.png'
-import Purple from './Purple-Portal-Sprite.png'
-import PurpleUpsd from './Purple-Portal-Sprite-UpsD-1.png'
-import GreenRev from './Green-Portal-Sprite-Rev.png'
-import { connect } from 'react-redux'
+import Grid from '@material-ui/core/Grid'
+import { connect } from 'react-redux';
 import { updateBuboToDb } from '../../store'
 import * as ROUTES from '../../constants/routes';
 import CustomizableBubo from '../customizable-bubo'
-import {Link} from 'react-router-dom'
-import { getBubosCollection } from '../../store/reducers/bubo'
-
+import {Link} from 'react-router-dom';
+import { getBubosCollection } from '../../store/reducers/bubo';
+import {Green, GreenRev, Purple, PurpleUpsd, Bubo } from './Images';
 
 
 
@@ -31,9 +28,18 @@ class Wormhole extends React.Component{
         return (
             <div className="star">
              <div className="background" >
+             <Grid
+                container spacing={0}
+                container
+                direction="row"
+                justify="center"
+                alignItems="center"
+                >
                  {user
                  ?(<>
-                    <div className="portal" >
+                    <Grid
+                        item
+                    >
                     <Spritesheet
                         image={PurpleUpsd}
                         widthFrame={73}
@@ -45,20 +51,39 @@ class Wormhole extends React.Component{
                         onClick={spritesheet => {
                             spritesheet.play();}}
                     />
-                    </div>
+                    </Grid>
                     <div className="bubos-puzzle-container">
-                        <div className="bubos-container">
                             {bubos
                             ? bubos.map((bubo, i) => (
-                                <div key={i}>
-                                    <CustomizableBubo {...bubo}/>
-                                </div>
+                                <Grid
+                                    item
+                                >
+                                    <Spritesheet
+                                    image={Bubo}
+                                    widthFrame={32}
+                                    heightFrame={32}
+                                    steps={4}
+                                    fps={1}
+                                    autoplay={false}
+                                    loop={true}
+                                    startAt={2}
+                                    endAt={1}
+                                    direction="rewind"
+                                    onMouseEnter={spritesheet => {
+                                        spritesheet.goToAndPlay(1);}}
+                                    onMouseLeave={spritesheet => {
+                                        spritesheet.pause();}}
+                                    />  
+                                    {/* <CustomizableBubo {...bubo}/> */}
+                                </Grid>
                             ))
                             : <h1>You lost all your Bubos!
                                 <Link to={ROUTES.ASSEMBLE_BUBOS}>Get more.</Link>
                             </h1> 
                             }
-                        </div>
+                        <Grid
+                            item
+                        >
                         <Spritesheet
                         image={Green}
                         widthFrame={64}
@@ -70,7 +95,7 @@ class Wormhole extends React.Component{
                         onClick={spritesheet => {
                             spritesheet.play();}}
                     />  
-                    </div>
+                    </Grid>
                   <div className="portal-reverse">
                     <Spritesheet
                         image={Green}
@@ -105,6 +130,7 @@ class Wormhole extends React.Component{
                  )
                 : <h1>loading.....</h1> 
                 }
+                </Grid>
              </div>
             </div>
           );
