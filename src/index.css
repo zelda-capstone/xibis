@@ -331,9 +331,9 @@ body {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   justify-content: center;
-  width: 1.3rem;
-  height: 1.3rem;
-  margin: 2px;
+  width: 7rem;
+  height: 7em;
+  margin-bottom: 4rem;
 }
 
 .custom-bubo div div {
@@ -363,14 +363,15 @@ body {
           justify-content: flex-start;
 }
 
-.sparkle {
-  position: absolute;
+.sparkles {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
       align-self: center;
+  height: 3rem;
+  width: 3rem;
   margin-top: 2rem;
-  width: 1rem;
-  height: 2rem;
 }
 
 .accessory {

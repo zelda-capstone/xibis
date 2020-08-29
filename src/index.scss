@@ -166,9 +166,9 @@ body {
   div {
     @include flexCenter(row);
     justify-content: center;
-    width: 1.3rem;
-    height: 1.3rem;
-    margin: 2px;
+    width: 7rem;
+    height: 7em;
+    margin-bottom: 4rem;
     div {
       background: rgb(3, 3, 46);
       width: 0.5rem;
@@ -182,9 +182,11 @@ body {
   justify-content: flex-start;
 }
 
-.sparkle {
-  position: absolute;
+.sparkles {
+  display: flex;
   align-self: center;
+  height: 3rem;
+  width: 3rem;
   margin-top: 2rem;
 }
 
