@@ -38,8 +38,12 @@ $gameFont: 'Anonymous Pro';
 }
 
 @keyframes typing {
-  from { width: 0 }
-  to { width: 55% }
+  from {
+    width: 0
+  }
+  to {
+    width: 55%
+  }
 }
 
 @keyframes cursor {
@@ -86,10 +90,6 @@ body {
   @include flexCenter(column);
 }
 
-// .auth {
-//   color: white;
-// }
-
 #navbar {
   @include flexCenter(row);
   position: fixed;
@@ -106,28 +106,6 @@ body {
   color: white;
 }
 
-<<<<<<< HEAD
-=======
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 55%;
-  }
-}
-
-@keyframes cursor {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: orange;
-  }
-}
->>>>>>> 351550db8e6f726875b676f3606da6a96ed37528
-
 .story {
   @include flexCenter(column);
   margin-top: 15rem;
@@ -136,8 +114,9 @@ body {
 .typewriter {
   overflow: hidden;
   border-right: 0.15em solid orange;
-  margin-left: 10rem;
-  margin-right: 10rem;
+  width: 100%;
+  //margin-left: 10rem;
+  //margin-right: 10rem;
   letter-spacing: 0.1em;
   animation: typing 3s steps(40, end), cursor 0.75s step-end infinite;
 }
@@ -187,6 +166,14 @@ body {
   span {
     margin: 0.75rem;
   }
+}
+
+.bubo-stats {
+  //display: none;
+  font-size: .5rem;
+  // p {
+  //   display: none;
+  // }
 }
 
 .custom-bubo-container {
@@ -434,15 +421,7 @@ body {
 }
 
 .clouds {
-<<<<<<< HEAD
     background: transparent url(https://i.ibb.co/1ZK2Vpc/purple-fog.png) repeat top center;
     z-index: 0;
-=======
-  background: transparent url(https://i.ibb.co/1ZK2Vpc/purple-fog.png) repeat
-    top center;
-  //background:transparent url(https://i.ibb.co/bBbK5by/heavy-fog.png) repeat top center;
-  z-index: -1;
->>>>>>> 351550db8e6f726875b676f3606da6a96ed37528
-
-  animation: clouds-passing 300s linear infinite;
+    animation: clouds-passing 300s linear infinite;
 }

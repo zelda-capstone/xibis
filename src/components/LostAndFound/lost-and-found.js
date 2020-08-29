@@ -77,7 +77,7 @@ class LostAndFound extends Component {
               On the planet Aguilera, things aren't always as they seem. The mirrored terrain casts uncertain glances over every shoulder. Will the reflections cast shadows of doubt, or will they show your bubos who they truly are inside?
               </div>
               <div className='lf-text'>
-                The bubos need to find themselves in the Great Fog of Doubt. Don't let the mirrors play tricks on them--or you! You have 30 seconds to locate your bubos and dissipate the fog...
+                The bubos need to find themselves in the Great Fog of Doubt. Don't let the mirrors play tricks on them--or you! You have 20 seconds to locate your bubos and dissipate the fog...
               </div>
               <button onClick={this.startGame}>start</button>
             </div>

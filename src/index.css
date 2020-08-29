@@ -199,44 +199,6 @@ body {
   color: white;
 }
 
-@-webkit-keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 55%;
-  }
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 55%;
-  }
-}
-
-@-webkit-keyframes cursor {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: orange;
-  }
-}
-
-@keyframes cursor {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: orange;
-  }
-}
-
 .story {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -259,8 +221,7 @@ body {
 .typewriter {
   overflow: hidden;
   border-right: 0.15em solid orange;
-  margin-left: 10rem;
-  margin-right: 10rem;
+  width: 100%;
   letter-spacing: 0.1em;
   -webkit-animation: typing 3s steps(40, end), cursor 0.75s step-end infinite;
           animation: typing 3s steps(40, end), cursor 0.75s step-end infinite;
@@ -363,6 +324,10 @@ body {
   margin: 0.75rem;
 }
 
+.bubo-stats {
+  font-size: .5rem;
+}
+
 .custom-bubo-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -463,8 +428,6 @@ body {
       -ms-grid-row-align: center;
       align-self: center;
   margin-top: 2rem;
-  width: 1rem;
-  height: 2rem;
 }
 
 .accessory {
@@ -746,6 +709,10 @@ body {
 
 .lf-text {
   margin: 1rem;
+  color: #5a5a5a;
+  background: transparent url(https://i.ibb.co/nBvqPS4/mirror.png) repeat top center;
+  width: 100vw;
+  height: 100vh;
 }
 
 .lost-bubos-container {

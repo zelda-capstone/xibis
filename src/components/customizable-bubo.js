@@ -6,6 +6,7 @@ import Spritesheet from 'react-responsive-spritesheet'
 import antennae from '../pixelArt/antennae.svg'
 
 const CustomizableBubo = (props) => {
+  //console.log(props.personality)
   let buboColor
   props.color ? (buboColor = props.color) : (buboColor = 'blank')
   let sparkleColor
@@ -27,6 +28,10 @@ const CustomizableBubo = (props) => {
             backgroundImage: `url(${BuboOptions.color[buboColor]})`,
           }}
         ></div>
+        {/* <div className='bubo-stats'>
+          <p>personality: {`${props.personality[0]}, ${props.personality[1]}`}</p>
+          <p>health: </p>
+        </div> */}
 
         {/*
         <Spritesheet
