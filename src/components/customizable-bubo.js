@@ -27,14 +27,22 @@ const CustomizableBubo = (props) => {
             backgroundImage: `url(${BuboOptions.color[buboColor]})`,
           }}
         ></div>
+
+        {/*
         <Spritesheet
           image={`${BuboOptions.sparkles.yellow}`}
-          widthFrame={320}
-          heightFrame={320}
+          widthFrame={32}
+          heightFrame={17}
           steps={2}
-          fps={5}
+          fps={3}
           className="sparkle"
+          style={{
+            transform: 'scale(2)',
+            marginTop: '1rem',
+            marginLeft: '1rem',
+          }}
         />
+        */}
       </div>
     </>
   )
