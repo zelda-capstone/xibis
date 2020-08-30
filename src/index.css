@@ -256,7 +256,7 @@ body {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   height: 20rem;
-  width: 25rem;
+  width: 27rem;
   -webkit-box-shadow: 3px 3px #c6a0a0;
           box-shadow: 3px 3px #c6a0a0;
   background: white;
@@ -369,8 +369,6 @@ body {
       -ms-grid-row-align: center;
       align-self: center;
   margin-top: 2rem;
-  width: 1rem;
-  height: 2rem;
 }
 
 .accessory {
