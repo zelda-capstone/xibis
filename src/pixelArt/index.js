@@ -1,6 +1,7 @@
 import GreenBubo from './green-bubo-face-only.svg'
 import BlueBubo from './blue-bubo-face-only.svg'
 import PurpleBubo from './purple-bubo-face-only.svg'
+import YellowBubo from './yellow-bubo-face-only.svg'
 import BlankBubo from './blank-bubo-face-only.svg'
 import YellowSparkles from './sparkles-yellow-better.png'
 import antennae from './antennae.svg'
@@ -14,6 +15,7 @@ const BuboOptions = {
     green: GreenBubo,
     blue: BlueBubo,
     purple: PurpleBubo,
+    yellow: YellowBubo,
   },
   sparkles: {
     yellow: YellowSparkles,

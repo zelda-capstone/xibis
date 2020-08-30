@@ -71,9 +71,10 @@ class BuboSelector extends React.Component {
           <div className="bubo-selector">
             <div>
               color:
+              <SelectTrait handleClick={this.handleColor} value="purple" />
               <SelectTrait handleClick={this.handleColor} value="blue" />
               <SelectTrait handleClick={this.handleColor} value="green" />
-              <SelectTrait handleClick={this.handleColor} value="purple" />
+              <SelectTrait handleClick={this.handleColor} value="yellow" />
             </div>
             <div>
               sparkle:
