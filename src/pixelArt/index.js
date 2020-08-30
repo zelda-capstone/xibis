@@ -9,6 +9,7 @@ import YellowSparkles from './sparkles-yellow-better.png'
 import antennae from './antennae.svg'
 import hat from './hat.svg'
 import glasses from './glasses.svg'
+import monobrow from './monobrow.svg'
 
 //also include other options, like antennae, sparkles, etc
 const BuboOptions = {
@@ -28,6 +29,7 @@ const BuboOptions = {
     antennae,
     hat,
     glasses,
+    monobrow,
   },
 }
 
