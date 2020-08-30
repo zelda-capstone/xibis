@@ -33,12 +33,17 @@ class LostAndFound extends Component {
   componentDidMount() {
     const bubosRef = this.props.user.bubosRef
     this.props.getBubos(bubosRef)
-    this.source = this.sounds.play('bubos_atmosphere');
+    this.source = this.sounds.play('bubos_atmosphere')
+    //this.shuffleBubos()
   }
 
   componentWillUnmount() {
     this.sounds.fade(this.sounds.volume(), 0, 1000, this.source)
   }
+
+  // shuffleBubos = () => {
+
+  // }
 
   startGame = () => {
     this.setState({ playing: true })
@@ -95,11 +100,16 @@ class LostAndFound extends Component {
                 <div className='lf-text'></div>
                 {
                   this.state.won ? (
-                    <h3>You did it! Your bubos self-esteem goes up +3</h3>
+                    <>
+                    <h3>You helped every bubo find their inner self!</h3>
+                    <h4> Your bubos self-esteem goes up +3</h4>
+                    <h4>You have unlocked *next* puzzle</h4>
+                    </>
                   ) : (
                     <>
                       <h3>Time's up! </h3>
                       <h4>You found {this.state.found} bubos</h4>
+                      <p>Render consequences here...</p>
                     </>
                   )
                 }

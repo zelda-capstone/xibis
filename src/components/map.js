@@ -5,41 +5,53 @@ import { MapIcon } from '../components'
 
 import { getPuzzlesCollection } from '../store/reducers/puzzle'
 
-//write an 'unlock puzzle' thunk for when they complete a puzzle?
-
 class Map extends React.Component {
   componentDidMount() {
     const puzzlesRef = this.props.user.puzzlesRef
     this.props.getPuzzles(puzzlesRef);
+    // get puzzles where unlocked = true ?
   }
 
   render() {
-    //console.log('puzzles:', this.props.puzzles);
+    const puzzles = this.props.puzzles;
     return (
       <>
         <div id='map-container'>
           <h1>Map</h1>
             <div id='map'>
-              <div>
+              {
+                puzzles ? (
+                  (
+                    puzzles.map(puzzle => {
+                      return (<div key={puzzle.name}>
+                        <Link to={`/${puzzle.name}`}>
+                          <MapIcon puzzle={puzzle} />
+                        </Link>
+                      </div>)
+                    })
+                  )
+                ) : (<h3> Loading... </h3>)
+              }
+              {/* <div>
                 <Link to='/test-puzzle'>
-                    <MapIcon />
+                    <MapIcon puzzle={puzzles[0]} />
                 </Link>
                 </div>
               <div>
                 <Link to='/wormhole'>
-                  <MapIcon/>
+                  <MapIcon puzzle={puzzles[0]} />
                 </Link>
               </div>
               <div>
                 <Link to='/lost-and-found'>
-                  <MapIcon />
+                  <MapIcon puzzle={puzzles[0]} />
                 </Link>
               </div>
               <div>
                 <Link to='/block-puzzle'>
-                  <MapIcon />
+                  <MapIcon puzzle={puzzles[0]}  />
                 </Link>
-              </div>
+              </div> */}
           </div>
         </div>
       </>

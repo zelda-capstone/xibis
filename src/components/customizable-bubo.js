@@ -3,10 +3,12 @@ import BuboOptions from '../pixelArt'
 //may not end up using spritesheet, trying with still images at first
 import Spritesheet from 'react-responsive-spritesheet'
 
-import antennae from '../pixelArt/antennae.svg'
+//import antennae from '../pixelArt/antennae.svg'
 
 const CustomizableBubo = (props) => {
   //console.log(props.personality)
+  let personality
+  props.personality ? (personality = props.personality) : (personality = ['test', 'test'])
   let buboColor
   props.color ? (buboColor = props.color) : (buboColor = 'blank')
   let sparkleColor
@@ -28,11 +30,6 @@ const CustomizableBubo = (props) => {
             backgroundImage: `url(${BuboOptions.color[buboColor]})`,
           }}
         ></div>
-        {/* <div className='bubo-stats'>
-          <p>personality: {`${props.personality[0]}, ${props.personality[1]}`}</p>
-          <p>health: </p>
-        </div> */}
-
         {/*
         <Spritesheet
           image={`${BuboOptions.sparkles.yellow}`}
@@ -49,6 +46,10 @@ const CustomizableBubo = (props) => {
         />
         */}
       </div>
+      <div className='bubo-stats'>
+          <span><strong>personality</strong>: {`${personality[0]}, ${personality[1]}`}</span>
+          <span><strong>health</strong>: 100</span>
+        </div>
     </>
   )
 }
