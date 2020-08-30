@@ -7,7 +7,7 @@ export default function BlockPuzzle() {
     <div
       style={{
         margin: '15px',
-        width: '95vh',
+        width: '75vw',
         height: '95vh',
         display: 'flex',
         flexDirection: 'column',
@@ -16,7 +16,7 @@ export default function BlockPuzzle() {
       <div style={{width: '50%', height: '50%'}}>
         <Board />
       </div>
-      <div style={{width: '50%', height: '50%'}}>
+      <div style={{height: '50%'}}>
         <Icon />
       </div>
     </div>
