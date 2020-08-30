@@ -13,10 +13,10 @@ export default function BlockPuzzle() {
         flexDirection: 'column',
       }}
     >
-      <div style={{width: '95%', height: '95%'}}>
+      <div style={{width: '50%', height: '50%'}}>
         <Board />
       </div>
-      <div style={{width: '95%', height: '95%'}}>
+      <div style={{width: '50%', height: '50%'}}>
         <Icon />
       </div>
     </div>

@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 100" shape-rendering="crispEdges">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 50" shape-rendering="crispEdges">
 
 <g id='puzzle-shape-02'>
-  <rect x='0' y='0' width='500' height='100' fill='lightgreen' />
+  <rect x='0' y='0' width='250' height='50' fill='lightgreen' />
 </g>
 
 </svg>
