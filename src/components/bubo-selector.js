@@ -95,6 +95,7 @@ class BuboSelector extends React.Component {
                 handleClick={this.handleAccessory}
                 value="monobrow"
               />
+              <SelectTrait handleClick={this.handleAccessory} value="bow" />
             </div>
             <div>personality (choose two):</div>
             <div>

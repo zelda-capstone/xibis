@@ -10,6 +10,7 @@ import antennae from './antennae.svg'
 import hat from './hat.svg'
 import glasses from './glasses.svg'
 import monobrow from './monobrow.svg'
+import bow from './bow.svg'
 
 //also include other options, like antennae, sparkles, etc
 const BuboOptions = {
@@ -30,6 +31,7 @@ const BuboOptions = {
     hat,
     glasses,
     monobrow,
+    bow,
   },
 }
 
