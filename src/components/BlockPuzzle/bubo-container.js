@@ -8,10 +8,23 @@ export class BuboContainer extends React.Component {
     super()
   }
 
+  componentDidMount() {
+    const user = this.props.user
+    this.props.getBubos(user.bubosRef)
+  }
+
   render() {
     const bubos = this.props.bubos
+    console.log('who are our bubos ', this.props.bubos)
     return (
-      <div id="bubo-list">
+      <div
+        id="bubo-list"
+        style={{
+          width: '25vw',
+          display: 'flex',
+          flexFlow: 'row wrap',
+        }}
+      >
         {bubos
           ? bubos.map((bubo, i) => {
               return (
