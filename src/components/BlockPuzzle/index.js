@@ -30,7 +30,7 @@ export default function BlockPuzzle() {
         </div>
         <div>
           <img
-            alt="an image of your destination planet"
+            alt="your destination planet, a dark purple and blue sphere"
             src={Destination}
             style={{width: '25vw'}}
           />

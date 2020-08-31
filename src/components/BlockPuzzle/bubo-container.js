@@ -4,10 +4,6 @@ import {getBubosCollection} from '../../store/reducers/bubo'
 import CustomizableBubo from '../customizable-bubo'
 
 export class BuboContainer extends React.Component {
-  constructor() {
-    super()
-  }
-
   componentDidMount() {
     const user = this.props.user
     this.props.getBubos(user.bubosRef)
@@ -15,7 +11,6 @@ export class BuboContainer extends React.Component {
 
   render() {
     const bubos = this.props.bubos
-    console.log('who are our bubos ', this.props.bubos)
     return (
       <div
         id="bubo-list"
