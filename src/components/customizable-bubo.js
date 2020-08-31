@@ -8,7 +8,9 @@ import Spritesheet from 'react-responsive-spritesheet'
 const CustomizableBubo = (props) => {
   //console.log(props.personality)
   let personality
-  props.personality ? (personality = props.personality) : (personality = ['test', 'test'])
+  props.personality
+    ? (personality = props.personality)
+    : (personality = ['test', 'test'])
   let buboColor
   props.color ? (buboColor = props.color) : (buboColor = 'blank')
   let sparkleColor
@@ -30,26 +32,15 @@ const CustomizableBubo = (props) => {
             backgroundImage: `url(${BuboOptions.color[buboColor]})`,
           }}
         ></div>
-        {/*
-        <Spritesheet
-          image={`${BuboOptions.sparkles.yellow}`}
-          widthFrame={32}
-          heightFrame={17}
-          steps={2}
-          fps={3}
-          className="sparkle"
-          style={{
-            transform: 'scale(2)',
-            marginTop: '1rem',
-            marginLeft: '1rem',
-          }}
-        />
-        */}
       </div>
-      <div className='bubo-stats'>
-          <span><strong>personality</strong>: {`${personality[0]}, ${personality[1]}`}</span>
-          <span><strong>health</strong>: 100</span>
-        </div>
+      <div className="bubo-stats">
+        <span>
+          <strong>personality</strong>: {`${personality[0]}, ${personality[1]}`}
+        </span>
+        <span>
+          <strong>health</strong>: 100
+        </span>
+      </div>
     </>
   )
 }
