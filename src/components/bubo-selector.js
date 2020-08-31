@@ -71,9 +71,12 @@ class BuboSelector extends React.Component {
           <div className="bubo-selector">
             <div>
               color:
+              <SelectTrait handleClick={this.handleColor} value="purple" />
               <SelectTrait handleClick={this.handleColor} value="blue" />
               <SelectTrait handleClick={this.handleColor} value="green" />
-              <SelectTrait handleClick={this.handleColor} value="purple" />
+              <SelectTrait handleClick={this.handleColor} value="yellow" />
+              <SelectTrait handleClick={this.handleColor} value="orange" />
+              <SelectTrait handleClick={this.handleColor} value="red" />
             </div>
             <div>
               sparkle:
@@ -88,6 +91,19 @@ class BuboSelector extends React.Component {
               />
               <SelectTrait handleClick={this.handleAccessory} value="hat" />
               <SelectTrait handleClick={this.handleAccessory} value="glasses" />
+              <SelectTrait
+                handleClick={this.handleAccessory}
+                value="monobrow"
+              />
+              <SelectTrait handleClick={this.handleAccessory} value="bow" />
+              <SelectTrait
+                handleClick={this.handleAccessory}
+                value="sunglasses"
+              />
+              <SelectTrait
+                handleClick={this.handleAccessory}
+                value="eyestalk"
+              />
             </div>
             <div>personality (choose two):</div>
             <div>
