@@ -1,5 +1,5 @@
 import React from 'react'
-import Draggable, {DraggableCore} from 'react-draggable';
+//import Draggable, {DraggableCore} from 'react-draggable';
 import  './style.css'
 import Spritesheet from 'react-responsive-spritesheet';
 import Grid from '@material-ui/core/Grid'
@@ -18,7 +18,7 @@ class Wormhole extends React.Component{
     componentDidMount(){
         const user = this.props.user;
         this.props.getBubos(user.bubosRef);
-        
+
     }
 
     render(){
@@ -79,7 +79,7 @@ class Wormhole extends React.Component{
                             ))
                             : <h1>You lost all your Bubos!
                                 <Link to={ROUTES.ASSEMBLE_BUBOS}>Get more.</Link>
-                            </h1> 
+                            </h1>
                             }
                         <Grid
                             item
@@ -96,6 +96,7 @@ class Wormhole extends React.Component{
                             spritesheet.play();}}
                     />  
                     </Grid>
+                    </div>
                   <div className="portal-reverse">
                     <Spritesheet
                         image={Green}
@@ -109,8 +110,8 @@ class Wormhole extends React.Component{
                         onClick={spritesheet => {
                             spritesheet.pause();
                             spritesheet.play()}}
-                    /> 
-                    </div> 
+                    />
+                    </div>
                     <div className="portal-reverse">
                     <Spritesheet
                         image={GreenRev}
@@ -124,11 +125,11 @@ class Wormhole extends React.Component{
                         onClick={spritesheet => {
                             spritesheet.pause();
                             spritesheet.play()}}
-                    />  
+                    />
                     </div>
                   </>
                  )
-                : <h1>loading.....</h1> 
+                : <h1>loading.....</h1>
                 }
                 </Grid>
              </div>

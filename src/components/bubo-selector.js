@@ -1,9 +1,9 @@
 import React from 'react'
 //import {Redirect} from 'react-router-dom'
 import {CustomizableBubo, SelectTrait} from '../components'
-import { withFirebase } from '../firebase'
-import { connect } from 'react-redux'
-import { addBuboToDb } from '../store/reducers/bubo'
+import {withFirebase} from '../firebase'
+import {connect} from 'react-redux'
+import {addBuboToDb} from '../store/reducers/bubo'
 
 //after combination options are chosen, bubo will be assigned a specific imageUrl matching that particular combo, from the sprite sheet?
 
@@ -15,34 +15,34 @@ class BuboSelector extends React.Component {
       sparkle: '',
       accessory: '',
       personality: [],
-      bubos: this.props.bubos || []
+      bubos: this.props.bubos || [],
     }
   }
 
   handleColor = (evt) => {
-    this.setState({ color: evt.target.value })
+    this.setState({color: evt.target.value})
   }
 
   handleSparkle = (evt) => {
-    this.setState({ sparkle: evt.target.value })
+    this.setState({sparkle: evt.target.value})
   }
 
   handleAccessory = (evt) => {
-    this.setState({ accessory: evt.target.value })
+    this.setState({accessory: evt.target.value})
   }
 
   handlePersonality = (evt) => {
-    const personality = this.state.personality;
+    const personality = this.state.personality
     if (personality.length < 2) {
-      this.setState({ personality: [...personality, evt.target.value] })
+      this.setState({personality: [...personality, evt.target.value]})
     } else if (personality.length === 2) {
-      this.setState({ personality: [personality[0], evt.target.value] })
+      this.setState({personality: [personality[0], evt.target.value]})
     }
   }
 
   handleCreate = async () => {
-    const { color, sparkle, accessory, personality } = this.state
-    const bubo = { color, sparkle, accessory, personality }
+    const {color, sparkle, accessory, personality} = this.state
+    const bubo = {color, sparkle, accessory, personality}
 
     if (this.state.bubos.length < 10) {
       const bubosRef = this.props.user.bubosRef
@@ -53,39 +53,44 @@ class BuboSelector extends React.Component {
         sparkle: '',
         accessory: '',
         personality: [],
-        bubos: [...this.state.bubos, bubo]
+        bubos: [...this.state.bubos, bubo],
       })
     }
   }
 
   render() {
-    const bubos = this.props.bubos;
+    const bubos = this.props.bubos
 
     return (
       <>
-        <div className='bubo-selector-container'>
-        {
-          bubos.length === 10 ? <div>No more than 10 bubos allowed</div> : null
-        }
+        <div className="bubo-selector-container">
+          {bubos.length === 10 ? (
+            <div>No more than 10 bubos allowed</div>
+          ) : null}
           <h2>assemble your bubos</h2>
-          <div className='bubo-selector'>
-            <div>color:
-              <SelectTrait handleClick={this.handleColor} value='maroon'/>
-              <SelectTrait handleClick={this.handleColor} value='lavender'/>
-              <SelectTrait handleClick={this.handleColor} value='silver'/>
-              <SelectTrait handleClick={this.handleColor} value='navy'/>
+          <div className="bubo-selector">
+            <div>
+              color:
+              <SelectTrait handleClick={this.handleColor} value="blue" />
+              <SelectTrait handleClick={this.handleColor} value="green" />
+              <SelectTrait handleClick={this.handleColor} value="purple" />
             </div>
-            <div>sparkle:
-              <SelectTrait handleClick={this.handleSparkle} value='green'/>
-              <SelectTrait handleClick={this.handleSparkle} value='yellow'/>
+            <div>
+              sparkle:
+              <SelectTrait handleClick={this.handleSparkle} value="green" />
+              <SelectTrait handleClick={this.handleSparkle} value="yellow" />
             </div>
-            <div>accessory:
-              <SelectTrait handleClick={this.handleAccessory} value='antennae'/>
-              <SelectTrait handleClick={this.handleAccessory} value='hat'/>
-              <SelectTrait handleClick={this.handleAccessory} value='glasses'/>
+            <div>
+              accessory:
+              <SelectTrait
+                handleClick={this.handleAccessory}
+                value="antennae"
+              />
+              <SelectTrait handleClick={this.handleAccessory} value="hat" />
+              <SelectTrait handleClick={this.handleAccessory} value="glasses" />
             </div>
             <div>personality (choose two):</div>
-              <div>
+            <div>
               <select onChange={this.handlePersonality}>
                 <option>shy</option>
                 <option>stubborn</option>
@@ -103,35 +108,37 @@ class BuboSelector extends React.Component {
             <CustomizableBubo {...this.state} />
           </div>
           <div>
-            <button className='button' onClick={this.handleCreate}>create</button>
+            <button className="button" onClick={this.handleCreate}>
+              create
+            </button>
           </div>
         </div>
-        <div className='line-bottom'>
-            {
-              bubos ? (bubos.map((bubo, index) => {
+        <div className="line-bottom">
+          {bubos
+            ? bubos.map((bubo, index) => {
                 return (
                   <div key={index}>
                     <CustomizableBubo {...bubo} />
                   </div>
                 )
-              })) : null
-            }
-          </div>
+              })
+            : null}
+        </div>
       </>
     )
   }
 }
 
-const mapState = state => {
+const mapState = (state) => {
   return {
     user: state.user,
-    bubos: state.bubos
+    bubos: state.bubos,
   }
 }
 
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch) => {
   return {
-    addBubo: (bubo, buboRef) => dispatch(addBuboToDb(bubo, buboRef))
+    addBubo: (bubo, buboRef) => dispatch(addBuboToDb(bubo, buboRef)),
   }
 }
 
