@@ -13,7 +13,7 @@ export default function BlockPuzzle() {
         flexDirection: 'column',
       }}
     >
-      <div style={{width: '50%', height: '50%'}}>
+      <div>
         <Board />
       </div>
       <div style={{height: '50%'}}>

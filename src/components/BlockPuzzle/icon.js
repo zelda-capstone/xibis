@@ -21,7 +21,7 @@ export default class Icon extends React.Component {
           return (
             <Draggable
               grid={[50, 50]}
-              defaultPosition={{x: 0, y: 15}}
+              defaultPosition={{x: 0, y: 0}}
               key={piece.index}
             >
               <div
