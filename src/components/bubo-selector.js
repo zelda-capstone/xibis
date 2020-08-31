@@ -5,14 +5,11 @@ import {withFirebase} from '../firebase'
 import {connect} from 'react-redux'
 import {addBuboToDb} from '../store/reducers/bubo'
 
-//after combination options are chosen, bubo will be assigned a specific imageUrl matching that particular combo, from the sprite sheet?
-
 class BuboSelector extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       color: '',
-      sparkle: '',
       accessory: '',
       personality: [],
       bubos: this.props.bubos || [],
@@ -21,10 +18,6 @@ class BuboSelector extends React.Component {
 
   handleColor = (evt) => {
     this.setState({color: evt.target.value})
-  }
-
-  handleSparkle = (evt) => {
-    this.setState({sparkle: evt.target.value})
   }
 
   handleAccessory = (evt) => {
@@ -41,8 +34,8 @@ class BuboSelector extends React.Component {
   }
 
   handleCreate = async () => {
-    const {color, sparkle, accessory, personality} = this.state
-    const bubo = {color, sparkle, accessory, personality}
+    const {color, accessory, personality} = this.state
+    const bubo = {color, accessory, personality}
 
     if (this.state.bubos.length < 10) {
       const bubosRef = this.props.user.bubosRef
@@ -50,7 +43,6 @@ class BuboSelector extends React.Component {
 
       this.setState({
         color: '',
-        sparkle: '',
         accessory: '',
         personality: [],
         bubos: [...this.state.bubos, bubo],
@@ -77,11 +69,6 @@ class BuboSelector extends React.Component {
               <SelectTrait handleClick={this.handleColor} value="yellow" />
               <SelectTrait handleClick={this.handleColor} value="orange" />
               <SelectTrait handleClick={this.handleColor} value="red" />
-            </div>
-            <div>
-              sparkle:
-              <SelectTrait handleClick={this.handleSparkle} value="green" />
-              <SelectTrait handleClick={this.handleSparkle} value="yellow" />
             </div>
             <div>
               accessory:
