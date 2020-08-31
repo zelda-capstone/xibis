@@ -41,9 +41,11 @@ class LostAndFound extends Component {
     this.sounds.fade(this.sounds.volume(), 0, 1000, this.source)
   }
 
-  // shuffleBubos = () => {
-
-  // }
+  shuffleOrder = () => {
+    const length = this.random.length;
+    const random = Math.floor(Math.random() * length)
+    return random;
+  }
 
   startGame = () => {
     this.setState({ playing: true })
@@ -133,7 +135,7 @@ class LostAndFound extends Component {
             </div>
           {
             this.state.playing ? (
-              <div className='lost-bubos-container'>
+              <div className={`lost-bubos-container ${this.shuffleOrder}`}>
                 {
                   this.state.random.map((bubo, index) => {
                     return (
