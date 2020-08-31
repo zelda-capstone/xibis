@@ -19,7 +19,7 @@ class Map extends React.Component {
         <div id='map-container'>
           <h1>Map</h1>
             <div id='map'>
-              {
+              {/* {
                 puzzles ? (
                   (
                     puzzles.map(puzzle => {
@@ -31,27 +31,27 @@ class Map extends React.Component {
                     })
                   )
                 ) : (<h3> Loading... </h3>)
-              }
-              {/* <div>
+              } */}
+              <div>
                 <Link to='/test-puzzle'>
-                    <MapIcon puzzle={puzzles[0]} />
+                    <MapIcon />
                 </Link>
                 </div>
               <div>
                 <Link to='/wormhole'>
-                  <MapIcon puzzle={puzzles[0]} />
+                  <MapIcon  />
                 </Link>
               </div>
               <div>
                 <Link to='/lost-and-found'>
-                  <MapIcon puzzle={puzzles[0]} />
+                  <MapIcon  />
                 </Link>
               </div>
               <div>
                 <Link to='/block-puzzle'>
-                  <MapIcon puzzle={puzzles[0]}  />
+                  <MapIcon  />
                 </Link>
-              </div> */}
+              </div>
           </div>
         </div>
       </>

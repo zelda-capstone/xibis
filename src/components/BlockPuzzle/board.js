@@ -48,8 +48,8 @@ export default class Board extends React.Component {
     return (
       <div
         style={{
-          width: '1000px',
-          height: '600px',
+          width: '500px',
+          height: '300px',
           backgroundImage: `url(${PuzzleGrid})`,
         }}
       ></div>
