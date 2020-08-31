@@ -130,7 +130,7 @@
 
 body {
   margin: 0;
-  font-family: "Anonymous Pro";
+  font-family: "Anonymous Pro", sans-serif;
   color: white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -176,7 +176,7 @@ body {
 }
 
 #navbar button {
-  font-family: "Anonymous Pro";
+  font-family: "Anonymous Pro", sans-serif;
   font-size: 1rem;
 }
 
@@ -251,7 +251,7 @@ body {
 
 .buttons-container button {
   margin: 2rem;
-  font-family: "Anonymous Pro";
+  font-family: "Anonymous Pro", sans-serif;
   font-size: 1rem;
 }
 
@@ -261,7 +261,7 @@ body {
 }
 
 .button {
-  font-family: "Anonymous Pro";
+  font-family: "Anonymous Pro", sans-serif;
   font-size: 1rem;
   border: none;
   margin: 0.5rem;
@@ -311,7 +311,10 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  height: 21rem;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  height: 22rem;
   width: 27rem;
   -webkit-box-shadow: 3px 3px #c6a0a0;
           box-shadow: 3px 3px #c6a0a0;
@@ -326,22 +329,7 @@ body {
 }
 
 .custom-bubo-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  height: 9rem;
+  height: 8rem;
   width: 6rem;
   -webkit-animation: hover 2s alternate infinite;
           animation: hover 2s alternate infinite;

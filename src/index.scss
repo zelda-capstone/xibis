@@ -1,4 +1,4 @@
-$gameFont: 'Anonymous Pro';
+$gameFont: 'Anonymous Pro', sans-serif;
 
 @mixin plainLink {
   text-decoration: none;
@@ -150,7 +150,8 @@ body {
 
 .bubo-selector {
   @include flexCenter(column);
-  height: 21rem;
+  justify-content: flex-start;
+  height: 22rem;
   width: 27rem;
   box-shadow: 3px 3px rgb(198, 160, 160);
   //position: relative;
@@ -164,8 +165,8 @@ body {
 }
 
 .custom-bubo-container {
-  @include flexCenter(column);
-  height: 9rem;
+  //@include flexCenter(column);
+  height: 8rem;
   width: 6rem;
   animation: hover 2s alternate infinite;
   &:hover + div {
