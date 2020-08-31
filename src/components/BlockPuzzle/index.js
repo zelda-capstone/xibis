@@ -1,23 +1,31 @@
 import React from 'react'
 import Board from './board'
 import Icon from './icon'
+import Destination from './ImageAssets/pawel-czerwinski-F_dg3zc95Jc-unsplash.jpg'
 
 export default function BlockPuzzle() {
   return (
     <div
       style={{
-        margin: '15px',
-        width: '75vw',
+        margin: '1em',
+        width: '95vw',
         height: '95vh',
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
       }}
     >
+      <div>This is where I'll render a container of bubos!</div>
       <div>
         <Board />
-      </div>
-      <div style={{height: '50%'}}>
         <Icon />
+      </div>
+      <div>
+        <img
+          alt="an image of your destination planet"
+          src={Destination}
+          style={{width: '25vw'}}
+        />
       </div>
     </div>
   )
