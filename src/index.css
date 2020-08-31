@@ -34,6 +34,100 @@
   }
 }
 
+@-webkit-keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 55%;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 55%;
+  }
+}
+
+@-webkit-keyframes cursor {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}
+
+@keyframes cursor {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}
+
+@-webkit-keyframes hover {
+  from {
+    -webkit-transform: translateY(10%);
+            transform: translateY(10%);
+  }
+  to {
+    -webkit-transform: translateY(35%);
+            transform: translateY(35%);
+  }
+}
+
+@keyframes hover {
+  from {
+    -webkit-transform: translateY(10%);
+            transform: translateY(10%);
+  }
+  to {
+    -webkit-transform: translateY(35%);
+            transform: translateY(35%);
+  }
+}
+
+@-webkit-keyframes twinkle {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+@keyframes twinkle {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+@-webkit-keyframes clouds-passing {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
+}
+
+@keyframes clouds-passing {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 0;
+  }
+}
+
 body {
   margin: 0;
   font-family: "Anonymous Pro";
@@ -103,44 +197,6 @@ body {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   color: white;
-}
-
-@-webkit-keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 55%;
-  }
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 55%;
-  }
-}
-
-@-webkit-keyframes cursor {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: orange;
-  }
-}
-
-@keyframes cursor {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: orange;
-  }
 }
 
 .story {
@@ -291,6 +347,36 @@ body {
           animation: hover 2s alternate infinite;
 }
 
+.custom-bubo-container:hover + div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  border-radius: 3px;
+  padding: .5rem;
+  position: absolute;
+  width: 5rem;
+  background: -webkit-gradient(linear, left top, left bottom, from(lavender), to(#bfbdbd));
+  background: linear-gradient(lavender, #bfbdbd);
+  font-size: .7rem;
+  z-index: 3;
+}
+
+.bubo-stats {
+  display: none;
+}
+
 .custom-bubo {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -308,38 +394,10 @@ body {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin-bottom: 4rem;
-  width: 7rem;
-  height: 7rem;
+  width: 6rem;
+  height: 6rem;
   background-size: contain;
   background-repeat: no-repeat;
-}
-
-.custom-bubo div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  justify-content: center;
-  width: 1.3rem;
-  height: 1.3rem;
-  margin: 2px;
-}
-
-.custom-bubo div div {
-  background: #03032e;
-  width: 0.5rem;
-  height: 0.5rem;
 }
 
 .line-bottom {
@@ -507,6 +565,13 @@ body {
   font-size: 2rem;
 }
 
+.map-icon {
+  height: 6rem;
+  width: 6rem;
+  z-index: 5;
+  background: transparent url(https://i.ibb.co/Krh0bqj/500px-Sphere-monochrome-simple-svg.png);
+}
+
 #start-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -566,10 +631,6 @@ body {
   -webkit-box-align: space-between;
       -ms-flex-align: space-between;
           align-items: space-between;
-  width: 100vw;
-  height: 100vh;
-  background: -webkit-gradient(linear, left top, left bottom, from(black), to(#0c0c24));
-  background: linear-gradient(black, #0c0c24);
 }
 
 .puzzle {
@@ -605,6 +666,28 @@ body {
   margin: 3rem;
 }
 
+.mirror {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  background: transparent url(https://i.ibb.co/nBvqPS4/mirror.png) repeat top center;
+  height: 100vh;
+  width: 100vw;
+  z-index: -2;
+}
+
 .lost-and-found {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -621,13 +704,21 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  text-align: center;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  color: #5a5a5a;
-  background: transparent url(https://i.ibb.co/nBvqPS4/mirror.png) repeat top center;
-  width: 100vw;
+  color: #4b4848;
+  z-index: 1;
   height: 100vh;
+  margin: 8rem;
+}
+
+.lf-text {
+  margin: 1rem;
+  color: #5a5a5a;
+  z-index: 0;
+  width: 40rem;
 }
 
 .lost-bubos-container {
@@ -653,134 +744,7 @@ body {
 }
 
 .lost-bubo {
-  margin: 1rem;
-}
-
-@-webkit-keyframes hover {
-  from {
-    -webkit-transform: translateY(10%);
-            transform: translateY(10%);
-  }
-  to {
-    -webkit-transform: translateY(35%);
-            transform: translateY(35%);
-  }
-}
-
-@keyframes hover {
-  from {
-    -webkit-transform: translateY(10%);
-            transform: translateY(10%);
-  }
-  to {
-    -webkit-transform: translateY(35%);
-            transform: translateY(35%);
-  }
-}
-
-.bubo {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  width: 3rem;
-  height: 3.5rem;
-  margin-top: 1rem;
-  margin-left: 1.5rem;
-  border-radius: 50%;
-  background: #86bae8;
-  -webkit-animation: hover 3s infinite;
-          animation: hover 3s infinite;
-  -webkit-animation-duration: 1500ms;
-          animation-duration: 1500ms;
-  -webkit-animation-direction: alternate;
-          animation-direction: alternate;
-}
-
-.bubo div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  width: 1rem;
-  height: 1rem;
-  border-radius: 50%;
-  margin: 2px;
-  background: #f2f2ef;
-}
-
-.bubo div div {
-  background: #03032e;
-  width: 0.5rem;
-  height: 0.5rem;
-}
-
-.raft {
-  width: 10rem;
-  height: 10rem;
-  background: radial-gradient(#1a0f0f, #522f1d);
-  border-radius: 10px;
-}
-
-@-webkit-keyframes twinkle {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: -10000px 5000px;
-  }
-}
-
-@keyframes twinkle {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: -10000px 5000px;
-  }
-}
-
-@-webkit-keyframes clouds-passing {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 10000px 0;
-  }
-}
-
-@keyframes clouds-passing {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 10000px 0;
-  }
+  margin: .5rem;
 }
 
 .space-sky {
@@ -814,7 +778,7 @@ body {
 
 .clouds {
   background: transparent url(https://i.ibb.co/1ZK2Vpc/purple-fog.png) repeat top center;
-  z-index: -1;
+  z-index: 0;
   -webkit-animation: clouds-passing 300s linear infinite;
           animation: clouds-passing 300s linear infinite;
 }

@@ -7,10 +7,7 @@ const Intro = () => {
     <>
       <div className='story'>
         <div className='typewriter'>
-          Here, our initial story will begin...
-        </div>
-        <div className='typewriter'>
-          Are you ready to get started?
+          Here, our initial story will begin...are you ready to get started?
         </div>
         <div className='buttons-container'>
           <button><Link to={ROUTES.ASSEMBLE_BUBOS} className='button'>Yes</Link></button>
