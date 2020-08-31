@@ -34,7 +34,6 @@ class LostAndFound extends Component {
     const bubosRef = this.props.user.bubosRef
     this.props.getBubos(bubosRef)
     this.source = this.sounds.play('bubos_atmosphere')
-    //this.shuffleBubos()
   }
 
   componentWillUnmount() {
@@ -42,9 +41,7 @@ class LostAndFound extends Component {
   }
 
   shuffleOrder = () => {
-    const length = this.random.length;
-    const random = Math.floor(Math.random() * length)
-    return random;
+    return Math.floor(Math.random() * 10)
   }
 
   startGame = () => {
@@ -135,14 +132,14 @@ class LostAndFound extends Component {
             </div>
           {
             this.state.playing ? (
-              <div className={`lost-bubos-container ${this.shuffleOrder}`}>
+              <div className='lost-bubos-container'>
                 {
                   this.state.random.map((bubo, index) => {
                     return (
                       <div
                         key={index}
                         onClick={this.handleIncorrect}
-                        className='lost-bubo'>
+                        className={`lost-bubo order-${this.shuffleOrder()}`}>
                           <CustomizableBubo {...lostBubos[index]} />
                       </div>
                     )
@@ -153,7 +150,7 @@ class LostAndFound extends Component {
                     lostBubos.map((bubo, index) => {
                       return (
                         <div key={index}
-                          className='lost-bubo'
+                          className={`lost-bubo order-${this.shuffleOrder()}`}
                           onClick={() => this.handleFind(bubo)}>
                             <CustomizableBubo {...bubo} />
                         </div>
