@@ -14,16 +14,23 @@ import Item from './GridItem'
 import BuboRow from './BuboRow'
 
 
+
 class Wormhole extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            ogBubos: this.props.bubos,
+            ogBubos: [],
             winBubos: []
         }
-        
     }
     
+    componentWillReceiveProps = () => {
+        this.setState({
+            ogBubos: this.props.bubos
+        })
+    }
+
+
     componentDidMount = () => {
         const user = this.props.user;
         this.props.getBubos(user.bubosRef);
