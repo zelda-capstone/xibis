@@ -132,7 +132,7 @@
 
 body {
   margin: 0;
-  font-family: "Anonymous Pro";
+  font-family: "Anonymous Pro", sans-serif;
   color: white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -178,7 +178,7 @@ body {
 }
 
 #navbar button {
-  font-family: "Anonymous Pro";
+  font-family: "Anonymous Pro", sans-serif;
   font-size: 1rem;
 }
 
@@ -253,7 +253,7 @@ body {
 
 .buttons-container button {
   margin: 2rem;
-  font-family: "Anonymous Pro";
+  font-family: "Anonymous Pro", sans-serif;
   font-size: 1rem;
 }
 
@@ -263,7 +263,7 @@ body {
 }
 
 .button {
-  font-family: "Anonymous Pro";
+  font-family: "Anonymous Pro", sans-serif;
   font-size: 1rem;
   border: none;
   margin: 0.5rem;
@@ -313,7 +313,10 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  height: 21rem;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  height: 22rem;
   width: 27rem;
   -webkit-box-shadow: 3px 3px #c6a0a0;
           box-shadow: 3px 3px #c6a0a0;
@@ -775,5 +778,65 @@ body {
   z-index: 0;
   -webkit-animation: clouds-passing 300s linear infinite;
           animation: clouds-passing 300s linear infinite;
+}
+
+.order-1 {
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+}
+
+.order-2 {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+}
+
+.order-3 {
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+}
+
+.order-4 {
+  -webkit-box-ordinal-group: 5;
+      -ms-flex-order: 4;
+          order: 4;
+}
+
+.order-5 {
+  -webkit-box-ordinal-group: 6;
+      -ms-flex-order: 5;
+          order: 5;
+}
+
+.order-6 {
+  -webkit-box-ordinal-group: 7;
+      -ms-flex-order: 6;
+          order: 6;
+}
+
+.order-7 {
+  -webkit-box-ordinal-group: 8;
+      -ms-flex-order: 7;
+          order: 7;
+}
+
+.order-8 {
+  -webkit-box-ordinal-group: 9;
+      -ms-flex-order: 8;
+          order: 8;
+}
+
+.order-9 {
+  -webkit-box-ordinal-group: 10;
+      -ms-flex-order: 9;
+          order: 9;
+}
+
+.order-10 {
+  -webkit-box-ordinal-group: 11;
+      -ms-flex-order: 10;
+          order: 10;
 }
 /*# sourceMappingURL=index.css.map */

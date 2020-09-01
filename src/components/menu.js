@@ -23,10 +23,9 @@ const Menu = (props) => {
         </div>
       )} */}
 
-        <Link to='hint'><div>?</div></Link>
+        {/* <Link to='hint'><div>?</div></Link> */}
         <Link to='/map'><div>Map</div></Link>
         <Link to={next}><div>Next</div></Link>
-
     </div>
     </>
   )
