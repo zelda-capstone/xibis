@@ -1,6 +1,6 @@
 import React from 'react'
 import Board from './board'
-import Icon from './icon'
+import AllPieces from './allPieces'
 import Destination from './ImageAssets/pawel-czerwinski-F_dg3zc95Jc-unsplash.jpg'
 import BuboContainer from './bubo-container'
 
@@ -26,7 +26,7 @@ export default function BlockPuzzle() {
         </div>
         <div>
           <Board />
-          <Icon />
+          <AllPieces />
         </div>
         <div>
           <img

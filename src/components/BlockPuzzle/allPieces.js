@@ -2,7 +2,7 @@ import React from 'react'
 import {PiecesArray} from './ImageAssets/index'
 import SinglePiece from './singlePiece'
 
-export default function Icon() {
+export default function AllPieces() {
   return (
     <div
       style={{
