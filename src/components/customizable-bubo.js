@@ -13,8 +13,6 @@ const CustomizableBubo = (props) => {
     : (personality = ['test', 'test'])
   let buboColor
   props.color ? (buboColor = props.color) : (buboColor = 'blank')
-  // let sparkleColor
-  // props.sparkle ? (sparkleColor = props.sparkle) : (sparkleColor = 'blank')
   let buboAccessory
   props.accessory ? (buboAccessory = props.accessory) : (buboAccessory = null)
   return (
