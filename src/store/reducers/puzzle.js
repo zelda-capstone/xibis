@@ -1,6 +1,5 @@
 const GET_PUZZLES = 'GET_PUZZLES'
 const RESET_PUZZLES = 'RESET_PUZZLES'
-// GET_MAP returns all 'unlocked' puzzles?
 
 const getPuzzles = puzzles => {
   return {
@@ -31,14 +30,26 @@ export const getPuzzlesCollection = puzzlesRef => {
 export const resetPuzzlesCollection = puzzlesRef => {
   return async function (dispatch) {
     try {
-      const puzzlesCollection = await puzzlesRef.get()
-      puzzlesCollection.forEach(doc => {
-        let puzzle = puzzlesRef.doc(doc.id)
-        return puzzle.update({ unlocked: false })
+      await puzzlesRef.doc('block').set({
+        name: 'block-puzzle',
+        planet: 'Tetris',
+        imageUrl: '',
+        unlocked: false
       })
-       //update the puzzles collection to "lock" all puzzles
-      const updatedPuzzles = puzzlesCollection.docs.map(doc => doc.data())
-      // get the array of puzzles again and send it
+      await puzzlesRef.doc('reflection').set({
+        name: 'reflection',
+        planet: 'Aguilera',
+        imageUrl: '',
+        unlocked: false
+      })
+      await puzzlesRef.doc('wormhole').set({
+        name: 'worhmhole',
+        planet: 'Tropics',
+        imageUrl: '',
+        unlocked: true
+      })
+      const puzzles = await puzzlesRef.get()
+      const updatedPuzzles = puzzles.docs.map(doc => doc.data())
       dispatch (resetPuzzles(updatedPuzzles))
     } catch (err) {
       console.error(err)

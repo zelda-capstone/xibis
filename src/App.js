@@ -39,16 +39,16 @@ class App extends React.Component {
 
 const mapState = (state) => {
   return {
-    user: state.user,
+    //user: state.user,
     session: state.session
   }
 }
 
-const mapDispatch = (dispatch) => {
-  return {
-    // setUser: (userId) => dispatch(setUserOnState(userId)),
-  }
-}
+// const mapDispatch = (dispatch) => {
+//   return {
+//     // setUser: (userId) => dispatch(setUserOnState(userId)),
+//   }
+// }
 
-export default compose(connect(mapState, mapDispatch), withAuthentication)(App)
+export default compose(connect(mapState), withAuthentication)(App)
 

@@ -1,11 +1,18 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 //import { setUser } from '../store/reducers/user'
 import { resetBubosCollection, getBubosCollection } from '../store/reducers/bubo'
 import { resetPuzzlesCollection, getPuzzlesCollection } from '../store/reducers/puzzle'
 
 class StartGame extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      loadingGame: false,
+      gameLoaded: false
+    }
+  }
 
   startGame = () => {
     const puzzlesRef = this.props.user.puzzlesRef
@@ -20,24 +27,36 @@ class StartGame extends React.Component {
 
   loadGame = () => {
     // check to see if they have a game to load
+    this.setState({ loadingGame: true })
     const bubosRef = this.props.user.bubosRef
     const puzzlesRef = this.props.user.puzzlesRef
-    this.props.getPuzzles(puzzlesRef);
-    this.props.getBubos(bubosRef)
+    if (bubosRef) {
+      this.props.getPuzzles(puzzlesRef);
+      this.props.getBubos(bubosRef)
+      this.setState({ loadingGame: false, gameLoaded: true })
+    } else {
+      this.setState({ loadingGame: false })
+    }
   }
 
   render() {
+    if (this.state.loadingGame) {
+      return (
+        <div>Loading...</div>
+      )
+    }
+
+    if (this.state.gameLoaded) {
+      return <Redirect to='/map' />
+    }
+
     return (
-      <>
-        <div id='start-container'>
-          <Link to='/intro' onClick={this.startGame} >
-            <div>start new journey</div>
-          </Link>
-          <Link onClick={this.loadGame} to='/map'>
-            <div>load game</div>
-          </Link>
-        </div>
-      </>
+      <div id='start-container'>
+        <Link to='/intro' onClick={this.startGame} >
+          <div>start new journey</div>
+        </Link>
+        <div onClick={this.loadGame}>load game</div>
+      </div>
     )
   }
 }

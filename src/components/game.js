@@ -15,7 +15,6 @@ import {
   LostAndFound,
   Menu,
   Hint,
-  User,
   Wormhole,
   BlockPuzzle,
 } from '../components'
@@ -38,34 +37,30 @@ class Game extends React.Component {
 
   render() {
     const user = this.props.user;
+
     if (user) {
-    return (
-      <Router>
-          <Route exact path={ROUTES.LANDING} render={() => <StartGame user={user}/>} />
-          <Route component={NavBar} />
-          <Route exact path={ROUTES.INTRO} component={Intro} />
-          <Route
-                exact
-                path={ROUTES.ASSEMBLE_BUBOS}
-                render={() => <BuboSelector user={this.props.user} />}
-              />
-          <Route component={Menu} />
-
-          <Route exact path={ROUTES.MAP} component={Map} />
-            <Switch>
-              {/* <Route path={ROUTES.LANDING} render={() => <StartGame user={user}/>} /> */}
-              <Route exact path={ROUTES.HINT} component={Hint} />
-
-              <Route exact path={ROUTES.TEST} component={TestPuzzle} />
-              <Route exact path={ROUTES.WORMHOLE} component={Wormhole} />
-              <Route
-                exact path={ROUTES.LOST_AND_FOUND}
-                render={() => <LostAndFound user={this.props.user} />}
-              />
-              <Route exact path={ROUTES.BLOCK_PUZZLE} component={BlockPuzzle} />
-            </Switch>
-      </Router>
-    )
+      return (
+        <Router>
+            <Route component={NavBar} />
+            <Route component={Menu} />
+            <Route exact path={ROUTES.LANDING} render={() => <StartGame user={user}/>} />
+            <Route exact path={ROUTES.INTRO} component={Intro} />
+            <Route
+                  exact
+                  path={ROUTES.ASSEMBLE_BUBOS}
+                  render={() => <BuboSelector user={this.props.user} />}
+                />
+            <Route exact path={ROUTES.MAP} component={Map} />
+            {/* <Route exact path={ROUTES.HINT} component={Hint} /> */}
+            {/* <Route exact path={ROUTES.TEST} component={TestPuzzle} /> */}
+            <Route exact path={ROUTES.WORMHOLE} component={Wormhole} />
+            <Route
+              exact path={ROUTES.LOST_AND_FOUND}
+              render={() => <LostAndFound user={this.props.user} />}
+            />
+            <Route exact path={ROUTES.BLOCK_PUZZLE} component={BlockPuzzle} />
+        </Router>
+      )
     }
   }
 }

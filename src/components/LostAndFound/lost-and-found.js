@@ -12,7 +12,7 @@ class LostAndFound extends Component {
       gameOver: false,
       won: false,
       random: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      lost: this.props.bubos,
+      lost: this.props.bubos || [],
       found: 0
     }
     this.sounds = new Howl({
@@ -35,6 +35,10 @@ class LostAndFound extends Component {
     this.props.getBubos(bubosRef)
     this.source = this.sounds.play('bubos_atmosphere')
   }
+
+  // UNSAFE_componentWillReceiveProps() {
+  //   this.setState({ lost: this.props.bubos })
+  // }
 
   componentWillUnmount() {
     this.sounds.fade(this.sounds.volume(), 0, 1000, this.source)
