@@ -1,4 +1,4 @@
-$gameFont: 'Anonymous Pro';
+$gameFont: 'Anonymous Pro', sans-serif;
 
 @mixin plainLink {
   text-decoration: none;
@@ -159,7 +159,8 @@ body {
 
 .bubo-selector {
   @include flexCenter(column);
-  height: 21rem;
+  justify-content: flex-start;
+  height: 22rem;
   width: 27rem;
   box-shadow: 3px 3px rgb(198, 160, 160);
   //position: relative;
@@ -351,33 +352,6 @@ body {
   margin: 0.5rem;
 }
 
-// .bubo {
-//   @include flexCenter(row);
-//   width: 3rem;
-//   height: 3.5rem;
-//   margin-top: 1rem;
-//   margin-left: 1.5rem;
-//   border-radius: 50%;
-//   background: rgb(134, 186, 232);
-//   animation: hover 3s infinite;
-//   animation-duration: 1500ms;
-//   animation-direction: alternate;
-//   div {
-//     @include flexCenter(row);
-//     justify-content: flex-end;
-//     width: 1rem;
-//     height: 1rem;
-//     border-radius: 50%;
-//     margin: 2px;
-//     background: rgb(242, 242, 239);
-//     div {
-//       background: rgb(3, 3, 46);
-//       width: 0.5rem;
-//       height: 0.5rem;
-//     }
-//   }
-// }
-
 // .raft {
 //   width: 10rem;
 //   height: 10rem;
@@ -424,4 +398,44 @@ body {
     top center;
   z-index: 0;
   animation: clouds-passing 300s linear infinite;
+}
+
+.order-1 {
+  order: 1;
+}
+
+.order-2 {
+  order: 2;
+}
+
+.order-3 {
+  order: 3;
+}
+
+.order-4 {
+  order: 4;
+}
+
+.order-5 {
+  order: 5;
+}
+
+.order-6 {
+  order: 6;
+}
+
+.order-7 {
+  order: 7;
+}
+
+.order-8 {
+  order: 8;
+}
+
+.order-9 {
+  order: 9
+}
+
+.order-10 {
+  order: 10
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import BuboOptions from '../pixelArt'
 //may not end up using spritesheet, trying with still images at first
-import Spritesheet from 'react-responsive-spritesheet'
+//import Spritesheet from 'react-responsive-spritesheet'
 
 //import antennae from '../pixelArt/antennae.svg'
 
