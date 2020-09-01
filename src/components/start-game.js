@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 //import { setUser } from '../store/reducers/user'
 import { resetBubosCollection, getBubosCollection } from '../store/reducers/bubo'
-import { resetPuzzlesCollection, getPuzzlesCollection } from '../store/reducers/puzzle'
+import { resetPuzzlesCollection, getUnlockedPuzzles } from '../store/reducers/puzzle'
 
 class StartGame extends React.Component {
   constructor(props) {
@@ -75,7 +75,7 @@ const mapDispatch = dispatch => {
     resetBubos: bubosRef => dispatch(resetBubosCollection(bubosRef)),
     resetPuzzles: puzzlesRef => dispatch(resetPuzzlesCollection(puzzlesRef)),
     getBubos: bubosRef => dispatch(getBubosCollection(bubosRef)),
-    getPuzzles: puzzlesRef => dispatch(getPuzzlesCollection(puzzlesRef))
+    getPuzzles: puzzlesRef => dispatch(getUnlockedPuzzles(puzzlesRef))
   }
 }
 

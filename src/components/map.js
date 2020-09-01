@@ -3,13 +3,12 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { MapIcon } from '../components'
 
-import { getPuzzlesCollection } from '../store/reducers/puzzle'
+import { getUnlockedPuzzles } from '../store/reducers/puzzle'
 
 class Map extends React.Component {
   componentDidMount() {
     const puzzlesRef = this.props.user.puzzlesRef
     this.props.getPuzzles(puzzlesRef);
-    // get puzzles where unlocked = true ?
   }
 
   render() {
@@ -19,7 +18,7 @@ class Map extends React.Component {
         <div id='map-container'>
           <h1>Map</h1>
             <div id='map'>
-              {/* {
+              {
                 puzzles ? (
                   (
                     puzzles.map(puzzle => {
@@ -31,8 +30,8 @@ class Map extends React.Component {
                     })
                   )
                 ) : (<h3> Loading... </h3>)
-              } */}
-              <div>
+              }
+              {/* <div>
                 <Link to='/test-puzzle'>
                     <MapIcon />
                 </Link>
@@ -51,7 +50,7 @@ class Map extends React.Component {
                 <Link to='/block-puzzle'>
                   <MapIcon  />
                 </Link>
-              </div>
+              </div> */}
           </div>
         </div>
       </>
@@ -68,7 +67,7 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    getPuzzles: puzzleRef => dispatch(getPuzzlesCollection(puzzleRef))
+    getPuzzles: puzzleRef => dispatch(getUnlockedPuzzles(puzzleRef))
   }
 }
 

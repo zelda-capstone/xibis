@@ -15,10 +15,10 @@ const resetPuzzles = puzzles => {
   }
 }
 
-export const getPuzzlesCollection = puzzlesRef => {
+export const getUnlockedPuzzles = puzzlesRef => {
   return async function (dispatch) {
     try {
-      const puzzlesCollection = await puzzlesRef.get()
+      const puzzlesCollection = await puzzlesRef.where('unlocked', '==', true).get()
       const puzzles = puzzlesCollection.docs.map(doc => doc.data())
       dispatch(getPuzzles(puzzles))
     } catch (err) {
