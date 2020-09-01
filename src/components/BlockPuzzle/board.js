@@ -51,6 +51,7 @@ export default class Board extends React.Component {
           width: '500px',
           height: '300px',
           backgroundImage: `url(${PuzzleGrid})`,
+          backgroundRepeat: 'no-repeat',
         }}
       ></div>
     )
