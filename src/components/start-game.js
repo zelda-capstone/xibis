@@ -1,10 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import {withAuthentication} from './Auth'
-import {compose} from 'recompose'
-
-import { setUserOnState } from '../store/reducers/user'
+//import { setUser } from '../store/reducers/user'
 import { resetBubosCollection, getBubosCollection } from '../store/reducers/bubo'
 import { resetPuzzlesCollection, getPuzzlesCollection } from '../store/reducers/puzzle'
 
@@ -55,7 +52,7 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    setUser: userRef => dispatch(setUserOnState(userRef)),
+    // setUser: userRef => dispatch(setUserOnState(userRef)),
     resetBubos: bubosRef => dispatch(resetBubosCollection(bubosRef)),
     resetPuzzles: puzzlesRef => dispatch(resetPuzzlesCollection(puzzlesRef)),
     getBubos: bubosRef => dispatch(getBubosCollection(bubosRef)),
@@ -63,4 +60,4 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default compose(connect(mapState, mapDispatch), withAuthentication)(StartGame)
+export default connect(mapState, mapDispatch)(StartGame)

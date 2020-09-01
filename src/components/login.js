@@ -8,7 +8,7 @@ import {SignUpLink} from './signup'
 
 const Login = (props) => (
     <div>
-      <h1>SignIn</h1>
+      <h1>Sign In</h1>
       <LogInForm />
       <SignUpLink />
     </div>
@@ -33,8 +33,8 @@ class LogInFormBase extends Component {
       this.props.firebase
         .doSignInWithEmailAndPassword(email, password)
         .then(() => {
-          this.setState({ ...INITIAL_STATE });
-          this.props.history.push(ROUTES.START);
+          //this.setState({ ...INITIAL_STATE });
+          this.props.history.push(ROUTES.LANDING);
         })
         .catch(error => {
           this.setState({ error });
@@ -91,7 +91,6 @@ class LogInFormBase extends Component {
       );
     }
 }
-
 
 
 const LogInForm = compose(

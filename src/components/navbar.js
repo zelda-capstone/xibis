@@ -6,7 +6,7 @@ const NavBar = (props) => {
   return (
     <div id='navbar'>
       <SignOut />
-      <Link to='/home'><button>Progress</button></Link>
+      {/* <Link to='/home'><button>Progress</button></Link> */}
     </div>
   )
 }

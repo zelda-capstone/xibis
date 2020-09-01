@@ -66,8 +66,7 @@ class SignUpFormBase extends Component {
           );
         })
         .then(() => {
-          this.setState({ ...INITIAL_STATE });
-          this.props.history.push(ROUTES.START);
+          this.props.history.push(ROUTES.LANDING);
         })
         .catch(error => {
           if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {

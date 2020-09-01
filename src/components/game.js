@@ -1,14 +1,11 @@
 import React from 'react'
 import {Route, BrowserRouter as Router, Switch} from 'react-router-dom'
-import {withAuthentication} from '../components/Auth'
-import {compose} from 'recompose'
 import {connect} from 'react-redux'
+import {compose} from 'recompose'
+import {withFirebase} from '../firebase'
 import * as ROUTES from '../constants/routes'
 
 import {
-  Login,
-  SignUpPage,
-  LandingPage,
   NavBar,
   StartGame,
   Intro,
@@ -23,7 +20,6 @@ import {
   BlockPuzzle,
 } from '../components'
 
-import {setUserOnState} from '../store/reducers/user'
 
 class Game extends React.Component {
   constructor(props) {
@@ -42,35 +38,35 @@ class Game extends React.Component {
 
   render() {
     const user = this.props.user;
+    if (user) {
     return (
       <Router>
-        <Route component={Menu} />
-            <Route component={NavBar} />
-            <Switch>
-              <Route path={ROUTES.LOG_IN} render={() => <Login />} />
-              <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-              <Route exact path={ROUTES.LANDING} component={LandingPage} />
-              <Route path={ROUTES.START} render={() => <StartGame user={user}/>} />
-              <Route exact path={ROUTES.INTRO} component={Intro} />
-              <Route
+          <Route exact path={ROUTES.LANDING} render={() => <StartGame user={user}/>} />
+          <Route component={NavBar} />
+          <Route exact path={ROUTES.INTRO} component={Intro} />
+          <Route
                 exact
                 path={ROUTES.ASSEMBLE_BUBOS}
                 render={() => <BuboSelector user={this.props.user} />}
               />
+          <Route component={Menu} />
+
+          <Route exact path={ROUTES.MAP} component={Map} />
+            <Switch>
+              {/* <Route path={ROUTES.LANDING} render={() => <StartGame user={user}/>} /> */}
               <Route exact path={ROUTES.HINT} component={Hint} />
-              <Route exact path={ROUTES.MAP} component={Map} />
+
               <Route exact path={ROUTES.TEST} component={TestPuzzle} />
               <Route exact path={ROUTES.WORMHOLE} component={Wormhole} />
               <Route
-                exact
-                path={ROUTES.LOST_AND_FOUND}
+                exact path={ROUTES.LOST_AND_FOUND}
                 render={() => <LostAndFound user={this.props.user} />}
               />
-              <Route exact path={ROUTES.USER} component={User} />
               <Route exact path={ROUTES.BLOCK_PUZZLE} component={BlockPuzzle} />
             </Switch>
       </Router>
     )
+    }
   }
 }
 
@@ -82,9 +78,9 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    setUser: (userId) => dispatch(setUserOnState(userId)),
+    setUser: user => dispatch({ type: 'SET_USER', user }),
   }
 }
 
-export default compose(connect(mapState, mapDispatch), withAuthentication)(Game)
+export default compose(connect(mapState, mapDispatch), withFirebase)(Game)
 

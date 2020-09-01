@@ -82,7 +82,7 @@ class LostAndFound extends Component {
   }
 
   render() {
-    const lostBubos = this.state.lost;
+    const lostBubos = this.state.lost || [];
 
     if (!this.state.playing && !this.state.gameOver) return (
       <>

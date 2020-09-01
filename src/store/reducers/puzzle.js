@@ -1,6 +1,6 @@
 const GET_PUZZLES = 'GET_PUZZLES'
 const RESET_PUZZLES = 'RESET_PUZZLES'
-// GET_MAP returns all 'unlocked' puzzles
+// GET_MAP returns all 'unlocked' puzzles?
 
 const getPuzzles = puzzles => {
   return {

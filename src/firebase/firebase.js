@@ -59,7 +59,6 @@ class Firebase {
 
   doSignOut = () => this.auth.signOut();
 
-
   onAuthUserListener = (next, fallback) =>
   this.auth.onAuthStateChanged(authUser => {
     if (authUser) {
@@ -92,7 +91,7 @@ class Firebase {
 
 // *** User API ***
 
-user = uid => this.db.collection("users").doc(uid);
+user = uid => this.db.collection('users').doc(uid);
 
 users = () => this.db.collection('users');
 
