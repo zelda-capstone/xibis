@@ -10,44 +10,36 @@ class StartGame extends React.Component {
     super(props)
     this.state = {
       loadingGame: false,
-      gameLoaded: false
+      activeGame: false,
+      msg: ''
     }
+    this.bubosRef = this.props.user.bubosRef
+    this.puzzlesRef = this.props.user.puzzlesRef
   }
 
   startGame = () => {
-    const puzzlesRef = this.props.user.puzzlesRef
-    this.props.resetPuzzles(puzzlesRef);
-    // create + fill a puzzles subcollection?
-
-    const bubosRef = this.props.user.bubosRef
-    if (bubosRef) {
-      this.props.resetBubos(bubosRef)
-    }
+    this.props.resetPuzzles(this.puzzlesRef);
+    this.props.resetBubos(this.bubosRef)
   }
 
-  loadGame = () => {
-    // check to see if they have a game to load
-    this.setState({ loadingGame: true })
-    const bubosRef = this.props.user.bubosRef
-    const puzzlesRef = this.props.user.puzzlesRef
-    if (bubosRef) {
-      this.props.getPuzzles(puzzlesRef);
-      this.props.getBubos(bubosRef)
-      this.setState({ loadingGame: false, gameLoaded: true })
+  loadGame = async () => {
+    await this.props.getBubos(this.bubosRef)
+    if (this.props.bubos.length) {
+      this.props.getPuzzles(this.puzzlesRef);
+      this.setState({ activeGame: true })
     } else {
-      this.setState({ loadingGame: false })
+      this.setState({
+        activeGame: false,
+        msg: `You don't have an active game right now.`
+      })
     }
   }
 
   render() {
-    if (this.state.loadingGame) {
+    if (this.state.activeGame) {
       return (
-        <div>Loading...</div>
+        <Redirect to='/map' />
       )
-    }
-
-    if (this.state.gameLoaded) {
-      return <Redirect to='/map' />
     }
 
     return (
@@ -56,6 +48,7 @@ class StartGame extends React.Component {
           <div>start new journey</div>
         </Link>
         <div onClick={this.loadGame}>load game</div>
+        <div style={{ fontSize: '1rem' }}>{this.state.msg}</div>
       </div>
     )
   }
@@ -71,7 +64,6 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    // setUser: userRef => dispatch(setUserOnState(userRef)),
     resetBubos: bubosRef => dispatch(resetBubosCollection(bubosRef)),
     resetPuzzles: puzzlesRef => dispatch(resetPuzzlesCollection(puzzlesRef)),
     getBubos: bubosRef => dispatch(getBubosCollection(bubosRef)),

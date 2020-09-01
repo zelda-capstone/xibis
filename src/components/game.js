@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route, BrowserRouter as Router, Switch} from 'react-router-dom'
+import {Route, BrowserRouter as Router } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {compose} from 'recompose'
 import {withFirebase} from '../firebase'
@@ -11,10 +11,8 @@ import {
   Intro,
   BuboSelector,
   Map,
-  TestPuzzle,
   LostAndFound,
   Menu,
-  Hint,
   Wormhole,
   BlockPuzzle,
 } from '../components'

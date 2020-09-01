@@ -30,11 +30,11 @@ export const getUnlockedPuzzles = puzzlesRef => {
 export const resetPuzzlesCollection = puzzlesRef => {
   return async function (dispatch) {
     try {
-      await puzzlesRef.doc('block').set({
-        name: 'block-puzzle',
-        planet: 'Tetris',
+      await puzzlesRef.doc('wormhole').set({
+        name: 'wormhole',
+        planet: 'Tropics',
         imageUrl: '',
-        unlocked: false
+        unlocked: true
       })
       await puzzlesRef.doc('reflection').set({
         name: 'reflection',
@@ -42,11 +42,11 @@ export const resetPuzzlesCollection = puzzlesRef => {
         imageUrl: '',
         unlocked: false
       })
-      await puzzlesRef.doc('wormhole').set({
-        name: 'worhmhole',
-        planet: 'Tropics',
+      await puzzlesRef.doc('block').set({
+        name: 'block-puzzle',
+        planet: 'Tetris',
         imageUrl: '',
-        unlocked: true
+        unlocked: false
       })
       const puzzles = await puzzlesRef.get()
       const updatedPuzzles = puzzles.docs.map(doc => doc.data())
