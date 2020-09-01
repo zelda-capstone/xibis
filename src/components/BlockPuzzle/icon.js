@@ -1,40 +1,20 @@
 import React from 'react'
-import Draggable from 'react-draggable'
 import {PiecesArray} from './ImageAssets/index'
+import SinglePiece from './singlePiece'
 
-//here's my new attempt!
-export default class Icon extends React.Component {
-  constructor() {
-    super()
-  }
-
-  render() {
-    return (
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-        }}
-      >
-        {PiecesArray.map((piece) => {
-          return (
-            <Draggable
-              grid={[50, 50]}
-              defaultPosition={{x: 0, y: 15}}
-              key={piece.index}
-            >
-              <div
-                style={{
-                  backgroundImage: `url(${piece.image})`,
-                  height: `${piece.height}px`,
-                  width: `${piece.width}px`,
-                }}
-              ></div>
-            </Draggable>
-          )
-        })}
-      </div>
-    )
-  }
+export default function Icon() {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+      }}
+    >
+      {PiecesArray.map((piece, index) => {
+        const position = piece.location
+        return <SinglePiece key={index} piece={piece} />
+      })}
+    </div>
+  )
 }

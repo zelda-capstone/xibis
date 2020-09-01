@@ -19,7 +19,7 @@ class Wormhole extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            ogBubos: [],
+            ogBubos: this.props.bubos || [],
             winBubos: []
         }
     }

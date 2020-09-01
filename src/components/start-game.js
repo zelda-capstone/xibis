@@ -21,6 +21,7 @@ class StartGame extends React.Component {
     } else {
       //create a bubo collection?
       //this.props.createBuboCollection(userRef)?
+      //we will have to test this with a new user
     }
   }
 
@@ -38,7 +39,7 @@ class StartGame extends React.Component {
           <Link to='/intro' onClick={this.startGame} >
             <div>start new journey</div>
           </Link>
-          <Link to='/'>
+          <Link onClick={this.loadGame} to='/map'>
             <div>load game</div>
           </Link>
         </div>

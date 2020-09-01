@@ -1,10 +1,10 @@
 import React from 'react'
-import { withFirebase } from '../firebase'
+import { connect } from 'react-redux'
 
 class Interlude extends React.Component {
   // async componentDidMount() {
-  //   const puzzleRef = this.props.firebase.puzzles(this.props.name);
-  //   const doc = await puzzleRef.get()
+  //   const puzzleRef = this.props.user.puzzleRef;
+  //   this.props.getPuzzles()
   //   this.interlude = doc.data().interlude;
   // }
 
@@ -12,12 +12,17 @@ class Interlude extends React.Component {
   return (
     <div className='story'>
       <div>
-      {/* <div className='typewriter'> */}
-      On the planet Aguilera, things aren't always as they seem. The mirrored terrain casts uncertain glances over every shoulder. Will the reflections cast shadows of doubt, or will they show your bubos who they truly are inside?
+        {/* {this.interlude} */}
       </div>
     </div>
   )
   }
 }
 
-export default withFirebase(Interlude)
+const mapState = state => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapState)(Interlude)
