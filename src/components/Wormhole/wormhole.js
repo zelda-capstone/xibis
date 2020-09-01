@@ -15,35 +15,36 @@ import BuboRow from './BuboRow'
 
 
 class Wormhole extends React.Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props);
         this.state = {
             ogBubos: this.props.bubos,
             winBubos: []
         }
+        
     }
     
     componentDidMount = () => {
         const user = this.props.user;
         this.props.getBubos(user.bubosRef);
-
-        // const bubos = this.props.bubos;
-        // this.setState({
-        //     ogBubos: [...this.state.ogBubos, ...bubos]
-        // })
     }
 
 
     onMove = (bubo) => {
         const leftBubos = this.state.ogBubos.filter(b => b !== bubo)
-        
-        this.setState({
+
+        this.setState((state) => ({
             ogBubos: leftBubos
-        })
+        }))
+
+        if(this.state.ogBubos.length === 0){
+            return (alert('You won!!') ,this.props.history.push(ROUTES.MAP))
+        }
 
         this.setState((state) => ({
             winBubos: [...this.state.winBubos, bubo ]
         }))
+
     }
 
 
@@ -59,7 +60,6 @@ class Wormhole extends React.Component{
 
     render(){
         const user = this.props.user;
-        const bubos = this.props.bubos;
         
         const grid3 = [0,1,2]
         const grid4 = [0,1,2,3]
@@ -214,8 +214,8 @@ class Wormhole extends React.Component{
                     </Grid>
                     <Grid container item align="center">
                         <Grid container item xs={4}>
-                            {bubos
-                            ? bubos.map((bubo, i) => (
+                            {this.state.ogBubos
+                            ? this.state.ogBubos.map((bubo, i) => (
                                 <div onClick={() => this.onMove(bubo)}>
                                     <Grid
                                         item height={73.5} width={73.5}

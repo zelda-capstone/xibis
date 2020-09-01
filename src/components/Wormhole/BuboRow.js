@@ -12,8 +12,7 @@ class BuboRow extends React.Component{
     }
 
     render(){
-        console.log("ROW", this.props.bubos)
-        console.log("state", this.state.bubos)
+
         return(
             <Grid container item xs={4}>
                 {this.props.bubos
