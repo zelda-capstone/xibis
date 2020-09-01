@@ -15,14 +15,13 @@ export default class Icon extends React.Component {
   }
 
   handleDrag(e, ui) {
-    const {x, y} = this.state.position
-    this.setState({
-      position: {
-        x: x + ui.deltaX,
-        y: y + ui.deltaY,
-      },
-    })
-    console.log('my location ', x, y)
+    const currentPosX = ui.lastX
+    const currentPosY = ui.lastY
+    console.log('x ', currentPosX)
+    console.log('y ', currentPosY)
+    //if location === correctLocation then set piece.disabled = true
+    //that should make the piece 'stick' to the correct location!
+    //maybe add some sort of visual or audio cue to let player know that the piece is set
   }
 
   render() {
@@ -34,13 +33,14 @@ export default class Icon extends React.Component {
           flexWrap: 'wrap',
         }}
       >
-        {PiecesArray.map((piece) => {
+        {PiecesArray.map((piece, index) => {
           return (
             <Draggable
               grid={[50, 50]}
               positionOffset={{x: 0, y: 0}}
-              key={piece.index}
-              onDrag={this.handleDrag}
+              key={index}
+              onStop={this.handleDrag}
+              value={index}
             >
               <div
                 style={{
