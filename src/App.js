@@ -8,81 +8,32 @@ import './index.css'
 
 import {setUserOnState} from './store/reducers/user'
 
-import {
-  Login,
-  SignUpPage,
-  LandingPage,
-  Twinkle,
-  NavBar,
-  StartGame,
-  Intro,
-  BuboSelector,
-  Map,
-  TestPuzzle,
-  LostAndFound,
-  Menu,
-  Hint,
-  User,
-  Wormhole,
-  BlockPuzzle,
-} from './components'
+import { Login, SignUpPage, Twinkle, Game } from './components'
 
 class App extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.authUser = JSON.parse(localStorage.getItem('authUser'))
-  //   if (this.authUser) {
-  //     this.user = {
-  //       username: this.authUser.username,
-  //       userRef: this.props.firebase.user(this.authUser.uid),
-  //       bubosRef: this.props.firebase.bubos(this.authUser.uid),
-  //       puzzlesRef: this.props.firebase.puzzles(this.authUser.uid),
-  //     }
-  //     this.props.setUser(this.user)
-  //   }
-  // }
+  componentDidMount() {
+    console.log(this.props.session)
+  }
 
   render() {
-    const user = this.props.user
+    const authUser = this.props.session.authUser;
 
     return (
       <>
         <Router>
           <Route component={Twinkle} />
-          {!user ? (
-            <Switch>
-              <Route path={ROUTES.LOG_IN} render={() => <Login />} />
-              <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-            </Switch>
-          ) : (
-            <>
-            <Route component={Menu} />
-            <Route component={NavBar} />
-            <Switch>
-              <Route path={ROUTES.LOG_IN} render={() => <Login />} />
-              <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-              <Route exact path={ROUTES.LANDING} component={LandingPage} />
-              <Route path={ROUTES.START} render={() => <StartGame user={user}/>} />
-              <Route exact path={ROUTES.INTRO} component={Intro} />
-              <Route
-                exact
-                path={ROUTES.ASSEMBLE_BUBOS}
-                render={() => <BuboSelector user={this.props.user} />}
-              />
-              <Route exact path={ROUTES.HINT} component={Hint} />
-              <Route exact path={ROUTES.MAP} component={Map} />
-              <Route exact path={ROUTES.TEST} component={TestPuzzle} />
-              <Route exact path={ROUTES.WORMHOLE} component={Wormhole} />
-              <Route
-                exact
-                path={ROUTES.LOST_AND_FOUND}
-                render={() => <LostAndFound user={this.props.user} />}
-              />
-              <Route exact path={ROUTES.USER} component={User} />
-              <Route exact path={ROUTES.BLOCK_PUZZLE} component={BlockPuzzle} />
-            </Switch>
-            </>
-          )}
+          {
+            !authUser ? (
+              <Switch>
+                <Route path={ROUTES.LOG_IN} render={() => <Login />} />
+                <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+              </Switch>
+            ) : (
+              <>
+              <Game />
+              </>
+            )
+          }
         </Router>
       </>
     )
@@ -92,7 +43,7 @@ class App extends React.Component {
 const mapState = (state) => {
   return {
     user: state.user,
-    session: state.session,
+    session: state.session
   }
 }
 

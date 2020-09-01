@@ -191,6 +191,10 @@ body {
   }
 }
 
+.no-hover {
+  pointer-events: none;
+}
+
 .bubo-stats {
   display: none;
 }
@@ -211,7 +215,8 @@ body {
 
 .accessory {
   position: absolute;
-  margin-bottom: 3.5rem;
+  top: 0;
+  //margin-bottom: 3.rem;
   width: 100px;
   height: 100px;
 }

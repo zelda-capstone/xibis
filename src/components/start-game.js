@@ -9,23 +9,11 @@ import { resetBubosCollection, getBubosCollection } from '../store/reducers/bubo
 import { resetPuzzlesCollection, getPuzzlesCollection } from '../store/reducers/puzzle'
 
 class StartGame extends React.Component {
-  constructor(props) {
-    super(props)
-    this.authUser = JSON.parse(localStorage.getItem('authUser'))
-    if (this.authUser) {
-      this.user = {
-        username: this.authUser.username,
-        userRef: this.props.firebase.user(this.authUser.uid),
-        bubosRef: this.props.firebase.bubos(this.authUser.uid),
-        puzzlesRef: this.props.firebase.puzzles(this.authUser.uid),
-      }
-      this.props.setUser(this.user)
-    }
-  }
 
   startGame = () => {
     const puzzlesRef = this.props.user.puzzlesRef
     this.props.resetPuzzles(puzzlesRef);
+    // create + fill a puzzles subcollection?
 
     const bubosRef = this.props.user.bubosRef
     if (bubosRef) {
@@ -34,6 +22,7 @@ class StartGame extends React.Component {
   }
 
   loadGame = () => {
+    // check to see if they have a game to load
     const bubosRef = this.props.user.bubosRef
     const puzzlesRef = this.props.user.puzzlesRef
     this.props.getPuzzles(puzzlesRef);
