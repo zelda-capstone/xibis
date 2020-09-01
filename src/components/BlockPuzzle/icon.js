@@ -6,10 +6,7 @@ export default class Icon extends React.Component {
   constructor() {
     super()
     this.state = {
-      position: {
-        x: 0,
-        y: 0,
-      },
+      pieceStatus: false,
     }
     this.handleDrag = this.handleDrag.bind(this)
   }
@@ -21,7 +18,9 @@ export default class Icon extends React.Component {
     const currentPosY = ui.lastY
     if (currentPosX === position[0] && currentPosY === position[1]) {
       console.log('correct!')
-      e.target.disabled = true
+      this.setState = {
+        pieceStatus: true,
+      }
       //that should make the piece 'stick' to the correct location!
       //maybe add some sort of visual or audio cue to let player know that the piece is set
     } else {
@@ -45,6 +44,7 @@ export default class Icon extends React.Component {
               grid={[50, 50]}
               positionOffset={{x: 0, y: 0}}
               key={index}
+              disabled={this.state.pieceStatus}
               onStop={(e, ui) => {
                 this.handleDrag(e, ui, position)
               }}
