@@ -13,13 +13,14 @@ export default class SinglePiece extends React.Component {
   handleDrag(e, ui, correctPos) {
     const currentPosX = ui.lastX
     const currentPosY = ui.lastY
+    console.log(currentPosX, currentPosY)
     if (currentPosX === correctPos[0] && currentPosY === correctPos[1]) {
       console.log('correct!')
       this.setState({correct: true})
+
       //add some sore of visual cue to let player know they have placed piece correctly
     } else {
       console.log('keep trying!')
-      console.log('is it correct? ', this.state.correct)
     }
   }
 

@@ -12,7 +12,6 @@ export default function Icon() {
       }}
     >
       {PiecesArray.map((piece, index) => {
-        const position = piece.location
         return <SinglePiece key={index} piece={piece} />
       })}
     </div>
