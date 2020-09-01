@@ -174,8 +174,8 @@ body {
 }
 
 .custom-bubo-container {
-  //@include flexCenter(column);
-  height: 8rem;
+  @include flexCenter(column);
+  height: 9rem;
   width: 6rem;
   animation: hover 2s alternate infinite;
   &:hover + div {

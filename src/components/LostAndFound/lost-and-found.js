@@ -44,6 +44,18 @@ class LostAndFound extends Component {
     return Math.floor(Math.random() * 10)
   }
 
+  randomizePersonality = () => {
+    const traits1 = ['powerful', 'hot-headed', 'logical']
+    const traits2 = ['nurturing', 'humble', 'curious']
+
+    function randomNum (list) {
+      return Math.floor(Math.random() * list.length)
+    }
+    const randomIndex = randomNum(traits1)
+    const randomIndex2 = randomNum(traits2)
+    return [traits1[randomIndex], traits2[randomIndex2]]
+  }
+
   startGame = () => {
     this.setState({ playing: true })
   }
@@ -140,7 +152,9 @@ class LostAndFound extends Component {
                         key={index}
                         onClick={this.handleIncorrect}
                         className={`lost-bubo order-${this.shuffleOrder()}`}>
-                          <CustomizableBubo {...lostBubos[index]} />
+                          <CustomizableBubo
+                            {...lostBubos[index]}
+                            personality={this.randomizePersonality()}/>
                       </div>
                     )
                   })
