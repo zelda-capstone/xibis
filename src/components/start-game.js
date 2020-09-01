@@ -1,15 +1,27 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import {withAuthentication} from './Auth'
+import {compose} from 'recompose'
 
+import { setUserOnState } from '../store/reducers/user'
 import { resetBubosCollection, getBubosCollection } from '../store/reducers/bubo'
 import { resetPuzzlesCollection, getPuzzlesCollection } from '../store/reducers/puzzle'
 
 class StartGame extends React.Component {
-  // componentDidMount() {
-  //   const userRef = this.props.user.userRef
-  //   this.props.setUser(userRef)
-  // }
+  constructor(props) {
+    super(props)
+    this.authUser = JSON.parse(localStorage.getItem('authUser'))
+    if (this.authUser) {
+      this.user = {
+        username: this.authUser.username,
+        userRef: this.props.firebase.user(this.authUser.uid),
+        bubosRef: this.props.firebase.bubos(this.authUser.uid),
+        puzzlesRef: this.props.firebase.puzzles(this.authUser.uid),
+      }
+      this.props.setUser(this.user)
+    }
+  }
 
   startGame = () => {
     const puzzlesRef = this.props.user.puzzlesRef
@@ -18,10 +30,6 @@ class StartGame extends React.Component {
     const bubosRef = this.props.user.bubosRef
     if (bubosRef) {
       this.props.resetBubos(bubosRef)
-    } else {
-      //create a bubo collection?
-      //this.props.createBuboCollection(userRef)?
-      //we will have to test this with a new user
     }
   }
 
@@ -58,6 +66,7 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
+    setUser: userRef => dispatch(setUserOnState(userRef)),
     resetBubos: bubosRef => dispatch(resetBubosCollection(bubosRef)),
     resetPuzzles: puzzlesRef => dispatch(resetPuzzlesCollection(puzzlesRef)),
     getBubos: bubosRef => dispatch(getBubosCollection(bubosRef)),
@@ -65,4 +74,4 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default connect(mapState, mapDispatch)(StartGame);
+export default compose(connect(mapState, mapDispatch), withAuthentication)(StartGame)

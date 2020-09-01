@@ -28,19 +28,19 @@ import {
 } from './components'
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.authUser = JSON.parse(localStorage.getItem('authUser'))
-    if (this.authUser) {
-      this.user = {
-        username: this.authUser.username,
-        userRef: this.props.firebase.user(this.authUser.uid),
-        bubosRef: this.props.firebase.bubos(this.authUser.uid),
-        puzzlesRef: this.props.firebase.puzzles(this.authUser.uid),
-      }
-      this.props.setUser(this.user)
-    }
-  }
+  // constructor(props) {
+  //   super(props)
+  //   this.authUser = JSON.parse(localStorage.getItem('authUser'))
+  //   if (this.authUser) {
+  //     this.user = {
+  //       username: this.authUser.username,
+  //       userRef: this.props.firebase.user(this.authUser.uid),
+  //       bubosRef: this.props.firebase.bubos(this.authUser.uid),
+  //       puzzlesRef: this.props.firebase.puzzles(this.authUser.uid),
+  //     }
+  //     this.props.setUser(this.user)
+  //   }
+  // }
 
   render() {
     const user = this.props.user
@@ -49,20 +49,20 @@ class App extends React.Component {
       <>
         <Router>
           <Route component={Twinkle} />
-          <Route component={NavBar} />
-          <Route component={Menu} />
           {!user ? (
             <Switch>
               <Route path={ROUTES.LOG_IN} render={() => <Login />} />
               <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
             </Switch>
           ) : (
+            <>
+            <Route component={Menu} />
+            <Route component={NavBar} />
             <Switch>
               <Route path={ROUTES.LOG_IN} render={() => <Login />} />
               <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-
               <Route exact path={ROUTES.LANDING} component={LandingPage} />
-              <Route path={ROUTES.START} component={StartGame} />
+              <Route path={ROUTES.START} render={() => <StartGame user={user}/>} />
               <Route exact path={ROUTES.INTRO} component={Intro} />
               <Route
                 exact
@@ -80,8 +80,8 @@ class App extends React.Component {
               />
               <Route exact path={ROUTES.USER} component={User} />
               <Route exact path={ROUTES.BLOCK_PUZZLE} component={BlockPuzzle} />
-              <Route component={Menu} />
             </Switch>
+            </>
           )}
         </Router>
       </>
