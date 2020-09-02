@@ -1,4 +1,9 @@
-$gameFont: 'Anonymous Pro', sans-serif;
+@font-face {
+  font-family: 'Anonymous Pro';
+  src: url('/fonts/AnonymousPro-Regular.ttf')
+}
+
+$gameFont: 'Anonymous Pro', monospace;
 
 @mixin plainLink {
   text-decoration: none;

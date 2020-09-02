@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Anonymous Pro';
+  src: url("/fonts/AnonymousPro-Regular.ttf");
+}
+
 @-webkit-keyframes fade-in {
   from {
     opacity: 0;
@@ -132,7 +137,7 @@
 
 body {
   margin: 0;
-  font-family: "Anonymous Pro", sans-serif;
+  font-family: "Anonymous Pro", monospace;
   color: white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -258,7 +263,7 @@ body {
 }
 
 #navbar button {
-  font-family: "Anonymous Pro", sans-serif;
+  font-family: "Anonymous Pro", monospace;
   font-size: 1rem;
 }
 
@@ -333,7 +338,7 @@ body {
 
 .buttons-container button {
   margin: 2rem;
-  font-family: "Anonymous Pro", sans-serif;
+  font-family: "Anonymous Pro", monospace;
   font-size: 1rem;
 }
 
@@ -343,7 +348,7 @@ body {
 }
 
 .button {
-  font-family: "Anonymous Pro", sans-serif;
+  font-family: "Anonymous Pro", monospace;
   font-size: 1rem;
   border: none;
   margin: 0.5rem;
