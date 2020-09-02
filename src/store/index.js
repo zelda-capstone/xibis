@@ -6,12 +6,14 @@ import sessionReducer from './reducers/session'
 import userReducer from './reducers/user'
 import bubosReducer from './reducers/bubo'
 import puzzlesReducer from './reducers/puzzle'
+import blockPuzzleReducer from './reducers/block-puzzle'
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   user: userReducer,
   bubos: bubosReducer,
   puzzles: puzzlesReducer,
+  blockPuzzle: blockPuzzleReducer,
 })
 
 const middleware = composeWithDevTools(

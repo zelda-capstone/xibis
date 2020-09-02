@@ -24,11 +24,11 @@ const PieceObj02 = new Piece(Piece02, 250, 50, [-50, -300])
 
 const PieceObj03 = new Piece(Piece03, 150, 150, [350, -400])
 
-const PieceObj04 = new Piece(Piece04, 100, 200, [-150, 300])
+const PieceObj04 = new Piece(Piece04, 100, 200, [-150, -300])
 
 const PieceObj05 = new Piece(Piece05, 200, 100, [-100, -350])
 
-const PieceObj06 = new Piece(Piece06, 200, 150, [-250, -550])
+const PieceObj06 = new Piece(Piece06, 200, 150, [250, -550])
 
 const PieceObj07 = new Piece(Piece07, 100, 200, [200, -550])
 
