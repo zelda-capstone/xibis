@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-//import { setUser } from '../store/reducers/user'
 import { resetBubosCollection, getBubosCollection } from '../store/reducers/bubo'
 import { resetPuzzlesCollection, getUnlockedPuzzles } from '../store/reducers/puzzle'
 

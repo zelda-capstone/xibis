@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Timer, CustomizableBubo } from '..'
 import { getBubosCollection } from '../../store/reducers/bubo'
+import { unlockPuzzleInDb } from '../../store/reducers/puzzle'
 import { Howl } from 'howler'
 
 class LostAndFound extends Component {
@@ -68,10 +69,16 @@ class LostAndFound extends Component {
     this.setState({ playing: false, gameOver: true })
   }
 
+  unlockBlockPuzzle = () => {
+    const puzzlesRef = this.props.user.puzzlesRef
+    this.props.unlockPuzzle(puzzlesRef, 'block-puzzle')
+  }
+
   handleFind = (key) => {
     this.sounds.play('LF_correct');
     if (this.state.found === 9) {
       this.setState({ won: true })
+      this.unlockBlockPuzzle()
       this.endGame()
     }
 
@@ -84,6 +91,7 @@ class LostAndFound extends Component {
   handleIncorrect = () => {
     this.sounds.play('LF_incorrect')
   }
+
 
   render() {
     const lostBubos = this.state.lost || [];
@@ -117,8 +125,7 @@ class LostAndFound extends Component {
                   this.state.won ? (
                     <>
                     <h3>You helped every bubo find their inner self!</h3>
-                    <h4> Your bubos self-esteem goes up +3</h4>
-                    <h4>You have unlocked *next* puzzle</h4>
+                    <h4>You have unlocked a new puzzle...visit the map to see!</h4>
                     </>
                   ) : (
                     <>
@@ -195,7 +202,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    getBubos: bubosRef => dispatch(getBubosCollection(bubosRef))
+    getBubos: bubosRef => dispatch(getBubosCollection(bubosRef)),
+    unlockPuzzle: (puzzlesRef, puzzleName) => dispatch(unlockPuzzleInDb(puzzlesRef, puzzleName))
   }
 }
 

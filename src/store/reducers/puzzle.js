@@ -1,5 +1,6 @@
 const GET_PUZZLES = 'GET_PUZZLES'
 const RESET_PUZZLES = 'RESET_PUZZLES'
+const UNLOCK_PUZZLE = 'UNLOCK_PUZZLE'
 
 const getPuzzles = puzzles => {
   return {
@@ -12,6 +13,13 @@ const resetPuzzles = puzzles => {
   return {
     type: RESET_PUZZLES,
     puzzles
+  }
+}
+
+const unlockPuzzle = puzzle => {
+  return {
+    type: UNLOCK_PUZZLE,
+    puzzle
   }
 }
 
@@ -30,27 +38,41 @@ export const getUnlockedPuzzles = puzzlesRef => {
 export const resetPuzzlesCollection = puzzlesRef => {
   return async function (dispatch) {
     try {
-      await puzzlesRef.doc('wormhole').set({
-        name: 'wormhole',
-        planet: 'Tropics',
-        imageUrl: '',
-        unlocked: true
-      })
       await puzzlesRef.doc('reflection').set({
         name: 'reflection',
         planet: 'Aguilera',
-        imageUrl: '',
+        imageUrl: 'https://i.ibb.co/nCJK34p/planet.png',
+        unlocked: true
+      })
+      await puzzlesRef.doc('wormhole').set({
+        name: 'wormhole',
+        planet: 'Tropics',
+        imageUrl: 'https://i.ibb.co/nCJK34p/planet.png',
         unlocked: false
       })
-      await puzzlesRef.doc('block').set({
+      await puzzlesRef.doc('block-puzzle').set({
         name: 'block-puzzle',
         planet: 'Tetris',
-        imageUrl: '',
+        imageUrl: 'https://i.ibb.co/nCJK34p/planet.png',
         unlocked: false
       })
       const puzzles = await puzzlesRef.get()
       const updatedPuzzles = puzzles.docs.map(doc => doc.data())
       dispatch (resetPuzzles(updatedPuzzles))
+    } catch (err) {
+      console.error(err)
+    }
+  }
+}
+
+export const unlockPuzzleInDb = (puzzlesRef, puzzleName) => {
+  return async function (dispatch) {
+    try {
+      const unlockedPuzzle = await puzzlesRef.where('name', '==', puzzleName).update({
+        unlocked: true
+      })
+      //console.log(unlockedPuzzle)
+      dispatch(unlockPuzzle(unlockedPuzzle))
     } catch (err) {
       console.error(err)
     }
@@ -64,7 +86,11 @@ const puzzlesReducer = (state = INITIAL_STATE, action) => {
     case GET_PUZZLES:
       return action.puzzles
     case RESET_PUZZLES:
+      console.log(action.puzzles)
       return action.puzzles
+    case UNLOCK_PUZZLE:
+      const filter = state.filter(puzzle => puzzle.name === action.puzzle.name)
+      return [...filter, action.puzzle]
     default:
       return state
   }

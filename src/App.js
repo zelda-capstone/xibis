@@ -12,7 +12,7 @@ class App extends React.Component {
 
   render() {
     const session = this.props.session;
-    //console.log(session)
+    //console.log('session state: ', session)
 
     return (
       <>
@@ -39,16 +39,9 @@ class App extends React.Component {
 
 const mapState = (state) => {
   return {
-    //user: state.user,
     session: state.session
   }
 }
-
-// const mapDispatch = (dispatch) => {
-//   return {
-//     // setUser: (userId) => dispatch(setUserOnState(userId)),
-//   }
-// }
 
 export default compose(connect(mapState), withAuthentication)(App)
 

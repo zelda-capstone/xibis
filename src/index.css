@@ -175,6 +175,7 @@ body {
   position: fixed;
   top: 1rem;
   left: 90vw;
+  z-index: 5;
 }
 
 #navbar button {
@@ -567,10 +568,42 @@ body {
 }
 
 .map-icon {
-  height: 6rem;
-  width: 6rem;
-  z-index: 5;
-  background: transparent url(https://i.ibb.co/Krh0bqj/500px-Sphere-monochrome-simple-svg.png);
+  height: 8em;
+  width: 8em;
+}
+
+.map-icon:hover + div {
+  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: .5rem;
+  background: white;
+  border-radius: 5px;
+}
+
+.map-icon:hover + div a {
+  color: black;
+  text-decoration: none;
+}
+
+.puzzle-stats {
+  display: none;
+  font-size: .8rem;
+  width: 4.5rem;
+  height: 3rem;
 }
 
 #start-container {

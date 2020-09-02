@@ -81,7 +81,7 @@ class LogInFormBase extends Component {
               onClick={() => {
                 this.props.firebase
                   .doSignInWithGoogle()
-                  .then(() => this.props.history.push(ROUTES.START));
+                  .then(() => this.props.history.push(ROUTES.LANDING));
               }}
             >
               Sign In With Google
