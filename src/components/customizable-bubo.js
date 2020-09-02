@@ -6,7 +6,8 @@ import BuboOptions from '../pixelArt'
 //import antennae from '../pixelArt/antennae.svg'
 
 const CustomizableBubo = (props) => {
-  //console.log(props.personality)
+  let className
+  props.hover ? (className='custom-bubo-container') : (className='custom-bubo-container no-hover')
   let personality
   props.personality
     ? (personality = props.personality)
@@ -17,7 +18,7 @@ const CustomizableBubo = (props) => {
   props.accessory ? (buboAccessory = props.accessory) : (buboAccessory = null)
   return (
     <>
-      <div className="custom-bubo-container">
+      <div className={className}>
         <div
           className="accessory"
           style={{

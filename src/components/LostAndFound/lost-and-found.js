@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Timer, CustomizableBubo } from '..'
 import { getBubosCollection } from '../../store/reducers/bubo'
+import { unlockPuzzleInDb } from '../../store/reducers/puzzle'
 import { Howl } from 'howler'
 
 class LostAndFound extends Component {
@@ -12,7 +13,7 @@ class LostAndFound extends Component {
       gameOver: false,
       won: false,
       random: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      lost: this.props.bubos,
+      lost: this.props.bubos || [],
       found: 0
     }
     this.sounds = new Howl({
@@ -35,6 +36,10 @@ class LostAndFound extends Component {
     this.props.getBubos(bubosRef)
     this.source = this.sounds.play('bubos_atmosphere')
   }
+
+  // UNSAFE_componentWillReceiveProps() {
+  //   this.setState({ lost: this.props.bubos })
+  // }
 
   componentWillUnmount() {
     this.sounds.fade(this.sounds.volume(), 0, 1000, this.source)
@@ -64,10 +69,16 @@ class LostAndFound extends Component {
     this.setState({ playing: false, gameOver: true })
   }
 
+  unlockBlockPuzzle = () => {
+    const puzzlesRef = this.props.user.puzzlesRef
+    this.props.unlockPuzzle(puzzlesRef, 'block-puzzle')
+  }
+
   handleFind = (key) => {
     this.sounds.play('LF_correct');
     if (this.state.found === 9) {
       this.setState({ won: true })
+      this.unlockBlockPuzzle()
       this.endGame()
     }
 
@@ -81,8 +92,9 @@ class LostAndFound extends Component {
     this.sounds.play('LF_incorrect')
   }
 
+
   render() {
-    const lostBubos = this.state.lost;
+    const lostBubos = this.state.lost || [];
 
     if (!this.state.playing && !this.state.gameOver) return (
       <>
@@ -113,8 +125,7 @@ class LostAndFound extends Component {
                   this.state.won ? (
                     <>
                     <h3>You helped every bubo find their inner self!</h3>
-                    <h4> Your bubos self-esteem goes up +3</h4>
-                    <h4>You have unlocked *next* puzzle</h4>
+                    <h4>You have unlocked a new puzzle...visit the map to see!</h4>
                     </>
                   ) : (
                     <>
@@ -152,7 +163,7 @@ class LostAndFound extends Component {
                         key={index}
                         onClick={this.handleIncorrect}
                         className={`lost-bubo order-${this.shuffleOrder()}`}>
-                          <CustomizableBubo
+                          <CustomizableBubo hover={true}
                             {...lostBubos[index]}
                             personality={this.randomizePersonality()}/>
                       </div>
@@ -166,7 +177,7 @@ class LostAndFound extends Component {
                         <div key={index}
                           className={`lost-bubo order-${this.shuffleOrder()}`}
                           onClick={() => this.handleFind(bubo)}>
-                            <CustomizableBubo {...bubo} />
+                            <CustomizableBubo {...bubo} hover={true} />
                         </div>
                       )
                     })
@@ -191,7 +202,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    getBubos: bubosRef => dispatch(getBubosCollection(bubosRef))
+    getBubos: bubosRef => dispatch(getBubosCollection(bubosRef)),
+    unlockPuzzle: (puzzlesRef, puzzleName) => dispatch(unlockPuzzleInDb(puzzlesRef, puzzleName))
   }
 }
 
