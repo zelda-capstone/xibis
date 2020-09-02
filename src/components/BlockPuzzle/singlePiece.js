@@ -19,6 +19,7 @@ export class SinglePiece extends React.Component {
     if (currentPosX === correctPos[0] && currentPosY === correctPos[1]) {
       console.log('correct!')
       this.setState({correct: true})
+      this.props.signalCorrect()
     } else {
       console.log('keep trying!')
     }
