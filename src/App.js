@@ -19,7 +19,7 @@ class App extends React.Component {
         <Router>
           <Route component={Twinkle} />
           {
-            !session ? (
+            !session.authUser ? (
               <>
                 <Route exact path={ROUTES.LANDING} component={LandingPage} />
                 <Route path={ROUTES.LOG_IN} component={Login} />

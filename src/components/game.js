@@ -22,6 +22,7 @@ class Game extends React.Component {
   constructor(props) {
     super(props)
     this.authUser = JSON.parse(localStorage.getItem('authUser'))
+    //console.log('authUser in game constructor', this.authUser)
     if (this.authUser) {
       this.user = {
         username: this.authUser.username,
@@ -36,12 +37,12 @@ class Game extends React.Component {
   render() {
     const user = this.props.user;
 
-    if (user) {
+    // if (user) {
       return (
         <Router>
+            <Route exact path={ROUTES.LANDING} component={StartGame} />
             <Route component={NavBar} />
             <Route component={Menu} />
-            <Route exact path={ROUTES.LANDING} render={() => <StartGame user={user}/>} />
             <Route exact path={ROUTES.INTRO} component={Intro} />
             <Route
                   exact
@@ -60,7 +61,7 @@ class Game extends React.Component {
         </Router>
       )
     }
-  }
+  // }
 }
 
 const mapState = (state) => {

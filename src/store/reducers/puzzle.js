@@ -58,7 +58,7 @@ export const resetPuzzlesCollection = puzzlesRef => {
       })
       const puzzles = await puzzlesRef.get()
       const updatedPuzzles = puzzles.docs.map(doc => doc.data())
-      dispatch (resetPuzzles(updatedPuzzles))
+      dispatch(resetPuzzles(updatedPuzzles))
     } catch (err) {
       console.error(err)
     }
@@ -71,7 +71,6 @@ export const unlockPuzzleInDb = (puzzlesRef, puzzleName) => {
       const unlockedPuzzle = await puzzlesRef.where('name', '==', puzzleName).update({
         unlocked: true
       })
-      //console.log(unlockedPuzzle)
       dispatch(unlockPuzzle(unlockedPuzzle))
     } catch (err) {
       console.error(err)
@@ -86,7 +85,6 @@ const puzzlesReducer = (state = INITIAL_STATE, action) => {
     case GET_PUZZLES:
       return action.puzzles
     case RESET_PUZZLES:
-      console.log(action.puzzles)
       return action.puzzles
     case UNLOCK_PUZZLE:
       const filter = state.filter(puzzle => puzzle.name === action.puzzle.name)
