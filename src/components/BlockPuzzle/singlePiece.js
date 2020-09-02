@@ -1,6 +1,6 @@
 import React from 'react'
 import Draggable from 'react-draggable'
-import addPiece from '../../store/reducers/block-puzzle'
+import {addPiece} from '../../store/reducers/block-puzzle'
 import {connect} from 'react-redux'
 
 export class SinglePiece extends React.Component {
@@ -19,9 +19,6 @@ export class SinglePiece extends React.Component {
     if (currentPosX === correctPos[0] && currentPosY === correctPos[1]) {
       console.log('correct!')
       this.setState({correct: true})
-      this.props.tallyPiece()
-      //add some sore of visual cue to let player know they have placed piece correctly
-      //add to the tally of total correct pieces
     } else {
       console.log('keep trying!')
     }
@@ -51,8 +48,12 @@ export class SinglePiece extends React.Component {
   }
 }
 
-const mapDispatch = (dispatch) => ({
-  tallyPiece: () => dispatch(addPiece()),
+const mapState = (reduxState) => ({
+  blockPuzzle: reduxState.blockPuzzle,
 })
 
-export default connect(null, mapDispatch)(SinglePiece)
+const mapDispatch = (dispatch) => ({
+  signalCorrect: () => dispatch(addPiece()),
+})
+
+export default connect(mapState, mapDispatch)(SinglePiece)
