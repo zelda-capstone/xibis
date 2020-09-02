@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
+import { connect } from 'react-redux'
 
 import { withFirebase } from '../firebase';
 import * as ROUTES from '../constants/routes';
 import {SignUpLink} from './signup'
 
 const Login = (props) => (
-    <div>
-      <h1>SignIn</h1>
+    <div className='auth'>
+      <h1>Sign In</h1>
       <LogInForm />
       <SignUpLink />
     </div>
@@ -33,8 +34,7 @@ class LogInFormBase extends Component {
       this.props.firebase
         .doSignInWithEmailAndPassword(email, password)
         .then(() => {
-          this.setState({ ...INITIAL_STATE });
-          this.props.history.push(ROUTES.START);
+          this.props.history.push(ROUTES.LANDING);
         })
         .catch(error => {
           this.setState({ error });
@@ -81,7 +81,7 @@ class LogInFormBase extends Component {
               onClick={() => {
                 this.props.firebase
                   .doSignInWithGoogle()
-                  .then(() => this.props.history.push(ROUTES.START));
+                  .then(() => this.props.history.push(ROUTES.LANDING));
               }}
             >
               Sign In With Google
@@ -92,11 +92,16 @@ class LogInFormBase extends Component {
     }
 }
 
-
+const mapDispatch = dispatch => {
+  return {
+    setUser: user => dispatch({ type: 'SET_USER', user})
+  }
+}
 
 const LogInForm = compose(
   withRouter,
   withFirebase,
+  connect(null, mapDispatch)
 )(LogInFormBase);
 
 

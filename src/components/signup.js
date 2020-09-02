@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-
+import { compose } from 'recompose';
 import { withFirebase } from '../firebase';
 import * as ROUTES from '../constants/routes';
 import * as ROLES from '../constants/roles';
 
 const SignUpPage = () => (
   <>
-    <div className="container">
+    <div className="auth">
         <h1>Sign Up!</h1>
         <div id="sign-in">
             <SignUpForm />
@@ -66,8 +66,7 @@ class SignUpFormBase extends Component {
           );
         })
         .then(() => {
-          this.setState({ ...INITIAL_STATE });
-          this.props.history.push(ROUTES.START);
+          this.props.history.push(ROUTES.LANDING);
         })
         .catch(error => {
           if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
@@ -144,14 +143,17 @@ class SignUpFormBase extends Component {
   }
 
 const SignUpLink = () => (
-    <p>
-        Don't have an account?
+    <>
+        <div>Don't have an account?</div>
         <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
-    </p>
+    </>
 );
 
 
-const SignUpForm = withRouter(withFirebase(SignUpFormBase));
+const SignUpForm = compose(
+  withRouter,
+  withFirebase
+)(SignUpFormBase);
 
 export default SignUpPage;
 

@@ -1,22 +1,21 @@
-
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const MapIcon = (props) => {
-  //const puzzle = props.puzzle;
+  const puzzle = props.puzzle;
+  //console.log(puzzle)
   return (
     <>
-      <svg width="100" height="100">
-          <circle cx="50" cy="50" r="40" stroke="grey" strokeWidth="6" fill="black" />
-      </svg>
-      <div
-        className='map-icon'>
-
-      </div>
-    {/* <div className='puzzle-stats'>
-      <span>{puzzle.name}</span>
-      // style={{backgroundImage: `url(${puzzle.imageUrl})`}}>
-      <span>{puzzle.planet}</span>
-    </div> */}
+      <Link to={{ pathname: `/${puzzle.name}`, state: { bubos: props.bubos }}} >
+        <div
+          className='map-icon'
+          style={{backgroundImage: `url(${puzzle.imageUrl})`}}>
+        </div>
+        <div className='puzzle-stats'>
+          <span><strong>PUZZLE</strong>: {puzzle.name}</span>
+          <span><strong>PLANET</strong>: {puzzle.planet}</span>
+        </div>
+      </Link>
     </>
   )
 }
