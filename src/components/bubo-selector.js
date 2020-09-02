@@ -113,7 +113,7 @@ class BuboSelector extends React.Component {
                 <option>patient</option>
               </select>
             </div>
-            <CustomizableBubo {...this.state} className='no-hover'/>
+            <CustomizableBubo {...this.state} hover={false}/>
           </div>
           <div>
             <button className="button" onClick={this.handleCreate}>
@@ -126,7 +126,7 @@ class BuboSelector extends React.Component {
             ? bubos.map((bubo, index) => {
                 return (
                   <div key={index}>
-                    <CustomizableBubo {...bubo} />
+                    <CustomizableBubo {...bubo} hover={true} />
                   </div>
                 )
               })

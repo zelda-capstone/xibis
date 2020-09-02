@@ -1,32 +1,41 @@
 import React from 'react'
 import { withFirebase } from '../firebase'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import {compose} from 'recompose'
 import {connect} from 'react-redux'
 import * as ROUTES from '../constants/routes'
 import * as ACTIONS from '../constants/actions'
 
-const SignOut = props => {
-  const handleSignout = () => {
-    props.firebase.doSignOut()
+class SignOut extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { loggedIn: true }
+  }
+  handleSignout = () => {
+    this.props.firebase.doSignOut()
     .then(() => {
-      props.setUser({})
+      this.props.setUser({})
     })
     .then(() => {
-      props.history.push(ROUTES.LANDING)
+      this.setState({loggedIn: false})
     })
     .catch(error => {
       console.error(error)
     })
   }
 
-  return (
-    <button
-      type='button'
-      onClick={handleSignout}>
-        Sign-out
-    </button>
-  )
+  render() {
+    if (!this.state.loggedIn) return (
+      <Redirect to={ROUTES.LANDING} />
+    )
+    return (
+      <button
+        type='button'
+        onClick={this.handleSignout}>
+          Sign-out
+      </button>
+    )
+  }
 }
 
 const mapDispatch = dispatch => {

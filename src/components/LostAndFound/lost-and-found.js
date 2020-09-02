@@ -163,7 +163,7 @@ class LostAndFound extends Component {
                         key={index}
                         onClick={this.handleIncorrect}
                         className={`lost-bubo order-${this.shuffleOrder()}`}>
-                          <CustomizableBubo
+                          <CustomizableBubo hover={true}
                             {...lostBubos[index]}
                             personality={this.randomizePersonality()}/>
                       </div>
@@ -177,7 +177,7 @@ class LostAndFound extends Component {
                         <div key={index}
                           className={`lost-bubo order-${this.shuffleOrder()}`}
                           onClick={() => this.handleFind(bubo)}>
-                            <CustomizableBubo {...bubo} />
+                            <CustomizableBubo {...bubo} hover={true} />
                         </div>
                       )
                     })

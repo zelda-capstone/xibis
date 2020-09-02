@@ -175,6 +175,24 @@ body {
   }
 }
 
+.custom-bubo-container-hover {
+  @include flexCenter(column);
+  height: 9rem;
+  width: 6rem;
+  animation: hover 2s alternate infinite;
+  &:hover + div {
+    @include flexCenter(column);
+    border-radius: 3px;
+    padding: 0.5rem;
+    //position: relative;
+    position: absolute;
+    width: 5rem;
+    background: linear-gradient(lavender, rgb(191, 189, 189));
+    font-size: 0.7rem;
+    z-index: 3;
+  }
+}
+
 .custom-bubo-container {
   @include flexCenter(column);
   height: 9rem;
