@@ -1,6 +1,6 @@
 const GET_PUZZLES = 'GET_PUZZLES'
 const RESET_PUZZLES = 'RESET_PUZZLES'
-const UNLOCK_PUZZLE = 'UNLOCK_PUZZLE'
+//const UNLOCK_PUZZLE = 'UNLOCK_PUZZLE'
 
 const getPuzzles = puzzles => {
   return {
@@ -16,12 +16,12 @@ const resetPuzzles = puzzles => {
   }
 }
 
-const unlockPuzzle = puzzle => {
-  return {
-    type: UNLOCK_PUZZLE,
-    puzzle
-  }
-}
+// const unlockPuzzle = puzzle => {
+//   return {
+//     type: UNLOCK_PUZZLE,
+//     puzzle
+//   }
+// }
 
 export const getUnlockedPuzzles = puzzlesRef => {
   return async function (dispatch) {
@@ -65,13 +65,12 @@ export const resetPuzzlesCollection = puzzlesRef => {
   }
 }
 
-export const unlockPuzzleInDb = (puzzlesRef, puzzleName) => {
+export const unlockPuzzleInDb = (puzzlesRef, puzzleId) => {
   return async function (dispatch) {
     try {
-      const unlockedPuzzle = await puzzlesRef.where('name', '==', puzzleName).update({
-        unlocked: true
-      })
-      dispatch(unlockPuzzle(unlockedPuzzle))
+      const lockedPuzzleRef = await puzzlesRef.doc(puzzleId)
+      await lockedPuzzleRef.update({ unlocked: true })
+      //dispatch(unlockPuzzle(unlockedPuzzle))
     } catch (err) {
       console.error(err)
     }
@@ -86,9 +85,9 @@ const puzzlesReducer = (state = INITIAL_STATE, action) => {
       return action.puzzles
     case RESET_PUZZLES:
       return action.puzzles
-    case UNLOCK_PUZZLE:
-      const filter = state.filter(puzzle => puzzle.name === action.puzzle.name)
-      return [...filter, action.puzzle]
+    // case UNLOCK_PUZZLE:
+    //   const filter = state.filter(puzzle => puzzle.id === action.puzzle.id)
+    //   return [...filter, action.puzzle]
     default:
       return state
   }

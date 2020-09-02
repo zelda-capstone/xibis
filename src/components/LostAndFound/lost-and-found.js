@@ -37,10 +37,6 @@ class LostAndFound extends Component {
     this.source = this.sounds.play('bubos_atmosphere')
   }
 
-  // UNSAFE_componentWillReceiveProps() {
-  //   this.setState({ lost: this.props.bubos })
-  // }
-
   componentWillUnmount() {
     this.sounds.fade(this.sounds.volume(), 0, 1000, this.source)
   }
@@ -62,7 +58,7 @@ class LostAndFound extends Component {
   }
 
   startGame = () => {
-    this.setState({ playing: true })
+    this.setState({ playing: true, lost: this.props.bubos })
   }
 
   endGame = () => {
@@ -203,7 +199,7 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     getBubos: bubosRef => dispatch(getBubosCollection(bubosRef)),
-    unlockPuzzle: (puzzlesRef, puzzleName) => dispatch(unlockPuzzleInDb(puzzlesRef, puzzleName))
+    unlockPuzzle: (puzzlesRef, id) => dispatch(unlockPuzzleInDb(puzzlesRef, id))
   }
 }
 
