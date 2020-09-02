@@ -16,7 +16,8 @@ export class BlockPuzzle extends React.Component {
   }
 
   render() {
-    let puzzleText = 'the bubos need your help to cross a celestial bridge'
+    let puzzleText =
+      'The bubos need to cross a celestial bridge. Position the pieces on the board until they stick.'
     const winCondition = this.props.totalCorrect === 12
     if (winCondition) {
       puzzleText = 'you won! congratulations!'

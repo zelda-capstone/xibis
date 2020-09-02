@@ -15,10 +15,11 @@ export class SinglePiece extends React.Component {
   handleDrag(e, ui, correctPos) {
     const currentPosX = ui.lastX
     const currentPosY = ui.lastY
-    console.log(currentPosX, currentPosY)
     if (currentPosX === correctPos[0] && currentPosY === correctPos[1]) {
       console.log('correct!')
-      this.setState({correct: true})
+      this.setState({
+        correct: true,
+      })
       this.props.signalCorrect()
     } else {
       console.log('keep trying!')
