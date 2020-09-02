@@ -1,4 +1,9 @@
-$gameFont: 'Anonymous Pro', sans-serif;
+@font-face {
+  font-family: 'Anonymous Pro';
+  src: url('/fonts/AnonymousPro-Regular.ttf')
+}
+
+$gameFont: 'Anonymous Pro', monospace;
 
 @mixin plainLink {
   text-decoration: none;
@@ -95,11 +100,44 @@ body {
   @include flexCenter(column);
 }
 
+#landing {
+  @include flexCenter(column);
+  margin-top: 10rem;
+  margin-left: 15rem;
+  margin-right: 15rem;
+  background: whitesmoke;
+  border-radius: 5px;
+  color: black;
+  div {
+    padding: 1rem;
+  }
+  span {
+    padding: 1rem;
+  }
+}
+
+.auth {
+  @include flexCenter(column);
+  form {
+    @include flexCenter(column);
+    background: rgb(177, 175, 175);
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    input {
+      margin: .5rem;
+    }
+    button {
+      margin: .5rem;
+    }
+  }
+}
+
 #navbar {
   @include flexCenter(row);
   position: fixed;
   top: 1rem;
   left: 90vw;
+  z-index: 5;
   button {
     font-family: $gameFont;
     font-size: 1rem;
@@ -173,6 +211,24 @@ body {
   }
 }
 
+.custom-bubo-container-hover {
+  @include flexCenter(column);
+  height: 9rem;
+  width: 6rem;
+  animation: hover 2s alternate infinite;
+  &:hover + div {
+    @include flexCenter(column);
+    border-radius: 3px;
+    padding: 0.5rem;
+    //position: relative;
+    position: absolute;
+    width: 5rem;
+    background: linear-gradient(lavender, rgb(191, 189, 189));
+    font-size: 0.7rem;
+    z-index: 3;
+  }
+}
+
 .custom-bubo-container {
   @include flexCenter(column);
   height: 9rem;
@@ -189,6 +245,10 @@ body {
     font-size: 0.7rem;
     z-index: 3;
   }
+}
+
+.no-hover {
+  pointer-events: none;
 }
 
 .bubo-stats {
@@ -211,8 +271,8 @@ body {
 
 .accessory {
   position: absolute;
-  top:0;
-  margin-bottom: 3.5rem;
+  top: 0;
+  //margin-bottom: 3.5rem;
   width: 100px;
   height: 100px;
 }
@@ -268,11 +328,26 @@ body {
 }
 
 .map-icon {
-  height: 6rem;
-  width: 6rem;
-  z-index: 5;
-  background: transparent
-    url(https://i.ibb.co/Krh0bqj/500px-Sphere-monochrome-simple-svg.png);
+  height: 8em;
+  width: 8em;
+  &:hover + div {
+    display: block;
+    @include flexCenter(column);
+    padding: .5rem;
+    background: white;
+    border-radius: 5px;
+    a {
+      color: black;
+      text-decoration: none;
+    }
+  }
+}
+
+.puzzle-stats {
+  display: none;
+  font-size: .8rem;
+  width: 4.5rem;
+  height: 3rem;
 }
 
 #start-container {

@@ -17,11 +17,13 @@ class BuboRow extends React.Component{
             <Grid container item xs={4}>
                 {this.props.bubos
                 ? this.props.bubos.map((bubo, i) => (
-                    <Grid
-                        item height={73.5} width={73.5}
-                    >
-                        <CustomizableBubo {...bubo}/>
-                    </Grid>
+                    <div key={i}>
+                        <Grid
+                            item height={73.5} width={73.5}
+                        >
+                            <CustomizableBubo {...bubo}/>
+                        </Grid>
+                    </div>
                 ))
                 : <></>
                 }

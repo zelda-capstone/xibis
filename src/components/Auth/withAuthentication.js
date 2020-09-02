@@ -40,7 +40,6 @@ const withAuthentication = Component => {
   const mapDispatchToProps = dispatch => {
     return {
       setAuthUser: authUser => dispatch({ type: 'SET_AUTH_USER', authUser }),
-      setUser: user => dispatch({ type: 'SET_USER', user })
     }
   }
 

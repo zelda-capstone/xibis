@@ -1,32 +1,29 @@
-const ADD_BUBO = 'ADD_BUBO'
-const GET_BUBOS = 'GET_BUBOS'
-const UPDATE_BUBO = 'UPDATE_BUBO'
-const RESET_BUBOS = 'RESET_BUBOS'
+import * as ACTIONS from '../../constants/actions'
 
 const getBubos = (bubos) => {
   return {
-    type: GET_BUBOS,
+    type: ACTIONS.GET_BUBOS,
     bubos,
   }
 }
 
 const addBubo = (bubo) => {
   return {
-    type: ADD_BUBO,
+    type: ACTIONS.ADD_BUBO,
     bubo,
   }
 }
 
 const updateBubo = (bubo) => {
   return {
-    type: UPDATE_BUBO,
+    type: ACTIONS.UPDATE_BUBO,
     bubo,
   }
 }
 
 const resetBubos = (bubos) => {
   return {
-    type: RESET_BUBOS,
+    type: ACTIONS.RESET_BUBOS,
     bubos,
   }
 }
@@ -91,17 +88,17 @@ const INITIAL_STATE = []
 
 function bubosReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case GET_BUBOS: {
+    case ACTIONS.GET_BUBOS: {
       return action.bubos
     }
-    case ADD_BUBO: {
+    case ACTIONS.ADD_BUBO: {
       return [...state, action.bubo]
     }
-    case UPDATE_BUBO: {
+    case ACTIONS.UPDATE_BUBO: {
       const newState = state.filter((bubo) => bubo.id !== action.bubo.id)
       return [...newState, action.bubo]
     }
-    case RESET_BUBOS: {
+    case ACTIONS.RESET_BUBOS: {
       return action.bubos
     }
     default:

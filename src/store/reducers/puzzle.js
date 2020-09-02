@@ -1,6 +1,6 @@
 const GET_PUZZLES = 'GET_PUZZLES'
 const RESET_PUZZLES = 'RESET_PUZZLES'
-// GET_MAP returns all 'unlocked' puzzles
+const UNLOCK_PUZZLE = 'UNLOCK_PUZZLE'
 
 const getPuzzles = puzzles => {
   return {
@@ -16,10 +16,17 @@ const resetPuzzles = puzzles => {
   }
 }
 
-export const getPuzzlesCollection = puzzlesRef => {
+const unlockPuzzle = puzzle => {
+  return {
+    type: UNLOCK_PUZZLE,
+    puzzle
+  }
+}
+
+export const getUnlockedPuzzles = puzzlesRef => {
   return async function (dispatch) {
     try {
-      const puzzlesCollection = await puzzlesRef.get()
+      const puzzlesCollection = await puzzlesRef.where('unlocked', '==', true).get()
       const puzzles = puzzlesCollection.docs.map(doc => doc.data())
       dispatch(getPuzzles(puzzles))
     } catch (err) {
@@ -31,15 +38,40 @@ export const getPuzzlesCollection = puzzlesRef => {
 export const resetPuzzlesCollection = puzzlesRef => {
   return async function (dispatch) {
     try {
-      const puzzlesCollection = await puzzlesRef.get()
-      puzzlesCollection.forEach(doc => {
-        let puzzle = puzzlesRef.doc(doc.id)
-        return puzzle.update({ unlocked: false })
+      await puzzlesRef.doc('reflection').set({
+        name: 'reflection',
+        planet: 'Aguilera',
+        imageUrl: 'https://i.ibb.co/nCJK34p/planet.png',
+        unlocked: true
       })
-       //update the puzzles collection to "lock" all puzzles
-      const updatedPuzzles = puzzlesCollection.docs.map(doc => doc.data())
-      // get the array of puzzles again and send it
-      dispatch (resetPuzzles(updatedPuzzles))
+      await puzzlesRef.doc('wormhole').set({
+        name: 'wormhole',
+        planet: 'Tropics',
+        imageUrl: 'https://i.ibb.co/nCJK34p/planet.png',
+        unlocked: false
+      })
+      await puzzlesRef.doc('block-puzzle').set({
+        name: 'block-puzzle',
+        planet: 'Tetris',
+        imageUrl: 'https://i.ibb.co/nCJK34p/planet.png',
+        unlocked: false
+      })
+      const puzzles = await puzzlesRef.get()
+      const updatedPuzzles = puzzles.docs.map(doc => doc.data())
+      dispatch(resetPuzzles(updatedPuzzles))
+    } catch (err) {
+      console.error(err)
+    }
+  }
+}
+
+export const unlockPuzzleInDb = (puzzlesRef, puzzleName) => {
+  return async function (dispatch) {
+    try {
+      const unlockedPuzzle = await puzzlesRef.where('name', '==', puzzleName).update({
+        unlocked: true
+      })
+      dispatch(unlockPuzzle(unlockedPuzzle))
     } catch (err) {
       console.error(err)
     }
@@ -54,6 +86,9 @@ const puzzlesReducer = (state = INITIAL_STATE, action) => {
       return action.puzzles
     case RESET_PUZZLES:
       return action.puzzles
+    case UNLOCK_PUZZLE:
+      const filter = state.filter(puzzle => puzzle.name === action.puzzle.name)
+      return [...filter, action.puzzle]
     default:
       return state
   }

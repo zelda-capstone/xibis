@@ -99,16 +99,21 @@ class BuboSelector extends React.Component {
                 <option>stubborn</option>
                 <option>proud</option>
                 <option>assertive</option>
-                {/* <div>map options from db here</div> */}
+                <option>outspoken</option>
+                <option>spontaneous</option>
+                <option>soft-spoken</option>
               </select>
               <select onChange={this.handlePersonality}>
                 <option>brave</option>
                 <option>kind</option>
                 <option>confident</option>
                 <option>thoughtful</option>
+                <option>nurturing</option>
+                <option>charismatic</option>
+                <option>patient</option>
               </select>
             </div>
-            <CustomizableBubo {...this.state} />
+            <CustomizableBubo {...this.state} hover={false}/>
           </div>
           <div>
             <button className="button" onClick={this.handleCreate}>
@@ -121,7 +126,7 @@ class BuboSelector extends React.Component {
             ? bubos.map((bubo, index) => {
                 return (
                   <div key={index}>
-                    <CustomizableBubo {...bubo} />
+                    <CustomizableBubo {...bubo} hover={true} />
                   </div>
                 )
               })

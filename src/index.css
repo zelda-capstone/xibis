@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Anonymous Pro';
+  src: url("/fonts/AnonymousPro-Regular.ttf");
+}
+
 @-webkit-keyframes fade-in {
   from {
     opacity: 0;
@@ -132,7 +137,7 @@
 
 body {
   margin: 0;
-  font-family: "Anonymous Pro", sans-serif;
+  font-family: "Anonymous Pro", monospace;
   color: white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -156,6 +161,85 @@ body {
       flex-wrap: wrap;
 }
 
+#landing {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 10rem;
+  margin-left: 15rem;
+  margin-right: 15rem;
+  background: whitesmoke;
+  border-radius: 5px;
+  color: black;
+}
+
+#landing div {
+  padding: 1rem;
+}
+
+#landing span {
+  padding: 1rem;
+}
+
+.auth {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.auth form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  background: #b1afaf;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.auth form input {
+  margin: .5rem;
+}
+
+.auth form button {
+  margin: .5rem;
+}
+
 #navbar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -175,10 +259,11 @@ body {
   position: fixed;
   top: 1rem;
   left: 90vw;
+  z-index: 5;
 }
 
 #navbar button {
-  font-family: "Anonymous Pro", sans-serif;
+  font-family: "Anonymous Pro", monospace;
   font-size: 1rem;
 }
 
@@ -253,7 +338,7 @@ body {
 
 .buttons-container button {
   margin: 2rem;
-  font-family: "Anonymous Pro", sans-serif;
+  font-family: "Anonymous Pro", monospace;
   font-size: 1rem;
 }
 
@@ -263,7 +348,7 @@ body {
 }
 
 .button {
-  font-family: "Anonymous Pro", sans-serif;
+  font-family: "Anonymous Pro", monospace;
   font-size: 1rem;
   border: none;
   margin: 0.5rem;
@@ -330,6 +415,54 @@ body {
   margin: 0.75rem;
 }
 
+.custom-bubo-container-hover {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: 9rem;
+  width: 6rem;
+  -webkit-animation: hover 2s alternate infinite;
+          animation: hover 2s alternate infinite;
+}
+
+.custom-bubo-container-hover:hover + div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  border-radius: 3px;
+  padding: 0.5rem;
+  position: absolute;
+  width: 5rem;
+  background: -webkit-gradient(linear, left top, left bottom, from(lavender), to(#bfbdbd));
+  background: linear-gradient(lavender, #bfbdbd);
+  font-size: 0.7rem;
+  z-index: 3;
+}
+
 .custom-bubo-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -376,6 +509,10 @@ body {
   background: linear-gradient(lavender, #bfbdbd);
   font-size: 0.7rem;
   z-index: 3;
+}
+
+.no-hover {
+  pointer-events: none;
 }
 
 .bubo-stats {
@@ -429,7 +566,6 @@ body {
 .accessory {
   position: absolute;
   top: 0;
-  margin-bottom: 3.5rem;
   width: 100px;
   height: 100px;
 }
@@ -564,10 +700,42 @@ body {
 }
 
 .map-icon {
-  height: 6rem;
-  width: 6rem;
-  z-index: 5;
-  background: transparent url(https://i.ibb.co/Krh0bqj/500px-Sphere-monochrome-simple-svg.png);
+  height: 8em;
+  width: 8em;
+}
+
+.map-icon:hover + div {
+  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: .5rem;
+  background: white;
+  border-radius: 5px;
+}
+
+.map-icon:hover + div a {
+  color: black;
+  text-decoration: none;
+}
+
+.puzzle-stats {
+  display: none;
+  font-size: .8rem;
+  width: 4.5rem;
+  height: 3rem;
 }
 
 #start-container {

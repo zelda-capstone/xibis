@@ -45,7 +45,7 @@ class Wormhole extends React.Component{
         }))
 
         if(this.state.ogBubos.length === 0){
-            return (alert('You won!!') ,this.props.history.push(ROUTES.MAP))
+            this.props.history.push(ROUTES.MAP)
         }
 
         this.setState((state) => ({
@@ -74,8 +74,7 @@ class Wormhole extends React.Component{
         const grid7 = [0,1,2,3,4,5,6,7]
         const grid13 = [0,1,2,3,4,5,6,7,8,9,10,11,12]
         const grid14 = [0,1,2,3,4,5,6,7,8,9,10,11,12,13]
-        
-        console.log("LOCAL STATE", this.state)
+      
         return (
             <div className="star">
              <div className="background" >
@@ -219,11 +218,11 @@ class Wormhole extends React.Component{
                             ))
                         }  
                     </Grid>
-                    <Grid container item align="center">
+                    <Grid container item align="center" wrap="nowrap">
                         <Grid container item xs={4}>
                             {this.state.ogBubos
                             ? this.state.ogBubos.map((bubo, i) => (
-                                <div onClick={() => this.onMove(bubo)}>
+                                <div onClick={() => this.onMove(bubo)} key={i}>
                                     <Grid
                                         item height={73.5} width={73.5}
                                     >

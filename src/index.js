@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
+import { BrowserRouter as Router } from 'react-router-dom'
 //import * as serviceWorker from './serviceWorker';
 
 import App from './App';
@@ -10,10 +11,13 @@ import Firebase, { FirebaseContext } from './firebase';
 const firebase = new Firebase();
 export default firebase;
 
+
 ReactDOM.render(
   <Provider store={store}>
     <FirebaseContext.Provider value={firebase}>
-      <App />
+      <Router >
+        <App />
+      </Router>
     </FirebaseContext.Provider>
   </Provider>,
   document.getElementById('root'),
