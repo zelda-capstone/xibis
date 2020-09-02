@@ -113,11 +113,17 @@ body {
 
 .auth {
   @include flexCenter(column);
-  margin-top: 10rem;
-  div {
-    a {
-      @include plainLink;
-   }
+  form {
+    @include flexCenter(column);
+    background: rgb(177, 175, 175);
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    input {
+      margin: .5rem;
+    }
+    button {
+      margin: .5rem;
+    }
   }
 }
 
