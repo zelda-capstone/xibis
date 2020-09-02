@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Menu = (props) => {
   //const [isShown, setIsShown] = useState(false);
-  //hardcode this to 'play' for now
-  //in future, it will receive whatever route is "next" in the narrative
+
   return (
     <>
     <div id="menu" >

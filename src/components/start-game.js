@@ -16,6 +16,7 @@ class StartGame extends React.Component {
     this.puzzlesRef = this.props.user.puzzlesRef
   }
 
+
   startGame = () => {
     this.props.resetPuzzles(this.puzzlesRef);
     this.props.resetBubos(this.bubosRef)
@@ -23,7 +24,7 @@ class StartGame extends React.Component {
 
   loadGame = async () => {
     await this.props.getBubos(this.bubosRef)
-    if (this.props.bubos.length) {
+    if (this.props.bubos.length === 10) {
       this.props.getPuzzles(this.puzzlesRef);
       this.setState({ activeGame: true })
     } else {

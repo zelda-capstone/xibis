@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
+import { connect } from 'react-redux'
 
 import { withFirebase } from '../firebase';
 import * as ROUTES from '../constants/routes';
@@ -33,7 +34,6 @@ class LogInFormBase extends Component {
       this.props.firebase
         .doSignInWithEmailAndPassword(email, password)
         .then(() => {
-          //this.setState({ ...INITIAL_STATE });
           this.props.history.push(ROUTES.LANDING);
         })
         .catch(error => {
@@ -92,10 +92,16 @@ class LogInFormBase extends Component {
     }
 }
 
+const mapDispatch = dispatch => {
+  return {
+    setUser: user => dispatch({ type: 'SET_USER', user})
+  }
+}
 
 const LogInForm = compose(
   withRouter,
   withFirebase,
+  connect(null, mapDispatch)
 )(LogInFormBase);
 
 
