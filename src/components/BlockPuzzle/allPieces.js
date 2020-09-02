@@ -2,7 +2,7 @@ import React from 'react'
 import {PiecesArray} from './ImageAssets/index'
 import SinglePiece from './singlePiece'
 
-export default function Icon() {
+export default function AllPieces() {
   return (
     <div
       style={{
@@ -12,7 +12,6 @@ export default function Icon() {
       }}
     >
       {PiecesArray.map((piece, index) => {
-        const position = piece.location
         return <SinglePiece key={index} piece={piece} />
       })}
     </div>
