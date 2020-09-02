@@ -70,7 +70,7 @@ export const unlockPuzzleInDb = (puzzlesRef, puzzleId) => {
     try {
       const lockedPuzzleRef = await puzzlesRef.doc(puzzleId)
       await lockedPuzzleRef.update({ unlocked: true })
-      //dispatch(unlockPuzzle(unlockedPuzzle))
+      // don't dispatch anything? next time you visit map and call getPuzzles, the update will be applied
     } catch (err) {
       console.error(err)
     }
