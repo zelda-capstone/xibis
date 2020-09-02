@@ -35,29 +35,32 @@ class Game extends React.Component {
   }
 
   render() {
-    //const user = this.props.user;
+    const user = this.props.user;
+    const bubos = this.props.bubos || []
 
     // if (user) {
       return (
         <Router>
             <Route exact path={ROUTES.LANDING} component={StartGame} />
             <Route component={NavBar} />
-            <Route component={Menu} />
             <Route exact path={ROUTES.INTRO} component={Intro} />
             <Route
                   exact
                   path={ROUTES.ASSEMBLE_BUBOS}
-                  render={() => <BuboSelector user={this.props.user} />}
+                  render={() => <BuboSelector user={user} />}
                 />
-            <Route exact path={ROUTES.MAP} component={Map} />
-            {/* <Route exact path={ROUTES.HINT} component={Hint} /> */}
-            {/* <Route exact path={ROUTES.TEST} component={TestPuzzle} /> */}
-            <Route exact path={ROUTES.WORMHOLE} component={Wormhole} />
-            <Route
-              exact path={ROUTES.REFLECTION}
-              render={() => <LostAndFound user={this.props.user} />}
-            />
-            <Route exact path={ROUTES.BLOCK_PUZZLE} component={BlockPuzzle} />
+              <Route exact path={ROUTES.MAP} component={Map} />
+              <Route exact path={ROUTES.WORMHOLE} component={Wormhole} />
+              <Route
+                exact path={ROUTES.REFLECTION}
+                render={() => <LostAndFound user={this.props.user} />}
+              />
+              <Route exact path={ROUTES.BLOCK_PUZZLE} component={BlockPuzzle} />
+            {
+              bubos.length === 10 && (
+                <Route component={Menu} />
+              )
+            }
         </Router>
       )
     }
@@ -67,6 +70,7 @@ class Game extends React.Component {
 const mapState = (state) => {
   return {
     user: state.user,
+    bubos: state.bubos
   }
 }
 

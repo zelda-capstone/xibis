@@ -7,10 +7,6 @@ import * as ROUTES from '../constants/routes'
 import * as ACTIONS from '../constants/actions'
 
 class SignOut extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { loggedIn: true }
-  }
 
   handleSignout = () => {
     this.props.firebase.doSignOut()
@@ -29,23 +25,13 @@ class SignOut extends React.Component {
   }
 
   render() {
-    // if (!this.props.session) return (
-    //   <Redirect to={ROUTES.LANDING} />
-    // )
     return (
       <>
-      {
-        this.state.loggedIn ? (
-          <button
-            type='button'
-            onClick={this.handleSignout}>
-              Sign-out
-          </button>
-        ) : (
-          <Redirect to={ROUTES.LANDING} />
-        )
-      }
-
+        <button
+          type='button'
+          onClick={this.handleSignout}>
+            Sign-out
+        </button>
       </>
     )
   }
