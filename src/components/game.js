@@ -35,7 +35,7 @@ class Game extends React.Component {
   }
 
   render() {
-    const user = this.props.user;
+    //const user = this.props.user;
 
     // if (user) {
       return (

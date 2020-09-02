@@ -95,6 +95,32 @@ body {
   @include flexCenter(column);
 }
 
+#landing {
+  @include flexCenter(column);
+  margin-top: 10rem;
+  margin-left: 15rem;
+  margin-right: 15rem;
+  background: whitesmoke;
+  border-radius: 5px;
+  color: black;
+  div {
+    padding: 1rem;
+  }
+  span {
+    padding: 1rem;
+  }
+}
+
+.auth {
+  @include flexCenter(column);
+  margin-top: 10rem;
+  div {
+    a {
+      @include plainLink;
+   }
+  }
+}
+
 #navbar {
   @include flexCenter(row);
   position: fixed;
@@ -104,7 +130,6 @@ body {
   button {
     font-family: $gameFont;
     font-size: 1rem;
-    //z-index: 5;
   }
 }
 

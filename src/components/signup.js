@@ -7,7 +7,7 @@ import * as ROLES from '../constants/roles';
 
 const SignUpPage = () => (
   <>
-    <div className="container">
+    <div className="auth">
         <h1>Sign Up!</h1>
         <div id="sign-in">
             <SignUpForm />
@@ -143,10 +143,10 @@ class SignUpFormBase extends Component {
   }
 
 const SignUpLink = () => (
-    <p>
-        Don't have an account?
+    <>
+        <div>Don't have an account?</div>
         <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
-    </p>
+    </>
 );
 
 

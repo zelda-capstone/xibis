@@ -7,7 +7,7 @@ import * as ROUTES from '../constants/routes';
 import {SignUpLink} from './signup'
 
 const Login = (props) => (
-    <div>
+    <div className='auth'>
       <h1>Sign In</h1>
       <LogInForm />
       <SignUpLink />
@@ -29,7 +29,7 @@ class LogInFormBase extends Component {
 
     onSubmit = event => {
       const { email, password } = this.state;
-
+//
       this.props.firebase
         .doSignInWithEmailAndPassword(email, password)
         .then(() => {

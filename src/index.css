@@ -156,6 +156,62 @@ body {
       flex-wrap: wrap;
 }
 
+#landing {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 10rem;
+  margin-left: 15rem;
+  margin-right: 15rem;
+  background: whitesmoke;
+  border-radius: 5px;
+  color: black;
+}
+
+#landing div {
+  padding: 1rem;
+}
+
+#landing span {
+  padding: 1rem;
+}
+
+.auth {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 10rem;
+}
+
+.auth div a {
+  text-decoration: none;
+  color: black;
+}
+
 #navbar {
   display: -webkit-box;
   display: -ms-flexbox;
