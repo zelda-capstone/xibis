@@ -5,8 +5,8 @@ const MapIcon = (props) => {
   const puzzle = props.puzzle;
   //console.log(puzzle)
   return (
-    <>
-      <Link to={{ pathname: `/${puzzle.name}`, state: { bubos: props.bubos }}} >
+    <div className='map-icon-container'>
+      <Link to={`/${puzzle.name}`} >
         <div
           className='map-icon'
           style={{backgroundImage: `url(${puzzle.imageUrl})`}}>
@@ -16,7 +16,7 @@ const MapIcon = (props) => {
           <span><strong>PLANET</strong>: {puzzle.planet}</span>
         </div>
       </Link>
-    </>
+    </div>
   )
 }
 

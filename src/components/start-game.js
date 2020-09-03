@@ -43,7 +43,7 @@ class StartGame extends React.Component {
     }
 
     return (
-      <div id='start-container'>
+      <div className='start-container fade-in'>
         <Link to='/intro' onClick={this.startGame} >
           <div>start new journey</div>
         </Link>

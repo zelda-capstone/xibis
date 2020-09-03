@@ -52,7 +52,7 @@ export const resetPuzzlesCollection = puzzlesRef => {
       })
       await puzzlesRef.doc('block-puzzle').set({
         name: 'block-puzzle',
-        planet: 'Tetris',
+        planet: 'Tessera',
         imageUrl: 'https://i.ibb.co/nCJK34p/planet.png',
         unlocked: false
       })

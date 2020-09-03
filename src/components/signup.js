@@ -103,7 +103,8 @@ class SignUpFormBase extends Component {
         username === '';
 
       return (
-        <form onSubmit={this.onSubmit}>
+        <>
+        <form className='styled-form' onSubmit={this.onSubmit}>
           <input
             name="username"
             value={username}
@@ -132,21 +133,26 @@ class SignUpFormBase extends Component {
             type="password"
             placeholder="Confirm Password"
           />
-          <button disabled={isInvalid} type="submit">
+          <button className='button' disabled={isInvalid} type="submit">
             Sign Up
           </button>
-
-          {error && <p>{error.message}</p>}
         </form>
+        {error && <p>{error.message}</p>}
+        <div className='signup-link'>OR
+          <div><Link to={ROUTES.LOG_IN}>Sign In</Link></div>
+        </div>
+        </>
       );
     }
   }
 
 const SignUpLink = () => (
-    <>
+    <div className='signup-link'>
         <div>Don't have an account?</div>
-        <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
-    </>
+        <Link to={ROUTES.SIGN_UP}>
+          Sign Up
+        </Link>
+    </div>
 );
 
 
