@@ -375,7 +375,7 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  height: 80vh;
+  height: 75vh;
 }
 
 .bubo-selector-container h2 {

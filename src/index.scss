@@ -189,7 +189,7 @@ body {
 
 .bubo-selector-container {
   @include flexCenter(column);
-  height: 80vh;
+  height: 75vh;
   h2 {
     color: white;
   }
@@ -220,7 +220,7 @@ body {
     @include flexCenter(column);
     border-radius: 3px;
     padding: 0.5rem;
-    //position: relative;
+    // position: relative;
     position: absolute;
     width: 5rem;
     background: linear-gradient(lavender, rgb(191, 189, 189));
