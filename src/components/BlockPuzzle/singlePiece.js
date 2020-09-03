@@ -1,7 +1,9 @@
 import React from 'react'
 import Draggable from 'react-draggable'
+import {addPiece} from '../../store/reducers/block-puzzle'
+import {connect} from 'react-redux'
 
-export default class SinglePiece extends React.Component {
+export class SinglePiece extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -15,11 +17,12 @@ export default class SinglePiece extends React.Component {
     const currentPosY = ui.lastY
     if (currentPosX === correctPos[0] && currentPosY === correctPos[1]) {
       console.log('correct!')
-      this.setState({correct: true})
-      //add some sore of visual cue to let player know they have placed piece correctly
+      this.setState({
+        correct: true,
+      })
+      this.props.signalCorrect()
     } else {
       console.log('keep trying!')
-      console.log('is it correct? ', this.state.correct)
     }
   }
 
@@ -46,3 +49,13 @@ export default class SinglePiece extends React.Component {
     )
   }
 }
+
+const mapState = (reduxState) => ({
+  blockPuzzle: reduxState.blockPuzzle,
+})
+
+const mapDispatch = (dispatch) => ({
+  signalCorrect: () => dispatch(addPiece()),
+})
+
+export default connect(mapState, mapDispatch)(SinglePiece)

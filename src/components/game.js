@@ -53,7 +53,7 @@ class Game extends React.Component {
           <Route exact path={ROUTES.WORMHOLE} component={Wormhole} />
           <Route
             exact path={ROUTES.REFLECTION}
-            render={() => <LostAndFound user={this.props.user} />}
+            render={() => <LostAndFound bubos={bubos} />}
           />
           <Route exact path={ROUTES.BLOCK_PUZZLE} component={BlockPuzzle} />
           {
