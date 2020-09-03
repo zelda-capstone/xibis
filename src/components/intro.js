@@ -19,13 +19,13 @@ class Intro extends React.Component {
     this.source = 0;
   }
 
-  componentDidMount() {
-    this.source = this.music.play('sad_bubos')
-  }
+  // componentDidMount() {
+  //   this.source = this.music.play('sad_bubos')
+  // }
 
-  componentWillUnmount() {
-    this.music.fade(this.music.volume(), 0, 1500, this.source)
-  }
+  // componentWillUnmount() {
+  //   this.music.fade(this.music.volume(), 0, 1500, this.source)
+  // }
 
   render() {
     return (
