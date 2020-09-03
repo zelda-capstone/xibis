@@ -241,7 +241,7 @@ body {
   @include flexCenter(column);
   flex-wrap: nowrap;
   @include fadeIn;
-  height: 80vh;
+  height: 73vh;
   h2 {
     color: white;
   }
@@ -257,6 +257,7 @@ body {
   background: white;
   color: black;
   padding: 1.25rem;
+  padding-bottom: 0.5rem;
   border-radius: 10px;
   span {
     margin: 0.75rem;
@@ -272,10 +273,11 @@ body {
     @include flexCenter(column);
     border-radius: 3px;
     padding: 0.5rem;
-    //position: relative;
+    // position: relative;
     position: absolute;
     width: 5rem;
     background: linear-gradient(lavender, rgb(191, 189, 189));
+    color: black;
     font-size: 0.7rem;
     z-index: 3;
   }
@@ -294,6 +296,7 @@ body {
     position: absolute;
     width: 5rem;
     background: linear-gradient(lavender, rgb(191, 189, 189));
+    color: black;
     font-size: 0.7rem;
     z-index: 3;
   }
