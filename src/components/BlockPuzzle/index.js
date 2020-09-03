@@ -31,21 +31,25 @@ export class BlockPuzzle extends React.Component {
         <div
           style={{
             display: 'flex',
+            flexDirection: 'column',
             width: '95vw',
             height: '95vh',
-            justifyContent: 'center',
+            justifyContent: 'space-around',
             alignItems: 'center',
           }}
         >
-          Intro Text. Are you ready to play the game?
-          <button
-            type="button"
-            onClick={() => {
-              this.startPlaying()
-            }}
-          >
-            Yes!
-          </button>
+          You can see the planet Tessera, but your destination is just out of
+          reach. Will you help the bubos bridge the gap?
+          <div>
+            <button
+              type="button"
+              onClick={() => {
+                this.startPlaying()
+              }}
+            >
+              Yes!
+            </button>
+          </div>
         </div>
       )
     }
