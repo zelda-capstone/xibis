@@ -1,11 +1,8 @@
 import React from 'react'
-//import {Redirect} from 'react-router-dom'
-import {CustomizableBubo, SelectTrait} from '../components'
-import {withFirebase} from '../firebase'
 import {connect} from 'react-redux'
+import {withFirebase} from '../firebase'
+import {CustomizableBubo, SelectTrait} from '../components'
 import {addBuboToDb} from '../store/reducers/bubo'
-
-import {Howl} from 'howler'
 
 class BuboSelector extends React.Component {
   constructor(props) {
@@ -16,26 +13,15 @@ class BuboSelector extends React.Component {
       personality: [],
       bubos: this.props.bubos || [],
     }
-    this.music = new Howl({
-      src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
-      volume: 0.5,
-      loop: true,
-      sprite: {
-        'bubos_170bpm': [
-          130000,
-          67422.04081632652
-        ]
-      }
-    })
-    this.source = 0;
+    this.music = 0;
   }
 
   componentDidMount() {
-    this.source = this.music.play('bubos_170bpm')
+    this.music = this.props.sounds.play('bubos_170bpm')
   }
 
   componentWillUnmount() {
-    this.music.fade(this.music.volume(), 0, 1000, this.source)
+    this.props.sounds.fade(this.props.sounds.volume(), 0, 1000, this.music)
   }
 
   handleColor = (evt) => {

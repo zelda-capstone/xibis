@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Timer, CustomizableBubo } from '..'
 import { getBubosCollection } from '../../store/reducers/bubo'
 import { unlockPuzzleInDb } from '../../store/reducers/puzzle'
-import { Howl } from 'howler'
 
 class LostAndFound extends Component {
   constructor(props) {
@@ -16,29 +15,17 @@ class LostAndFound extends Component {
       lost: this.props.bubos || [],
       found: 0
     }
-    this.sounds = new Howl({
-      src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
-      volume: 0.5,
-      sprite: {
-        'bubos_atmosphere': [ 0,
-          122932.24489795919],
-        'LF_correct': [124000,
-          2000],
-        'LF_incorrect': [127000,
-          2000]
-      }
-    })
-    this.source = 0;
+    this.music = 0;
   }
 
   componentDidMount() {
     const bubosRef = this.props.user.bubosRef
     this.props.getBubos(bubosRef)
-    this.source = this.sounds.play('bubos_atmosphere')
+    this.music = this.props.sounds.play('bubos_atmosphere')
   }
 
   componentWillUnmount() {
-    this.sounds.fade(this.sounds.volume(), 0, 1000, this.source)
+    this.props.sounds.fade(this.props.sounds.volume(), 0, 1000, this.music)
   }
 
   shuffleOrder = () => {

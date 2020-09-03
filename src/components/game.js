@@ -5,6 +5,7 @@ import {compose} from 'recompose'
 import {withFirebase} from '../firebase'
 import {withAuthentication} from '../components/Auth'
 import * as ROUTES from '../constants/routes'
+import {Howl} from 'howler'
 
 import {
   NavBar,
@@ -32,7 +33,27 @@ class Game extends React.Component {
       }
       this.props.setUser(this.user)
     }
+    this.sounds = new Howl({
+      src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
+      vol: 0.5,
+      loop: true,
+      sprite: {
+        'sad_bubos': [199000,
+          70661.22448979593],
+        'bubos_170bpm': [
+          130000,
+          67422.04081632652
+        ],
+        'bubos_atmosphere': [ 0,
+          122932.24489795919],
+        'LF_correct': [124000,
+          2000],
+        'LF_incorrect': [127000,
+          2000]
+      }
+    })
   }
+
 
   render() {
     const user = this.props.user;
@@ -43,17 +64,18 @@ class Game extends React.Component {
         <>
           <Route component={NavBar} />
           <Route exact path={ROUTES.LANDING} component={StartGame} />
-          <Route exact path={ROUTES.INTRO} component={Intro} />
+          <Route exact path={ROUTES.INTRO}
+            render={() => <Intro sounds={this.sounds} /> } />
           <Route
                 exact
                 path={ROUTES.ASSEMBLE_BUBOS}
-                render={() => <BuboSelector user={user} />}
+                render={() => <BuboSelector user={user} sounds={this.sounds} />}
               />
           <Route exact path={ROUTES.MAP} component={Map} />
           <Route exact path={ROUTES.WORMHOLE} component={Wormhole} />
           <Route
             exact path={ROUTES.REFLECTION}
-            render={() => <LostAndFound bubos={bubos} />}
+            render={() => <LostAndFound sounds={this.sounds} />}
           />
           <Route exact path={ROUTES.BLOCK_PUZZLE} component={BlockPuzzle} />
           {
