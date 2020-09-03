@@ -124,6 +124,10 @@ body {
       margin: 1rem;
     }
   }
+  a {
+    //@include plainLink;
+    color: rgb(255, 233, 108);
+  }
 }
 
 #sign-in {

@@ -222,6 +222,10 @@ body {
   margin: 1rem;
 }
 
+.auth a {
+  color: #ffe96c;
+}
+
 #sign-in {
   display: -webkit-box;
   display: -ms-flexbox;

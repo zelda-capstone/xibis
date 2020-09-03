@@ -6,7 +6,7 @@ const MapIcon = (props) => {
   //console.log(puzzle)
   return (
     <div className='map-icon-container'>
-      <Link to={{ pathname: `/${puzzle.name}`, state: { bubos: props.bubos }}} >
+      <Link to={`/${puzzle.name}`} >
         <div
           className='map-icon'
           style={{backgroundImage: `url(${puzzle.imageUrl})`}}>
