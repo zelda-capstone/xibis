@@ -12,7 +12,6 @@ class Map extends React.Component {
 
   render() {
     const puzzles = this.props.puzzles || []
-    console.log('unlocked puzzles ', puzzles)
     return (
       <>
         <div id="map-container">
