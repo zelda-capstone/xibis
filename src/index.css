@@ -40,20 +40,20 @@
 }
 
 @-webkit-keyframes typing {
-  from {
+  0%, 100% {
     width: 0;
   }
-  to {
-    width: 55%;
+  20%, 80% {
+    width: 100%;
   }
 }
 
 @keyframes typing {
-  from {
+  0%, 100% {
     width: 0;
   }
-  to {
-    width: 55%;
+  20%, 80% {
+    width: 100%;
   }
 }
 
@@ -143,24 +143,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-#sign-in {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-
 #landing {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -178,8 +160,8 @@ body {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin-top: 10rem;
-  margin-left: 15rem;
-  margin-right: 15rem;
+  margin-left: 15em;
+  margin-right: 15em;
   background: whitesmoke;
   border-radius: 5px;
   color: black;
@@ -191,6 +173,10 @@ body {
 
 #landing span {
   padding: 1rem;
+}
+
+#landing a {
+  color: black;
 }
 
 .auth {
@@ -232,11 +218,61 @@ body {
   margin-bottom: 1rem;
 }
 
-.auth form input {
-  margin: .5rem;
+.auth form button {
+  margin: 1rem;
 }
 
-.auth form button {
+.auth a {
+  color: #ffe96c;
+}
+
+#sign-in {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.signup-link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 2.5rem;
+}
+
+.signup-link a {
+  color: white;
+}
+
+.styled-form input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  font-family: "Anonymous Pro", monospace;
+  padding: .2rem;
   margin: .5rem;
 }
 
@@ -257,17 +293,12 @@ body {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   position: fixed;
-  top: 1rem;
-  left: 90vw;
+  right: 2vw;
+  top: 1vw;
   z-index: 5;
 }
 
-#navbar button {
-  font-family: "Anonymous Pro", monospace;
-  font-size: 1rem;
-}
-
-.user-account {
+.start-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -283,10 +314,35 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-animation: fade-in 1.5s linear;
+          animation: fade-in 1.5s linear;
+  -webkit-box-align: space-around;
+      -ms-flex-align: space-around;
+          align-items: space-around;
+  width: 100vw;
+  height: 80vh;
+  -webkit-transition: opacity 2s linear;
+  transition: opacity 2s linear;
+}
+
+.start-container div {
   color: white;
+  font-size: 2rem;
+  margin: 1rem;
+  position: relative;
 }
 
-.story {
+.start-container a {
+  text-decoration: none;
+  color: black;
+}
+
+.fade-in {
+  -webkit-animation: fade-in 1.5s linear;
+          animation: fade-in 1.5s linear;
+}
+
+.intro-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -302,17 +358,18 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin-top: 15rem;
+  -webkit-animation: fade-in 1.5s linear;
+          animation: fade-in 1.5s linear;
+  margin-top: 5rem;
+}
+
+.intro-container div {
+  margin: 1rem;
 }
 
 .typewriter {
-  overflow: hidden;
-  border-right: 0.15em solid orange;
-  margin-left: 10rem;
-  margin-right: 10rem;
-  letter-spacing: 0.1em;
-  -webkit-animation: typing 3s steps(40, end), cursor 0.75s step-end infinite;
-          animation: typing 3s steps(40, end), cursor 0.75s step-end infinite;
+  width: 60%;
+  text-align: center;
 }
 
 .buttons-container {
@@ -337,26 +394,24 @@ body {
 }
 
 .buttons-container button {
-  margin: 2rem;
-  font-family: "Anonymous Pro", monospace;
-  font-size: 1rem;
-}
-
-.buttons-container button a {
-  text-decoration: none;
-  color: black;
+  margin: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .button {
   font-family: "Anonymous Pro", monospace;
   font-size: 1rem;
   border: none;
+  border-radius: 3px;
   margin: 0.5rem;
+  z-index: 6;
+  -webkit-box-shadow: 2px 2px grey;
+          box-shadow: 2px 2px grey;
 }
 
-.button a {
-  text-decoration: none;
-  color: black;
+.button:hover {
+  background: grey;
 }
 
 .bubo-selector-container {
@@ -375,7 +430,11 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  height: 80vh;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-animation: fade-in 1.5s linear;
+          animation: fade-in 1.5s linear;
+  height: 73vh;
 }
 
 .bubo-selector-container h2 {
@@ -403,11 +462,12 @@ body {
           justify-content: flex-start;
   height: 22rem;
   width: 27rem;
-  -webkit-box-shadow: 3px 3px #c6a0a0;
-          box-shadow: 3px 3px #c6a0a0;
+  -webkit-box-shadow: 3px 3px #8c8c8c;
+          box-shadow: 3px 3px #8c8c8c;
   background: white;
   color: black;
   padding: 1.25rem;
+  padding-bottom: 0.5rem;
   border-radius: 10px;
 }
 
@@ -459,6 +519,7 @@ body {
   width: 5rem;
   background: -webkit-gradient(linear, left top, left bottom, from(lavender), to(#bfbdbd));
   background: linear-gradient(lavender, #bfbdbd);
+  color: black;
   font-size: 0.7rem;
   z-index: 3;
 }
@@ -507,16 +568,9 @@ body {
   width: 5rem;
   background: -webkit-gradient(linear, left top, left bottom, from(lavender), to(#bfbdbd));
   background: linear-gradient(lavender, #bfbdbd);
+  color: black;
   font-size: 0.7rem;
   z-index: 3;
-}
-
-.no-hover {
-  pointer-events: none;
-}
-
-.bubo-stats {
-  display: none;
 }
 
 .custom-bubo {
@@ -542,6 +596,22 @@ body {
   background-repeat: no-repeat;
 }
 
+.accessory {
+  position: absolute;
+  top: 0;
+  margin-bottom: 3.5rem;
+  width: 100px;
+  height: 100px;
+}
+
+.no-hover {
+  pointer-events: none;
+}
+
+.bubo-stats {
+  display: none;
+}
+
 .line-bottom {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -563,13 +633,6 @@ body {
           justify-content: flex-start;
 }
 
-.accessory {
-  position: absolute;
-  top: 0;
-  width: 100px;
-  height: 100px;
-}
-
 #menu {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -586,6 +649,8 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-animation: fade-in 1.5s linear;
+          animation: fade-in 1.5s linear;
   margin: 2rem;
   position: fixed;
   bottom: 1vh;
@@ -626,32 +691,6 @@ body {
   color: black;
 }
 
-.hint-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin: 10rem;
-}
-
-.hint-container div {
-  color: black;
-  background: radial-gradient(whitesmoke, #d3d3d2);
-  padding: 8rem;
-  border-radius: 10px;
-}
-
 #map-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -668,6 +707,8 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-animation: fade-in 1.5s linear;
+          animation: fade-in 1.5s linear;
 }
 
 #map-container h1 {
@@ -699,13 +740,21 @@ body {
   font-size: 2rem;
 }
 
+.map-icon-container a {
+  text-decoration: none;
+  color: black;
+}
+
 .map-icon {
   height: 8em;
   width: 8em;
 }
 
 .map-icon:hover + div {
+  -webkit-animation: fade-in 1.5s linear;
+          animation: fade-in 1.5s linear;
   display: block;
+  position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -721,60 +770,22 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  padding: .5rem;
+  padding: 0.5rem;
   background: white;
   border-radius: 5px;
-}
-
-.map-icon:hover + div a {
-  color: black;
-  text-decoration: none;
+  -webkit-box-shadow: 2px 2px grey;
+          box-shadow: 2px 2px grey;
 }
 
 .puzzle-stats {
   display: none;
   font-size: .8rem;
-  width: 4.5rem;
-  height: 3rem;
+  width: 6rem;
+  height: 4rem;
 }
 
-#start-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-align: space-around;
-      -ms-flex-align: space-around;
-          align-items: space-around;
-  width: 100vw;
-  height: 80vh;
-  -webkit-transition: opacity 2s linear;
-  transition: opacity 2s linear;
-  -webkit-animation: fade-in 2s linear;
-          animation: fade-in 2s linear;
-}
-
-#start-container div {
-  color: white;
-  font-size: 2rem;
-  margin: 1rem;
-  position: relative;
-}
-
-#start-container a {
-  text-decoration: none;
-  color: black;
+.puzzle-stats span {
+  margin: .3em;
 }
 
 .puzzle-container {
@@ -1007,5 +1018,27 @@ body {
   -webkit-box-ordinal-group: 11;
       -ms-flex-order: 10;
           order: 10;
+}
+
+#block-puzzle-main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 95vw;
+  height: 95vh;
+  margin: 1em;
+  font-size: large;
 }
 /*# sourceMappingURL=index.css.map */

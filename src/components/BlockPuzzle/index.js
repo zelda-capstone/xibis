@@ -4,23 +4,55 @@ import Board from './board'
 import AllPieces from './allPieces'
 import Destination from './ImageAssets/pawel-czerwinski-F_dg3zc95Jc-unsplash.jpg'
 import BuboContainer from './bubo-container'
+import {unlockPuzzleInDb} from '../../store/reducers/puzzle'
 
 export class BlockPuzzle extends React.Component {
   constructor() {
     super()
+    this.state = {
+      puzzleState: 'intro',
+    }
+    this.startPlaying = this.startPlaying.bind(this)
     this.handleWin = this.handleWin.bind(this)
   }
 
+  startPlaying() {
+    this.setState({puzzleState: 'playing'})
+  }
+
   handleWin() {
-    console.log('congratulations, you won!')
+    const puzzlesRef = this.props.user.puzzlesRef
+    this.props.unlockPuzzle(puzzlesRef, 'wormhole')
   }
 
   render() {
-    let puzzleText =
-      'The bubos need to cross a celestial bridge. Position the pieces on the board until they stick.'
+    if (this.state.puzzleState === 'intro') {
+      return (
+        <div id="block-puzzle-main">
+          You can see the planet Tessera in the distance. It glows with marbled
+          brilliance among the twinkling stars. Your destination is near, but
+          just out of reach. You will need to build a celestial bridge for your
+          bubos. Are you ready to begin?
+          <div>
+            <button
+              className="button"
+              type="button"
+              onClick={() => {
+                this.startPlaying()
+              }}
+            >
+              Yes!
+            </button>
+          </div>
+        </div>
+      )
+    }
+
+    let puzzleText = 'Position the pieces on the board until they stick.'
     const winCondition = this.props.totalCorrect === 12
     if (winCondition) {
-      puzzleText = 'you won! congratulations!'
+      puzzleText = 'You won! Congratulations!'
+      this.handleWin()
     }
 
     return (
@@ -47,7 +79,7 @@ export class BlockPuzzle extends React.Component {
           </div>
           <div>
             <img
-              alt="your destination planet, a dark purple and blue sphere"
+              alt="your destination, the planet Tessera, a dark purple and blue sphere"
               src={Destination}
               style={{width: '25vw'}}
             />
@@ -60,6 +92,13 @@ export class BlockPuzzle extends React.Component {
 
 const mapState = (reduxState) => ({
   totalCorrect: reduxState.blockPuzzle,
+  user: reduxState.user,
 })
 
-export default connect(mapState)(BlockPuzzle)
+const mapDispatch = (dispatch) => ({
+  unlockPuzzle: (puzzlesRef, id) => {
+    dispatch(unlockPuzzleInDb(puzzlesRef, id))
+  },
+})
+
+export default connect(mapState, mapDispatch)(BlockPuzzle)

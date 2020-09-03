@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Anonymous Pro';
-  src: url('/fonts/AnonymousPro-Regular.ttf')
+  src: url('/fonts/AnonymousPro-Regular.ttf');
 }
 
 $gameFont: 'Anonymous Pro', monospace;
@@ -18,10 +18,8 @@ $gameFont: 'Anonymous Pro', monospace;
   flex-wrap: wrap;
 }
 
-@mixin canvas($colorOne, $colorTwo) {
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient($colorOne, $colorTwo);
+@mixin fadeIn {
+  animation: fade-in 1.5s linear;
 }
 
 @keyframes fade-in {
@@ -43,11 +41,11 @@ $gameFont: 'Anonymous Pro', monospace;
 }
 
 @keyframes typing {
-  from {
+  0%, 100% {
     width: 0;
   }
-  to {
-    width: 55%;
+  20%, 80% {
+    width: 100%;
   }
 }
 
@@ -96,15 +94,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-#sign-in {
-  @include flexCenter(column);
-}
-
 #landing {
   @include flexCenter(column);
   margin-top: 10rem;
-  margin-left: 15rem;
-  margin-right: 15rem;
+  margin-left: 15em;
+  margin-right: 15em;
   background: whitesmoke;
   border-radius: 5px;
   color: black;
@@ -113,6 +107,9 @@ body {
   }
   span {
     padding: 1rem;
+  }
+  a {
+    color: black;
   }
 }
 
@@ -123,44 +120,97 @@ body {
     background: rgb(177, 175, 175);
     border-radius: 5px;
     margin-bottom: 1rem;
-    input {
-      margin: .5rem;
-    }
     button {
-      margin: .5rem;
+      margin: 1rem;
     }
+  }
+  a {
+    //@include plainLink;
+    color: rgb(255, 233, 108);
+  }
+}
+
+#sign-in {
+  @include flexCenter(column);
+}
+
+.signup-link {
+  @include flexCenter(column);
+  margin: 2.5rem;
+  a {
+    color: white;
+  }
+}
+
+.styled-form {
+  input {
+    appearance: none;
+    //border: 1px grey;
+    //outline: none;
+    font-family: $gameFont;
+    padding: .2rem;
+    margin: .5rem;
   }
 }
 
 #navbar {
   @include flexCenter(row);
   position: fixed;
-  top: 1rem;
-  left: 90vw;
+  right: 2vw;
+  top: 1vw;
   z-index: 5;
-  button {
-    font-family: $gameFont;
-    font-size: 1rem;
+}
+
+.start-container {
+  @include flexCenter(column);
+  @include fadeIn;
+  align-items: space-around;
+  width: 100vw;
+  height: 80vh;
+  transition: opacity 2s linear;
+
+  div {
+    color: white;
+    font-size: 2rem;
+    margin: 1rem;
+    position: relative;
+  }
+  a {
+    @include plainLink;
   }
 }
 
-.user-account {
-  @include flexCenter(column);
-  color: white;
+.fade-in {
+  @include fadeIn;
 }
 
-.story {
+.intro-container {
   @include flexCenter(column);
-  margin-top: 15rem;
+  @include fadeIn;
+  margin-top: 5rem;
+  //margin: 5rem;
+  div {
+    margin: 1rem;
+  }
 }
 
 .typewriter {
-  overflow: hidden;
-  border-right: 0.15em solid orange;
-  margin-left: 10rem;
-  margin-right: 10rem;
-  letter-spacing: 0.1em;
-  animation: typing 3s steps(40, end), cursor 0.75s step-end infinite;
+  width: 60%;
+  text-align: center;
+  // overflow: hidden;
+  // white-space: nowrap;
+  // display: inline-block;
+  // position: relative;
+  // // ::after {
+  // //   content: '|';
+  // //   position: absolute;
+  // //   right: 0;
+  // // }
+  // // overflow: hidden;
+  // border-right: 0.15em solid orange;
+  // // //margin-top: 3rem;
+  // letter-spacing: 0.1em;
+  // animation: typing 10s steps(40, end), cursor 1s step-end infinite;
 }
 
 .buttons-container {
@@ -168,12 +218,9 @@ body {
   justify-content: space-around;
   margin: 5rem;
   button {
-    margin: 2rem;
-    font-family: $gameFont;
-    font-size: 1rem;
-    a {
-      @include plainLink;
-    }
+    margin: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 
@@ -181,15 +228,20 @@ body {
   font-family: $gameFont;
   font-size: 1rem;
   border: none;
+  border-radius: 3px;
   margin: 0.5rem;
-  a {
-    @include plainLink;
+  z-index: 6;
+  box-shadow: 2px 2px grey;
+  &:hover {
+    background: grey;
   }
 }
 
 .bubo-selector-container {
   @include flexCenter(column);
-  height: 80vh;
+  flex-wrap: nowrap;
+  @include fadeIn;
+  height: 73vh;
   h2 {
     color: white;
   }
@@ -200,11 +252,12 @@ body {
   justify-content: flex-start;
   height: 22rem;
   width: 27rem;
-  box-shadow: 3px 3px rgb(198, 160, 160);
+  box-shadow: 3px 3px rgb(140, 140, 140);
   //position: relative;
   background: white;
   color: black;
   padding: 1.25rem;
+  padding-bottom: 0.5rem;
   border-radius: 10px;
   span {
     margin: 0.75rem;
@@ -220,10 +273,11 @@ body {
     @include flexCenter(column);
     border-radius: 3px;
     padding: 0.5rem;
-    //position: relative;
+    // position: relative;
     position: absolute;
     width: 5rem;
     background: linear-gradient(lavender, rgb(191, 189, 189));
+    color: black;
     font-size: 0.7rem;
     z-index: 3;
   }
@@ -242,17 +296,10 @@ body {
     position: absolute;
     width: 5rem;
     background: linear-gradient(lavender, rgb(191, 189, 189));
+    color: black;
     font-size: 0.7rem;
     z-index: 3;
   }
-}
-
-.no-hover {
-  pointer-events: none;
-}
-
-.bubo-stats {
-  display: none;
 }
 
 .custom-bubo {
@@ -264,21 +311,30 @@ body {
   background-repeat: no-repeat;
 }
 
+.accessory {
+  position: absolute;
+  top: 0;
+  margin-bottom: 3.5rem;
+  width: 100px;
+  height: 100px;
+}
+
+.no-hover {
+  pointer-events: none;
+}
+
+.bubo-stats {
+  display: none;
+}
+
 .line-bottom {
   @include flexCenter(row);
   justify-content: flex-start;
 }
 
-.accessory {
-  position: absolute;
-  top: 0;
-  //margin-bottom: 3.5rem;
-  width: 100px;
-  height: 100px;
-}
-
 #menu {
   @include flexCenter(column);
+  @include fadeIn;
   margin: 2rem;
   position: fixed;
   bottom: 1vh;
@@ -300,19 +356,9 @@ body {
   }
 }
 
-.hint-container {
-  @include flexCenter(column);
-  margin: 10rem;
-  div {
-    color: rgb(0, 0, 0);
-    background: radial-gradient(whitesmoke, rgb(211, 211, 210));
-    padding: 8rem;
-    border-radius: 10px;
-  }
-}
-
 #map-container {
   @include flexCenter(column);
+  @include fadeIn;
   h1 {
     color: whitesmoke;
     text-shadow: 2px 2px rgb(65, 68, 96);
@@ -327,45 +373,34 @@ body {
   font-size: 2rem;
 }
 
+.map-icon-container {
+  a {
+    @include plainLink;
+  }
+}
+
 .map-icon {
   height: 8em;
   width: 8em;
   &:hover + div {
+    @include fadeIn;
     display: block;
+    position: absolute;
     @include flexCenter(column);
-    padding: .5rem;
+    padding: 0.5rem;
     background: white;
     border-radius: 5px;
-    a {
-      color: black;
-      text-decoration: none;
-    }
+    box-shadow: 2px 2px grey;
   }
 }
 
 .puzzle-stats {
   display: none;
   font-size: .8rem;
-  width: 4.5rem;
-  height: 3rem;
-}
-
-#start-container {
-  @include flexCenter(column);
-  align-items: space-around;
-  width: 100vw;
-  height: 80vh;
-  transition: opacity 2s linear;
-  animation: fade-in 2s linear;
-  //background: linear-gradient(black, rgb(20, 20, 72));
-  div {
-    color: white;
-    font-size: 2rem;
-    margin: 1rem;
-    position: relative;
-  }
-  a {
-    @include plainLink;
+  width: 6rem;
+  height: 4rem;
+  span {
+    margin: .3em;
   }
 }
 
@@ -373,7 +408,6 @@ body {
   position: relative;
   @include flexCenter(column);
   align-items: space-between;
-  //@include canvas(black, rgb(12, 12, 36));
 }
 
 .puzzle {
@@ -427,14 +461,6 @@ body {
 .lost-bubo {
   margin: 0.5rem;
 }
-
-// .raft {
-//   width: 10rem;
-//   height: 10rem;
-//   background: radial-gradient(rgb(26, 15, 15), rgb(82, 47, 29));
-//   border-radius: 10px;
-//   //margin-right: 30rem;
-// }
 
 .space-sky {
   width: 100%;
@@ -509,9 +535,17 @@ body {
 }
 
 .order-9 {
-  order: 9
+  order: 9;
 }
 
 .order-10 {
-  order: 10
+  order: 10;
+}
+
+#block-puzzle-main {
+  @include flexCenter(column);
+  width: 95vw;
+  height: 95vh;
+  margin: 1em;
+  font-size: large;
 }

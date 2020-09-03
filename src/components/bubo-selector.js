@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {withFirebase} from '../firebase'
 import {CustomizableBubo, SelectTrait} from '../components'
 import {addBuboToDb} from '../store/reducers/bubo'
+import createRandomBubo from './create-random-bubo'
 
 class BuboSelector extends React.Component {
   constructor(props) {
@@ -39,6 +40,15 @@ class BuboSelector extends React.Component {
     } else if (personality.length === 2) {
       this.setState({personality: [personality[0], evt.target.value]})
     }
+  }
+
+  handleRandom = () => {
+    const newRandom = createRandomBubo()
+    this.setState({
+      color: newRandom.color,
+      accessory: newRandom.accessory,
+      personality: newRandom.personality,
+    })
   }
 
   handleCreate = async () => {
@@ -121,9 +131,12 @@ class BuboSelector extends React.Component {
                 <option>patient</option>
               </select>
             </div>
-            <CustomizableBubo {...this.state} hover={false}/>
+            <CustomizableBubo {...this.state} hover={false} />
           </div>
           <div>
+            <button className="button" onClick={this.handleRandom}>
+              Randomize
+            </button>
             <button className="button" onClick={this.handleCreate}>
               create
             </button>

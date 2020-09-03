@@ -51,16 +51,8 @@ class StartGame extends React.Component {
     }
 
     return (
-      <div id='start-container'>
-        <Link
-          to={{
-            pathname: '/intro',
-            state: {
-              music: this.music
-            }
-          }}
-          onClick={this.startGame}
-        >
+      <div className='start-container fade-in'>
+        <Link to='/intro' onClick={this.startGame} >
           <div>start new journey</div>
         </Link>
         <div onClick={this.loadGame}>load game</div>
