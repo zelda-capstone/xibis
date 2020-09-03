@@ -40,20 +40,20 @@
 }
 
 @-webkit-keyframes typing {
-  from {
+  0%, 100% {
     width: 0;
   }
-  to {
-    width: 55%;
+  20%, 80% {
+    width: 100%;
   }
 }
 
 @keyframes typing {
-  from {
+  0%, 100% {
     width: 0;
   }
-  to {
-    width: 55%;
+  20%, 80% {
+    width: 100%;
   }
 }
 
@@ -294,6 +294,7 @@ body {
       flex-wrap: wrap;
   position: fixed;
   right: 2vw;
+  top: 1vw;
   z-index: 5;
 }
 
@@ -341,7 +342,7 @@ body {
           animation: fade-in 1.5s linear;
 }
 
-.story {
+.intro-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -357,17 +358,18 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin-top: 8rem;
+  -webkit-animation: fade-in 1.5s linear;
+          animation: fade-in 1.5s linear;
+  margin-top: 5rem;
+}
+
+.intro-container div {
+  margin: 1rem;
 }
 
 .typewriter {
-  overflow: hidden;
-  border-right: 0.15em solid orange;
-  margin-left: 10rem;
-  margin-right: 10rem;
-  letter-spacing: 0.1em;
-  -webkit-animation: typing 3s steps(40, end), cursor 0.75s step-end infinite;
-          animation: typing 3s steps(40, end), cursor 0.75s step-end infinite;
+  width: 60%;
+  text-align: center;
 }
 
 .buttons-container {
@@ -404,6 +406,8 @@ body {
   border-radius: 3px;
   margin: 0.5rem;
   z-index: 6;
+  -webkit-box-shadow: 2px 2px grey;
+          box-shadow: 2px 2px grey;
 }
 
 .button:hover {
@@ -458,8 +462,8 @@ body {
           justify-content: flex-start;
   height: 22rem;
   width: 27rem;
-  -webkit-box-shadow: 3px 3px #c6a0a0;
-          box-shadow: 3px 3px #c6a0a0;
+  -webkit-box-shadow: 3px 3px #8c8c8c;
+          box-shadow: 3px 3px #8c8c8c;
   background: white;
   color: black;
   padding: 1.25rem;
@@ -766,6 +770,8 @@ body {
   padding: .5rem;
   background: white;
   border-radius: 5px;
+  -webkit-box-shadow: 2px 2px grey;
+          box-shadow: 2px 2px grey;
 }
 
 .puzzle-stats {

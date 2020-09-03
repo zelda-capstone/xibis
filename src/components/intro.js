@@ -29,10 +29,15 @@ class Intro extends React.Component {
 
   render() {
     return (
-      <>
-        <div className='story'>
+      <div>
+        <div className='intro-container'>
           <div className='typewriter'>
-            A very dramatic intro narrative to our story and the purpose of the journey.
+            A community of *insert name here* are fleeing human space invaders and traveling through galaxies in search of a new planet to call home.
+          </div>
+          <div className='typewriter'>
+            Only by knowing their strengths and working together will they succeed, but they can't do it alone... Solve a series of mini puzzles to help them find their way!
+          </div>
+          <div className='typewriter'>
             Are you ready to begin?
           </div>
           <div className='buttons-container'>
@@ -40,7 +45,7 @@ class Intro extends React.Component {
             <Link to={ROUTES.LANDING}><button className='button'>No</button></Link>
           </div>
         </div>
-      </>
+      </div>
     )
   }
 }

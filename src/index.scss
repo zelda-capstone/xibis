@@ -41,11 +41,11 @@ $gameFont: 'Anonymous Pro', monospace;
 }
 
 @keyframes typing {
-  from {
+  0%, 100% {
     width: 0;
   }
-  to {
-    width: 55%;
+  20%, 80% {
+    width: 100%;
   }
 }
 
@@ -157,6 +157,7 @@ body {
   @include flexCenter(row);
   position: fixed;
   right: 2vw;
+  top: 1vw;
   z-index: 5;
 }
 
@@ -183,18 +184,33 @@ body {
   @include fadeIn;
 }
 
-.story {
+.intro-container {
   @include flexCenter(column);
-  margin-top: 8rem;
+  @include fadeIn;
+  margin-top: 5rem;
+  //margin: 5rem;
+  div {
+    margin: 1rem;
+  }
 }
 
 .typewriter {
-  overflow: hidden;
-  border-right: 0.15em solid orange;
-  margin-left: 10rem;
-  margin-right: 10rem;
-  letter-spacing: 0.1em;
-  animation: typing 3s steps(40, end), cursor 0.75s step-end infinite;
+  width: 60%;
+  text-align: center;
+  // overflow: hidden;
+  // white-space: nowrap;
+  // display: inline-block;
+  // position: relative;
+  // // ::after {
+  // //   content: '|';
+  // //   position: absolute;
+  // //   right: 0;
+  // // }
+  // // overflow: hidden;
+  // border-right: 0.15em solid orange;
+  // // //margin-top: 3rem;
+  // letter-spacing: 0.1em;
+  // animation: typing 10s steps(40, end), cursor 1s step-end infinite;
 }
 
 .buttons-container {
@@ -215,6 +231,7 @@ body {
   border-radius: 3px;
   margin: 0.5rem;
   z-index: 6;
+  box-shadow: 2px 2px grey;
   &:hover {
     background: grey;
   }
@@ -235,7 +252,7 @@ body {
   justify-content: flex-start;
   height: 22rem;
   width: 27rem;
-  box-shadow: 3px 3px rgb(198, 160, 160);
+  box-shadow: 3px 3px rgb(140, 140, 140);
   //position: relative;
   background: white;
   color: black;
@@ -370,6 +387,7 @@ body {
     padding: .5rem;
     background: white;
     border-radius: 5px;
+    box-shadow: 2px 2px grey;
   }
 }
 
