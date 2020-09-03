@@ -4,6 +4,7 @@ import Board from './board'
 import AllPieces from './allPieces'
 import Destination from './ImageAssets/pawel-czerwinski-F_dg3zc95Jc-unsplash.jpg'
 import BuboContainer from './bubo-container'
+import {unlockPuzzleInDb} from '../../store/reducers/puzzle'
 
 export class BlockPuzzle extends React.Component {
   constructor() {
@@ -20,7 +21,8 @@ export class BlockPuzzle extends React.Component {
   }
 
   handleWin() {
-    this.setState({puzzleState: 'win'})
+    const puzzlesRef = this.props.user.puzzlesRef
+    this.props.unlockPuzzle(puzzlesRef, 'wormhole')
   }
 
   render() {
@@ -50,6 +52,7 @@ export class BlockPuzzle extends React.Component {
     const winCondition = this.props.totalCorrect === 12
     if (winCondition) {
       puzzleText = 'You won! Congratulations!'
+      this.handleWin()
     }
 
     return (
@@ -89,6 +92,13 @@ export class BlockPuzzle extends React.Component {
 
 const mapState = (reduxState) => ({
   totalCorrect: reduxState.blockPuzzle,
+  user: reduxState.user,
 })
 
-export default connect(mapState)(BlockPuzzle)
+const mapDispatch = (dispatch) => ({
+  unlockPuzzle: (puzzlesRef, id) => {
+    dispatch(unlockPuzzleInDb(puzzlesRef, id))
+  },
+})
+
+export default connect(mapState, mapDispatch)(BlockPuzzle)
