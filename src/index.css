@@ -160,8 +160,8 @@ body {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin-top: 10rem;
-  margin-left: 15rem;
-  margin-right: 15rem;
+  margin-left: 25rem;
+  margin-right: 25rem;
   background: whitesmoke;
   border-radius: 5px;
   color: black;
@@ -214,12 +214,8 @@ body {
   margin-bottom: 1rem;
 }
 
-.auth form input {
-  margin: .5rem;
-}
-
 .auth form button {
-  margin: .5rem;
+  margin: 1rem;
 }
 
 #sign-in {
@@ -238,6 +234,15 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+.styled-form input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  font-family: "Anonymous Pro", monospace;
+  padding: .2rem;
+  margin: .5rem;
 }
 
 #navbar {
@@ -384,6 +389,10 @@ body {
 .button a {
   text-decoration: none;
   color: black;
+}
+
+.button:hover {
+  background: grey;
 }
 
 .bubo-selector-container {

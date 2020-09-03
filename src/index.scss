@@ -97,8 +97,8 @@ body {
 #landing {
   @include flexCenter(column);
   margin-top: 10rem;
-  margin-left: 15rem;
-  margin-right: 15rem;
+  margin-left: 25rem;
+  margin-right: 25rem;
   background: whitesmoke;
   border-radius: 5px;
   color: black;
@@ -117,17 +117,25 @@ body {
     background: rgb(177, 175, 175);
     border-radius: 5px;
     margin-bottom: 1rem;
-    input {
-      margin: .5rem;
-    }
     button {
-      margin: .5rem;
+      margin: 1rem;
     }
   }
 }
 
 #sign-in {
   @include flexCenter(column);
+}
+
+.styled-form {
+  input {
+    appearance: none;
+    //border: 1px grey;
+    //outline: none;
+    font-family: $gameFont;
+    padding: .2rem;
+    margin: .5rem;
+  }
 }
 
 #navbar {
@@ -202,6 +210,9 @@ body {
   z-index: 6;
   a {
     @include plainLink;
+  }
+  &:hover {
+    background: grey;
   }
 }
 
