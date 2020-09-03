@@ -35,7 +35,7 @@ class Game extends React.Component {
     }
     this.sounds = new Howl({
       src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
-      vol: 0.5,
+      vol: 0.4,
       loop: true,
       sprite: {
         'sad_bubos': [199000,
