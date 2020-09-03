@@ -16,32 +16,24 @@ export class BlockPuzzle extends React.Component {
   }
 
   startPlaying() {
-    console.log("let's get started")
     this.setState({puzzleState: 'playing'})
   }
 
   handleWin() {
-    console.log('congratulations, you won!')
     this.setState({puzzleState: 'win'})
   }
 
   render() {
     if (this.state.puzzleState === 'intro') {
       return (
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            width: '95vw',
-            height: '95vh',
-            justifyContent: 'space-around',
-            alignItems: 'center',
-          }}
-        >
-          You can see the planet Tessera, but your destination is just out of
-          reach. Will you help the bubos bridge the gap?
+        <div id="block-puzzle-main">
+          You can see the planet Tessera in the distance. It glows with marbled
+          brilliance among the twinkling stars. Your destination is near, but
+          just out of reach. You will need to build a celestial bridge for your
+          bubos. Are you ready to begin?
           <div>
             <button
+              className="button"
               type="button"
               onClick={() => {
                 this.startPlaying()
@@ -54,11 +46,10 @@ export class BlockPuzzle extends React.Component {
       )
     }
 
-    let puzzleText =
-      'The bubos need to cross a celestial bridge. Position the pieces on the board until they stick.'
+    let puzzleText = 'Position the pieces on the board until they stick.'
     const winCondition = this.props.totalCorrect === 12
     if (winCondition) {
-      puzzleText = 'you won! congratulations!'
+      puzzleText = 'You won! Congratulations!'
     }
 
     return (
@@ -85,7 +76,7 @@ export class BlockPuzzle extends React.Component {
           </div>
           <div>
             <img
-              alt="your destination planet, a dark purple and blue sphere"
+              alt="your destination, the planet Tessera, a dark purple and blue sphere"
               src={Destination}
               style={{width: '25vw'}}
             />
