@@ -12,7 +12,7 @@ import { getBubosCollection } from '../../store/reducers/bubo';
 import {Green, GreenRev, Purple, PurpleUpsd, GreenUpsD} from './Images';
 import Item from './GridItem'
 import BuboRow from './BuboRow'
-import Portal from './Portal'
+import Portal1 from './Portals'
 
 
 class Wormhole extends React.Component{
@@ -22,11 +22,13 @@ class Wormhole extends React.Component{
             ogBubos: [],
             winBubos: [],
             gangsHere: true,
-            selectedBubo: {},
-            order: 0
+            selectedBubo: {}
         }
     }
     
+
+
+
     bringInBubos = (event) => {
         this.setState((state) => ({
             ogBubos: this.props.bubos
@@ -51,10 +53,19 @@ class Wormhole extends React.Component{
     }
 
 
-    onMove = (bubo, i) => {
+    handleClick = (bubo) => {
+        let clickTotal = this.state.selectedBubo.click + 1
 
         this.setState((state) => ({
-            selectedBubo: bubo
+            selectedBubo: {bubo, click: clickTotal}
+        }))
+
+    }
+
+    onMove = (bubo, i, click) => {
+        
+        this.setState((state) => ({
+            selectedBubo: {bubo, click: 1}
         }))
 
         this.setState((state) => ({
@@ -68,9 +79,13 @@ class Wormhole extends React.Component{
         }))
 
 
-        // this.setState((state) => ({
-        //     winBubos: [...this.state.winBubos, bubo ]
-        // }))
+    }
+
+    onCross = (bubo) => {
+
+        this.setState((state) => ({
+            winBubos: [...this.state.winBubos, bubo ]
+        }))
 
     }
 
@@ -119,7 +134,9 @@ class Wormhole extends React.Component{
                         autoplay={true}
                         loop={true}
                     />
-                    <Portal bubo={this.state.selectedBubo} order={this.state.order}/>
+                    <Portal1 bubo={this.state.selectedBubo} 
+                        order={this.state.order} 
+                        handleClick={this.handleClick}/>
                     </Grid>
                     {
                         grid13.map(i => (
@@ -149,7 +166,7 @@ class Wormhole extends React.Component{
                             />
                             
                             </Grid>
-                            {/* <Portal bubo={this.state.selectedBubo}/> */}
+                            {/* <Click bubo={this.state.selectedBubo}/> */}
                         {
                             grid4.map(i => (
                                 this.formRow(i)
@@ -169,7 +186,7 @@ class Wormhole extends React.Component{
                                 this.formRow(i)
                             ))
                         }   
-                        {/* <Portal bubo={this.state.selectedBubo}/> */}
+                        {/* <Click bubo={this.state.selectedBubo}/> */}
                         <Grid
                             item height={73.5} width={73.5}
                         >
@@ -225,7 +242,7 @@ class Wormhole extends React.Component{
                                 this.formRow(i)
                             ))
                         }  
-                        <div className="portal-reverse">
+                        <div className="Click-reverse">
                             <Grid item height={73.5} width={73.5}>
                                 <Spritesheet
                                     image={Green}
@@ -265,7 +282,7 @@ class Wormhole extends React.Component{
                             </h1>
                             }
                         </Grid>
-                            <div className="portal-reverse">
+                            <div className="Click-reverse">
                                 <Grid item >
                                     <Spritesheet
                                         image={GreenRev}
@@ -287,7 +304,7 @@ class Wormhole extends React.Component{
                                 this.formRow(i)
                             ))
                             }   
-                        <div className="portal-reverse">
+                        <div className="Click-reverse">
                             <Grid item height={73.5} width={73.5}>
                                 <Spritesheet
                                     image={Green}

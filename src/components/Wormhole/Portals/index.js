@@ -1,0 +1,1 @@
+export {default as Portal1} from './Portal1'
