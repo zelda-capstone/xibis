@@ -136,21 +136,23 @@ class SignUpFormBase extends Component {
           <button className='button' disabled={isInvalid} type="submit">
             Sign Up
           </button>
-
-          {error && <p>{error.message}</p>}
         </form>
-        <div>OR</div>
-        <div><Link to={ROUTES.LOG_IN}>Sign In</Link></div>
+        {error && <p>{error.message}</p>}
+        <div className='signup-link'>OR
+          <div><Link to={ROUTES.LOG_IN}>Sign In</Link></div>
+        </div>
         </>
       );
     }
   }
 
 const SignUpLink = () => (
-    <>
+    <div className='signup-link'>
         <div>Don't have an account?</div>
-        <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
-    </>
+        <Link to={ROUTES.SIGN_UP}>
+          Sign Up
+        </Link>
+    </div>
 );
 
 

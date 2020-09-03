@@ -160,8 +160,8 @@ body {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin-top: 10rem;
-  margin-left: 25rem;
-  margin-right: 25rem;
+  margin-left: 15em;
+  margin-right: 15em;
   background: whitesmoke;
   border-radius: 5px;
   color: black;
@@ -173,6 +173,10 @@ body {
 
 #landing span {
   padding: 1rem;
+}
+
+#landing a {
+  color: black;
 }
 
 .auth {
@@ -234,6 +238,29 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+.signup-link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 2.5rem;
+}
+
+.signup-link a {
+  color: white;
 }
 
 .styled-form input {
@@ -332,7 +359,7 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin-top: 15rem;
+  margin-top: 8rem;
 }
 
 .typewriter {
@@ -367,28 +394,18 @@ body {
 }
 
 .buttons-container button {
-  margin: 2rem;
-  font-family: "Anonymous Pro", monospace;
-  font-size: 1rem;
-}
-
-.buttons-container button a {
-  text-decoration: none;
-  color: black;
+  margin: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .button {
   font-family: "Anonymous Pro", monospace;
   font-size: 1rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 3px;
   margin: 0.5rem;
   z-index: 6;
-}
-
-.button a {
-  text-decoration: none;
-  color: black;
 }
 
 .button:hover {
@@ -411,6 +428,8 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   -webkit-animation: fade-in 1.5s linear;
           animation: fade-in 1.5s linear;
   height: 80vh;
@@ -575,6 +594,7 @@ body {
 .accessory {
   position: absolute;
   top: 0;
+  margin-bottom: 3.5rem;
   width: 100px;
   height: 100px;
 }
@@ -715,12 +735,19 @@ body {
   font-size: 2rem;
 }
 
+.map-icon-container a {
+  text-decoration: none;
+  color: black;
+}
+
 .map-icon {
   height: 8em;
   width: 8em;
 }
 
 .map-icon:hover + div {
+  -webkit-animation: fade-in 1.5s linear;
+          animation: fade-in 1.5s linear;
   display: block;
   position: absolute;
   display: -webkit-box;
@@ -743,16 +770,15 @@ body {
   border-radius: 5px;
 }
 
-.map-icon a {
-  text-decoration: none;
-  color: black;
-}
-
 .puzzle-stats {
   display: none;
   font-size: .8rem;
   width: 6rem;
   height: 4rem;
+}
+
+.puzzle-stats span {
+  margin: .3em;
 }
 
 .puzzle-container {

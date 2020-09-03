@@ -5,9 +5,9 @@ const Landing = () => (
   <div id='landing'>
     <h1>WELCOME!</h1>
     <div className="container">
-      <Link to='/login'><span>Login!</span></Link>
+      <Link to='/login'><span>Login</span></Link>
       <span>OR</span>
-      <Link to='/signup'><span>Sign up!</span></Link>
+      <Link to='/signup'><span>Sign up</span></Link>
     </div>
   </div>
 );

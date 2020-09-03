@@ -72,9 +72,8 @@ class LogInFormBase extends Component {
           <button className='button' disabled={isInvalid} type="submit">
             Sign In
           </button>
-
-          {error && <p>{error.message}</p>}
         </form>
+        <div>{error && <p>{error.message}</p>}</div>
           <div>
             <button
               className="sign-up-btn button"

@@ -97,8 +97,8 @@ body {
 #landing {
   @include flexCenter(column);
   margin-top: 10rem;
-  margin-left: 25rem;
-  margin-right: 25rem;
+  margin-left: 15em;
+  margin-right: 15em;
   background: whitesmoke;
   border-radius: 5px;
   color: black;
@@ -107,6 +107,9 @@ body {
   }
   span {
     padding: 1rem;
+  }
+  a {
+    color: black;
   }
 }
 
@@ -125,6 +128,14 @@ body {
 
 #sign-in {
   @include flexCenter(column);
+}
+
+.signup-link {
+  @include flexCenter(column);
+  margin: 2.5rem;
+  a {
+    color: white;
+  }
 }
 
 .styled-form {
@@ -175,7 +186,7 @@ body {
 
 .story {
   @include flexCenter(column);
-  margin-top: 15rem;
+  margin-top: 8rem;
 }
 
 .typewriter {
@@ -192,12 +203,9 @@ body {
   justify-content: space-around;
   margin: 5rem;
   button {
-    margin: 2rem;
-    font-family: $gameFont;
-    font-size: 1rem;
-    a {
-      @include plainLink;
-    }
+    margin: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 
@@ -205,12 +213,9 @@ body {
   font-family: $gameFont;
   font-size: 1rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 3px;
   margin: 0.5rem;
   z-index: 6;
-  a {
-    @include plainLink;
-  }
   &:hover {
     background: grey;
   }
@@ -218,6 +223,7 @@ body {
 
 .bubo-selector-container {
   @include flexCenter(column);
+  flex-wrap: nowrap;
   @include fadeIn;
   height: 80vh;
   h2 {
@@ -289,7 +295,7 @@ body {
 .accessory {
   position: absolute;
   top: 0;
-  //margin-bottom: 3.5rem;
+  margin-bottom: 3.5rem;
   width: 100px;
   height: 100px;
 }
@@ -348,19 +354,23 @@ body {
   font-size: 2rem;
 }
 
+.map-icon-container {
+  a {
+    @include plainLink;
+  }
+}
+
 .map-icon {
   height: 8em;
   width: 8em;
   &:hover + div {
+    @include fadeIn;
     display: block;
     position: absolute;
     @include flexCenter(column);
     padding: .5rem;
     background: white;
     border-radius: 5px;
-  }
-  a {
-    @include plainLink;
   }
 }
 
@@ -369,6 +379,9 @@ body {
   font-size: .8rem;
   width: 6rem;
   height: 4rem;
+  span {
+    margin: .3em;
+  }
 }
 
 .puzzle-container {

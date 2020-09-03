@@ -36,8 +36,8 @@ class Intro extends React.Component {
             Are you ready to begin?
           </div>
           <div className='buttons-container'>
-            <button><Link to={ROUTES.ASSEMBLE_BUBOS} className='button'>Yes</Link></button>
-            <button><Link to={ROUTES.LANDING} className='button'>No</Link></button>
+            <Link to={ROUTES.ASSEMBLE_BUBOS} ><button className='button'>Yes</button></Link>
+            <Link to={ROUTES.LANDING}><button className='button'>No</button></Link>
           </div>
         </div>
       </>
