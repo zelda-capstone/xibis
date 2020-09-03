@@ -24,7 +24,7 @@ export default function createRandomBubo() {
     'confident',
     'thoughtful',
     'nurturing',
-    'charaismatic',
+    'charismatic',
     'patient',
   ]
 

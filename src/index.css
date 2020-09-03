@@ -375,7 +375,7 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  height: 75vh;
+  height: 73vh;
 }
 
 .bubo-selector-container h2 {
@@ -408,6 +408,7 @@ body {
   background: white;
   color: black;
   padding: 1.25rem;
+  padding-bottom: 0.5rem;
   border-radius: 10px;
 }
 
@@ -459,6 +460,7 @@ body {
   width: 5rem;
   background: -webkit-gradient(linear, left top, left bottom, from(lavender), to(#bfbdbd));
   background: linear-gradient(lavender, #bfbdbd);
+  color: black;
   font-size: 0.7rem;
   z-index: 3;
 }
@@ -507,6 +509,7 @@ body {
   width: 5rem;
   background: -webkit-gradient(linear, left top, left bottom, from(lavender), to(#bfbdbd));
   background: linear-gradient(lavender, #bfbdbd);
+  color: black;
   font-size: 0.7rem;
   z-index: 3;
 }
