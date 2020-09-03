@@ -8,14 +8,48 @@ import BuboContainer from './bubo-container'
 export class BlockPuzzle extends React.Component {
   constructor() {
     super()
+    this.state = {
+      puzzleState: 'intro',
+    }
+    this.startPlaying = this.startPlaying.bind(this)
     this.handleWin = this.handleWin.bind(this)
+  }
+
+  startPlaying() {
+    console.log("let's get started")
+    this.setState({puzzleState: 'playing'})
   }
 
   handleWin() {
     console.log('congratulations, you won!')
+    this.setState({puzzleState: 'win'})
   }
 
   render() {
+    if (this.state.puzzleState === 'intro') {
+      return (
+        <div
+          style={{
+            display: 'flex',
+            width: '95vw',
+            height: '95vh',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          Intro Text. Are you ready to play the game?
+          <button
+            type="button"
+            onClick={() => {
+              this.startPlaying()
+            }}
+          >
+            Yes!
+          </button>
+        </div>
+      )
+    }
+
     let puzzleText =
       'The bubos need to cross a celestial bridge. Position the pieces on the board until they stick.'
     const winCondition = this.props.totalCorrect === 12
