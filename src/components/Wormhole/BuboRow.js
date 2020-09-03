@@ -7,7 +7,7 @@ class BuboRow extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            bubos: [this.props.bubos]
+            bubos: this.props.bubos
         }
     }
 

@@ -12,22 +12,36 @@ import { getBubosCollection } from '../../store/reducers/bubo';
 import {Green, GreenRev, Purple, PurpleUpsd, GreenUpsD} from './Images';
 import Item from './GridItem'
 import BuboRow from './BuboRow'
-
+import Portal from './Portal'
 
 
 class Wormhole extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            ogBubos: this.props.bubos || [],
-            winBubos: []
+            ogBubos: [],
+            winBubos: [],
+            gangsHere: true,
+            selectedBubo: {},
+            order: 0
         }
     }
     
-    componentWillReceiveProps = () => {
-        this.setState({
+    bringInBubos = (event) => {
+        this.setState((state) => ({
             ogBubos: this.props.bubos
-        })
+        }))
+
+        this.setState((state) => ({
+            winBubos: []
+        }))
+
+        this.setState((state) => ({
+            selectedBubo: {}
+        }))
+        // this.setState({
+        //     gangsHere: false
+        // })
     }
 
 
@@ -37,27 +51,34 @@ class Wormhole extends React.Component{
     }
 
 
-    onMove = (bubo) => {
+    onMove = (bubo, i) => {
+
+        this.setState((state) => ({
+            selectedBubo: bubo
+        }))
+
+        this.setState((state) => ({
+            order: i
+        }))
+
         const leftBubos = this.state.ogBubos.filter(b => b !== bubo)
 
         this.setState((state) => ({
             ogBubos: leftBubos
         }))
 
-        if(this.state.ogBubos.length === 0){
-            this.props.history.push(ROUTES.MAP)
-        }
 
-        this.setState((state) => ({
-            winBubos: [...this.state.winBubos, bubo ]
-        }))
+        // this.setState((state) => ({
+        //     winBubos: [...this.state.winBubos, bubo ]
+        // }))
 
     }
 
 
+
     formRow = (key) => {
         return (
-          <React.Fragment>
+          <React.Fragment key={key}>
             <Grid item>
               <Item i={key}></Item> 
             </Grid>
@@ -75,6 +96,7 @@ class Wormhole extends React.Component{
         const grid13 = [0,1,2,3,4,5,6,7,8,9,10,11,12]
         const grid14 = [0,1,2,3,4,5,6,7,8,9,10,11,12,13]
       
+        console.log("state", this.state)
         return (
             <div className="star">
              <div className="background" >
@@ -96,9 +118,8 @@ class Wormhole extends React.Component{
                         fps={2}
                         autoplay={true}
                         loop={true}
-                        onClick={spritesheet => {
-                            spritesheet.play();}}
                     />
+                    <Portal bubo={this.state.selectedBubo} order={this.state.order}/>
                     </Grid>
                     {
                         grid13.map(i => (
@@ -126,7 +147,9 @@ class Wormhole extends React.Component{
                             onClick={spritesheet => {
                                 spritesheet.play();}}
                             />
+                            
                             </Grid>
+                            {/* <Portal bubo={this.state.selectedBubo}/> */}
                         {
                             grid4.map(i => (
                                 this.formRow(i)
@@ -146,11 +169,12 @@ class Wormhole extends React.Component{
                                 this.formRow(i)
                             ))
                         }   
+                        {/* <Portal bubo={this.state.selectedBubo}/> */}
                         <Grid
                             item height={73.5} width={73.5}
                         >
                         <Spritesheet
-                        image={Green}
+                        image={GreenRev}
                         widthFrame={64}
                         heightFrame={64}
                         steps={24}
@@ -160,8 +184,13 @@ class Wormhole extends React.Component{
                         onClick={spritesheet => {
                             spritesheet.play();}}
                         />
+                        
                         </Grid>
                     </Grid>
+                    {this.state.ogBubos.length === 0
+                              ?<button className="button play" onClick={() => this.bringInBubos()}>Play!</button>
+                              : null
+                    }
                     <Grid container item >
                         {
                             grid7.map(i => (
@@ -183,6 +212,7 @@ class Wormhole extends React.Component{
                                     spritesheet.play();}}
                             />
                         </Grid>
+                       
                         {
                             grid3.map(i => (
                                 this.formRow(i)
@@ -222,11 +252,11 @@ class Wormhole extends React.Component{
                         <Grid container item xs={4}>
                             {this.state.ogBubos
                             ? this.state.ogBubos.map((bubo, i) => (
-                                <div onClick={() => this.onMove(bubo)} key={i}>
+                                <div onClick={() => this.onMove(bubo, i)} key={i}>
                                     <Grid
                                         item height={73.5} width={73.5}
                                     >
-                                        <CustomizableBubo {...bubo}/>
+                                        <CustomizableBubo {...bubo} hover={true}/>
                                     </Grid>
                                 </div>
                             ))

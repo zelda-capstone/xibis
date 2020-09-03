@@ -58,3 +58,10 @@
     align-self: center;
     justify-content: center
 }
+
+.play {
+    position: sticky;
+    align-self: center;
+    justify-self: center;
+    z-index: 1
+}
