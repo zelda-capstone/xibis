@@ -292,15 +292,9 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-}
-
-#navbar button {
-  font-family: "Anonymous Pro", monospace;
-  font-size: 1rem;
-  margin-right: .5rem;
+  position: fixed;
+  right: 2vw;
+  z-index: 5;
 }
 
 .start-container {

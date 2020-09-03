@@ -155,14 +155,9 @@ body {
 
 #navbar {
   @include flexCenter(row);
-  //background: rgb(80, 79, 79);
-  justify-content: flex-end;
-  //z-index: 5;
-  button {
-    font-family: $gameFont;
-    font-size: 1rem;
-    margin-right: .5rem;
-  }
+  position: fixed;
+  right: 2vw;
+  z-index: 5;
 }
 
 .start-container {
