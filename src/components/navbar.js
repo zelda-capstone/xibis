@@ -6,7 +6,7 @@ const NavBar = () => {
   return (
     <div id='navbar'>
       <div>
-        <Link to='/'><button>Start Over</button></Link>
+        <Link to='/'><button className='button'>Start Over</button></Link>
         </div>
       <div><SignOut /></div>
     </div>

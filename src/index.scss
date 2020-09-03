@@ -19,14 +19,8 @@ $gameFont: 'Anonymous Pro', monospace;
 }
 
 @mixin fadeIn {
-  animation: fade-in 2s linear;
+  animation: fade-in 1.5s linear;
 }
-
-// @mixin canvas($colorOne, $colorTwo) {
-//   width: 100vw;
-//   height: 100vh;
-//   background: linear-gradient($colorOne, $colorTwo);
-// }
 
 @keyframes fade-in {
   from {
@@ -138,13 +132,13 @@ body {
 
 #navbar {
   @include flexCenter(row);
-  justify-content: space-between;
-  top: 1rem;
-  left: 90vw;
-  z-index: 5;
+  //background: rgb(80, 79, 79);
+  justify-content: flex-end;
+  //z-index: 5;
   button {
     font-family: $gameFont;
     font-size: 1rem;
+    margin-right: .5rem;
   }
 }
 
@@ -203,7 +197,9 @@ body {
   font-family: $gameFont;
   font-size: 1rem;
   border: none;
+  border-radius: 4px;
   margin: 0.5rem;
+  z-index: 6;
   a {
     @include plainLink;
   }
@@ -346,29 +342,28 @@ body {
   width: 8em;
   &:hover + div {
     display: block;
+    position: absolute;
     @include flexCenter(column);
     padding: .5rem;
     background: white;
     border-radius: 5px;
-    a {
-      color: black;
-      text-decoration: none;
-    }
+  }
+  a {
+    @include plainLink;
   }
 }
 
 .puzzle-stats {
   display: none;
   font-size: .8rem;
-  width: 4.5rem;
-  height: 3rem;
+  width: 6rem;
+  height: 4rem;
 }
 
 .puzzle-container {
   position: relative;
   @include flexCenter(column);
   align-items: space-between;
-  //@include canvas(black, rgb(12, 12, 36));
 }
 
 .puzzle {

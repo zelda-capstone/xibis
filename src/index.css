@@ -256,17 +256,15 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  top: 1rem;
-  left: 90vw;
-  z-index: 5;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 #navbar button {
   font-family: "Anonymous Pro", monospace;
   font-size: 1rem;
+  margin-right: .5rem;
 }
 
 .start-container {
@@ -285,8 +283,8 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-animation: fade-in 2s linear;
-          animation: fade-in 2s linear;
+  -webkit-animation: fade-in 1.5s linear;
+          animation: fade-in 1.5s linear;
   -webkit-box-align: space-around;
       -ms-flex-align: space-around;
           align-items: space-around;
@@ -309,8 +307,8 @@ body {
 }
 
 .fade-in {
-  -webkit-animation: fade-in 2s linear;
-          animation: fade-in 2s linear;
+  -webkit-animation: fade-in 1.5s linear;
+          animation: fade-in 1.5s linear;
 }
 
 .story {
@@ -378,7 +376,9 @@ body {
   font-family: "Anonymous Pro", monospace;
   font-size: 1rem;
   border: none;
+  border-radius: 4px;
   margin: 0.5rem;
+  z-index: 6;
 }
 
 .button a {
@@ -402,8 +402,8 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-animation: fade-in 2s linear;
-          animation: fade-in 2s linear;
+  -webkit-animation: fade-in 1.5s linear;
+          animation: fade-in 1.5s linear;
   height: 80vh;
 }
 
@@ -615,8 +615,8 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-animation: fade-in 2s linear;
-          animation: fade-in 2s linear;
+  -webkit-animation: fade-in 1.5s linear;
+          animation: fade-in 1.5s linear;
   margin: 2rem;
   position: fixed;
   bottom: 1vh;
@@ -673,8 +673,8 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-animation: fade-in 2s linear;
-          animation: fade-in 2s linear;
+  -webkit-animation: fade-in 1.5s linear;
+          animation: fade-in 1.5s linear;
 }
 
 #map-container h1 {
@@ -713,6 +713,7 @@ body {
 
 .map-icon:hover + div {
   display: block;
+  position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -733,16 +734,16 @@ body {
   border-radius: 5px;
 }
 
-.map-icon:hover + div a {
-  color: black;
+.map-icon a {
   text-decoration: none;
+  color: black;
 }
 
 .puzzle-stats {
   display: none;
   font-size: .8rem;
-  width: 4.5rem;
-  height: 3rem;
+  width: 6rem;
+  height: 4rem;
 }
 
 .puzzle-container {
