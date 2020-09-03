@@ -1,23 +1,48 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Howl } from 'howler'
 import * as ROUTES from '../constants/routes'
 
-const Intro = () => {
-  return (
-    <>
-      <div className='story'>
-        <div className='typewriter'>
-          Here, our initial story will begin...are you ready to get started?
-        </div>
-        <div className='buttons-container'>
-          <button><Link to={ROUTES.ASSEMBLE_BUBOS} className='button'>Yes</Link></button>
-          <button><Link to='/play' className='button'>No</Link></button>
-        </div>
-      </div>
-    </>
-  )
-}
+class Intro extends React.Component {
+  constructor() {
+    super()
+    this.music = new Howl({
+      src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
+      volume: 0.5,
+      loop: true,
+      sprite: {
+        'sad_bubos': [
 
-//would be fun to add some typwriter animation so the text doesn't all come in at once
+        ]
+      }
+    });
+    this.source = 0;
+  }
+
+  componentDidMount() {
+    this.source = this.music.play('sad_bubos')
+  }
+
+  componentWillUnmount() {
+    this.music.fade(this.music.volume(), 0, 1500, this.source)
+  }
+
+  render() {
+    return (
+      <>
+        <div className='story'>
+          <div className='typewriter'>
+            A very dramatic intro narrative to our story and the purpose of the journey.
+            Are you ready to begin?
+          </div>
+          <div className='buttons-container'>
+            <button><Link to={ROUTES.ASSEMBLE_BUBOS} className='button'>Yes</Link></button>
+            <button><Link to={ROUTES.LANDING} className='button'>No</Link></button>
+          </div>
+        </div>
+      </>
+    )
+  }
+}
 
 export default Intro
