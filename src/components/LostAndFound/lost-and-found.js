@@ -18,7 +18,7 @@ class LostAndFound extends Component {
     }
     this.sounds = new Howl({
       src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
-      volume: 0.2,
+      volume: 0.5,
       sprite: {
         'bubos_atmosphere': [ 0,
           122932.24489795919],
