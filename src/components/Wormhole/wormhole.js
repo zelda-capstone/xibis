@@ -9,7 +9,7 @@ import * as ROUTES from '../../constants/routes';
 import CustomizableBubo from '../customizable-bubo'
 import {Link} from 'react-router-dom';
 import { getBubosCollection } from '../../store/reducers/bubo';
-import {Green, GreenRev, Purple, PurpleUpsd, GreenUpsD} from './Images';
+import {Green, GreenRev, Purple, PurpleUpsd, GreenUpsD, PurpleRev} from './Images';
 import Item from './GridItem'
 import BuboRow from './BuboRow'
 import {Portal} from './Portals'
@@ -112,15 +112,15 @@ class Wormhole extends React.Component{
         let num = 0
         
         for(let i = 0; i < player.length; i++){
-            console.log(i, this.props.bubos[comp[i]])
         
             if(player[i] === this.props.bubos[comp[i]]){
                num++
             }
         }
 
+        let bool = this.state.count >= 8 
         
-        return this.state.count >= 8 ? true : false
+        return {bool,num}
     }
 
 
@@ -147,13 +147,14 @@ class Wormhole extends React.Component{
         const grid11 = [0,1,2,3,4,5,6,7,8,9,10]
         const grid13 = [0,1,2,3,4,5,6,7,8,9,10,11,12]
         const grid14 = [0,1,2,3,4,5,6,7,8,9,10,11,12,13]
-      
-        console.log("state", this.state)
+  
 
         if(this.state.winBubos.length === 10){
-            return this.checkForWin()
-            ? (<Transition win={true} history={this.props.history} count={this.state.count} replay={this.bringInBubos}/>)
-            : (<Transition win={false} history={this.props.history} count={this.state.count} replay={this.bringInBubos}/>)
+            const {bool, num} = this.checkForWin()
+
+            return bool
+            ? (<Transition win={true} history={this.props.history} count={num} replay={this.bringInBubos}/>)
+            : (<Transition win={false} history={this.props.history} count={num} replay={this.bringInBubos}/>)
         }else{
         
           return (
@@ -306,11 +307,28 @@ class Wormhole extends React.Component{
                             onMove={this.onMove}/>
                         :null}
                         {
-                            grid5.map(i => (
+                            grid4.map(i => (
                                 this.formRow(i)
                             ))
-                        }   
-                        
+                        }  
+                        {this.state.portalBubos[7]
+                                ?<Portal bubo={this.state.portalBubos[7]} 
+                                    order={this.state.order} 
+                                    onMove={this.onMove}/>
+                                :null}
+                        <Grid
+                        item height={73.5} width={73.5}
+                            >
+                            <Spritesheet
+                                image={PurpleRev}
+                                widthFrame={64}
+                                heightFrame={64}
+                                steps={24}
+                                fps={3.5}
+                                autoplay={true}
+                                loop={true}
+                            />
+                        </Grid>
                     </Grid>
                     <Grid container item alignItems="center">
                         {
@@ -340,6 +358,8 @@ class Wormhole extends React.Component{
                                 />
                             </Grid>
                         </div> 
+                     </Grid>
+                    <Grid container item alignItems="center">
                         {
                             grid5.map(i => (
                                 this.formRow(i)
@@ -363,6 +383,7 @@ class Wormhole extends React.Component{
                                     onMove={this.onMove}/>
                                 :null}
                         </Grid>
+
                     </Grid>
                     <Grid container item wrap="nowrap" flex-grow={0} >
                         <Grid container item xs={4}>

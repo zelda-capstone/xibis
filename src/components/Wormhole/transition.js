@@ -11,7 +11,7 @@ class Transition extends React.Component{
    
 
     handleClick = (event) => {
-        console.log(this.props)
+
         event.target.value === "yes" 
         ? this.props.replay()
         : this.props.history.push(ROUTES.MAP)
@@ -24,12 +24,12 @@ class Transition extends React.Component{
                     {
                         this.props.win
                         ?  <div className='typewriter'>
-                            {this.props.count} only Bubo's were in the correct order!
+                            {this.props.count} you were in the correct order!
                             You WON! Play again?
                             </div>
                         :  <div className='typewriter'>
-                            {this.props.count} only Bubo's were in the correct order!
-                            You didn't win! Play again?
+                            Only {this.props.count} of you were in the correct order!
+                            Sorry, you can't pass. Maybe play again?
                             </div>
                     }
                 <div>
