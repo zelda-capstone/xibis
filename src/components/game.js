@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route, Switch, withRouter} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {compose} from 'recompose'
 import {withFirebase} from '../firebase'
@@ -84,7 +84,6 @@ const mapDispatch = (dispatch) => {
 }
 
 export default compose(
-  withRouter,
   withFirebase,
   withAuthentication,
   connect(mapState, mapDispatch))(Game)

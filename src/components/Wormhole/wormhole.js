@@ -25,10 +25,17 @@ class Wormhole extends React.Component{
             portalBubos: [],
             winOrder: [],
             play: true,
-            selectedBubo: {}
+            count: 0
         }
     }
     
+
+    componentDidMount = () => {
+        const user = this.props.user;
+        this.props.getBubos(user.bubosRef);
+
+        this.getWinOrder();
+    }
 
 
     bringInBubos = (event) => {
@@ -40,10 +47,7 @@ class Wormhole extends React.Component{
             winBubos: []
         }))
 
-        this.setState((state) => ({
-            selectedBubo: {}
-        }))
-
+    
         this.setState((state) => ({
             portalBubos: []
         }))
@@ -71,24 +75,6 @@ class Wormhole extends React.Component{
     }
 
 
-    componentDidMount = () => {
-        const user = this.props.user;
-        this.props.getBubos(user.bubosRef);
-
-        this.getWinOrder();
-    }
-
-
-    handlePortal = (bubo) => {
-        let clickTotal = this.state.selectedBubo.click + 1
-
-        this.setState((state) => ({
-            selectedBubo: {bubo, click: clickTotal}
-        }))
-
-    }
-
-
     onMove = (bubo, i, click) => {
         const leftBubos = this.state.ogBubos.filter(b => b !== bubo)
         
@@ -102,9 +88,6 @@ class Wormhole extends React.Component{
                 portalBubos: [bubo, ...this.state.portalBubos ]
             }))
         
-            this.setState((state) => ({
-                selectedBubo: {bubo, click: 1}
-            }))
 
             this.setState((state) => ({
                 order: i
@@ -113,7 +96,7 @@ class Wormhole extends React.Component{
 
         }else{
 
-            const leftBubos = this.state.portalBubos.filter(b => b !== bubo)
+            //const leftBubos = this.state.portalBubos.filter(b => b !== bubo)
 
             this.setState((state) => ({
                 winBubos: [...this.state.winBubos, bubo ]
@@ -126,16 +109,18 @@ class Wormhole extends React.Component{
 
         let player = this.state.winBubos
         let comp = this.state.winOrder
-
+        let num = 0
+        
         for(let i = 0; i < player.length; i++){
-            if(player[i] !== comp[i]){
-
-               return false;
-
-            }else{
-                this.props.history.push(ROUTES.MAP)
+            console.log(i, this.props.bubos[comp[i]])
+        
+            if(player[i] === this.props.bubos[comp[i]]){
+               num++
             }
         }
+
+        
+        return this.state.count >= 8 ? true : false
     }
 
 
@@ -166,9 +151,9 @@ class Wormhole extends React.Component{
         console.log("state", this.state)
 
         if(this.state.winBubos.length === 10){
-            return !this.checkForWin()
-            ? (<Transition win={false} history={this.props.history}/>)
-            :null
+            return this.checkForWin()
+            ? (<Transition win={true} history={this.props.history} count={this.state.count} replay={this.bringInBubos}/>)
+            : (<Transition win={false} history={this.props.history} count={this.state.count} replay={this.bringInBubos}/>)
         }else{
         
           return (
@@ -252,7 +237,6 @@ class Wormhole extends React.Component{
                                     order={this.state.order} 
                                     onMove={this.onMove}/>
                                 :null}
-                            {/* <Click bubo={this.state.selectedBubo}/> */}
                             {
                                 grid7.map(i => (
                                     this.formRow(i)

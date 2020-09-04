@@ -13,32 +13,37 @@ class Transition extends React.Component{
     handleClick = (event) => {
         console.log(this.props)
         event.target.value === "yes" 
-        ? this.props.history.push(ROUTES.WORMHOLE)
+        ? this.props.replay()
         : this.props.history.push(ROUTES.MAP)
     }
 
+
     render(){
-        if(this.props.win === false){
-            return(
-                <div className="intro-container">
-                    <div className='typewriter'>
-                    You didn't win! Play again?
-                    </div>
-                    <div>
-                        <button 
-                            value="yes" 
-                            className="button" 
-                            onClick={(e) => this.handleClick(e)}>Yes!</button>
-                        <button    
-                            value="no"
-                            className="button" 
-                            onClick={(e) => this.handleClick(e)}>No..</button>
-                    </div>
+        return(
+            <div className="intro-container">
+                    {
+                        this.props.win
+                        ?  <div className='typewriter'>
+                            {this.props.count} only Bubo's were in the correct order!
+                            You WON! Play again?
+                            </div>
+                        :  <div className='typewriter'>
+                            {this.props.count} only Bubo's were in the correct order!
+                            You didn't win! Play again?
+                            </div>
+                    }
+                <div>
+                    <button 
+                        value="yes" 
+                        className="button" 
+                        onClick={(e) => this.handleClick(e)}>Yes!</button>
+                    <button    
+                        value="no"
+                        className="button" 
+                        onClick={(e) => this.handleClick(e)}>No..</button>
                 </div>
-
-
-            )
-        }
+            </div>
+        )
     }
 }
 
