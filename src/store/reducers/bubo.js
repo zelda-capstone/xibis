@@ -106,4 +106,4 @@ function bubosReducer(state = INITIAL_STATE, action) {
   }
 }
 
-export default bubosReducer
+export default bubosReducer;
