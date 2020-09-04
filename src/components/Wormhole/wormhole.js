@@ -12,7 +12,7 @@ import { getBubosCollection } from '../../store/reducers/bubo';
 import {Green, GreenRev, Purple, PurpleUpsd, GreenUpsD} from './Images';
 import Item from './GridItem'
 import BuboRow from './BuboRow'
-import Portal1 from './Portals'
+import {Portal1} from './Portals'
 
 
 class Wormhole extends React.Component{
@@ -117,6 +117,7 @@ class Wormhole extends React.Component{
         const grid4 = [0,1,2,3]
         const grid6 = [0,1,2,3,4]
         const grid7 = [0,1,2,3,4,5,6,7]
+        const grid8 = [0,1,2,3,4,5,6,7,8,9]
         const grid11 = [0,1,2,3,4,5,6,7,8,9,10]
         const grid13 = [0,1,2,3,4,5,6,7,8,9,10,11,12]
         const grid14 = [0,1,2,3,4,5,6,7,8,9,10,11,12,13]
@@ -128,6 +129,7 @@ class Wormhole extends React.Component{
              <Grid
                 container spacing={0}
                 direction="row"
+                flex-grow={0}
                 >
                  {user
                  ?(<>
@@ -144,8 +146,8 @@ class Wormhole extends React.Component{
                         autoplay={true}
                         loop={true}
                     />
-                    {this.state.portalBubos[0]
-                        ?<Portal1 bubo={this.state.portalBubos[0]} 
+                    {this.state.portalBubos[1]
+                        ?<Portal1 bubo={this.state.portalBubos[1]} 
                             order={this.state.order} 
                             handleClick={this.handleClick}/>
                         :null}
@@ -156,7 +158,7 @@ class Wormhole extends React.Component{
                         ))
                     }
                     </Grid>
-                    <Grid container item>
+                    <Grid container item alignItems="center">
                         {
                             grid6.map(i => (
                                 this.formRow(i)
@@ -177,8 +179,8 @@ class Wormhole extends React.Component{
                                 spritesheet.play();}}
                             />
                             </Grid>
-                            {this.state.portalBubos[0]
-                                ?<Portal1 bubo={this.state.portalBubos[0]} 
+                            {this.state.portalBubos[2]
+                                ?<Portal1 bubo={this.state.portalBubos[2]} 
                                     order={this.state.order} 
                                     handleClick={this.handleClick}/>
                                 :null}
@@ -196,7 +198,7 @@ class Wormhole extends React.Component{
                             ))
                         }   
                     </Grid>
-                    <Grid container item >
+                    <Grid container item alignItems="center">
                         {
                             grid14.map(i => (
                                 this.formRow(i)
@@ -245,11 +247,18 @@ class Wormhole extends React.Component{
                         :null}
                     </Grid>  
                 </Grid>
+                <Grid container item >
+                    {
+                        grid8.map(i => (
+                            this.formRow(i)
+                        ))
+                    }   
                     {this.state.ogBubos.length === 0
                               ?<button className="button play" onClick={() => this.bringInBubos()}>Play!</button>
                               : null
                     }
-                    <Grid container item >
+                </Grid>
+                    <Grid container item alignItems="center" >
                         {
                             grid7.map(i => (
                                 this.formRow(i)
@@ -272,12 +281,25 @@ class Wormhole extends React.Component{
                         </Grid>
                        
                         {
-                            grid3.map(i => (
+                            grid6.map(i => (
                                 this.formRow(i)
                             ))
                         }   
+                        <Grid
+                        item height={73.5} width={73.5}
+                            >
+                            <Spritesheet
+                                image={PurpleUpsd}
+                                widthFrame={73}
+                                heightFrame={64}
+                                steps={8}
+                                fps={2}
+                                autoplay={true}
+                                loop={true}
+                            />
+                        </Grid>
                     </Grid>
-                    <Grid container item >
+                    <Grid container item alignItems="center">
                         {
                             grid4.map(i => (
                                 this.formRow(i)
@@ -306,7 +328,7 @@ class Wormhole extends React.Component{
                             ))
                         }  
                     </Grid>
-                    <Grid container item align="center" wrap="nowrap">
+                    <Grid container item alignItems="center" wrap="nowrap">
                         <Grid container item xs={4}>
                             {this.state.ogBubos
                             ? this.state.ogBubos.map((bubo, i) => (
