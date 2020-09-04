@@ -47,10 +47,10 @@ class Game extends React.Component {
         ],
         'bubos_atmosphere': [ 0,
           122932.24489795919],
-        'LF_correct': [124000,
-          2000],
-        'LF_incorrect': [127000,
-          2000]
+        // 'LF_correct': [124000,
+        //   2000],
+        // 'LF_incorrect': [127000,
+        //   2000]
       }
     })
   }

@@ -39,19 +39,19 @@ export const resetPuzzlesCollection = puzzlesRef => {
   return async function (dispatch) {
     try {
       await puzzlesRef.doc('reflection').set({
-        name: 'reflection',
+        name: 'Reflection',
         planet: 'Aguilera',
         imageUrl: 'https://i.ibb.co/nCJK34p/planet.png',
         unlocked: true
       })
       await puzzlesRef.doc('wormhole').set({
-        name: 'wormhole',
+        name: 'Wormhole',
         planet: 'Tropics',
         imageUrl: 'https://i.ibb.co/nCJK34p/planet.png',
         unlocked: false
       })
       await puzzlesRef.doc('block-puzzle').set({
-        name: 'block-puzzle',
+        name: 'Block-Puzzle',
         planet: 'Tessera',
         imageUrl: 'https://i.ibb.co/nCJK34p/planet.png',
         unlocked: false

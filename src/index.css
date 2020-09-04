@@ -159,9 +159,10 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin-top: 10rem;
-  margin-left: 40vw;
-  margin-right: 40vw;
+  margin-top: 30vh;
+  margin-left: 35vw;
+  margin-right: 35vw;
+  height: 30vh;
   background: whitesmoke;
   border-radius: 5px;
   color: black;

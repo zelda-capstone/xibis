@@ -167,7 +167,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    addBubo: (bubo, buboRef) => dispatch(addBuboToDb(bubo, buboRef)),
+    addBubo: (bubo, bubosRef) => dispatch(addBuboToDb(bubo, bubosRef)),
   }
 }
 

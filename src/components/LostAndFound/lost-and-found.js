@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Timer, CustomizableBubo } from '..'
 import { getBubosCollection } from '../../store/reducers/bubo'
 import { unlockPuzzleInDb } from '../../store/reducers/puzzle'
+import { Howl } from 'howler'
 
 class LostAndFound extends Component {
   constructor(props) {
@@ -16,6 +17,16 @@ class LostAndFound extends Component {
       found: 0
     }
     this.music = 0;
+    this.sounds = new Howl({
+      src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
+      vol: 0.4,
+      sprite: {
+        'LF_correct': [124000,
+          2000],
+        'LF_incorrect': [127000,
+          2000]
+      }
+    })
   }
 
   componentDidMount() {
@@ -50,6 +61,10 @@ class LostAndFound extends Component {
 
   endGame = () => {
     this.setState({ playing: false, gameOver: true })
+  }
+
+  tryAgain = () => {
+    this.setState({ playing: false, gameOver: false, won: false})
   }
 
   unlockBlockPuzzle = () => {
@@ -88,7 +103,7 @@ class LostAndFound extends Component {
               On the planet Aguilera, things aren't always as they seem. The mirrored terrain casts uncertain glances over every shoulder. Will the reflections cast shadows of doubt, or will they show your bubos who they truly are inside?
               </div>
               <div className='lf-text'>
-                The bubos need to find themselves in the Great Fog of Doubt. Don't let the mirrors play tricks on them--or you! You have 20 seconds to locate your bubos and dissipate the fog...
+                The bubos need to find themselves in the Great Fog of Doubt. You have 20 seconds to locate your bubos and dissipate the fog...
               </div>
               <button
                 onClick={this.startGame}
@@ -118,7 +133,11 @@ class LostAndFound extends Component {
                     <>
                       <h3>Time's up! </h3>
                       <h4>You found {this.state.found} bubos</h4>
-                      <p>Render consequences here...</p>
+                      <button
+                        onClick={this.tryAgain}
+                        className='button' >
+                          Try again?
+                      </button>
                     </>
                   )
                 }

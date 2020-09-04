@@ -96,17 +96,20 @@ body {
 
 #landing {
   @include flexCenter(column);
-  margin-top: 10rem;
-  margin-left: 40vw;
-  margin-right: 40vw;
+  margin-top: 30vh;
+  margin-left: 35vw;
+  margin-right: 35vw;
+  height: 30vh;
   background: whitesmoke;
   border-radius: 5px;
   color: black;
   div {
     padding: 1rem;
+    //@include flexCenter(column);
   }
   span {
     padding: 1rem;
+    //@include flexCenter(column);
   }
   a {
     color: black;
