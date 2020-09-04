@@ -71,16 +71,18 @@ class Game extends React.Component {
           }
           <Switch>
             <Route exact path={ROUTES.LANDING} component={StartGame} />
-            <Route exact path={ROUTES.INTRO} component={Intro} />
+            <Route
+              exact path={ROUTES.INTRO}
+              render={() => <Intro sounds={this.sounds} />} />
             <Route
               exact path={ROUTES.ASSEMBLE_BUBOS}
-              render={() => <BuboSelector user={user} />}
+              render={() => <BuboSelector user={user} sounds={this.sounds} />}
             />
             <Route exact path={ROUTES.MAP} component={Map} />
             <Route exact path={ROUTES.WORMHOLE} component={Wormhole} />
             <Route
               exact path={ROUTES.REFLECTION}
-              render={() => <LostAndFound />}
+              render={() => <LostAndFound sounds={this.sounds} />}
             />
             <Route exact path={ROUTES.BLOCK_PUZZLE} component={BlockPuzzle} />
             <Route path={ROUTES.NOT_FOUND} component={NotFound} />
