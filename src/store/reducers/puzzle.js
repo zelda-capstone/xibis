@@ -53,7 +53,7 @@ export const resetPuzzlesCollection = puzzlesRef => {
       await puzzlesRef.doc('block-puzzle').set({
         name: 'Block-Puzzle',
         planet: 'Tessera',
-        imageUrl: 'https://i.ibb.co/nCJK34p/planet.png',
+        imageUrl: 'https://i.ibb.co/Krh0bqj/500px-Sphere-monochrome-simple-svg.png',
         unlocked: false
       })
       const puzzles = await puzzlesRef.get()

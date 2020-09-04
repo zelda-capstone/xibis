@@ -5,7 +5,7 @@ const Menu = (props) => {
 
   return (
     <div id="menu" >
-      <Link to='/map'><div>Map</div></Link>
+      <Link to='/map'><div>map</div></Link>
     </div>
   )
 }

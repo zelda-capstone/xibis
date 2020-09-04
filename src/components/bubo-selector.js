@@ -75,9 +75,9 @@ class BuboSelector extends React.Component {
       <>
         <div className="bubo-selector-container">
           {bubos.length === 10 ? (
-            <div>No more than 10 bubos allowed</div>
+            <div>no more than 10 Xibis allowed</div>
           ) : null}
-          <h2>assemble your bubos</h2>
+          <h2>assemble your Xibis</h2>
           <div className="bubo-selector">
             <div>
               color:
@@ -110,9 +110,8 @@ class BuboSelector extends React.Component {
                 value="eyestalk"
               />
             </div>
-            <div>personality (choose two):</div>
-            <div>
-              <select onChange={this.handlePersonality}>
+            <div className='personality-select-container'>personality (choose two):
+              <select className='personality-select' onChange={this.handlePersonality}>
                 <option>shy</option>
                 <option>stubborn</option>
                 <option>proud</option>
@@ -121,7 +120,7 @@ class BuboSelector extends React.Component {
                 <option>spontaneous</option>
                 <option>soft-spoken</option>
               </select>
-              <select onChange={this.handlePersonality}>
+              <select className='personality-select' onChange={this.handlePersonality}>
                 <option>brave</option>
                 <option>kind</option>
                 <option>confident</option>
@@ -130,12 +129,12 @@ class BuboSelector extends React.Component {
                 <option>charismatic</option>
                 <option>patient</option>
               </select>
-            </div>
+              </div>
             <CustomizableBubo {...this.state} hover={false} />
           </div>
           <div>
             <button className="button" onClick={this.handleRandom}>
-              Randomize
+              randomize
             </button>
             <button className="button" onClick={this.handleCreate}>
               create

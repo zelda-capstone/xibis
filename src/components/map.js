@@ -14,8 +14,9 @@ class Map extends React.Component {
     const puzzles = this.props.puzzles || []
     return (
       <>
+        <div className="clouds" style={{ backgroundImage: 'url(https://i.ibb.co/1ZK2Vpc/purple-fog.png)' }}> </div>
         <div id="map-container">
-          <h1>Map</h1>
+          <h1>map</h1>
           <div id="map">
             {puzzles ? (
               puzzles.map((puzzle) => {
@@ -26,7 +27,7 @@ class Map extends React.Component {
                 )
               })
             ) : (
-              <h3> Loading... </h3>
+              <h3> loading... </h3>
             )}
           </div>
         </div>

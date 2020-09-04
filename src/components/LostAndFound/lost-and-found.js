@@ -103,7 +103,7 @@ class LostAndFound extends Component {
               On the planet Aguilera, things aren't always as they seem. The mirrored terrain casts uncertain glances over every shoulder. Will the reflections cast shadows of doubt, or will they show your bubos who they truly are inside?
               </div>
               <div className='lf-text'>
-                The bubos need to find themselves in the Great Fog of Doubt. You have 20 seconds to locate your bubos and dissipate the fog...
+                The Xibis need to find themselves in the Great Fog of Doubt. You have 20 seconds to locate your bubos and dissipate the fog...
               </div>
               <button
                 onClick={this.startGame}
@@ -126,7 +126,7 @@ class LostAndFound extends Component {
                 {
                   this.state.won ? (
                     <>
-                    <h3>You helped every bubo find their inner self!</h3>
+                    <h3>You helped every Xibi find their inner self!</h3>
                     <h4>You have unlocked a new puzzle...visit the map to see!</h4>
                     </>
                   ) : (
