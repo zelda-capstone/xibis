@@ -22,13 +22,10 @@ class BuboSelector extends React.Component {
       volume: 0.5,
       loop: true,
       sprite: {
-        'bubos_170bpm': [
-          130000,
-          67422.04081632652
-        ]
-      }
+        bubos_170bpm: [130000, 67422.04081632652],
+      },
     })
-    this.source = 0;
+    this.source = 0
   }
 
   componentDidMount() {
@@ -89,9 +86,9 @@ class BuboSelector extends React.Component {
       <>
         <div className="bubo-selector-container">
           {bubos.length === 10 ? (
-            <div>No more than 10 bubos allowed</div>
+            <div>no more than 10 Xibis allowed</div>
           ) : null}
-          <h2>assemble your bubos</h2>
+          <h2>assemble your Xibis</h2>
           <div className="bubo-selector">
             <div>
               color:
@@ -149,7 +146,7 @@ class BuboSelector extends React.Component {
           </div>
           <div>
             <button className="button" onClick={this.handleRandom}>
-              Randomize
+              randomize
             </button>
             <button className="button" onClick={this.handleCreate}>
               create

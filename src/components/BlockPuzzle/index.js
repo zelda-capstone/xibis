@@ -29,10 +29,10 @@ export class BlockPuzzle extends React.Component {
     if (this.state.puzzleState === 'intro') {
       return (
         <div id="block-puzzle-main">
-          You can see the planet Tessera in the distance. It glows with marbled
-          brilliance among the twinkling stars. Your destination is near, but
-          just out of reach. You will need to build a celestial bridge for your
-          bubos. Are you ready to begin?
+          you can see the planet Tessera in the distance. it glows with marbled
+          brilliance among the twinkling stars. your destination is near, but
+          just out of reach. you will need to build a celestial bridge for your
+          Xibis. are you ready to begin?
           <div>
             <button
               className="button"
@@ -48,10 +48,10 @@ export class BlockPuzzle extends React.Component {
       )
     }
 
-    let puzzleText = 'Position the pieces on the board until they stick.'
+    let puzzleText = 'position the pieces on the board until they stick.'
     const winCondition = this.props.totalCorrect === 12
     if (winCondition) {
-      puzzleText = 'You won! Congratulations!'
+      puzzleText = 'you won! congratulations!'
       this.handleWin()
     }
 

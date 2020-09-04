@@ -28,7 +28,7 @@ export class BuboContainer extends React.Component {
                 </div>
               )
             })
-          : 'where are your bubos?'}
+          : 'where are your Xibis?'}
       </div>
     )
   }
