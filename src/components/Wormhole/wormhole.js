@@ -13,6 +13,7 @@ import {Green, GreenRev, Purple, PurpleUpsd, GreenUpsD} from './Images';
 import Item from './GridItem'
 import BuboRow from './BuboRow'
 import {Portal} from './Portals'
+import Transition from './transition'
 
 
 class Wormhole extends React.Component{
@@ -129,14 +130,10 @@ class Wormhole extends React.Component{
         for(let i = 0; i < player.length; i++){
             if(player[i] !== comp[i]){
 
-                this.setState({
-                    play: false
-                })
-
-                return  confirm('You didnt Win! Play again?') ? window.location.reload();
+               return false;
 
             }else{
-                return alert("You WON!")
+                this.props.history.push(ROUTES.MAP)
             }
         }
     }
@@ -169,7 +166,9 @@ class Wormhole extends React.Component{
         console.log("state", this.state)
 
         if(this.state.winBubos.length === 10){
-            this.checkForWin()
+            return !this.checkForWin()
+            ? (<Transition win={false} history={this.props.history}/>)
+            :null
         }else{
         
           return (
