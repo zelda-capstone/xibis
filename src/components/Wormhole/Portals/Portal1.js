@@ -1,14 +1,12 @@
 import React from "react"
 import CustomizableBubo from '../../customizable-bubo'
 import Grid from '@material-ui/core/Grid'
-import BuboRow from "../BuboRow"
 
 
 
 const Portal = (props) => {
 
     const bubo = props.bubo
-    const order = props.order
    
     return(
         <div>
