@@ -15,6 +15,7 @@ class BuboSelector extends React.Component {
       color: '',
       accessory: '',
       personality: [],
+      redFlag: false,
       bubos: this.props.bubos || [],
     }
     this.music = new Howl({
@@ -64,18 +65,22 @@ class BuboSelector extends React.Component {
 
   handleCreate = async () => {
     const {color, accessory, personality} = this.state
-    const bubo = {color, accessory, personality}
+    if (color && accessory && personality.length === 2) {
+      const bubo = {color, accessory, personality}
+      if (this.state.bubos.length < 10) {
+        const bubosRef = this.props.user.bubosRef
+        this.props.addBubo(bubo, bubosRef)
 
-    if (this.state.bubos.length < 10) {
-      const bubosRef = this.props.user.bubosRef
-      this.props.addBubo(bubo, bubosRef)
-
-      this.setState({
-        color: '',
-        accessory: '',
-        personality: [],
-        bubos: [...this.state.bubos, bubo],
-      })
+        this.setState({
+          color: '',
+          accessory: '',
+          personality: [],
+          redFlag: false,
+          bubos: [...this.state.bubos, bubo],
+        })
+      }
+    } else {
+      this.setState({redFlag: true})
     }
   }
 
@@ -88,6 +93,7 @@ class BuboSelector extends React.Component {
           {bubos.length === 10 ? (
             <div>no more than 10 Xibis allowed</div>
           ) : null}
+
           <h2>assemble your Xibis</h2>
           <div className="bubo-selector">
             <div>
@@ -144,6 +150,7 @@ class BuboSelector extends React.Component {
             </div>
             <CustomizableBubo {...this.state} hover={false} />
           </div>
+
           <div>
             <button className="button" onClick={this.handleRandom}>
               randomize
@@ -152,6 +159,11 @@ class BuboSelector extends React.Component {
               create
             </button>
           </div>
+          {this.state.redFlag ? (
+            <div>
+              please select a color, accessory, and two personality traits.
+            </div>
+          ) : null}
         </div>
         <div className="line-bottom">
           {bubos
