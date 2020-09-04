@@ -1,10 +1,8 @@
 import React from 'react'
-//import Draggable, {DraggableCore} from 'react-draggable';
 import  './style.css'
 import Spritesheet from 'react-responsive-spritesheet';
 import Grid from '@material-ui/core/Grid'
 import { connect } from 'react-redux';
-import { updateBuboToDb } from '../../store'
 import * as ROUTES from '../../constants/routes';
 import CustomizableBubo from '../customizable-bubo'
 import {Link} from 'react-router-dom';
@@ -139,14 +137,14 @@ class Wormhole extends React.Component{
 
         const user = this.props.user;
         
-        const grid3 = [0,1,2]
+        const grid2 = [0,1]
         const grid4 = [0,1,2,3]
         const grid5 = [0,1,2,3,4]
         const grid7 = [0,1,2,3,4,5,6,7]
         const grid8 = [0,1,2,3,4,5,6,7,8,9]
         const grid11 = [0,1,2,3,4,5,6,7,8,9,10]
-        const grid13 = [0,1,2,3,4,5,6,7,8,9,10,11,12]
-        const grid14 = [0,1,2,3,4,5,6,7,8,9,10,11,12,13]
+        // const grid13 = [0,1,2,3,4,5,6,7,8,9,10,11,12]
+        // const grid14 = [0,1,2,3,4,5,6,7,8,9,10,11,12,13]
   
 
         if(this.state.winBubos.length === 10){
@@ -332,7 +330,7 @@ class Wormhole extends React.Component{
                     </Grid>
                     <Grid container item alignItems="center">
                         {
-                            grid4.map(i => (
+                            grid2.map(i => (
                                 this.formRow(i)
                             ))
                         }  

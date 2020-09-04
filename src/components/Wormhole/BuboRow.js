@@ -1,7 +1,6 @@
 import React from 'react'
 import CustomizableBubo from '../customizable-bubo'
 import Grid from '@material-ui/core/Grid'
-import { updateBuboToDb } from '../../store'
 
 class BuboRow extends React.Component{
     constructor(props){
