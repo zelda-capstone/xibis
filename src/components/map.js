@@ -1,7 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {MapIcon} from '../components'
-
 import {getUnlockedPuzzles} from '../store/reducers/puzzle'
 
 class Map extends React.Component {
@@ -29,6 +29,9 @@ class Map extends React.Component {
               <h3> Loading... </h3>
             )}
           </div>
+          <Link to="/wormhole">
+              HELLO
+          </Link>
         </div>
       </>
     )
