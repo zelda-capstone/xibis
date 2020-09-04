@@ -64,7 +64,7 @@ class LostAndFound extends Component {
   }
 
   tryAgain = () => {
-    this.setState({ playing: false, gameOver: false, won: false})
+    this.setState({ playing: false, gameOver: false, won: false, found: 0 })
   }
 
   unlockBlockPuzzle = () => {
