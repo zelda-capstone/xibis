@@ -2,11 +2,13 @@ import React from 'react'
 import {Link} from "react-router-dom"
 import {SignOut} from '../components'
 
-const NavBar = (props) => {
+const NavBar = () => {
   return (
     <div id='navbar'>
-      <SignOut />
-      <Link to='/home'><button>Progress</button></Link>
+      <div>
+        <Link to='/'><button className='button'>Start Over</button></Link>
+        </div>
+      <div><SignOut /></div>
     </div>
   )
 }

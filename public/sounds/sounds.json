@@ -1,6 +1,7 @@
 {
   "urls": [
-    "sounds.webm"
+    "sounds.webm",
+    "sounds.mp3"
   ],
   "sprite": {
     "bubos_atmosphere": [
@@ -14,6 +15,10 @@
     "LF_incorrect": [
       127000,
       2000
+    ],
+    "bubos_170bpm": [
+      130000,
+      67422.04081632652
     ]
   }
 }

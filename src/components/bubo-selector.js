@@ -4,27 +4,43 @@ import {CustomizableBubo, SelectTrait} from '../components'
 import {withFirebase} from '../firebase'
 import {connect} from 'react-redux'
 import {addBuboToDb} from '../store/reducers/bubo'
+import createRandomBubo from './create-random-bubo'
 
-//after combination options are chosen, bubo will be assigned a specific imageUrl matching that particular combo, from the sprite sheet?
+import {Howl} from 'howler'
 
 class BuboSelector extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       color: '',
-      sparkle: '',
       accessory: '',
       personality: [],
       bubos: this.props.bubos || [],
     }
+    this.music = new Howl({
+      src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
+      volume: 0.5,
+      loop: true,
+      sprite: {
+        'bubos_170bpm': [
+          130000,
+          67422.04081632652
+        ]
+      }
+    })
+    this.source = 0;
+  }
+
+  componentDidMount() {
+    this.source = this.music.play('bubos_170bpm')
+  }
+
+  componentWillUnmount() {
+    this.music.fade(this.music.volume(), 0, 1000, this.source)
   }
 
   handleColor = (evt) => {
     this.setState({color: evt.target.value})
-  }
-
-  handleSparkle = (evt) => {
-    this.setState({sparkle: evt.target.value})
   }
 
   handleAccessory = (evt) => {
@@ -40,9 +56,18 @@ class BuboSelector extends React.Component {
     }
   }
 
+  handleRandom = () => {
+    const newRandom = createRandomBubo()
+    this.setState({
+      color: newRandom.color,
+      accessory: newRandom.accessory,
+      personality: newRandom.personality,
+    })
+  }
+
   handleCreate = async () => {
-    const {color, sparkle, accessory, personality} = this.state
-    const bubo = {color, sparkle, accessory, personality}
+    const {color, accessory, personality} = this.state
+    const bubo = {color, accessory, personality}
 
     if (this.state.bubos.length < 10) {
       const bubosRef = this.props.user.bubosRef
@@ -50,7 +75,6 @@ class BuboSelector extends React.Component {
 
       this.setState({
         color: '',
-        sparkle: '',
         accessory: '',
         personality: [],
         bubos: [...this.state.bubos, bubo],
@@ -77,11 +101,6 @@ class BuboSelector extends React.Component {
               <SelectTrait handleClick={this.handleColor} value="yellow" />
               <SelectTrait handleClick={this.handleColor} value="orange" />
               <SelectTrait handleClick={this.handleColor} value="red" />
-            </div>
-            <div>
-              sparkle:
-              <SelectTrait handleClick={this.handleSparkle} value="green" />
-              <SelectTrait handleClick={this.handleSparkle} value="yellow" />
             </div>
             <div>
               accessory:
@@ -112,18 +131,26 @@ class BuboSelector extends React.Component {
                 <option>stubborn</option>
                 <option>proud</option>
                 <option>assertive</option>
-                {/* <div>map options from db here</div> */}
+                <option>outspoken</option>
+                <option>spontaneous</option>
+                <option>soft-spoken</option>
               </select>
               <select onChange={this.handlePersonality}>
                 <option>brave</option>
                 <option>kind</option>
                 <option>confident</option>
                 <option>thoughtful</option>
+                <option>nurturing</option>
+                <option>charismatic</option>
+                <option>patient</option>
               </select>
             </div>
-            <CustomizableBubo {...this.state} />
+            <CustomizableBubo {...this.state} hover={false} />
           </div>
           <div>
+            <button className="button" onClick={this.handleRandom}>
+              Randomize
+            </button>
             <button className="button" onClick={this.handleCreate}>
               create
             </button>
@@ -134,7 +161,7 @@ class BuboSelector extends React.Component {
             ? bubos.map((bubo, index) => {
                 return (
                   <div key={index}>
-                    <CustomizableBubo {...bubo} />
+                    <CustomizableBubo {...bubo} hover={true} />
                   </div>
                 )
               })

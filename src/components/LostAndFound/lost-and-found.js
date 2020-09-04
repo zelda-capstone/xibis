@@ -1,22 +1,24 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Timer, Interlude, CustomizableBubo } from '..'
+import { Timer, CustomizableBubo } from '..'
 import { getBubosCollection } from '../../store/reducers/bubo'
-import {Howl} from 'howler'
+import { unlockPuzzleInDb } from '../../store/reducers/puzzle'
+import { Howl } from 'howler'
 
 class LostAndFound extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      interlude: true,
-      showBubos: false,
+      playing: false,
+      gameOver: false,
+      won: false,
       random: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      lost: this.props.bubos,
+      lost: this.props.bubos || [],
       found: 0
     }
     this.sounds = new Howl({
       src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
-      volume: 0.2,
+      volume: 0.5,
       sprite: {
         'bubos_atmosphere': [ 0,
           122932.24489795919],
@@ -32,23 +34,50 @@ class LostAndFound extends Component {
   componentDidMount() {
     const bubosRef = this.props.user.bubosRef
     this.props.getBubos(bubosRef)
-    this.source = this.sounds.play('bubos_atmosphere');
+    this.source = this.sounds.play('bubos_atmosphere')
   }
 
   componentWillUnmount() {
     this.sounds.fade(this.sounds.volume(), 0, 1000, this.source)
   }
 
-  showBubos = () => {
-    this.setState({ showBubos: true })
+  shuffleOrder = () => {
+    return Math.floor(Math.random() * 10)
   }
 
-  endInterlude = () => {
-    this.setState({ interlude: false })
+  randomizePersonality = () => {
+    const traits1 = ['powerful', 'hot-headed', 'logical']
+    const traits2 = ['nurturing', 'humble', 'curious']
+
+    function randomNum (list) {
+      return Math.floor(Math.random() * list.length)
+    }
+    const randomIndex = randomNum(traits1)
+    const randomIndex2 = randomNum(traits2)
+    return [traits1[randomIndex], traits2[randomIndex2]]
+  }
+
+  startGame = () => {
+    this.setState({ playing: true, lost: this.props.bubos })
+  }
+
+  endGame = () => {
+    this.setState({ playing: false, gameOver: true })
+  }
+
+  unlockBlockPuzzle = () => {
+    const puzzlesRef = this.props.user.puzzlesRef
+    this.props.unlockPuzzle(puzzlesRef, 'block-puzzle')
   }
 
   handleFind = (key) => {
     this.sounds.play('LF_correct');
+    if (this.state.found === 9) {
+      this.setState({ won: true })
+      this.unlockBlockPuzzle()
+      this.endGame()
+    }
+
     this.setState({
       found: this.state.found + 1,
       lost: this.state.lost.filter(bubo => bubo !== key)
@@ -59,57 +88,105 @@ class LostAndFound extends Component {
     this.sounds.play('LF_incorrect')
   }
 
-  render() {
-    const lostBubos = this.state.lost;
 
-    if (this.state.interlude) return (
-      <div className='lost-and-found'>
-        <Interlude name='reflection' />
-        <div onClick={this.endInterlude} >what soulseeking awaits?</div>
-      </div>
+  render() {
+    const lostBubos = this.state.lost || [];
+
+    if (!this.state.playing && !this.state.gameOver) return (
+      <>
+        <div className='mirror'>
+          <div className='clouds'>
+            <div className='lost-and-found'>
+              <div className='lf-text'>
+              On the planet Aguilera, things aren't always as they seem. The mirrored terrain casts uncertain glances over every shoulder. Will the reflections cast shadows of doubt, or will they show your bubos who they truly are inside?
+              </div>
+              <div className='lf-text'>
+                The bubos need to find themselves in the Great Fog of Doubt. Don't let the mirrors play tricks on them--or you! You have 20 seconds to locate your bubos and dissipate the fog...
+              </div>
+              <button
+                onClick={this.startGame}
+                className='button'>
+                  start
+              </button>
+            </div>
+          </div>
+        </div>
+      </>
     )
 
-    // if (!this.state.bubos) return (
-    //   <div>
-    // )
+    if (this.state.gameOver) {
+      return (
+        <>
+          <div className='mirror'>
+            <div className='clouds'>
+              <div className='lost-and-found'>
+                <div className='lf-text'></div>
+                {
+                  this.state.won ? (
+                    <>
+                    <h3>You helped every bubo find their inner self!</h3>
+                    <h4>You have unlocked a new puzzle...visit the map to see!</h4>
+                    </>
+                  ) : (
+                    <>
+                      <h3>Time's up! </h3>
+                      <h4>You found {this.state.found} bubos</h4>
+                      <p>Render consequences here...</p>
+                    </>
+                  )
+                }
+                </div>
+            </div>
+          </div>
+        </>
+        )
+    }
+
 
     return (
-      <>
-        <div className='clouds'></div>
-        <div className='lost-and-found' >
-        <div>
-          The bubos need to find themselves in the Great Fog of Doubt. Don't let the mirrors play tricks on them--or you! You have 30 seconds to locate your bubos and dissipate the fog...
-        </div>
-        <div>
-          <Timer onClick={this.showBubos} />
-          FOUND {this.state.found}
-        </div>
-        {
-          this.state.showBubos ? (
-            <div className='lost-bubos-container'>
-              {
-                this.state.random.map((bubo, index) => {
-                  return (
-                    <div key={index} onClick={this.handleIncorrect} className='lost-bubo'>
-                      <CustomizableBubo {...lostBubos[index]} />
-                    </div>
-                  )
-                })
-              }
-              {
-                lostBubos.length ? (
-                  lostBubos.map((bubo, index) => {
+    <>
+      <div className='clouds'></div>
+      <div className='mirror'>
+          <div className='lost-and-found' >
+            <div>
+              <Timer
+                endGame={this.endGame} />
+                  FOUND {this.state.found}
+            </div>
+          {
+            this.state.playing ? (
+              <div className='lost-bubos-container'>
+                {
+                  this.state.random.map((bubo, index) => {
                     return (
-                      <div key={index} className='lost-bubo' onClick={() => this.handleFind(bubo)}>
-                        <CustomizableBubo {...bubo} />
+                      <div
+                        key={index}
+                        onClick={this.handleIncorrect}
+                        className={`lost-bubo order-${this.shuffleOrder()}`}>
+                          <CustomizableBubo hover={true}
+                            {...lostBubos[index]}
+                            personality={this.randomizePersonality()}/>
                       </div>
                     )
                   })
-                ) : null
-              }
-              </div>
-          ) : null
-        }
+                }
+                {
+                  lostBubos.length ? (
+                    lostBubos.map((bubo, index) => {
+                      return (
+                        <div key={index}
+                          className={`lost-bubo order-${this.shuffleOrder()}`}
+                          onClick={() => this.handleFind(bubo)}>
+                            <CustomizableBubo {...bubo} hover={true} />
+                        </div>
+                      )
+                    })
+                  ) : null
+                }
+                </div>
+            ) : null
+          }
+          </div>
         </div>
       </>
     )
@@ -125,7 +202,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    getBubos: buboRef => dispatch(getBubosCollection(buboRef))
+    getBubos: bubosRef => dispatch(getBubosCollection(bubosRef)),
+    unlockPuzzle: (puzzlesRef, id) => dispatch(unlockPuzzleInDb(puzzlesRef, id))
   }
 }
 

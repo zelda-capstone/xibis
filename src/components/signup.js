@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-
+import { compose } from 'recompose';
 import { withFirebase } from '../firebase';
 import * as ROUTES from '../constants/routes';
 import * as ROLES from '../constants/roles';
 
 const SignUpPage = () => (
   <>
-    <div className="container">
+    <div className="auth">
         <h1>Sign Up!</h1>
         <div id="sign-in">
             <SignUpForm />
@@ -66,8 +66,7 @@ class SignUpFormBase extends Component {
           );
         })
         .then(() => {
-          this.setState({ ...INITIAL_STATE });
-          this.props.history.push(ROUTES.START);
+          this.props.history.push(ROUTES.LANDING);
         })
         .catch(error => {
           if (error.code === ERROR_CODE_ACCOUNT_EXISTS) {
@@ -104,7 +103,8 @@ class SignUpFormBase extends Component {
         username === '';
 
       return (
-        <form onSubmit={this.onSubmit}>
+        <>
+        <form className='styled-form' onSubmit={this.onSubmit}>
           <input
             name="username"
             value={username}
@@ -133,25 +133,33 @@ class SignUpFormBase extends Component {
             type="password"
             placeholder="Confirm Password"
           />
-          <button disabled={isInvalid} type="submit">
+          <button className='button' disabled={isInvalid} type="submit">
             Sign Up
           </button>
-
-          {error && <p>{error.message}</p>}
         </form>
+        {error && <p>{error.message}</p>}
+        <div className='signup-link'>OR
+          <div><Link to={ROUTES.LOG_IN}>Sign In</Link></div>
+        </div>
+        </>
       );
     }
   }
 
 const SignUpLink = () => (
-    <p>
-        Don't have an account?
-        <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
-    </p>
+    <div className='signup-link'>
+        <div>Don't have an account?</div>
+        <Link to={ROUTES.SIGN_UP}>
+          Sign Up
+        </Link>
+    </div>
 );
 
 
-const SignUpForm = withRouter(withFirebase(SignUpFormBase));
+const SignUpForm = compose(
+  withRouter,
+  withFirebase
+)(SignUpFormBase);
 
 export default SignUpPage;
 

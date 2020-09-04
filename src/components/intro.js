@@ -1,26 +1,53 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Howl } from 'howler'
 import * as ROUTES from '../constants/routes'
 
-const Intro = () => {
-  return (
-    <>
-      <div className='story'>
-        <div className='typewriter'>
-          Here, our initial story will begin...
-        </div>
-        <div className='typewriter'>
-          Are you ready to get started?
-        </div>
-        <div className='buttons-container'>
-          <button><Link to={ROUTES.ASSEMBLE_BUBOS} className='button'>Yes</Link></button>
-          <button><Link to='/play' className='button'>No</Link></button>
+class Intro extends React.Component {
+  constructor() {
+    super()
+    this.music = new Howl({
+      src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
+      volume: 0.5,
+      loop: true,
+      sprite: {
+        'sad_bubos': [
+
+        ]
+      }
+    });
+    this.source = 0;
+  }
+
+  // componentDidMount() {
+  //   this.source = this.music.play('sad_bubos')
+  // }
+
+  // componentWillUnmount() {
+  //   this.music.fade(this.music.volume(), 0, 1500, this.source)
+  // }
+
+  render() {
+    return (
+      <div>
+        <div className='intro-container'>
+          <div className='typewriter'>
+            A community of *insert name here* are fleeing human space invaders and traveling through galaxies in search of a new planet to call home.
+          </div>
+          <div className='typewriter'>
+            Only by knowing their strengths and working together will they succeed, but they can't do it alone... Solve a series of mini puzzles to help them find their way!
+          </div>
+          <div className='typewriter'>
+            Are you ready to begin?
+          </div>
+          <div className='buttons-container'>
+            <Link to={ROUTES.ASSEMBLE_BUBOS} ><button className='button'>Yes</button></Link>
+            <Link to={ROUTES.LANDING}><button className='button'>No</button></Link>
+          </div>
         </div>
       </div>
-    </>
-  )
+    )
+  }
 }
-
-//would be fun to add some typwriter animation so the text doesn't all come in at once
 
 export default Intro
