@@ -1,7 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 import {MapIcon} from '../components'
-import {Link} from "react-router-dom"
 import {getUnlockedPuzzles} from '../store/reducers/puzzle'
 
 class Map extends React.Component {
