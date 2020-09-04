@@ -1,13 +1,11 @@
 import React from 'react'
 import BuboOptions from '../pixelArt'
-//may not end up using spritesheet, trying with still images at first
-//import Spritesheet from 'react-responsive-spritesheet'
-
-//import antennae from '../pixelArt/antennae.svg'
 
 const CustomizableBubo = (props) => {
   let className
-  props.hover ? (className='custom-bubo-container') : (className='custom-bubo-container no-hover')
+  props.hover
+    ? (className = 'custom-bubo-container')
+    : (className = 'custom-bubo-container no-hover')
   let personality
   props.personality
     ? (personality = props.personality)

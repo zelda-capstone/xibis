@@ -1,33 +1,33 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { MapIcon } from '../components'
-import {Link} from 'react-router-dom'
-import { getUnlockedPuzzles } from '../store/reducers/puzzle'
+import {connect} from 'react-redux'
+import {MapIcon} from '../components'
+import {Link} from "react-router-dom"
+import {getUnlockedPuzzles} from '../store/reducers/puzzle'
 
 class Map extends React.Component {
   componentDidMount() {
     const puzzlesRef = this.props.user.puzzlesRef
-    this.props.getPuzzles(puzzlesRef);
+    this.props.getPuzzles(puzzlesRef)
   }
 
   render() {
-    const puzzles = this.props.puzzles || [];
+    const puzzles = this.props.puzzles || []
     return (
       <>
-        <div id='map-container'>
+        <div id="map-container">
           <h1>Map</h1>
-            <div id='map'>
-              {
-                puzzles ? (
-                  (
-                    puzzles.map(puzzle => {
-                      return (<div key={puzzle.name}>
-                          <MapIcon puzzle={puzzle} />
-                      </div>)
-                    })
-                  )
-                ) : (<h3> Loading... </h3>)
-              }
+          <div id="map">
+            {puzzles ? (
+              puzzles.map((puzzle) => {
+                return (
+                  <div key={puzzle.name}>
+                    <MapIcon puzzle={puzzle} />
+                  </div>
+                )
+              })
+            ) : (
+              <h3> Loading... </h3>
+            )}
           </div>
           <Link to="/wormhole">
               HELLO
@@ -38,16 +38,16 @@ class Map extends React.Component {
   }
 }
 
-const mapState = state => {
+const mapState = (state) => {
   return {
     user: state.user,
-    puzzles: state.puzzles
+    puzzles: state.puzzles,
   }
 }
 
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch) => {
   return {
-    getPuzzles: puzzleRef => dispatch(getUnlockedPuzzles(puzzleRef))
+    getPuzzles: (puzzleRef) => dispatch(getUnlockedPuzzles(puzzleRef)),
   }
 }
 

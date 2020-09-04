@@ -18,7 +18,7 @@ class LostAndFound extends Component {
     }
     this.sounds = new Howl({
       src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
-      volume: 0.2,
+      volume: 0.5,
       sprite: {
         'bubos_atmosphere': [ 0,
           122932.24489795919],
@@ -103,7 +103,11 @@ class LostAndFound extends Component {
               <div className='lf-text'>
                 The bubos need to find themselves in the Great Fog of Doubt. Don't let the mirrors play tricks on them--or you! You have 20 seconds to locate your bubos and dissipate the fog...
               </div>
-              <button onClick={this.startGame}>start</button>
+              <button
+                onClick={this.startGame}
+                className='button'>
+                  start
+              </button>
             </div>
           </div>
         </div>

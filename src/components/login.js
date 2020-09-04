@@ -54,7 +54,7 @@ class LogInFormBase extends Component {
 
       return (
         <div className='auth'>
-        <form onSubmit={this.onSubmit}>
+        <form className='styled-form' onSubmit={this.onSubmit}>
           <input
             name="email"
             value={email}
@@ -69,22 +69,21 @@ class LogInFormBase extends Component {
             type="password"
             placeholder="Password"
           />
-          <button disabled={isInvalid} type="submit">
+          <button className='button' disabled={isInvalid} type="submit">
             Sign In
           </button>
-
-          {error && <p>{error.message}</p>}
         </form>
+        <div>{error && <p>{error.message}</p>}</div>
           <div>
             <button
-              className="sign-up-btn"
+              className="sign-up-btn button"
               onClick={() => {
                 this.props.firebase
                   .doSignInWithGoogle()
                   .then(() => this.props.history.push(ROUTES.LANDING));
               }}
             >
-              Sign In With Google
+              Sign In with Google
             </button>
           </div>
         </div>
