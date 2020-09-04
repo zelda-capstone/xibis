@@ -5,7 +5,7 @@ import BuboRow from "../BuboRow"
 
 
 
-const Portal1 = (props) => {
+const Portal = (props) => {
 
     //onsole.log("props", props)
     const bubo = props.bubo
@@ -20,9 +20,9 @@ const Portal1 = (props) => {
             <div>
             {bubo.color
                 ?  <Grid
-                    item height={73.5} width={73.5} justify-content='center'
+                    item height={73.5} width={73.5}
                 >   
-                    <div onClick={() => props.handlePortal1(bubo)}>
+                    <div onClick={() => props.onMove(bubo)}>
                         <CustomizableBubo {...bubo} hover={true}/>
                     </div>
                 </Grid>
@@ -37,4 +37,4 @@ const Portal1 = (props) => {
 
 
 
-export default Portal1
+export default Portal

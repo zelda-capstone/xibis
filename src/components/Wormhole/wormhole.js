@@ -12,7 +12,7 @@ import { getBubosCollection } from '../../store/reducers/bubo';
 import {Green, GreenRev, Purple, PurpleUpsd, GreenUpsD} from './Images';
 import Item from './GridItem'
 import BuboRow from './BuboRow'
-import {Portal1} from './Portals'
+import {Portal} from './Portals'
 
 
 class Wormhole extends React.Component{
@@ -22,12 +22,12 @@ class Wormhole extends React.Component{
             ogBubos: [],
             winBubos: [],
             portalBubos: [],
-            gangsHere: true,
+            winOrder: [],
+            play: true,
             selectedBubo: {}
         }
     }
     
-
 
 
     bringInBubos = (event) => {
@@ -47,19 +47,38 @@ class Wormhole extends React.Component{
             portalBubos: []
         }))
 
-        // this.setState({
-        //     gangsHere: false
-        // })
+        this.setState({
+            play: false
+        })
+    }
+
+
+    getWinOrder = () => {
+        let array = [0,1,2,3,4,5,6,7,8,9]
+
+        for(let i = array.length -1; i > 0; i-- ){
+            let j = Math.floor(Math.random() * (i + 1));
+            let temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+
+        this.setState((state) => ({
+            winOrder: array
+        }))
+
     }
 
 
     componentDidMount = () => {
         const user = this.props.user;
         this.props.getBubos(user.bubosRef);
+
+        this.getWinOrder();
     }
 
 
-    handleClick = (bubo) => {
+    handlePortal = (bubo) => {
         let clickTotal = this.state.selectedBubo.click + 1
 
         this.setState((state) => ({
@@ -68,36 +87,59 @@ class Wormhole extends React.Component{
 
     }
 
+
     onMove = (bubo, i, click) => {
-        
-        this.setState((state) => ({
-            selectedBubo: {bubo, click: 1}
-        }))
-
-        this.setState((state) => ({
-            order: i
-        }))
-
         const leftBubos = this.state.ogBubos.filter(b => b !== bubo)
+        
 
         this.setState((state) => ({
             ogBubos: leftBubos
         }))
 
-        this.setState((state) => ({
-            portalBubos: [...this.state.portalBubos, bubo ]
-        }))
+        if(this.state.portalBubos.length < 9){
+            this.setState((state) => ({
+                portalBubos: [bubo, ...this.state.portalBubos ]
+            }))
+        
+            this.setState((state) => ({
+                selectedBubo: {bubo, click: 1}
+            }))
+
+            this.setState((state) => ({
+                order: i
+            }))
+
+
+        }else{
+
+            const leftBubos = this.state.portalBubos.filter(b => b !== bubo)
+
+            this.setState((state) => ({
+                winBubos: [...this.state.winBubos, bubo ]
+            }))
+        }
 
     }
 
-    onCross = (bubo) => {
+    checkForWin = () => {
 
-        this.setState((state) => ({
-            winBubos: [...this.state.winBubos, bubo ]
-        }))
+        let player = this.state.winBubos
+        let comp = this.state.winOrder
 
+        for(let i = 0; i < player.length; i++){
+            if(player[i] !== comp[i]){
+
+                this.setState({
+                    play: false
+                })
+
+                return  confirm('You didnt Win! Play again?') ? window.location.reload();
+
+            }else{
+                return alert("You WON!")
+            }
+        }
     }
-
 
 
     formRow = (key) => {
@@ -110,12 +152,14 @@ class Wormhole extends React.Component{
         );
     }
 
+
     render(){
+
         const user = this.props.user;
         
         const grid3 = [0,1,2]
         const grid4 = [0,1,2,3]
-        const grid6 = [0,1,2,3,4]
+        const grid5 = [0,1,2,3,4]
         const grid7 = [0,1,2,3,4,5,6,7]
         const grid8 = [0,1,2,3,4,5,6,7,8,9]
         const grid11 = [0,1,2,3,4,5,6,7,8,9,10]
@@ -123,7 +167,12 @@ class Wormhole extends React.Component{
         const grid14 = [0,1,2,3,4,5,6,7,8,9,10,11,12,13]
       
         console.log("state", this.state)
-        return (
+
+        if(this.state.winBubos.length === 10){
+            this.checkForWin()
+        }else{
+        
+          return (
             <div className="star">
              <div className="background" >
              <Grid
@@ -133,34 +182,54 @@ class Wormhole extends React.Component{
                 >
                  {user
                  ?(<>
-                 <Grid container item>
+                 <Grid container item alignItems="center">
                     <Grid
                         item height={73.5} width={73.5}
                     >
                     <Spritesheet
-                        image={PurpleUpsd}
-                        widthFrame={73}
+                        image={Purple}
+                        widthFrame={64}
                         heightFrame={64}
-                        steps={8}
+                        steps={24}
                         fps={2}
                         autoplay={true}
                         loop={true}
                     />
-                    {this.state.portalBubos[1]
-                        ?<Portal1 bubo={this.state.portalBubos[1]} 
-                            order={this.state.order} 
-                            handleClick={this.handleClick}/>
-                        :null}
                     </Grid>
+                    {this.state.portalBubos[1]
+                        ?<Portal bubo={this.state.portalBubos[1]} 
+                            order={this.state.order} 
+                            onMove={this.onMove}/>
+                        :null}
                     {
-                        grid13.map(i => (
+                        grid8.map(i => (
                             this.formRow(i)
                         ))
-                    }
+                    }  
+                    {this.state.portalBubos[5]
+                                ?<Portal bubo={this.state.portalBubos[5]} 
+                                    order={this.state.order} 
+                                    onMove={this.onMove}/>
+                                :null} 
+                    <Grid
+                        item height={73.5} width={73.5}
+                    >
+                            <Spritesheet
+                            image={GreenRev}
+                            widthFrame={64}
+                            heightFrame={64}
+                            steps={24}
+                            fps={3}
+                            autoplay={true}
+                            loop={true}
+                            onClick={spritesheet => {
+                                spritesheet.play();}}
+                            />
+                        </Grid>
                     </Grid>
                     <Grid container item alignItems="center">
                         {
-                            grid6.map(i => (
+                            grid5.map(i => (
                                 this.formRow(i)
                             ))
                         }  
@@ -180,84 +249,53 @@ class Wormhole extends React.Component{
                             />
                             </Grid>
                             {this.state.portalBubos[2]
-                                ?<Portal1 bubo={this.state.portalBubos[2]} 
+                                ?<Portal bubo={this.state.portalBubos[2]} 
                                     order={this.state.order} 
-                                    handleClick={this.handleClick}/>
+                                    onMove={this.onMove}/>
                                 :null}
                             {/* <Click bubo={this.state.selectedBubo}/> */}
-                        {
-                            grid4.map(i => (
-                                this.formRow(i)
-                            ))
-                        }  
-                    </Grid>
-                    <Grid container item>
-                        {
-                            grid14.map(i => (
-                                this.formRow(i)
-                            ))
-                        }   
-                    </Grid>
-                    <Grid container item alignItems="center">
-                        {
-                            grid14.map(i => (
-                                this.formRow(i)
-                            ))
-                        }   
-                        {/* <Click bubo={this.state.selectedBubo}/> */}
-                        <Grid
-                            item height={73.5} width={73.5}
-                        >
-                        <Spritesheet
-                        image={GreenRev}
-                        widthFrame={64}
-                        heightFrame={64}
-                        steps={24}
-                        fps={3}
-                        autoplay={true}
-                        loop={true}
-                        onClick={spritesheet => {
-                            spritesheet.play();}}
-                        />
-                        
+                            {
+                                grid7.map(i => (
+                                    this.formRow(i)
+                                ))
+                            }   
+                            {this.state.portalBubos[0]
+                                ?<Portal bubo={this.state.portalBubos[0]} 
+                                    order={this.state.order} 
+                                    onMove={this.onMove}/>
+                                :null}
+                            <Grid
+                                item height={73.5} width={73.5}
+                            >
+                            <Spritesheet
+                                image={GreenRev}
+                                widthFrame={64}
+                                heightFrame={64}
+                                steps={24}
+                                fps={3}
+                                autoplay={true}
+                                loop={true}
+                            />
+                            </Grid>  
                         </Grid>
+                    <Grid container item alignItems="center">
+                        
                     </Grid>
-                <Grid container item >
-                    {
-                        grid11.map(i => (
-                            this.formRow(i)
-                        ))
-                    }   
-                    <Grid
-                        item height={73.5} width={73.5}
-                    >
-                    <Spritesheet
-                        image={GreenUpsD}
-                        widthFrame={74}
-                        heightFrame={64}
-                        steps={8}
-                        fps={8}
-                        autoplay={true}
-                        loop={true}
-                    />
-                    {this.state.portalBubos[0]
-                        ?<Portal1 bubo={this.state.portalBubos[0]} 
-                            order={this.state.order} 
-                            handleClick={this.handleClick}/>
-                        :null}
-                    </Grid>  
-                </Grid>
-                <Grid container item >
-                    {
-                        grid8.map(i => (
-                            this.formRow(i)
-                        ))
-                    }   
-                    {this.state.ogBubos.length === 0
-                              ?<button className="button play" onClick={() => this.bringInBubos()}>Play!</button>
-                              : null
-                    }
-                </Grid>
+                {this.state.play
+                    ?<Grid container item >
+                        {
+                            grid7.map(i => (
+                                this.formRow(i)
+                            ))
+                        }   
+                            <button className="button play" onClick={() => this.bringInBubos()}>Play!</button>
+                        {
+                            grid5.map(i => (
+                                    this.formRow(i)
+                                ))
+                        } 
+                     </Grid>
+                    :null}
                     <Grid container item alignItems="center" >
                         {
                             grid7.map(i => (
@@ -279,25 +317,17 @@ class Wormhole extends React.Component{
                                     spritesheet.play();}}
                             />
                         </Grid>
-                       
+                        {this.state.portalBubos[4]
+                        ?<Portal bubo={this.state.portalBubos[4]} 
+                            order={this.state.order} 
+                            onMove={this.onMove}/>
+                        :null}
                         {
-                            grid6.map(i => (
+                            grid5.map(i => (
                                 this.formRow(i)
                             ))
                         }   
-                        <Grid
-                        item height={73.5} width={73.5}
-                            >
-                            <Spritesheet
-                                image={PurpleUpsd}
-                                widthFrame={73}
-                                heightFrame={64}
-                                steps={8}
-                                fps={2}
-                                autoplay={true}
-                                loop={true}
-                            />
-                        </Grid>
+                        
                     </Grid>
                     <Grid container item alignItems="center">
                         {
@@ -305,6 +335,11 @@ class Wormhole extends React.Component{
                                 this.formRow(i)
                             ))
                         }  
+                        {this.state.portalBubos[3]
+                                ?<Portal bubo={this.state.portalBubos[3]} 
+                                    order={this.state.order} 
+                                    onMove={this.onMove}/>
+                                :null}
                         <div className="Click-reverse">
                             <Grid item height={73.5} width={73.5}>
                                 <Spritesheet
@@ -323,12 +358,30 @@ class Wormhole extends React.Component{
                             </Grid>
                         </div> 
                         {
-                            grid6.map(i => (
+                            grid5.map(i => (
                                 this.formRow(i)
                             ))
                         }  
+                        <Grid
+                        item height={73.5} width={73.5}
+                            >
+                            <Spritesheet
+                                image={PurpleUpsd}
+                                widthFrame={73}
+                                heightFrame={64}
+                                steps={8}
+                                fps={2}
+                                autoplay={true}
+                                loop={true}
+                            />
+                            {this.state.portalBubos[6]
+                                ?<Portal bubo={this.state.portalBubos[6]} 
+                                    order={this.state.order} 
+                                    onMove={this.onMove}/>
+                                :null}
+                        </Grid>
                     </Grid>
-                    <Grid container item alignItems="center" wrap="nowrap">
+                    <Grid container item wrap="nowrap" flex-grow={0} >
                         <Grid container item xs={4}>
                             {this.state.ogBubos
                             ? this.state.ogBubos.map((bubo, i) => (
@@ -345,6 +398,11 @@ class Wormhole extends React.Component{
                             </h1>
                             }
                         </Grid>
+                        {this.state.portalBubos[8]
+                                ?<Portal bubo={this.state.portalBubos[8]} 
+                                    order={this.state.order} 
+                                    onMove={this.onMove}/>
+                                :null}
                             <div className="Click-reverse">
                                 <Grid item >
                                     <Spritesheet
@@ -386,12 +444,21 @@ class Wormhole extends React.Component{
                         </div> 
                         <BuboRow bubos={this.state.winBubos} />
                     </Grid>
-                    <Grid container item >
+                    <Grid container item height="100%" >
+                        <div className="intro-container">
+                            <div className='typewriter'>
+                                {
+                                    this.state.winOrder.map(number => (
+                                        ` ${number} `
+                                    ))
+                                }
+                            </div>
+                        </div>
                         {
-                            grid14.map(i => (
+                            grid11.map(i => (
                                 this.formRow(i)
                             ))
-                        }   
+                        } 
                     </Grid>
                   </>
                  )
@@ -401,8 +468,8 @@ class Wormhole extends React.Component{
              </div>
             </div>
           );
+        }
     }
-
 }
 
 
