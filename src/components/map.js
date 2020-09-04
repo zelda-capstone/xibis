@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {MapIcon} from '../components'
-
 import {getUnlockedPuzzles} from '../store/reducers/puzzle'
 
 class Map extends React.Component {

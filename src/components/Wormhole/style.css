@@ -4,7 +4,7 @@
     background-position: center;
     min-width: 1177px;
     min-height: 663px;
-    background-image: url('./wormhole-background.jpg');
+    background-image: url('./Images/wormhole-background.jpg');
     margin: 1%;
     align-self: center
 }
@@ -14,7 +14,7 @@
 .star {
     display: flex;
     flex-wrap: wrap;
-    background-image:transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png);
+    background-color: black;
     background-size: cover;
     z-index: -2;
     justify-content: center;
@@ -57,4 +57,17 @@
 .portal-reverse {
     align-self: center;
     justify-content: center
+}
+
+.play {
+    position: sticky;
+    align-self: center;
+    justify-self: center;
+    z-index: 1
+}
+
+.typewriter {
+    width: 90%;
+    text-align: center;
+    color: rgb(192, 188, 188)
 }
