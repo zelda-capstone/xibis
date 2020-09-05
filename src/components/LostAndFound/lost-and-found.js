@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Timer, CustomizableBubo } from '..'
 import { getBubosCollection } from '../../store/reducers/bubo'
 import { unlockPuzzleInDb } from '../../store/reducers/puzzle'
-import { Howl } from 'howler'
 
 class LostAndFound extends Component {
   constructor(props) {
@@ -17,16 +16,6 @@ class LostAndFound extends Component {
       found: 0
     }
     this.music = 0;
-    this.sounds = new Howl({
-      src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
-      vol: 0.4,
-      sprite: {
-        'LF_correct': [124000,
-          2000],
-        'LF_incorrect': [127000,
-          2000]
-      }
-    })
   }
 
   componentDidMount() {
@@ -73,7 +62,7 @@ class LostAndFound extends Component {
   }
 
   handleFind = (key) => {
-    this.sounds.play('LF_correct');
+    this.props.effects.play('LF_correct');
     if (this.state.found === 9) {
       this.setState({ won: true })
       this.unlockBlockPuzzle()
@@ -87,7 +76,7 @@ class LostAndFound extends Component {
   }
 
   handleIncorrect = () => {
-    this.sounds.play('LF_incorrect')
+    this.props.effects.play('LF_incorrect')
   }
 
 

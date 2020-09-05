@@ -75,7 +75,7 @@ export class BlockPuzzle extends React.Component {
           </div>
           <div>
             <Board />
-            <AllPieces />
+            <AllPieces effects={this.props.effects} />
           </div>
           <div>
             <img

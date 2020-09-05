@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const MapIcon = (props) => {
   const puzzle = props.puzzle;
-  //console.log(puzzle)
+
   return (
     <div className={`map-icon-container order-${puzzle.order}`}>
       <Link to={`/${puzzle.name}`} >

@@ -51,6 +51,16 @@ class Game extends React.Component {
         ]
       }
     })
+    this.effects = new Howl({
+      src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
+      vol: 0.7,
+      sprite: {
+        'LF_correct': [124000,
+          2000],
+        'LF_incorrect': [127000,
+          2000]
+      }
+    })
   }
 
   render() {
@@ -83,9 +93,11 @@ class Game extends React.Component {
             <Route exact path={ROUTES.WORMHOLE} component={Wormhole} />
             <Route
               exact path={ROUTES.REFLECTION}
-              render={() => <LostAndFound sounds={this.sounds} />}
+              render={() => <LostAndFound sounds={this.sounds} effects={this.effects} />}
             />
-            <Route exact path={ROUTES.BLOCK_PUZZLE} component={BlockPuzzle} />
+            <Route
+              exact path={ROUTES.BLOCK_PUZZLE}
+              render={() => <BlockPuzzle effects={this.effects} />} />
             <Route path={ROUTES.NOT_FOUND} component={NotFound} />
           </Switch>
         </>
