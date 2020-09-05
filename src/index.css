@@ -808,7 +808,7 @@ body {
 .puzzle-stats {
   display: none;
   font-size: .8rem;
-  width: 6rem;
+  width: 8vw;
   height: 4rem;
 }
 
@@ -971,6 +971,7 @@ body {
 .stars {
   background: black url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
   z-index: -4;
+  background-size: auto;
 }
 
 .twinkling {

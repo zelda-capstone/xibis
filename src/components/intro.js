@@ -1,19 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import * as ROUTES from '../constants/routes'
 
 class Intro extends React.Component {
-  constructor() {
-    super()
-    this.music = 0;
-  }
-
-  componentDidMount() {
-    this.music = this.props.sounds.play('sad_bubos')
-  }
 
   componentWillUnmount() {
-    this.props.sounds.fade(this.props.sounds.volume(), 0, 1000, this.music)
+    const music = this.props.location.state.music;
+    console.log(music)
+    this.props.sounds.fade(this.props.sounds.volume(), 0, 1000, music)
   }
 
   render() {
@@ -39,4 +33,4 @@ class Intro extends React.Component {
   }
 }
 
-export default Intro
+export default withRouter(Intro)
