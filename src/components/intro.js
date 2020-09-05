@@ -3,11 +3,18 @@ import { Link, withRouter } from 'react-router-dom'
 import * as ROUTES from '../constants/routes'
 
 class Intro extends React.Component {
+  constructor(props) {
+    super(props)
+    this.music = 0
+  }
+
+  componentDidMount() {
+    this.music = this.props.location.state.music
+    this.props.sounds.fade(0, this.props.sounds.volume(), 800, this.music)
+  }
 
   componentWillUnmount() {
-    const music = this.props.location.state.music;
-    console.log(music)
-    this.props.sounds.fade(this.props.sounds.volume(), 0, 1000, music)
+    this.props.sounds.fade(this.props.sounds.volume(), 0, 800, this.music)
   }
 
   render() {
@@ -15,7 +22,7 @@ class Intro extends React.Component {
       <div>
         <div className='intro-container'>
           <div className='typewriter'>
-            A community of Xibis are fleeing human space invaders and traveling through galaxies in search of a new planet to call home.
+            A community of bubos are fleeing human space invaders and traveling through galaxies in search of a new planet to call home.
           </div>
           <div className='typewriter'>
             Only by knowing their strengths and working together will they succeed, but they can't do it alone... Solve a series of mini puzzles to help them find their way!

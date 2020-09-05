@@ -10,20 +10,20 @@ class StartGame extends React.Component {
     this.state = {
       loadingGame: false,
       activeGame: false,
-      msg: ''
+      msg: '',
+      music: 0
     }
     this.bubosRef = this.props.user.bubosRef
     this.puzzlesRef = this.props.user.puzzlesRef
-    this.music = 0;
   }
 
   componentDidMount() {
-    this.music = this.props.sounds.play('bubos_theme')
+    this.setState({ music: this.props.sounds.play('bubos_theme') })
   }
 
-  // componentWillUnmount() {
-  //   this.props.sounds.fade(this.props.sounds.volume(), 0, 1000, this.music)
-  // }
+  componentWillUnmount() {
+    this.props.sounds.fade(this.props.sounds.volume(), 0, 1000, this.state.music)
+  }
 
   startGame = () => {
     this.props.resetPuzzles(this.puzzlesRef);
@@ -44,6 +44,7 @@ class StartGame extends React.Component {
   }
 
   render() {
+    console.log(this.state.music)
     if (this.state.activeGame) {
       return (
         <Redirect to='/map' />
@@ -52,7 +53,7 @@ class StartGame extends React.Component {
 
     return (
       <div className='start-container fade-in'>
-        <Link to={{ pathname: '/intro', state: { music: this.music }}} onClick={this.startGame} >
+        <Link to={{ pathname: '/intro', state: { music: this.state.music }}} onClick={this.startGame} >
           <div>start new journey</div>
         </Link>
         <div onClick={this.loadGame}>load game</div>

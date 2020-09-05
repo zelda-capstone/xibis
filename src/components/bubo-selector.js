@@ -19,6 +19,7 @@ class BuboSelector extends React.Component {
 
   componentDidMount() {
     this.music = this.props.sounds.play('bubos_170bpm')
+    this.props.sounds.fade(0, this.props.sounds.volume(), 500, this.music)
   }
 
   componentWillUnmount() {

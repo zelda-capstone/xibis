@@ -18,8 +18,8 @@ $gameFont: 'Anonymous Pro', monospace;
   flex-wrap: wrap;
 }
 
-@mixin fadeIn {
-  animation: fade-in 1s linear;
+@mixin fadeIn($duration) {
+  animation: fade-in $duration linear;
 }
 
 @keyframes fade-in {
@@ -105,11 +105,9 @@ body {
   color: black;
   div {
     padding: 1rem;
-    //@include flexCenter(column);
   }
   span {
     padding: 1rem;
-    //@include flexCenter(column);
   }
   a {
     color: black;
@@ -167,7 +165,7 @@ body {
 
 .start-container {
   @include flexCenter(column);
-  @include fadeIn;
+  @include fadeIn(2s);
   align-items: space-around;
   width: 100vw;
   height: 80vh;
@@ -185,12 +183,12 @@ body {
 }
 
 .fade-in {
-  @include fadeIn;
+  @include fadeIn(1.5s);
 }
 
 .intro-container {
   @include flexCenter(column);
-  @include fadeIn;
+  @include fadeIn(2s);
   margin-top: 5rem;
   //margin: 5rem;
   div {
@@ -244,7 +242,7 @@ body {
 .bubo-selector-container {
   @include flexCenter(column);
   flex-wrap: nowrap;
-  @include fadeIn;
+  @include fadeIn(1s);
   height: 73vh;
   h2 {
     color: white;
@@ -365,7 +363,7 @@ body {
 
 #menu {
   @include flexCenter(column);
-  @include fadeIn;
+  @include fadeIn(1.5s);
   margin: 2rem;
   position: fixed;
   bottom: 1vh;
@@ -389,7 +387,8 @@ body {
 
 #map-container {
   @include flexCenter(column);
-  @include fadeIn;
+  justify-content: space-around;
+  @include fadeIn(1s);
   h1 {
     color: whitesmoke;
     text-shadow: 2px 2px rgb(65, 68, 96);
@@ -399,7 +398,8 @@ body {
 #map {
   @include flexCenter(row);
   justify-content: space-between;
-  margin: 5rem;
+
+  //margin: 5rem;
   position: relative;
   font-size: 2rem;
 }
@@ -411,10 +411,11 @@ body {
 }
 
 .map-icon {
-  height: 8em;
-  width: 8em;
+  height: 6em;
+  width: 6em;
+  background-size: contain;
   &:hover + div {
-    @include fadeIn;
+    @include fadeIn(1s);
     display: block;
     position: absolute;
     @include flexCenter(column);
@@ -496,7 +497,7 @@ body {
 .space-sky {
   width: 100%;
   height: 100%;
-  //background: cover;
+  background-size: auto;
 }
 
 .stars,

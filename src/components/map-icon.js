@@ -5,7 +5,7 @@ const MapIcon = (props) => {
   const puzzle = props.puzzle;
   //console.log(puzzle)
   return (
-    <div className='map-icon-container'>
+    <div className={`map-icon-container order-${puzzle.order}`}>
       <Link to={`/${puzzle.name}`} >
         <div
           className='map-icon'

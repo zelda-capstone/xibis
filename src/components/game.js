@@ -77,7 +77,9 @@ class Game extends React.Component {
               exact path={ROUTES.ASSEMBLE_BUBOS}
               render={() => <BuboSelector user={user} sounds={this.sounds} />}
             />
-            <Route exact path={ROUTES.MAP} component={Map} />
+            <Route
+              exact path={ROUTES.MAP}
+              render={() => <Map sounds={this.sounds}/>} />
             <Route exact path={ROUTES.WORMHOLE} component={Wormhole} />
             <Route
               exact path={ROUTES.REFLECTION}
