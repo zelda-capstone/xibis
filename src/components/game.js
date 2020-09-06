@@ -85,7 +85,7 @@ class Game extends React.Component {
               render={() => <Intro sounds={this.sounds} />} />
             <Route
               exact path={ROUTES.ASSEMBLE_BUBOS}
-              render={() => <BuboSelector user={user} sounds={this.sounds} />}
+              render={() => <BuboSelector sounds={this.sounds} />}
             />
             <Route
               exact path={ROUTES.MAP}

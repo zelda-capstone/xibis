@@ -44,7 +44,6 @@ class StartGame extends React.Component {
   }
 
   render() {
-    console.log(this.state.music)
     if (this.state.activeGame) {
       return (
         <Redirect to='/map' />

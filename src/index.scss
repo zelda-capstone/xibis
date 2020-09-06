@@ -266,25 +266,6 @@ body {
   }
 }
 
-.custom-bubo-container-hover {
-  @include flexCenter(column);
-  height: 9rem;
-  width: 6rem;
-  animation: hover 2s alternate infinite;
-  &:hover + div {
-    @include flexCenter(column);
-    border-radius: 3px;
-    padding: 0.5rem;
-    // position: relative;
-    position: absolute;
-    width: 5rem;
-    background: linear-gradient(lavender, rgb(191, 189, 189));
-    color: black;
-    font-size: 0.7rem;
-    z-index: 3;
-  }
-}
-
 .custom-bubo-container {
   @include flexCenter(column);
   height: 9rem;
@@ -313,6 +294,15 @@ body {
   background-repeat: no-repeat;
 }
 
+.no-hover {
+  pointer-events: none;
+}
+
+.bubo-stats {
+  display: none;
+  @include fadeIn(.5s);
+}
+
 .personality-select-container {
   align-self: flex-start;
   margin-top: 2vh;
@@ -339,21 +329,12 @@ body {
 }
 
 
-
 .accessory {
   position: absolute;
   top: 0;
   margin-bottom: 3.5rem;
   width: 100px;
   height: 100px;
-}
-
-.no-hover {
-  pointer-events: none;
-}
-
-.bubo-stats {
-  display: none;
 }
 
 .line-bottom {

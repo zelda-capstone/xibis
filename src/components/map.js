@@ -24,7 +24,7 @@ class Map extends React.Component {
       <>
         {/* <div className="clouds" style={{ backgroundImage: 'url(https://i.ibb.co/1ZK2Vpc/purple-fog.png)' }}> </div> */}
         <div id="map-container">
-          <h1>map</h1>
+          {/* <h1>map</h1> */}
           <div id="map">
             {puzzles ? (
               puzzles.map((puzzle) => {

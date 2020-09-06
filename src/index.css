@@ -476,55 +476,6 @@ body {
   margin: 0.75rem;
 }
 
-.custom-bubo-container-hover {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  height: 9rem;
-  width: 6rem;
-  -webkit-animation: hover 2s alternate infinite;
-          animation: hover 2s alternate infinite;
-}
-
-.custom-bubo-container-hover:hover + div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  border-radius: 3px;
-  padding: 0.5rem;
-  position: absolute;
-  width: 5rem;
-  background: -webkit-gradient(linear, left top, left bottom, from(lavender), to(#bfbdbd));
-  background: linear-gradient(lavender, #bfbdbd);
-  color: black;
-  font-size: 0.7rem;
-  z-index: 3;
-}
-
 .custom-bubo-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -597,6 +548,16 @@ body {
   background-repeat: no-repeat;
 }
 
+.no-hover {
+  pointer-events: none;
+}
+
+.bubo-stats {
+  display: none;
+  -webkit-animation: fade-in 0.5s linear;
+          animation: fade-in 0.5s linear;
+}
+
 .personality-select-container {
   -ms-flex-item-align: start;
       align-self: flex-start;
@@ -630,14 +591,6 @@ body {
   margin-bottom: 3.5rem;
   width: 100px;
   height: 100px;
-}
-
-.no-hover {
-  pointer-events: none;
-}
-
-.bubo-stats {
-  display: none;
 }
 
 .line-bottom {
