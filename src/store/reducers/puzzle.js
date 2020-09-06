@@ -41,7 +41,7 @@ export const resetPuzzlesCollection = puzzlesRef => {
       await puzzlesRef.doc('reflection').set({
         name: 'Reflection',
         planet: 'Aguilera',
-        imageUrl: 'https://i.ibb.co/nCJK34p/planet.png',
+        imageUrl: 'https://i.ibb.co/WGhn46r/Planet-Aguilera.png',
         unlocked: true,
         order: 1
       })

@@ -21,6 +21,7 @@ export class BlockPuzzle extends React.Component {
   }
 
   handleWin() {
+    // a winning sound effect?
     const puzzlesRef = this.props.user.puzzlesRef
     this.props.unlockPuzzle(puzzlesRef, 'wormhole')
   }

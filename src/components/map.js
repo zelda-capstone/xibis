@@ -19,7 +19,9 @@ class Map extends React.Component {
   }
 
   render() {
-    const puzzles = this.props.puzzles || []
+    let puzzles = this.props.puzzles || []
+    puzzles = puzzles.reverse()
+
     return (
       <>
         {/* <div className="clouds" style={{ backgroundImage: 'url(https://i.ibb.co/1ZK2Vpc/purple-fog.png)' }}> </div> */}
