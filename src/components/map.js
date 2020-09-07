@@ -24,7 +24,7 @@ class Map extends React.Component {
 
     return (
       <>
-        <div className="clouds" style={{ backgroundImage: 'url(https://i.ibb.co/1ZK2Vpc/purple-fog.png)' }}> </div>
+        {/* <div className="clouds" style={{ backgroundImage: 'url(https://i.ibb.co/1ZK2Vpc/purple-fog.png)' }}> </div> */}
         <div id="map-container">
           <div id="map">
             {

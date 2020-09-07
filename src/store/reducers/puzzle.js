@@ -36,21 +36,18 @@ export const resetPuzzlesCollection = puzzlesRef => {
         planet: 'Aguilera',
         imageUrl: 'https://i.ibb.co/Cz4VT2B/Planet-Aguilera-3.png',
         unlocked: true,
-        order: 1
       })
       await puzzlesRef.doc('block-puzzle').set({
         name: 'Block-Puzzle',
         planet: 'Tessera',
-        imageUrl: 'https://i.ibb.co/BVkX4dn/tessera.png',
+        imageUrl: 'https://i.ibb.co/N3KFXbS/Planet-Tessera-5.png',
         unlocked: false,
-        order: 2
       })
       await puzzlesRef.doc('wormhole').set({
         name: 'Wormhole',
         planet: 'Tropics',
-        imageUrl: 'https://i.ibb.co/nCJK34p/planet.png',
+        imageUrl: 'https://i.ibb.co/2g3ZQrf/Planet-wormy.png',
         unlocked: false,
-        order: 3
       })
       const puzzles = await puzzlesRef.get()
       const updatedPuzzles = puzzles.docs.map(doc => doc.data())

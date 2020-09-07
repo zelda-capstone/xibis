@@ -131,7 +131,7 @@ class LostAndFound extends Component {
                       <button
                         onClick={this.tryAgain}
                         className='button' >
-                          Try again?
+                          try again?
                       </button>
                     </>
                   )

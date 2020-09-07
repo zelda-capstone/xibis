@@ -173,7 +173,7 @@ body {
   transition: opacity 2s linear;
   div {
     color: white;
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin: 1.5rem;
     position: relative;
   }
@@ -333,7 +333,6 @@ body {
   }
 }
 
-
 .accessory {
   position: absolute;
   top: 0;
@@ -352,18 +351,18 @@ body {
     transform: translateY(0%);
   }
   to {
-   transform: translateY(5%);
+   transform: translateY(7%);
   }
 }
 
 @keyframes ufo-shadow {
   from {
-    transform: scale(0.5);
-    opacity: 100%;
+    transform: scale(0.8);
+    opacity: 50%;
   }
   to {
-    transform: scale(0.8);
-    opacity: 75%;
+    transform: scale(0.5);
+    opacity: 80%;
   }
 }
 
@@ -371,7 +370,7 @@ body {
   @include fadeIn(1.5s);
   position: fixed;
   bottom: 0vh;
-  left: 75vw;
+  left: 82vw;
   z-index: 5;
 }
 
@@ -381,19 +380,16 @@ body {
   background-repeat: no-repeat;
   width: 30vw;
   height: 30vh;
+  bottom: 0px;
   animation: ufo-hover 2s alternate infinite;
 }
 
 .ufo-shadow {
-  position: absolute;
-  margin-top: 10vh;
-  //align-self: center;
-  right: 11.5vw;
-  bottom: 3vh;
+  position: relative;
+  left: 3.5vw;
+  bottom: 5vh;
   background-color: grey;
-  //background-image: url(https://i.ibb.co/tJHLbRc/Low-Shadow-Hover.png);
   background-size: 100px 100px;
-  //background-repeat: no-repeat;
   height: 1rem;
   width: 8rem;
   border-radius: 50%;
@@ -401,29 +397,34 @@ body {
 }
 
 #map {
-  @include flexCenter(row);
-  justify-content: space-evenly;
   @include fadeIn(1s);
   margin-top: 10rem;
-  position: relative;
+  display: grid;
   font-size: 2rem;
 }
 
 .map-icon-container {
+  //@include flexCenter(column);
   a {
     @include plainLink;
   }
 }
 
+// #reflection {
+//   position: fixed;
+//   top: 20vh;
+//   left: 20vw;
+// }
+
 .map-icon {
-  height: 6em;
-  width: 6em;
+  height: 300px;
+  width: 300px;
   background-size: contain;
   &:hover + div {
     @include fadeIn(1s);
+    @include flexCenter(column);
     display: block;
     position: absolute;
-    @include flexCenter(column);
     padding: 0.5rem;
     background: white;
     border-radius: 5px;
@@ -432,6 +433,7 @@ body {
 }
 
 .puzzle-stats {
+  @include flexCenter(column);
   display: none;
   font-size: .8rem;
   width: 10vw;

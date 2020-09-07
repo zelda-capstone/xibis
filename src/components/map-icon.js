@@ -5,9 +5,10 @@ const MapIcon = (props) => {
   const puzzle = props.puzzle;
 
   return (
-    <div className={`map-icon-container order-${puzzle.order}`}>
+    <div className='map-icon-container' id={puzzle.name}>
       <Link to={`/${puzzle.name}`} >
         <div
+          id={puzzle.name}
           className='map-icon'
           style={{backgroundImage: `url(${puzzle.imageUrl})`}}>
         </div>

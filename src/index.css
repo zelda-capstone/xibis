@@ -291,7 +291,7 @@ body {
 
 .start-container div {
   color: white;
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin: 1.5rem;
   position: relative;
 }
@@ -587,8 +587,8 @@ body {
             transform: translateY(0%);
   }
   to {
-    -webkit-transform: translateY(5%);
-            transform: translateY(5%);
+    -webkit-transform: translateY(7%);
+            transform: translateY(7%);
   }
 }
 
@@ -598,34 +598,34 @@ body {
             transform: translateY(0%);
   }
   to {
-    -webkit-transform: translateY(5%);
-            transform: translateY(5%);
+    -webkit-transform: translateY(7%);
+            transform: translateY(7%);
   }
 }
 
 @-webkit-keyframes ufo-shadow {
   from {
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5);
-    opacity: 100%;
-  }
-  to {
     -webkit-transform: scale(0.8);
             transform: scale(0.8);
-    opacity: 75%;
+    opacity: 50%;
+  }
+  to {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    opacity: 80%;
   }
 }
 
 @keyframes ufo-shadow {
   from {
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5);
-    opacity: 100%;
-  }
-  to {
     -webkit-transform: scale(0.8);
             transform: scale(0.8);
-    opacity: 75%;
+    opacity: 50%;
+  }
+  to {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    opacity: 80%;
   }
 }
 
@@ -634,7 +634,7 @@ body {
           animation: fade-in 1.5s linear;
   position: fixed;
   bottom: 0vh;
-  left: 75vw;
+  left: 82vw;
   z-index: 5;
 }
 
@@ -644,15 +644,15 @@ body {
   background-repeat: no-repeat;
   width: 30vw;
   height: 30vh;
+  bottom: 0px;
   -webkit-animation: ufo-hover 2s alternate infinite;
           animation: ufo-hover 2s alternate infinite;
 }
 
 .ufo-shadow {
-  position: absolute;
-  margin-top: 10vh;
-  right: 11.5vw;
-  bottom: 3vh;
+  position: relative;
+  left: 3.5vw;
+  bottom: 5vh;
   background-color: grey;
   background-size: 100px 100px;
   height: 1rem;
@@ -663,28 +663,11 @@ body {
 }
 
 #map {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
   -webkit-animation: fade-in 1s linear;
           animation: fade-in 1s linear;
   margin-top: 10rem;
-  position: relative;
+  display: -ms-grid;
+  display: grid;
   font-size: 2rem;
 }
 
@@ -694,16 +677,14 @@ body {
 }
 
 .map-icon {
-  height: 6em;
-  width: 6em;
+  height: 300px;
+  width: 300px;
   background-size: contain;
 }
 
 .map-icon:hover + div {
   -webkit-animation: fade-in 1s linear;
           animation: fade-in 1s linear;
-  display: block;
-  position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -719,6 +700,8 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  display: block;
+  position: absolute;
   padding: 0.5rem;
   background: white;
   border-radius: 5px;
@@ -727,6 +710,21 @@ body {
 }
 
 .puzzle-stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   display: none;
   font-size: .8rem;
   width: 10vw;
