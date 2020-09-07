@@ -100,6 +100,7 @@
 body {
   margin: 0;
   font-family: "Anonymous Pro", monospace;
+  font-size: large;
   color: white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -290,8 +291,8 @@ body {
 
 .start-container div {
   color: white;
-  font-size: 2rem;
-  margin: 1rem;
+  font-size: 2.5rem;
+  margin: 1.5rem;
   position: relative;
 }
 
@@ -321,14 +322,22 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-animation: fade-in 2s linear;
-          animation: fade-in 2s linear;
-  margin-top: 5rem;
+  margin-top: 10rem;
   font-size: large;
 }
 
 .intro-container div {
   margin: 1rem;
+}
+
+.intro-buttons {
+  -webkit-animation: fade-in 20s linear;
+          animation: fade-in 20s linear;
+}
+
+.typewriter {
+  width: 60%;
+  text-align: center;
 }
 
 .buttons-container {
@@ -360,7 +369,7 @@ body {
 
 .button {
   font-family: "Anonymous Pro", monospace;
-  font-size: 1rem;
+  font-size: large;
   border: none;
   border-radius: 3px;
   margin: 0.5rem;
@@ -572,62 +581,85 @@ body {
           justify-content: flex-start;
 }
 
+@-webkit-keyframes ufo-hover {
+  from {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+  to {
+    -webkit-transform: translateY(5%);
+            transform: translateY(5%);
+  }
+}
+
+@keyframes ufo-hover {
+  from {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+  to {
+    -webkit-transform: translateY(5%);
+            transform: translateY(5%);
+  }
+}
+
+@-webkit-keyframes ufo-shadow {
+  from {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    opacity: 100%;
+  }
+  to {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+    opacity: 75%;
+  }
+}
+
+@keyframes ufo-shadow {
+  from {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    opacity: 100%;
+  }
+  to {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+    opacity: 75%;
+  }
+}
+
 #menu {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   -webkit-animation: fade-in 1.5s linear;
           animation: fade-in 1.5s linear;
-  margin: 2rem;
   position: fixed;
-  bottom: 1vh;
-  left: 88vw;
+  bottom: 0vh;
+  left: 75vw;
   z-index: 5;
 }
 
-#menu div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin: 0.75rem;
-  width: 4rem;
-  height: 4rem;
-  border-radius: 5px;
-  background: -webkit-gradient(linear, left top, left bottom, from(whitesmoke), to(#b0a7a7));
-  background: linear-gradient(whitesmoke, #b0a7a7);
+.ufo {
+  background-image: url(https://i.ibb.co/Bnc40h6/Map-Ship-2-0-no-shadow.png);
+  background-size: 200px 200px;
+  background-repeat: no-repeat;
+  width: 30vw;
+  height: 30vh;
+  -webkit-animation: ufo-hover 2s alternate infinite;
+          animation: ufo-hover 2s alternate infinite;
 }
 
-#menu div:hover {
-  background: #b5b3b3;
-}
-
-#menu a {
-  text-decoration: none;
-  color: black;
+.ufo-shadow {
+  position: absolute;
+  margin-top: 10vh;
+  right: 11.5vw;
+  bottom: 3vh;
+  background-color: grey;
+  background-size: 100px 100px;
+  height: 1rem;
+  width: 8rem;
+  border-radius: 50%;
+  -webkit-animation: ufo-shadow 2s alternate infinite;
+          animation: ufo-shadow 2s alternate infinite;
 }
 
 #map {

@@ -5,7 +5,12 @@ const Menu = (props) => {
 
   return (
     <div id="menu" >
-      <Link to='/map'><div>map</div></Link>
+      <div id='map-ufo'>
+        <Link to='/map'>
+          <div className='ufo'></div>
+        </Link>
+        <div className='ufo-shadow'></div>
+      </div>
     </div>
   )
 }

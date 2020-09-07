@@ -89,6 +89,7 @@ $gameFont: 'Anonymous Pro', monospace;
 body {
   margin: 0;
   font-family: $gameFont;
+  font-size: large;
   color: white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -170,11 +171,10 @@ body {
   width: 100vw;
   height: 80vh;
   transition: opacity 2s linear;
-
   div {
     color: white;
-    font-size: 2rem;
-    margin: 1rem;
+    font-size: 2.5rem;
+    margin: 1.5rem;
     position: relative;
   }
   a {
@@ -188,17 +188,20 @@ body {
 
 .intro-container {
   @include flexCenter(column);
-  @include fadeIn(2s);
-  margin-top: 5rem;
+  margin-top: 10rem;
   font-size: large;
   div {
     margin: 1rem;
   }
 }
 
-// .typewriter {
-//   width: 60%;
-//   text-align: center;
+.intro-buttons {
+  @include fadeIn(20s);
+}
+
+ .typewriter {
+   width: 60%;
+  text-align: center;
 //   // overflow: hidden;
 //   // white-space: nowrap;
 //   // display: inline-block;
@@ -213,7 +216,7 @@ body {
 //   // // //margin-top: 3rem;
 //   // letter-spacing: 0.1em;
 //   // animation: typing 10s steps(40, end), cursor 1s step-end infinite;
-// }
+}
 
 .buttons-container {
   @include flexCenter(row);
@@ -226,9 +229,11 @@ body {
   }
 }
 
+
 .button {
   font-family: $gameFont;
-  font-size: 1rem;
+  font-size: large;
+  //font-size: 1rem;
   border: none;
   border-radius: 3px;
   margin: 0.5rem;
@@ -342,39 +347,58 @@ body {
   justify-content: flex-start;
 }
 
-#menu {
-  @include flexCenter(column);
-  @include fadeIn(1.5s);
-  margin: 2rem;
-  position: fixed;
-  bottom: 1vh;
-  left: 88vw;
-  z-index: 5;
-  div {
-    @include flexCenter(column);
-    margin: 0.75rem;
-    width: 4rem;
-    height: 4rem;
-    border-radius: 5px;
-    background: linear-gradient(whitesmoke, rgb(176, 167, 167));
-    &:hover {
-      background: rgb(181, 179, 179);
-    }
+@keyframes ufo-hover {
+  from {
+    transform: translateY(0%);
   }
-  a {
-    @include plainLink;
+  to {
+   transform: translateY(5%);
   }
 }
 
-// #map-container {
-//   @include flexCenter(column);
-//   justify-content: space-around;
-//   @include fadeIn(1s);
-//   h1 {
-//     color: whitesmoke;
-//     text-shadow: 2px 2px rgb(65, 68, 96);
-//   }
-// }
+@keyframes ufo-shadow {
+  from {
+    transform: scale(0.5);
+    opacity: 100%;
+  }
+  to {
+    transform: scale(0.8);
+    opacity: 75%;
+  }
+}
+
+#menu {
+  @include fadeIn(1.5s);
+  position: fixed;
+  bottom: 0vh;
+  left: 75vw;
+  z-index: 5;
+}
+
+.ufo {
+  background-image: url(https://i.ibb.co/Bnc40h6/Map-Ship-2-0-no-shadow.png);
+  background-size: 200px 200px;
+  background-repeat: no-repeat;
+  width: 30vw;
+  height: 30vh;
+  animation: ufo-hover 2s alternate infinite;
+}
+
+.ufo-shadow {
+  position: absolute;
+  margin-top: 10vh;
+  //align-self: center;
+  right: 11.5vw;
+  bottom: 3vh;
+  background-color: grey;
+  //background-image: url(https://i.ibb.co/tJHLbRc/Low-Shadow-Hover.png);
+  background-size: 100px 100px;
+  //background-repeat: no-repeat;
+  height: 1rem;
+  width: 8rem;
+  border-radius: 50%;
+  animation: ufo-shadow 2s alternate infinite;
+}
 
 #map {
   @include flexCenter(row);

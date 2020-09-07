@@ -24,21 +24,18 @@ class Map extends React.Component {
 
     return (
       <>
-        {/* <div className="clouds" style={{ backgroundImage: 'url(https://i.ibb.co/1ZK2Vpc/purple-fog.png)' }}> </div> */}
+        <div className="clouds" style={{ backgroundImage: 'url(https://i.ibb.co/1ZK2Vpc/purple-fog.png)' }}> </div>
         <div id="map-container">
-          {/* <h1>map</h1> */}
           <div id="map">
-            {puzzles ? (
-              puzzles.map((puzzle) => {
+            {
+              puzzles && (puzzles.map((puzzle) => {
                 return (
                   <div key={puzzle.name}>
                     <MapIcon puzzle={puzzle} />
                   </div>
                 )
-              })
-            ) : (
-              <h3> loading... </h3>
-            )}
+              }))
+            }
           </div>
         </div>
       </>

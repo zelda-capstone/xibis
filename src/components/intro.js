@@ -22,11 +22,12 @@ class Intro extends React.Component {
     return (
       <div>
         <div className='intro-container'>
-        <Typewriter onInit={(typewriter) => {
+        <Typewriter className='typewriter' onInit={(typewriter) => {
             typewriter
-            .typeString('Here, our journey will begin.\n')
-            .pauseFor(2000)
-            .typeString('A community of bubos are fleeing human space invaders and traveling through galaxies in search of a new planet to call home.\n')
+            .typeString('Here, our journey will begin...\n')
+            .pauseFor(1000)
+            .deleteAll()
+            .typeString('A community of Xibis are fleeing human space invaders and traveling through galaxies in search of a new planet to call home.\n')
             .pauseFor(2000)
             .typeString(`Only by knowing their strengths and working together will they succeed, but they can't do it alone... Solve a series of mini puzzles to help them find their way!\n`)
             .pauseFor(2000)
@@ -34,17 +35,7 @@ class Intro extends React.Component {
             .start()
           }}
           />
-          {/* <div className='typewriter'>
-            A community of bubos are fleeing human space invaders and traveling through galaxies in search of a new planet to call home.
-          </div>
-          <div className='typewriter'>
-            Only by knowing their strengths and working together will they succeed, but they can't do it alone... Solve a series of mini puzzles to help them find their way!
-          </div> */}
-          {/* <Typewriter onInit={(typewriter) => {
-            typewriter.typeString('Are you ready to begin?').start()
-          }}
-          /> */}
-          <div className='buttons-container'>
+          <div className='buttons-container intro-buttons'>
             <Link to={ROUTES.ASSEMBLE_BUBOS} ><button className='button'>yes</button></Link>
             <Link to={ROUTES.LANDING}><button className='button'>no</button></Link>
           </div>

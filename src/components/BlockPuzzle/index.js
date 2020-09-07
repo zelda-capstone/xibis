@@ -42,7 +42,7 @@ export class BlockPuzzle extends React.Component {
                 this.startPlaying()
               }}
             >
-              Yes!
+              yes!
             </button>
           </div>
         </div>
