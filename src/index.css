@@ -39,44 +39,6 @@
   }
 }
 
-@-webkit-keyframes typing {
-  0%, 100% {
-    width: 0;
-  }
-  20%, 80% {
-    width: 100%;
-  }
-}
-
-@keyframes typing {
-  0%, 100% {
-    width: 0;
-  }
-  20%, 80% {
-    width: 100%;
-  }
-}
-
-@-webkit-keyframes cursor {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: orange;
-  }
-}
-
-@keyframes cursor {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: orange;
-  }
-}
-
 @-webkit-keyframes hover {
   from {
     -webkit-transform: translateY(10%);
@@ -362,15 +324,11 @@ body {
   -webkit-animation: fade-in 2s linear;
           animation: fade-in 2s linear;
   margin-top: 5rem;
+  font-size: large;
 }
 
 .intro-container div {
   margin: 1rem;
-}
-
-.typewriter {
-  width: 60%;
-  text-align: center;
 }
 
 .buttons-container {
@@ -855,6 +813,7 @@ body {
   color: #5a5a5a;
   z-index: 0;
   width: 40rem;
+  font-size: large;
 }
 
 .lost-bubos-container {

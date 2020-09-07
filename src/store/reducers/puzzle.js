@@ -1,27 +1,20 @@
-const GET_PUZZLES = 'GET_PUZZLES'
-const RESET_PUZZLES = 'RESET_PUZZLES'
-//const UNLOCK_PUZZLE = 'UNLOCK_PUZZLE'
+import * as ACTIONS from '../../constants/actions'
+// const GET_PUZZLES = 'GET_PUZZLES'
+// const RESET_PUZZLES = 'RESET_PUZZLES'
 
 const getPuzzles = puzzles => {
   return {
-    type: GET_PUZZLES,
+    type: ACTIONS.GET_PUZZLES,
     puzzles
   }
 }
 
 const resetPuzzles = puzzles => {
   return {
-    type: RESET_PUZZLES,
+    type: ACTIONS.RESET_PUZZLES,
     puzzles
   }
 }
-
-// const unlockPuzzle = puzzle => {
-//   return {
-//     type: UNLOCK_PUZZLE,
-//     puzzle
-//   }
-// }
 
 export const getUnlockedPuzzles = puzzlesRef => {
   return async function (dispatch) {
@@ -41,7 +34,7 @@ export const resetPuzzlesCollection = puzzlesRef => {
       await puzzlesRef.doc('reflection').set({
         name: 'Reflection',
         planet: 'Aguilera',
-        imageUrl: 'https://i.ibb.co/WGhn46r/Planet-Aguilera.png',
+        imageUrl: 'https://i.ibb.co/Cz4VT2B/Planet-Aguilera-3.png',
         unlocked: true,
         order: 1
       })
@@ -69,11 +62,12 @@ export const resetPuzzlesCollection = puzzlesRef => {
 }
 
 export const unlockPuzzleInDb = (puzzlesRef, puzzleId) => {
-  return async function (dispatch) {
+  return async function () {
     try {
       const lockedPuzzleRef = await puzzlesRef.doc(puzzleId)
       await lockedPuzzleRef.update({ unlocked: true })
-      // don't dispatch anything? next time you visit map and call getPuzzles, the update will be applied
+      // don't dispatch any state changes?
+      // next time you visit map and call getPuzzles, the update will be applied
     } catch (err) {
       console.error(err)
     }
@@ -84,13 +78,10 @@ const INITIAL_STATE = []
 
 const puzzlesReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case GET_PUZZLES:
+    case ACTIONS.GET_PUZZLES:
       return action.puzzles
-    case RESET_PUZZLES:
+    case ACTIONS.RESET_PUZZLES:
       return action.puzzles
-    // case UNLOCK_PUZZLE:
-    //   const filter = state.filter(puzzle => puzzle.id === action.puzzle.id)
-    //   return [...filter, action.puzzle]
     default:
       return state
   }

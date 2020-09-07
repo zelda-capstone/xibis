@@ -40,24 +40,24 @@ $gameFont: 'Anonymous Pro', monospace;
   }
 }
 
-@keyframes typing {
-  0%, 100% {
-    width: 0;
-  }
-  20%, 80% {
-    width: 100%;
-  }
-}
+// @keyframes typing {
+//   0%, 100% {
+//     width: 0;
+//   }
+//   20%, 80% {
+//     width: 100%;
+//   }
+// }
 
-@keyframes cursor {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: orange;
-  }
-}
+// @keyframes cursor {
+//   from,
+//   to {
+//     border-color: transparent;
+//   }
+//   50% {
+//     border-color: orange;
+//   }
+// }
 
 @keyframes hover {
   from {
@@ -190,30 +190,30 @@ body {
   @include flexCenter(column);
   @include fadeIn(2s);
   margin-top: 5rem;
-  //margin: 5rem;
+  font-size: large;
   div {
     margin: 1rem;
   }
 }
 
-.typewriter {
-  width: 60%;
-  text-align: center;
-  // overflow: hidden;
-  // white-space: nowrap;
-  // display: inline-block;
-  // position: relative;
-  // // ::after {
-  // //   content: '|';
-  // //   position: absolute;
-  // //   right: 0;
-  // // }
-  // // overflow: hidden;
-  // border-right: 0.15em solid orange;
-  // // //margin-top: 3rem;
-  // letter-spacing: 0.1em;
-  // animation: typing 10s steps(40, end), cursor 1s step-end infinite;
-}
+// .typewriter {
+//   width: 60%;
+//   text-align: center;
+//   // overflow: hidden;
+//   // white-space: nowrap;
+//   // display: inline-block;
+//   // position: relative;
+//   // // ::after {
+//   // //   content: '|';
+//   // //   position: absolute;
+//   // //   right: 0;
+//   // // }
+//   // // overflow: hidden;
+//   // border-right: 0.15em solid orange;
+//   // // //margin-top: 3rem;
+//   // letter-spacing: 0.1em;
+//   // animation: typing 10s steps(40, end), cursor 1s step-end infinite;
+// }
 
 .buttons-container {
   @include flexCenter(row);
@@ -463,6 +463,7 @@ body {
   color: rgb(90, 90, 90);
   z-index: 0;
   width: 40rem;
+  font-size: large;
 }
 
 .lost-bubos-container {
