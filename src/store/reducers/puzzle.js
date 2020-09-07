@@ -46,7 +46,7 @@ export const resetPuzzlesCollection = puzzlesRef => {
       await puzzlesRef.doc('wormhole').set({
         name: 'Wormhole',
         planet: 'Tropics',
-        imageUrl: 'https://i.ibb.co/2g3ZQrf/Planet-wormy.png',
+        imageUrl: 'https://i.ibb.co/t8j6qWm/Planet-Wormy-3.png',
         unlocked: false,
       })
       const puzzles = await puzzlesRef.get()

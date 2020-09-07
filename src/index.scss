@@ -257,8 +257,8 @@ body {
 .bubo-selector {
   @include flexCenter(column);
   justify-content: flex-start;
-  height: 22rem;
-  width: 27rem;
+  height: 25rem;
+  width: 30rem;
   box-shadow: 3px 3px rgb(140, 140, 140);
   //position: relative;
   background: white;
@@ -433,7 +433,7 @@ body {
 }
 
 .puzzle-stats {
-  @include flexCenter(column);
+  //@include flexCenter(column);
   display: none;
   font-size: .8rem;
   width: 10vw;

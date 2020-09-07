@@ -428,8 +428,8 @@ body {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  height: 22rem;
-  width: 27rem;
+  height: 25rem;
+  width: 30rem;
   -webkit-box-shadow: 3px 3px #8c8c8c;
           box-shadow: 3px 3px #8c8c8c;
   background: white;
@@ -710,21 +710,6 @@ body {
 }
 
 .puzzle-stats {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   display: none;
   font-size: .8rem;
   width: 10vw;
