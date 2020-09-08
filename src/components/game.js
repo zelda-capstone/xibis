@@ -39,15 +39,20 @@ class Game extends React.Component {
       vol: 0.4,
       loop: true,
       sprite: {
-        'sad_bubos': [ 199000,
-          70661.22448979593],
+        'sad_bubos': [ 130000,
+          70661.22448979593
+        ],
         'bubos_170bpm': [ 130000,
           67422.04081632652
         ],
         'bubos_atmosphere': [ 0,
           122932.24489795919],
-        'bubos_theme': [ 271000,
+        'bubos_theme': [ 202000,
           88685.71428571432
+        ],
+        'bubos_tropics': [
+          292000,
+          32052.24489795921
         ]
       }
     })
@@ -55,10 +60,13 @@ class Game extends React.Component {
       src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
       vol: 0.7,
       sprite: {
-        'LF_correct': [124000,
+        'LF_correct': [ 124000,
           2000],
-        'LF_incorrect': [127000,
-          2000]
+        'LF_incorrect': [ 127000,
+          2000],
+          'win_sound': [ 326000,
+            3008.480725623599
+          ]
       }
     })
   }
@@ -90,7 +98,9 @@ class Game extends React.Component {
             <Route
               exact path={ROUTES.MAP}
               render={() => <Map sounds={this.sounds}/>} />
-            <Route exact path={ROUTES.WORMHOLE} component={Wormhole} />
+            <Route
+              exact path={ROUTES.WORMHOLE}
+              render={() => <Wormhole sounds={this.sounds} />} />
             <Route
               exact path={ROUTES.REFLECTION}
               render={() => <LostAndFound sounds={this.sounds} effects={this.effects} />}
