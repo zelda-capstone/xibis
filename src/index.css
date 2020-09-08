@@ -1048,4 +1048,52 @@ body {
   margin: 1em;
   font-size: large;
 }
+
+#win-screen {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 20vh;
+  margin-left: 25vw;
+  margin-right: 25vw;
+  background: whitesmoke;
+  border-radius: 5px;
+  color: black;
+}
+
+#win-screen #win-title {
+  margin-bottom: 1rem;
+}
+
+#win-screen #logo-image {
+  width: 10em;
+  height: 8em;
+  background-image: url(./pixelArt/logo.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#win-screen div {
+  padding: 1rem;
+}
+
+#win-screen span {
+  padding: 1rem;
+}
+
+#win-screen a {
+  color: black;
+}
 /*# sourceMappingURL=index.css.map */
