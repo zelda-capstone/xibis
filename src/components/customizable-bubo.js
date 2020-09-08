@@ -34,9 +34,6 @@ const CustomizableBubo = (props) => {
         <span>
           <strong>personality</strong>: {`${personality[0]}, ${personality[1]}`}
         </span>
-        <span>
-          <strong>health</strong>: 100
-        </span>
       </div>
     </>
   )

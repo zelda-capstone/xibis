@@ -16,11 +16,20 @@ export class BlockPuzzle extends React.Component {
     this.handleWin = this.handleWin.bind(this)
   }
 
+  componentDidMount() {
+    this.music = this.props.sounds.play('bubos_doodle')
+  }
+
+  componentWillUnmount() {
+    this.props.sounds.fade(this.props.sounds.volume(), 0, 1000, this.music)
+  }
+
   startPlaying() {
     this.setState({puzzleState: 'playing'})
   }
 
   handleWin() {
+    this.props.effects.play('win_sound')
     const puzzlesRef = this.props.user.puzzlesRef
     this.props.unlockPuzzle(puzzlesRef, 'wormhole')
   }
@@ -41,7 +50,7 @@ export class BlockPuzzle extends React.Component {
                 this.startPlaying()
               }}
             >
-              Yes!
+              yes!
             </button>
           </div>
         </div>
@@ -53,6 +62,7 @@ export class BlockPuzzle extends React.Component {
     if (winCondition) {
       puzzleText = 'You won! Congratulations!'
       this.handleWin()
+      this.props.effects.play('win_sound')
     }
 
     return (
@@ -75,7 +85,7 @@ export class BlockPuzzle extends React.Component {
           </div>
           <div>
             <Board />
-            <AllPieces />
+            <AllPieces effects={this.props.effects} />
           </div>
           <div>
             <img
