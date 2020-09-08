@@ -14,12 +14,12 @@ class Transition extends React.Component{
 
         event.target.value === "yes" 
         ? this.props.replay()
-        : this.props.history.push(ROUTES.MAP)
+        : this.props.history.push(ROUTES.MAP) /////CHANGE to render win page 
     }
 
 
     render(){
-        console.log("win", this.props.win)
+       
         return(
             <div className="intro-container">
                     {
