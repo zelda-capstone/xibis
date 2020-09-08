@@ -27,7 +27,7 @@ class SignOut extends React.Component {
           type='button'
           className='button'
           onClick={this.handleSignout}>
-            Sign-out
+            sign-out
         </button>
       </>
     )

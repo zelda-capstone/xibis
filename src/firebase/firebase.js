@@ -2,7 +2,7 @@ import firebase from "firebase/app"
 import 'firebase/firestore'
 import "firebase/auth"
 
-// Your web firebase's Firebase configuration
+// Firebase configuration
 var firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: "zapstone-bc2fe.firebaseapp.com",
@@ -45,8 +45,7 @@ class Firebase {
 
 
   doSignInWithGoogle = () =>
-    //to get rid of popup, is there a signin w ridirect method?
-    this.auth.signInWithPopup(this.googleProvider).then(authUser => {
+    this.auth.signInWithRedirect(this.googleProvider).then(authUser => {
       if (authUser.additionalUserInfo.isNewUser) {
         this.user(authUser.user.uid).set({
           username: authUser.user.displayName,

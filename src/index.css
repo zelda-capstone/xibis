@@ -39,44 +39,6 @@
   }
 }
 
-@-webkit-keyframes typing {
-  0%, 100% {
-    width: 0;
-  }
-  20%, 80% {
-    width: 100%;
-  }
-}
-
-@keyframes typing {
-  0%, 100% {
-    width: 0;
-  }
-  20%, 80% {
-    width: 100%;
-  }
-}
-
-@-webkit-keyframes cursor {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: orange;
-  }
-}
-
-@keyframes cursor {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: orange;
-  }
-}
-
 @-webkit-keyframes hover {
   from {
     -webkit-transform: translateY(10%);
@@ -138,6 +100,7 @@
 body {
   margin: 0;
   font-family: "Anonymous Pro", monospace;
+  font-size: large;
   color: white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -159,9 +122,10 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin-top: 10rem;
-  margin-left: 15em;
-  margin-right: 15em;
+  margin-top: 30vh;
+  margin-left: 35vw;
+  margin-right: 35vw;
+  height: 30vh;
   background: whitesmoke;
   border-radius: 5px;
   color: black;
@@ -314,8 +278,8 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-animation: fade-in 1.5s linear;
-          animation: fade-in 1.5s linear;
+  -webkit-animation: fade-in 2s linear;
+          animation: fade-in 2s linear;
   -webkit-box-align: space-around;
       -ms-flex-align: space-around;
           align-items: space-around;
@@ -328,7 +292,7 @@ body {
 .start-container div {
   color: white;
   font-size: 2rem;
-  margin: 1rem;
+  margin: 1.5rem;
   position: relative;
 }
 
@@ -358,13 +322,19 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-animation: fade-in 1.5s linear;
-          animation: fade-in 1.5s linear;
-  margin-top: 5rem;
+  -webkit-animation: fade-in 2s linear;
+          animation: fade-in 2s linear;
+  margin-top: 10rem;
+  font-size: large;
 }
 
 .intro-container div {
   margin: 1rem;
+}
+
+.intro-buttons {
+  -webkit-animation: fade-in 5s linear;
+          animation: fade-in 5s linear;
 }
 
 .typewriter {
@@ -401,7 +371,7 @@ body {
 
 .button {
   font-family: "Anonymous Pro", monospace;
-  font-size: 1rem;
+  font-size: large;
   border: none;
   border-radius: 3px;
   margin: 0.5rem;
@@ -432,8 +402,8 @@ body {
       flex-wrap: wrap;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-  -webkit-animation: fade-in 1.5s linear;
-          animation: fade-in 1.5s linear;
+  -webkit-animation: fade-in 1s linear;
+          animation: fade-in 1s linear;
   height: 73vh;
 }
 
@@ -460,8 +430,8 @@ body {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  height: 22rem;
-  width: 27rem;
+  height: 25rem;
+  width: 30rem;
   -webkit-box-shadow: 3px 3px #8c8c8c;
           box-shadow: 3px 3px #8c8c8c;
   background: white;
@@ -473,55 +443,6 @@ body {
 
 .bubo-selector span {
   margin: 0.75rem;
-}
-
-.custom-bubo-container-hover {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  height: 9rem;
-  width: 6rem;
-  -webkit-animation: hover 2s alternate infinite;
-          animation: hover 2s alternate infinite;
-}
-
-.custom-bubo-container-hover:hover + div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  border-radius: 3px;
-  padding: 0.5rem;
-  position: absolute;
-  width: 5rem;
-  background: -webkit-gradient(linear, left top, left bottom, from(lavender), to(#bfbdbd));
-  background: linear-gradient(lavender, #bfbdbd);
-  color: black;
-  font-size: 0.7rem;
-  z-index: 3;
 }
 
 .custom-bubo-container {
@@ -596,20 +517,49 @@ body {
   background-repeat: no-repeat;
 }
 
-.accessory {
-  position: absolute;
-  top: 0;
-  margin-bottom: 3.5rem;
-  width: 100px;
-  height: 100px;
-}
-
 .no-hover {
   pointer-events: none;
 }
 
 .bubo-stats {
   display: none;
+  -webkit-animation: fade-in 0.5s linear;
+          animation: fade-in 0.5s linear;
+}
+
+.personality-select-container {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  margin-top: 2vh;
+}
+
+.personality-select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  display: inline-block;
+  font-family: "Anonymous Pro", monospace;
+  font-size: 1rem;
+  padding: 5px;
+  width: 5vw;
+  margin-left: 1vw;
+  border: 1px solid #aaa;
+  border-radius: .3em;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"), -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e5e5e5));
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"), linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+}
+
+.personality-select option {
+  font-weight: normal;
+  font-family: "Anonymous Pro", monospace;
+}
+
+.accessory {
+  position: absolute;
+  top: 0;
+  margin-bottom: 3.5rem;
+  width: 100px;
+  height: 100px;
 }
 
 .line-bottom {
@@ -633,32 +583,91 @@ body {
           justify-content: flex-start;
 }
 
+@-webkit-keyframes ufo-hover {
+  from {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+  to {
+    -webkit-transform: translateY(7%);
+            transform: translateY(7%);
+  }
+}
+
+@keyframes ufo-hover {
+  from {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+  to {
+    -webkit-transform: translateY(7%);
+            transform: translateY(7%);
+  }
+}
+
+@-webkit-keyframes ufo-shadow {
+  from {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+    opacity: 50%;
+  }
+  to {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    opacity: 80%;
+  }
+}
+
+@keyframes ufo-shadow {
+  from {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+    opacity: 50%;
+  }
+  to {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    opacity: 80%;
+  }
+}
+
 #menu {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   -webkit-animation: fade-in 1.5s linear;
           animation: fade-in 1.5s linear;
-  margin: 2rem;
   position: fixed;
-  bottom: 1vh;
-  left: 88vw;
+  bottom: 0vh;
+  left: 82vw;
   z-index: 5;
 }
 
-#menu div {
+.ufo {
+  background-image: url(https://i.ibb.co/Bnc40h6/Map-Ship-2-0-no-shadow.png);
+  background-size: 200px 200px;
+  background-repeat: no-repeat;
+  width: 30vw;
+  height: 30vh;
+  bottom: 0px;
+  -webkit-animation: ufo-hover 2s alternate infinite;
+          animation: ufo-hover 2s alternate infinite;
+}
+
+.ufo-shadow {
+  position: relative;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  left: 42px;
+  bottom: 8vh;
+  background-color: grey;
+  background-size: 100px 100px;
+  height: 1rem;
+  width: 8rem;
+  border-radius: 50%;
+  -webkit-animation: ufo-shadow 2s alternate infinite;
+          animation: ufo-shadow 2s alternate infinite;
+}
+
+#map-grid-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -674,87 +683,66 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin: 0.75rem;
-  width: 4rem;
-  height: 4rem;
-  border-radius: 5px;
-  background: -webkit-gradient(linear, left top, left bottom, from(whitesmoke), to(#b0a7a7));
-  background: linear-gradient(whitesmoke, #b0a7a7);
 }
 
-#menu div:hover {
-  background: #b5b3b3;
+#map-grid {
+  -webkit-animation: fade-in 1s linear;
+          animation: fade-in 1s linear;
+  -ms-grid-row-align: center;
+      align-self: center;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 300px 250px 300px;
+      grid-template-columns: 300px 250px 300px;
+  -ms-grid-rows: 250px 250px;
+      grid-template-rows: 250px 250px;
+      grid-template-areas: "reflection . wormhole" ". block-puzzle .";
+  gap: 1rem;
+  margin-top: 5rem;
 }
 
-#menu a {
+.Reflection-map-container {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: reflection;
+}
+
+.Reflection-map-container a {
   text-decoration: none;
   color: black;
 }
 
-#map-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-animation: fade-in 1.5s linear;
-          animation: fade-in 1.5s linear;
+.Block-Puzzle-map-container {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: block-puzzle;
 }
 
-#map-container h1 {
-  color: whitesmoke;
-  text-shadow: 2px 2px #414460;
+.Block-Puzzle-map-container a {
+  text-decoration: none;
+  color: black;
 }
 
-#map {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin: 5rem;
-  position: relative;
-  font-size: 2rem;
+.Wormhole-map-container {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: wormhole;
 }
 
-.map-icon-container a {
+.Wormhole-map-container a {
   text-decoration: none;
   color: black;
 }
 
 .map-icon {
-  height: 8em;
-  width: 8em;
+  height: 300px;
+  width: 300px;
+  background-size: contain;
 }
 
 .map-icon:hover + div {
-  -webkit-animation: fade-in 1.5s linear;
-          animation: fade-in 1.5s linear;
-  display: block;
-  position: absolute;
+  -webkit-animation: fade-in 1s linear;
+          animation: fade-in 1s linear;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -770,21 +758,22 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  display: block;
+  position: absolute;
   padding: 0.5rem;
   background: white;
   border-radius: 5px;
   -webkit-box-shadow: 2px 2px grey;
           box-shadow: 2px 2px grey;
-}
-
-.puzzle-stats {
-  display: none;
-  font-size: .8rem;
-  width: 6rem;
+  font-size: 1rem;
+  width: 10rem;
   height: 4rem;
 }
 
-.puzzle-stats span {
+.map-icon:hover + div div {
   margin: .3em;
 }
 
@@ -866,6 +855,8 @@ body {
 }
 
 .lost-and-found {
+  -webkit-animation: fade-in 2s linear;
+          animation: fade-in 2s linear;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -896,6 +887,7 @@ body {
   color: #5a5a5a;
   z-index: 0;
   width: 40rem;
+  font-size: large;
 }
 
 .lost-bubos-container {
@@ -918,6 +910,7 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   z-index: 1;
+  width: 65vw;
 }
 
 .lost-bubo {
@@ -927,6 +920,7 @@ body {
 .space-sky {
   width: 100%;
   height: 100%;
+  background-size: auto;
 }
 
 .stars,
@@ -943,6 +937,7 @@ body {
 .stars {
   background: black url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
   z-index: -4;
+  background-size: auto;
 }
 
 .twinkling {
@@ -1036,6 +1031,7 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  text-align: center;
   width: 95vw;
   height: 95vh;
   margin: 1em;

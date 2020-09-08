@@ -10,12 +10,20 @@ class StartGame extends React.Component {
     this.state = {
       loadingGame: false,
       activeGame: false,
-      msg: ''
+      msg: '',
+      music: 0
     }
     this.bubosRef = this.props.user.bubosRef
     this.puzzlesRef = this.props.user.puzzlesRef
   }
 
+  componentDidMount() {
+    this.setState({ music: this.props.sounds.play('bubos_theme') })
+  }
+
+  componentWillUnmount() {
+    this.props.sounds.fade(this.props.sounds.volume(), 0, 1000, this.state.music)
+  }
 
   startGame = () => {
     this.props.resetPuzzles(this.puzzlesRef);
@@ -44,7 +52,7 @@ class StartGame extends React.Component {
 
     return (
       <div className='start-container fade-in'>
-        <Link to='/intro' onClick={this.startGame} >
+        <Link to={{ pathname: '/intro', state: { music: this.state.music }}} onClick={this.startGame} >
           <div>start new journey</div>
         </Link>
         <div onClick={this.loadGame}>load game</div>

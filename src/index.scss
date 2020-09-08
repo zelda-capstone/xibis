@@ -18,8 +18,8 @@ $gameFont: 'Anonymous Pro', monospace;
   flex-wrap: wrap;
 }
 
-@mixin fadeIn {
-  animation: fade-in 1.5s linear;
+@mixin fadeIn($duration) {
+  animation: fade-in $duration linear;
 }
 
 @keyframes fade-in {
@@ -40,24 +40,24 @@ $gameFont: 'Anonymous Pro', monospace;
   }
 }
 
-@keyframes typing {
-  0%, 100% {
-    width: 0;
-  }
-  20%, 80% {
-    width: 100%;
-  }
-}
+// @keyframes typing {
+//   0%, 100% {
+//     width: 0;
+//   }
+//   20%, 80% {
+//     width: 100%;
+//   }
+// }
 
-@keyframes cursor {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: orange;
-  }
-}
+// @keyframes cursor {
+//   from,
+//   to {
+//     border-color: transparent;
+//   }
+//   50% {
+//     border-color: orange;
+//   }
+// }
 
 @keyframes hover {
   from {
@@ -89,6 +89,7 @@ $gameFont: 'Anonymous Pro', monospace;
 body {
   margin: 0;
   font-family: $gameFont;
+  font-size: large;
   color: white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -96,9 +97,10 @@ body {
 
 #landing {
   @include flexCenter(column);
-  margin-top: 10rem;
-  margin-left: 15em;
-  margin-right: 15em;
+  margin-top: 30vh;
+  margin-left: 35vw;
+  margin-right: 35vw;
+  height: 30vh;
   background: whitesmoke;
   border-radius: 5px;
   color: black;
@@ -153,6 +155,7 @@ body {
   }
 }
 
+
 #navbar {
   @include flexCenter(row);
   position: fixed;
@@ -163,16 +166,15 @@ body {
 
 .start-container {
   @include flexCenter(column);
-  @include fadeIn;
+  @include fadeIn(2s);
   align-items: space-around;
   width: 100vw;
   height: 80vh;
   transition: opacity 2s linear;
-
   div {
     color: white;
     font-size: 2rem;
-    margin: 1rem;
+    margin: 1.5rem;
     position: relative;
   }
   a {
@@ -181,36 +183,26 @@ body {
 }
 
 .fade-in {
-  @include fadeIn;
+  @include fadeIn(1.5s);
 }
 
 .intro-container {
   @include flexCenter(column);
-  @include fadeIn;
-  margin-top: 5rem;
-  //margin: 5rem;
+  @include fadeIn(2s);
+  margin-top: 10rem;
+  font-size: large;
   div {
     margin: 1rem;
   }
 }
 
-.typewriter {
+.intro-buttons {
+  @include fadeIn(5s);
+}
+
+ .typewriter {
   width: 60%;
   text-align: center;
-  // overflow: hidden;
-  // white-space: nowrap;
-  // display: inline-block;
-  // position: relative;
-  // // ::after {
-  // //   content: '|';
-  // //   position: absolute;
-  // //   right: 0;
-  // // }
-  // // overflow: hidden;
-  // border-right: 0.15em solid orange;
-  // // //margin-top: 3rem;
-  // letter-spacing: 0.1em;
-  // animation: typing 10s steps(40, end), cursor 1s step-end infinite;
 }
 
 .buttons-container {
@@ -224,9 +216,11 @@ body {
   }
 }
 
+
 .button {
   font-family: $gameFont;
-  font-size: 1rem;
+  font-size: large;
+  //font-size: 1rem;
   border: none;
   border-radius: 3px;
   margin: 0.5rem;
@@ -240,7 +234,7 @@ body {
 .bubo-selector-container {
   @include flexCenter(column);
   flex-wrap: nowrap;
-  @include fadeIn;
+  @include fadeIn(1s);
   height: 73vh;
   h2 {
     color: white;
@@ -250,8 +244,8 @@ body {
 .bubo-selector {
   @include flexCenter(column);
   justify-content: flex-start;
-  height: 22rem;
-  width: 27rem;
+  height: 25rem;
+  width: 30rem;
   box-shadow: 3px 3px rgb(140, 140, 140);
   //position: relative;
   background: white;
@@ -261,25 +255,6 @@ body {
   border-radius: 10px;
   span {
     margin: 0.75rem;
-  }
-}
-
-.custom-bubo-container-hover {
-  @include flexCenter(column);
-  height: 9rem;
-  width: 6rem;
-  animation: hover 2s alternate infinite;
-  &:hover + div {
-    @include flexCenter(column);
-    border-radius: 3px;
-    padding: 0.5rem;
-    // position: relative;
-    position: absolute;
-    width: 5rem;
-    background: linear-gradient(lavender, rgb(191, 189, 189));
-    color: black;
-    font-size: 0.7rem;
-    z-index: 3;
   }
 }
 
@@ -311,6 +286,40 @@ body {
   background-repeat: no-repeat;
 }
 
+.no-hover {
+  pointer-events: none;
+}
+
+.bubo-stats {
+  display: none;
+  @include fadeIn(.5s);
+}
+
+.personality-select-container {
+  align-self: flex-start;
+  margin-top: 2vh;
+}
+
+.personality-select {
+  -moz-appearance: none;
+	-webkit-appearance: none;
+  appearance: none;
+  display: inline-block;
+  font-family: $gameFont;
+  font-size: 1rem;
+  padding: 5px;
+  width: 5vw;
+  margin-left: 1vw;
+  border: 1px solid #aaa;
+  border-radius: .3em;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+	  linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+  option {
+    font-weight: normal;
+    font-family: $gameFont;
+  }
+}
+
 .accessory {
   position: absolute;
   top: 0;
@@ -319,88 +328,120 @@ body {
   height: 100px;
 }
 
-.no-hover {
-  pointer-events: none;
-}
-
-.bubo-stats {
-  display: none;
-}
-
 .line-bottom {
   @include flexCenter(row);
   justify-content: flex-start;
 }
 
-#menu {
-  @include flexCenter(column);
-  @include fadeIn;
-  margin: 2rem;
-  position: fixed;
-  bottom: 1vh;
-  left: 88vw;
-  z-index: 5;
-  div {
-    @include flexCenter(column);
-    margin: 0.75rem;
-    width: 4rem;
-    height: 4rem;
-    border-radius: 5px;
-    background: linear-gradient(whitesmoke, rgb(176, 167, 167));
-    &:hover {
-      background: rgb(181, 179, 179);
-    }
+@keyframes ufo-hover {
+  from {
+    transform: translateY(0%);
   }
+  to {
+   transform: translateY(7%);
+  }
+}
+
+@keyframes ufo-shadow {
+  from {
+    transform: scale(0.8);
+    opacity: 50%;
+  }
+  to {
+    transform: scale(0.5);
+    opacity: 80%;
+  }
+}
+
+#menu {
+  @include fadeIn(1.5s);
+  position: fixed;
+  bottom: 0vh;
+  left: 82vw;
+  z-index: 5;
+}
+
+.ufo {
+  background-image: url(https://i.ibb.co/Bnc40h6/Map-Ship-2-0-no-shadow.png);
+  background-size: 200px 200px;
+  background-repeat: no-repeat;
+  width: 30vw;
+  height: 30vh;
+  bottom: 0px;
+  animation: ufo-hover 2s alternate infinite;
+}
+
+.ufo-shadow {
+  position: relative;
+  align-self: center;
+  left: 42px;
+  bottom: 8vh;
+  background-color: grey;
+  background-size: 100px 100px;
+  height: 1rem;
+  width: 8rem;
+  border-radius: 50%;
+  animation: ufo-shadow 2s alternate infinite;
+}
+
+#map-grid-container {
+  @include flexCenter(column);
+}
+
+#map-grid {
+  @include fadeIn(1s);
+  align-self: center;
+  display: grid;
+  grid-template-columns: 300px 250px 300px;
+  grid-template-rows: 250px 250px;
+  grid-template-areas:
+    "reflection . wormhole"
+    ". block-puzzle .";
+  gap: 1rem;
+  margin-top: 5rem;
+}
+
+.Reflection-map-container {
+  grid-area: reflection;
   a {
     @include plainLink;
   }
 }
 
-#map-container {
-  @include flexCenter(column);
-  @include fadeIn;
-  h1 {
-    color: whitesmoke;
-    text-shadow: 2px 2px rgb(65, 68, 96);
+.Block-Puzzle-map-container {
+  grid-area: block-puzzle;
+  a {
+    @include plainLink;
   }
 }
 
-#map {
-  @include flexCenter(row);
-  justify-content: space-between;
-  margin: 5rem;
-  position: relative;
-  font-size: 2rem;
-}
-
-.map-icon-container {
+.Wormhole-map-container {
+  grid-area: wormhole;
   a {
     @include plainLink;
   }
 }
 
 .map-icon {
-  height: 8em;
-  width: 8em;
+  height: 300px;
+  width: 300px;
+  background-size: contain;
   &:hover + div {
-    @include fadeIn;
+    @include fadeIn(1s);
+    @include flexCenter(column);
+    justify-content: space-evenly;
     display: block;
     position: absolute;
-    @include flexCenter(column);
     padding: 0.5rem;
     background: white;
     border-radius: 5px;
     box-shadow: 2px 2px grey;
-  }
-}
-
-.puzzle-stats {
-  display: none;
-  font-size: .8rem;
-  width: 6rem;
-  height: 4rem;
-  span {
-    margin: .3em;
+    font-size: 1rem;
+    width: 10rem;
+    height: 4rem;
+    div {
+      margin: .3em;
+    }
   }
 }
 
@@ -436,6 +477,7 @@ body {
 }
 
 .lost-and-found {
+  @include fadeIn(2s);
   @include flexCenter(column);
   text-align: center;
   justify-content: flex-start;
@@ -450,12 +492,14 @@ body {
   color: rgb(90, 90, 90);
   z-index: 0;
   width: 40rem;
+  font-size: large;
 }
 
 .lost-bubos-container {
   @include flexCenter(row);
   justify-content: space-between;
   z-index: 1;
+  width: 65vw;
 }
 
 .lost-bubo {
@@ -465,6 +509,7 @@ body {
 .space-sky {
   width: 100%;
   height: 100%;
+  background-size: auto;
 }
 
 .stars,
@@ -476,7 +521,6 @@ body {
   bottom: 0;
   width: 100%;
   height: 100%;
-  //display:block;
 }
 
 .stars {
@@ -484,6 +528,7 @@ body {
     url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top
     center;
   z-index: -4;
+  background-size: auto;
 }
 
 .twinkling {
@@ -544,6 +589,7 @@ body {
 
 #block-puzzle-main {
   @include flexCenter(column);
+  text-align: center;
   width: 95vw;
   height: 95vh;
   margin: 1em;

@@ -1,12 +1,9 @@
 import React from 'react'
-//import {Redirect} from 'react-router-dom'
-import {CustomizableBubo, SelectTrait} from '../components'
-import {withFirebase} from '../firebase'
 import {connect} from 'react-redux'
+import {withFirebase} from '../firebase'
+import {CustomizableBubo, SelectTrait} from '../components'
 import {addBuboToDb} from '../store/reducers/bubo'
 import createRandomBubo from './create-random-bubo'
-
-import {Howl} from 'howler'
 
 class BuboSelector extends React.Component {
   constructor(props) {
@@ -17,26 +14,16 @@ class BuboSelector extends React.Component {
       personality: [],
       bubos: this.props.bubos || [],
     }
-    this.music = new Howl({
-      src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
-      volume: 0.5,
-      loop: true,
-      sprite: {
-        'bubos_170bpm': [
-          130000,
-          67422.04081632652
-        ]
-      }
-    })
-    this.source = 0;
+    this.music = 0;
   }
 
   componentDidMount() {
-    this.source = this.music.play('bubos_170bpm')
+    this.music = this.props.sounds.play('bubos_170bpm')
+    this.props.sounds.fade(0, this.props.sounds.volume(), 500, this.music)
   }
 
   componentWillUnmount() {
-    this.music.fade(this.music.volume(), 0, 1000, this.source)
+    this.props.sounds.fade(this.props.sounds.volume(), 0, 1000, this.music)
   }
 
   handleColor = (evt) => {
@@ -89,9 +76,9 @@ class BuboSelector extends React.Component {
       <>
         <div className="bubo-selector-container">
           {bubos.length === 10 ? (
-            <div>No more than 10 bubos allowed</div>
+            <div>no more than 10 Xibis allowed</div>
           ) : null}
-          <h2>assemble your bubos</h2>
+          <h2>assemble your Xibis</h2>
           <div className="bubo-selector">
             <div>
               color:
@@ -124,9 +111,8 @@ class BuboSelector extends React.Component {
                 value="eyestalk"
               />
             </div>
-            <div>personality (choose two):</div>
-            <div>
-              <select onChange={this.handlePersonality}>
+            <div className='personality-select-container'>personality (choose two):
+              <select className='personality-select' onChange={this.handlePersonality}>
                 <option>shy</option>
                 <option>stubborn</option>
                 <option>proud</option>
@@ -135,7 +121,7 @@ class BuboSelector extends React.Component {
                 <option>spontaneous</option>
                 <option>soft-spoken</option>
               </select>
-              <select onChange={this.handlePersonality}>
+              <select className='personality-select' onChange={this.handlePersonality}>
                 <option>brave</option>
                 <option>kind</option>
                 <option>confident</option>
@@ -144,12 +130,12 @@ class BuboSelector extends React.Component {
                 <option>charismatic</option>
                 <option>patient</option>
               </select>
-            </div>
+              </div>
             <CustomizableBubo {...this.state} hover={false} />
           </div>
           <div>
             <button className="button" onClick={this.handleRandom}>
-              Randomize
+              randomize
             </button>
             <button className="button" onClick={this.handleCreate}>
               create
@@ -181,7 +167,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    addBubo: (bubo, buboRef) => dispatch(addBuboToDb(bubo, buboRef)),
+    addBubo: (bubo, bubosRef) => dispatch(addBuboToDb(bubo, bubosRef)),
   }
 }
 

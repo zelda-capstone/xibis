@@ -16,7 +16,7 @@ export class SinglePiece extends React.Component {
     const currentPosX = ui.lastX
     const currentPosY = ui.lastY
     if (currentPosX === correctPos[0] && currentPosY === correctPos[1]) {
-      //this would be a cool place for a sound effect!
+      this.props.effects.play('LF_correct')
       console.log('correct!')
       this.setState({
         correct: true,
