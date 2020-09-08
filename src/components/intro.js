@@ -22,7 +22,7 @@ class Intro extends React.Component {
     return (
       <div>
         <div className='intro-container'>
-        <Typewriter className='typewriter' onInit={(typewriter) => {
+        <Typewriter className='typewriter' options={{ delay: 50 }} onInit={(typewriter) => {
             typewriter
             .typeString('Here, our journey will begin...\n')
             .pauseFor(1000)

@@ -8,6 +8,7 @@ class Map extends React.Component {
     super()
     this.music = 0;
   }
+
   componentDidMount() {
     const puzzlesRef = this.props.user.puzzlesRef
     this.props.getPuzzles(puzzlesRef)

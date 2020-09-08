@@ -16,12 +16,20 @@ export class BlockPuzzle extends React.Component {
     this.handleWin = this.handleWin.bind(this)
   }
 
+  componentDidMount() {
+    this.music = this.props.sounds.play('bubos_doodle')
+  }
+
+  componentWillUnmount() {
+    this.props.sounds.fade(this.props.sounds.volume(), 0, 1000, this.music)
+  }
+
   startPlaying() {
     this.setState({puzzleState: 'playing'})
   }
 
   handleWin() {
-    // a winning sound effect?
+    this.props.effects.play('win_sound')
     const puzzlesRef = this.props.user.puzzlesRef
     this.props.unlockPuzzle(puzzlesRef, 'wormhole')
   }

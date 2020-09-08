@@ -36,10 +36,10 @@ class Game extends React.Component {
     }
     this.sounds = new Howl({
       src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
-      vol: 0.4,
+      vol: 0.0,
       loop: true,
       sprite: {
-        'sad_bubos': [ 130000,
+        'sad_bubos': [  199000,
           70661.22448979593
         ],
         'bubos_170bpm': [ 130000,
@@ -47,18 +47,20 @@ class Game extends React.Component {
         ],
         'bubos_atmosphere': [ 0,
           122932.24489795919],
-        'bubos_theme': [ 202000,
+        'bubos_theme': [ 271000,
           88685.71428571432
         ],
-        'bubos_tropics': [
-          292000,
+        'bubos_tropics': [ 361000,
           32052.24489795921
+        ],
+        'bubos_doodle': [ 402000,
+          60055.51020408166
         ]
       }
     })
     this.effects = new Howl({
       src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
-      vol: 0.9,
+      vol: 1.0,
       sprite: {
         'LF_correct': [ 124000,
           2000
@@ -66,10 +68,10 @@ class Game extends React.Component {
         'LF_incorrect': [ 127000,
           2000
         ],
-        'win_sound': [ 326000,
+        'win_sound': [ 395000,
           3008.480725623599
         ],
-        'wormhole_FX': [ 331000,
+        'wormhole_FX': [ 400000,
           204.17233560090153
         ]
       }
@@ -112,7 +114,7 @@ class Game extends React.Component {
             />
             <Route
               exact path={ROUTES.BLOCK_PUZZLE}
-              render={() => <BlockPuzzle effects={this.effects} />} />
+              render={() => <BlockPuzzle sounds={this.sounds} effects={this.effects} />} />
             <Route path={ROUTES.NOT_FOUND} component={NotFound} />
           </Switch>
         </>
