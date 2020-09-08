@@ -14,6 +14,7 @@ export class BlockPuzzle extends React.Component {
     }
     this.startPlaying = this.startPlaying.bind(this)
     this.handleWin = this.handleWin.bind(this)
+    this.music = 0;
   }
 
   componentDidMount() {
