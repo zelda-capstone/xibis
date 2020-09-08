@@ -10,4 +10,5 @@ export const WORMHOLE = '/wormhole'
 export const BLOCK_PUZZLE = '/block-puzzle'
 export const REFLECTION = '/reflection'
 
+export const WIN = '/win'
 export const NOT_FOUND = '*'
