@@ -54,6 +54,7 @@ export class BlockPuzzle extends React.Component {
     if (winCondition) {
       puzzleText = 'You won! Congratulations!'
       this.handleWin()
+      this.props.effects.play('win_sound')
     }
 
     return (

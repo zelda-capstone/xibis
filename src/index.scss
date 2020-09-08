@@ -490,6 +490,7 @@ body {
 }
 
 .lost-and-found {
+  @include fadeIn(2s);
   @include flexCenter(column);
   text-align: center;
   justify-content: flex-start;
@@ -511,6 +512,7 @@ body {
   @include flexCenter(row);
   justify-content: space-between;
   z-index: 1;
+  width: 65vw;
 }
 
 .lost-bubo {

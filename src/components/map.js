@@ -20,7 +20,7 @@ class Map extends React.Component {
 
   render() {
     let puzzles = this.props.puzzles || []
-    //puzzles = puzzles.reverse()
+    puzzles = puzzles.reverse()
 
     return (
       <>

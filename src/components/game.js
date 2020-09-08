@@ -58,15 +58,20 @@ class Game extends React.Component {
     })
     this.effects = new Howl({
       src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
-      vol: 0.7,
+      vol: 0.9,
       sprite: {
         'LF_correct': [ 124000,
-          2000],
+          2000
+        ],
         'LF_incorrect': [ 127000,
-          2000],
-          'win_sound': [ 326000,
-            3008.480725623599
-          ]
+          2000
+        ],
+        'win_sound': [ 326000,
+          3008.480725623599
+        ],
+        'wormhole_FX': [ 331000,
+          204.17233560090153
+        ]
       }
     })
   }
@@ -100,7 +105,7 @@ class Game extends React.Component {
               render={() => <Map sounds={this.sounds}/>} />
             <Route
               exact path={ROUTES.WORMHOLE}
-              render={() => <Wormhole sounds={this.sounds} />} />
+              render={() => <Wormhole sounds={this.sounds} effects={this.effects} />} />
             <Route
               exact path={ROUTES.REFLECTION}
               render={() => <LostAndFound sounds={this.sounds} effects={this.effects} />}

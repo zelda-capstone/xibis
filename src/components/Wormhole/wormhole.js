@@ -81,7 +81,7 @@ class Wormhole extends React.Component{
 
     onMove = (bubo, i, click) => {
         const leftBubos = this.state.ogBubos.filter(b => b !== bubo)
-
+        this.props.effects.play('wormhole_FX')
 
         this.setState((state) => ({
             ogBubos: leftBubos

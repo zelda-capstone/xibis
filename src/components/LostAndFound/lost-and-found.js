@@ -63,8 +63,9 @@ class LostAndFound extends Component {
   }
 
   handleFind = (key) => {
-    this.props.effects.play('LF_correct');
+    this.props.effects.play('LF_correct')
     if (this.state.found === 9) {
+      this.props.effects.play('win_sound')
       this.setState({ won: true })
       this.unlockBlockPuzzle()
       this.endGame()
@@ -92,14 +93,9 @@ class LostAndFound extends Component {
               <div className='lf-text'>
               On the planet Aguilera, things aren't always as they seem. The mirrored terrain casts uncertain glances over every shoulder. Will the reflections cast shadows of doubt, or will they show your Xibis who they truly are inside?
               </div>
-              <Typewriter
-                className='lf-text'
-                options={{ delay: 50 }}
-                onInit={typewriter => {
-                typewriter
-                .typeString('The Xibis need to find themselves in the Great Fog of Doubt. You have 20 seconds to locate your bubos and dissipate the fog...')
-                .start()
-              }} />
+              <div className='lf-text'>
+              The Xibis need to find themselves in the Great Fog of Doubt. You have 20 seconds to locate your bubos and dissipate the fog...
+              </div>
               <button
                 onClick={this.startGame}
                 className='button'>

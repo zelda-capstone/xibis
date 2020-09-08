@@ -853,6 +853,8 @@ body {
 }
 
 .lost-and-found {
+  -webkit-animation: fade-in 2s linear;
+          animation: fade-in 2s linear;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -906,6 +908,7 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   z-index: 1;
+  width: 65vw;
 }
 
 .lost-bubo {
