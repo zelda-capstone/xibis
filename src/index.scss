@@ -607,3 +607,33 @@ body {
 .background {
   @include fadeIn(2s);
 }
+
+#win-screen {
+  @include flexCenter(column);
+  margin-top: 20vh;
+  margin-left: 25vw;
+  margin-right: 25vw;
+  background: whitesmoke;
+  border-radius: 5px;
+  color: black;
+
+  #win-title {
+    margin-bottom: 1rem;
+  }
+  #logo-image {
+    width: 10em;
+    height: 8em;
+    background-image: url(./pixelArt/logo.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  div {
+    padding: 1rem;
+  }
+  span {
+    padding: 1rem;
+  }
+  a {
+    color: black;
+  }
+}

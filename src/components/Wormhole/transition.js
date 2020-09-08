@@ -14,17 +14,18 @@ class Transition extends React.Component{
 
         event.target.value === "yes"
         ? this.props.replay()
-        : this.props.history.push(ROUTES.MAP)
+        : this.props.history.push(ROUTES.MAP) /////CHANGE to render win page 
     }
 
 
     render(){
+       
         return(
             <div className="intro-container">
                     {
                         this.props.win
                         ?  <div className='typewriter'>
-                            {this.props.count} you were in the correct order!
+                            {this.props.count} of you were in the correct order!
                             You WON! Play again?
                             </div>
                         :  <div className='typewriter'>
