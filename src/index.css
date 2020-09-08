@@ -692,11 +692,11 @@ body {
   display: grid;
   -ms-grid-columns: 300px 250px 300px;
       grid-template-columns: 300px 250px 300px;
-  -ms-grid-rows: 300px 300px;
-      grid-template-rows: 300px 300px;
+  -ms-grid-rows: 250px 250px;
+      grid-template-rows: 250px 250px;
       grid-template-areas: "reflection . block-puzzle" ". wormhole .";
   gap: 1rem;
-  margin-top: 10rem;
+  margin-top: 5rem;
 }
 
 .Reflection-map-container {
