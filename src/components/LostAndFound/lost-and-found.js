@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Timer, CustomizableBubo } from '..'
 import { getBubosCollection } from '../../store/reducers/bubo'
 import { unlockPuzzleInDb } from '../../store/reducers/puzzle'
-import { Howl } from 'howler'
+//import Typewriter from 'typewriter-effect'
 
 class LostAndFound extends Component {
   constructor(props) {
@@ -16,29 +16,17 @@ class LostAndFound extends Component {
       lost: this.props.bubos || [],
       found: 0
     }
-    this.sounds = new Howl({
-      src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
-      volume: 0.5,
-      sprite: {
-        'bubos_atmosphere': [ 0,
-          122932.24489795919],
-        'LF_correct': [124000,
-          2000],
-        'LF_incorrect': [127000,
-          2000]
-      }
-    })
-    this.source = 0;
+    this.music = 0;
   }
 
   componentDidMount() {
     const bubosRef = this.props.user.bubosRef
     this.props.getBubos(bubosRef)
-    this.source = this.sounds.play('bubos_atmosphere')
+    this.music = this.props.sounds.play('bubos_atmosphere')
   }
 
   componentWillUnmount() {
-    this.sounds.fade(this.sounds.volume(), 0, 1000, this.source)
+    this.props.sounds.fade(this.props.sounds.volume(), 0, 1000, this.music)
   }
 
   shuffleOrder = () => {
@@ -65,14 +53,19 @@ class LostAndFound extends Component {
     this.setState({ playing: false, gameOver: true })
   }
 
+  tryAgain = () => {
+    this.setState({ playing: false, gameOver: false, won: false, found: 0 })
+  }
+
   unlockBlockPuzzle = () => {
     const puzzlesRef = this.props.user.puzzlesRef
     this.props.unlockPuzzle(puzzlesRef, 'block-puzzle')
   }
 
   handleFind = (key) => {
-    this.sounds.play('LF_correct');
+    this.props.effects.play('LF_correct')
     if (this.state.found === 9) {
+      this.props.effects.play('win_sound')
       this.setState({ won: true })
       this.unlockBlockPuzzle()
       this.endGame()
@@ -85,7 +78,7 @@ class LostAndFound extends Component {
   }
 
   handleIncorrect = () => {
-    this.sounds.play('LF_incorrect')
+    this.props.effects.play('LF_incorrect')
   }
 
 
@@ -98,10 +91,10 @@ class LostAndFound extends Component {
           <div className='clouds'>
             <div className='lost-and-found'>
               <div className='lf-text'>
-              On the planet Aguilera, things aren't always as they seem. The mirrored terrain casts uncertain glances over every shoulder. Will the reflections cast shadows of doubt, or will they show your bubos who they truly are inside?
+              On the planet Aguilera, things aren't always as they seem. The mirrored terrain casts uncertain glances over every shoulder. Will the reflections cast shadows of doubt, or will they show your Xibis who they truly are inside?
               </div>
               <div className='lf-text'>
-                The bubos need to find themselves in the Great Fog of Doubt. Don't let the mirrors play tricks on them--or you! You have 20 seconds to locate your bubos and dissipate the fog...
+              The Xibis need to find themselves in the Great Fog of Doubt. You have 20 seconds to locate your bubos and dissipate the fog...
               </div>
               <button
                 onClick={this.startGame}
@@ -124,14 +117,18 @@ class LostAndFound extends Component {
                 {
                   this.state.won ? (
                     <>
-                    <h3>You helped every bubo find their inner self!</h3>
+                    <h3>You helped every Xibi find their inner self!</h3>
                     <h4>You have unlocked a new puzzle...visit the map to see!</h4>
                     </>
                   ) : (
                     <>
                       <h3>Time's up! </h3>
                       <h4>You found {this.state.found} bubos</h4>
-                      <p>Render consequences here...</p>
+                      <button
+                        onClick={this.tryAgain}
+                        className='button' >
+                          try again?
+                      </button>
                     </>
                   )
                 }
