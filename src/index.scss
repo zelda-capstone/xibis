@@ -188,6 +188,7 @@ body {
 
 .intro-container {
   @include flexCenter(column);
+  @include fadeIn(2s);
   margin-top: 10rem;
   font-size: large;
   div {
@@ -196,26 +197,12 @@ body {
 }
 
 .intro-buttons {
-  @include fadeIn(20s);
+  @include fadeIn(5s);
 }
 
  .typewriter {
-   width: 60%;
+  width: 60%;
   text-align: center;
-//   // overflow: hidden;
-//   // white-space: nowrap;
-//   // display: inline-block;
-//   // position: relative;
-//   // // ::after {
-//   // //   content: '|';
-//   // //   position: absolute;
-//   // //   right: 0;
-//   // // }
-//   // // overflow: hidden;
-//   // border-right: 0.15em solid orange;
-//   // // //margin-top: 3rem;
-//   // letter-spacing: 0.1em;
-//   // animation: typing 10s steps(40, end), cursor 1s step-end infinite;
 }
 
 .buttons-container {
@@ -408,8 +395,8 @@ body {
   grid-template-columns: 300px 250px 300px;
   grid-template-rows: 250px 250px;
   grid-template-areas:
-    "reflection . block-puzzle"
-    ". wormhole .";
+    "reflection . wormhole"
+    ". block-puzzle .";
   gap: 1rem;
   margin-top: 5rem;
 }

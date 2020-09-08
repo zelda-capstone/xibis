@@ -322,6 +322,8 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-animation: fade-in 2s linear;
+          animation: fade-in 2s linear;
   margin-top: 10rem;
   font-size: large;
 }
@@ -331,8 +333,8 @@ body {
 }
 
 .intro-buttons {
-  -webkit-animation: fade-in 20s linear;
-          animation: fade-in 20s linear;
+  -webkit-animation: fade-in 5s linear;
+          animation: fade-in 5s linear;
 }
 
 .typewriter {
@@ -694,7 +696,7 @@ body {
       grid-template-columns: 300px 250px 300px;
   -ms-grid-rows: 250px 250px;
       grid-template-rows: 250px 250px;
-      grid-template-areas: "reflection . block-puzzle" ". wormhole .";
+      grid-template-areas: "reflection . wormhole" ". block-puzzle .";
   gap: 1rem;
   margin-top: 5rem;
 }
@@ -711,8 +713,8 @@ body {
 }
 
 .Block-Puzzle-map-container {
-  -ms-grid-row: 1;
-  -ms-grid-column: 3;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
   grid-area: block-puzzle;
 }
 
@@ -722,8 +724,8 @@ body {
 }
 
 .Wormhole-map-container {
-  -ms-grid-row: 2;
-  -ms-grid-column: 2;
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
   grid-area: wormhole;
 }
 
