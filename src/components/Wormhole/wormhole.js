@@ -7,7 +7,7 @@ import * as ROUTES from '../../constants/routes';
 import CustomizableBubo from '../customizable-bubo'
 import {Link} from 'react-router-dom';
 import { getBubosCollection } from '../../store/reducers/bubo';
-import {Green, GreenRev, Purple, PurpleUpsd, GreenUpsD, PurpleRev} from './Images';
+import {Green, GreenRev, Purple, PurpleUpsd, PurpleRev} from './Images';
 import Item from './GridItem'
 import BuboRow from './BuboRow'
 import {Portal} from './Portals'
@@ -122,8 +122,8 @@ class Wormhole extends React.Component{
             }
         }
 
-        let bool = this.state.count >= 8
-
+        let bool = num >= 7 
+        
         return {bool,num}
     }
 
@@ -146,6 +146,7 @@ class Wormhole extends React.Component{
         const grid2 = [0,1]
         const grid4 = [0,1,2,3]
         const grid5 = [0,1,2,3,4]
+        const grid6 = [0,1,2,3,4,5,6]
         const grid7 = [0,1,2,3,4,5,6,7]
         const grid8 = [0,1,2,3,4,5,6,7,8,9]
         const grid11 = [0,1,2,3,4,5,6,7,8,9,10]
@@ -155,10 +156,10 @@ class Wormhole extends React.Component{
 
         if(this.state.winBubos.length === 10){
             const {bool, num} = this.checkForWin()
-
-            return bool
+            
+            return (bool
             ? (<Transition win={true} history={this.props.history} count={num} replay={this.bringInBubos}/>)
-            : (<Transition win={false} history={this.props.history} count={num} replay={this.bringInBubos}/>)
+            : (<Transition win={false} history={this.props.history} count={num} replay={this.bringInBubos}/>))
         }else{
 
           return (
@@ -243,7 +244,7 @@ class Wormhole extends React.Component{
                                     onMove={this.onMove}/>
                                 :null}
                             {
-                                grid7.map(i => (
+                                grid6.map(i => (
                                     this.formRow(i)
                                 ))
                             }
@@ -266,30 +267,53 @@ class Wormhole extends React.Component{
                             />
                             </Grid>
                         </Grid>
-                    <Grid container item alignItems="center">
+                <Grid container item alignItems="center" justify="center">    
+                    {this.state.play
+                        ?<div id="landing">
+                            <div className="container">
+                            Deep in the Maatvan wilderness, natural wormholes scatter the visible perception of order. Using the wormholes to cross over the Loognatil falls, arrange your Xibis on the opposite bank according to the sequence hidden in the brush. Remember how your Xibis entered the forest! 
+                            The Maatvanese will not let you proceed through their land without order!
 
-                    </Grid>
-                {this.state.play
-                    ?<Grid container item >
-                        {
-                            grid7.map(i => (
-                                this.formRow(i)
-                            ))
-                        }
-                            <button className="button play" onClick={() => this.bringInBubos()}>Play!</button>
-                        {
-                            grid5.map(i => (
-                                    this.formRow(i)
-                                ))
-                        }
+                            </div>
+                            <span>
+                                <button className="button play" onClick={() => this.bringInBubos()}>Play!</button>
+                            </span>
+                        </div>
+                        :null}
                      </Grid>
-                    :null}
-                    <Grid container item alignItems="center" >
+                <Grid container item alignItems="center">
                         {
-                            grid7.map(i => (
+                            grid2.map(i => (
                                 this.formRow(i)
                             ))
-                        }
+                        }  
+                        {this.state.portalBubos[3]
+                                ?<Portal bubo={this.state.portalBubos[3]} 
+                                    order={this.state.order} 
+                                    onMove={this.onMove}/>
+                                :null}
+                        <div className="Click-reverse">
+                            <Grid item height={73.5} width={73.5}>
+                                <Spritesheet
+                                    image={Green}
+                                    widthFrame={64}
+                                    heightFrame={64}
+                                    direction="rewind"
+                                    steps={24}
+                                    fps={3}
+                                    autoplay={true}
+                                    loop={true}
+                                    onClick={spritesheet => {
+                                        spritesheet.pause();
+                                        spritesheet.play()}}
+                                />
+                            </Grid>
+                        </div> 
+                        {
+                            grid2.map(i => (
+                                this.formRow(i)
+                            ))
+                        }  
                         <Grid
                             item height={73.5} width={73.5}
                         >
@@ -333,35 +357,6 @@ class Wormhole extends React.Component{
                                 loop={true}
                             />
                         </Grid>
-                    </Grid>
-                    <Grid container item alignItems="center">
-                        {
-                            grid2.map(i => (
-                                this.formRow(i)
-                            ))
-                        }
-                        {this.state.portalBubos[3]
-                                ?<Portal bubo={this.state.portalBubos[3]}
-                                    order={this.state.order}
-                                    onMove={this.onMove}/>
-                                :null}
-                        <div className="Click-reverse">
-                            <Grid item height={73.5} width={73.5}>
-                                <Spritesheet
-                                    image={Green}
-                                    widthFrame={64}
-                                    heightFrame={64}
-                                    direction="rewind"
-                                    steps={24}
-                                    fps={3}
-                                    autoplay={true}
-                                    loop={true}
-                                    onClick={spritesheet => {
-                                        spritesheet.pause();
-                                        spritesheet.play()}}
-                                />
-                            </Grid>
-                        </div>
                      </Grid>
                     <Grid container item alignItems="center">
                         {
@@ -389,8 +384,8 @@ class Wormhole extends React.Component{
                         </Grid>
 
                     </Grid>
-                    <Grid container item wrap="nowrap" flex-grow={0} >
-                        <Grid container item xs={4}>
+                    <Grid container item wrap="nowrap" flex-grow={0} alignItems="center">
+                        <Grid container item xs={5}>
                             {this.state.ogBubos
                             ? this.state.ogBubos.map((bubo, i) => (
                                 <div onClick={() => this.onMove(bubo, i)} key={i}>
