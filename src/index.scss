@@ -386,8 +386,9 @@ body {
 
 .ufo-shadow {
   position: relative;
-  left: 3.5vw;
-  bottom: 5vh;
+  align-self: center;
+  left: 42px;
+  bottom: 8vh;
   background-color: grey;
   background-size: 100px 100px;
   height: 1rem;
@@ -396,25 +397,43 @@ body {
   animation: ufo-shadow 2s alternate infinite;
 }
 
-#map {
-  @include fadeIn(1s);
-  margin-top: 10rem;
-  display: grid;
-  font-size: 2rem;
+#map-grid-container {
+  @include flexCenter(column);
 }
 
-.map-icon-container {
-  //@include flexCenter(column);
+#map-grid {
+  @include fadeIn(1s);
+  align-self: center;
+  display: grid;
+  grid-template-columns: 300px 250px 300px;
+  grid-template-rows: 300px 300px;
+  grid-template-areas:
+    "reflection . block-puzzle"
+    ". wormhole .";
+  gap: 1rem;
+  margin-top: 10rem;
+}
+
+.Reflection-map-container {
+  grid-area: reflection;
   a {
     @include plainLink;
   }
 }
 
-// #reflection {
-//   position: fixed;
-//   top: 20vh;
-//   left: 20vw;
-// }
+.Block-Puzzle-map-container {
+  grid-area: block-puzzle;
+  a {
+    @include plainLink;
+  }
+}
+
+.Wormhole-map-container {
+  grid-area: wormhole;
+  a {
+    @include plainLink;
+  }
+}
 
 .map-icon {
   height: 300px;
@@ -423,23 +442,19 @@ body {
   &:hover + div {
     @include fadeIn(1s);
     @include flexCenter(column);
+    justify-content: space-evenly;
     display: block;
     position: absolute;
     padding: 0.5rem;
     background: white;
     border-radius: 5px;
     box-shadow: 2px 2px grey;
-  }
-}
-
-.puzzle-stats {
-  //@include flexCenter(column);
-  display: none;
-  font-size: .8rem;
-  width: 10vw;
-  height: 10vh;
-  span {
-    margin: .3em;
+    font-size: 1rem;
+    width: 10rem;
+    height: 4rem;
+    div {
+      margin: .3em;
+    }
   }
 }
 
@@ -585,6 +600,7 @@ body {
 
 #block-puzzle-main {
   @include flexCenter(column);
+  text-align: center;
   width: 95vw;
   height: 95vh;
   margin: 1em;

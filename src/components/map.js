@@ -20,20 +20,16 @@ class Map extends React.Component {
 
   render() {
     let puzzles = this.props.puzzles || []
-    puzzles = puzzles.reverse()
+    //puzzles = puzzles.reverse()
 
     return (
       <>
         {/* <div className="clouds" style={{ backgroundImage: 'url(https://i.ibb.co/1ZK2Vpc/purple-fog.png)' }}> </div> */}
-        <div id="map-container">
-          <div id="map">
+        <div id='map-grid-container'>
+          <div id="map-grid">
             {
               puzzles && (puzzles.map((puzzle) => {
-                return (
-                  <div key={puzzle.name}>
-                    <MapIcon puzzle={puzzle} />
-                  </div>
-                )
+                return <MapIcon key={puzzle.name} puzzle={puzzle} />
               }))
             }
           </div>

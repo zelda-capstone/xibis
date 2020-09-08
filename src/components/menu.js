@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Menu = (props) => {
 
   return (
-    <div id="menu" >
+    <div id='menu' >
       <div id='map-ufo'>
         <Link to='/map'>
           <div className='ufo'></div>
