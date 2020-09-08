@@ -1,7 +1,6 @@
 import React from 'react'
+import {withRouter} from 'react-router-dom'
 import * as ROUTES from '../../constants/routes';
-
-
 
 class Transition extends React.Component{
     constructor(props){
@@ -14,12 +13,11 @@ class Transition extends React.Component{
 
         event.target.value === "yes"
         ? this.props.replay()
-        : this.props.history.push(ROUTES.MAP) /////CHANGE to render win page 
+        : this.props.history.push(ROUTES.WIN) /////CHANGE to render win page
     }
 
 
     render(){
-       
         return(
             <div className="intro-container">
                     {
@@ -48,4 +46,4 @@ class Transition extends React.Component{
     }
 }
 
-export default Transition
+export default withRouter(Transition)

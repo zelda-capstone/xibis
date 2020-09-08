@@ -276,7 +276,7 @@ class Wormhole extends React.Component{
 
                             </div>
                             <span>
-                                <button className="button play" onClick={() => this.bringInBubos()}>Play!</button>
+                                <button className="button play" onClick={() => this.bringInBubos()}>play!</button>
                             </span>
                         </div>
                         :null}
