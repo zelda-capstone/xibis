@@ -22,7 +22,16 @@ class Intro extends React.Component {
     return (
       <div>
         <div className='intro-container'>
-        <Typewriter className='typewriter' options={{ delay: 50 }} onInit={(typewriter) => {
+        <div className='typewriter'>
+          A community of Xibis are fleeing human space invaders and traveling through galaxies in search of a new planet to call home
+        </div>
+        <div className='typewriter'>
+          Only by knowing their strengths and working together will they succeed, but they can't do it alone... Solve a series of mini puzzles to help them find their way!
+        </div>
+        <div className='typewriter'>
+          Are you ready?
+        </div>
+        {/* <Typewriter className='typewriter' options={{ delay: 50 }} onInit={(typewriter) => {
             typewriter
             .typeString('Here, our journey will begin...\n')
             .pauseFor(1000)
@@ -34,7 +43,7 @@ class Intro extends React.Component {
             .typeString('Are you ready?')
             .start()
           }}
-          />
+          /> */}
           <div className='buttons-container intro-buttons'>
             <Link to={ROUTES.ASSEMBLE_BUBOS} ><button className='button'>yes</button></Link>
             <Link to={ROUTES.LANDING}><button className='button'>no</button></Link>
