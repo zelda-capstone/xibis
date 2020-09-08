@@ -273,7 +273,6 @@ class Wormhole extends React.Component{
                             <div className="container">
                             Deep in the Maatvan wilderness, natural wormholes scatter the visible perception of order. Using the wormholes to cross over the Loognatil falls, arrange your Xibis on the opposite bank according to the sequence hidden in the brush. Remember how your Xibis entered the forest!
                             The Maatvanese will not let you proceed through their land without order!
-
                             </div>
                             <span>
                                 <button className="button play" onClick={() => this.bringInBubos()}>play!</button>

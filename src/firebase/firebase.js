@@ -2,16 +2,16 @@ import firebase from "firebase/app"
 import 'firebase/firestore'
 import "firebase/auth"
 
-// Firebase configuration
+// Your web firebase's Firebase configuration
 var firebaseConfig = {
-    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-    databaseURL: process.env.REACT_APP_DATABASE_URL,
-    projectId: 'zapstone-bc2fe',
-    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-    appId: process.env.REACT_APP_ID,
-    measurementId: process.env.REACT_APP_MEASUREMENT_ID
+    apiKey: "AIzaSyB-lN9S6wyF7gRxwwVERLXx1-UpYiFJ0pg",
+    authDomain: "zapstone-bc2fe.firebaseapp.com",
+    databaseURL: "https://zapstone-bc2fe.firebaseio.com",
+    projectId: "zapstone-bc2fe",
+    storageBucket: "zapstone-bc2fe.appspot.com",
+    messagingSenderId: "765053002099",
+    appId: "1:765053002099:web:4730c184aab20cf345a506",
+    measurementId: "G-5CW3SZ5PNW"
   };
 
 
@@ -45,6 +45,7 @@ class Firebase {
 
 
   doSignInWithGoogle = () =>
+    //to get rid of popup, is there a signin w redirect method?
     this.auth.signInWithPopup(this.googleProvider).then(authUser => {
       if (authUser.additionalUserInfo.isNewUser) {
         this.user(authUser.user.uid).set({
@@ -99,6 +100,5 @@ puzzles = uid => this.db.collection('users').doc(uid).collection('puzzles');
 bubos = uid => this.db.collection('users').doc(uid).collection('bubos');
 
 }
-
 
 export default Firebase
