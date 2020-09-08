@@ -41,12 +41,10 @@ export class BlockPuzzle extends React.Component {
       return (
         <>
         <div id="block-puzzle-main" >
-          <div>
           You can see the planet Tessera in the distance. It glows with marbled
           brilliance among the twinkling stars. Your destination is near, but
           just out of reach. You will need to build a celestial bridge for your
           Xibis.
-          </div>
           <Typewriter className='typewriter' onInit={typewriter => {
             typewriter.typeString('Are you ready to begin?')
             .start();
