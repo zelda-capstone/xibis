@@ -8,11 +8,11 @@ class Transition extends React.Component{
         super(props)
         this.state = {}
     }
-   
+
 
     handleClick = (event) => {
 
-        event.target.value === "yes" 
+        event.target.value === "yes"
         ? this.props.replay()
         : this.props.history.push(ROUTES.MAP)
     }
@@ -33,14 +33,14 @@ class Transition extends React.Component{
                             </div>
                     }
                 <div>
-                    <button 
-                        value="yes" 
-                        className="button" 
-                        onClick={(e) => this.handleClick(e)}>Yes!</button>
-                    <button    
+                    <button
+                        value="yes"
+                        className="button"
+                        onClick={(e) => this.handleClick(e)}>yes!</button>
+                    <button
                         value="no"
-                        className="button" 
-                        onClick={(e) => this.handleClick(e)}>No..</button>
+                        className="button"
+                        onClick={(e) => this.handleClick(e)}>no..</button>
                 </div>
             </div>
         )

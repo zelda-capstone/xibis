@@ -5,13 +5,13 @@ import "firebase/auth"
 // Firebase configuration
 var firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-    authDomain: "zapstone-bc2fe.firebaseapp.com",
-    databaseURL: "https://zapstone-bc2fe.firebaseio.com",
-    projectId: "zapstone-bc2fe",
-    storageBucket: "zapstone-bc2fe.appspot.com",
-    messagingSenderId: "765053002099",
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_DATABASE_URL,
+    projectId: 'zapstone-bc2fe',
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
     appId: process.env.REACT_APP_ID,
-    measurementId: "G-5CW3SZ5PNW"
+    measurementId: process.env.REACT_APP_MEASUREMENT_ID
   };
 
 

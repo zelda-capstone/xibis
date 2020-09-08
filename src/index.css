@@ -541,7 +541,7 @@ body {
   font-family: "Anonymous Pro", monospace;
   font-size: 1rem;
   padding: 5px;
-  width: 5vw;
+  width: 6vw;
   margin-left: 1vw;
   border: 1px solid #aaa;
   border-radius: .3em;
@@ -1031,10 +1031,17 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-animation: fade-in 1.5s linear;
+          animation: fade-in 1.5s linear;
   text-align: center;
   width: 95vw;
   height: 95vh;
   margin: 1em;
   font-size: large;
+}
+
+.background {
+  -webkit-animation: fade-in 2s linear;
+          animation: fade-in 2s linear;
 }
 /*# sourceMappingURL=index.css.map */

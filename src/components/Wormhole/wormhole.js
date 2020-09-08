@@ -7,7 +7,7 @@ import * as ROUTES from '../../constants/routes';
 import CustomizableBubo from '../customizable-bubo'
 import {Link} from 'react-router-dom';
 import { getBubosCollection } from '../../store/reducers/bubo';
-import {Green, GreenRev, Purple, PurpleUpsd, GreenUpsD, PurpleRev} from './Images';
+import {Green, GreenRev, Purple, PurpleUpsd, PurpleRev} from './Images';
 import Item from './GridItem'
 import BuboRow from './BuboRow'
 import {Portal} from './Portals'
@@ -276,7 +276,7 @@ class Wormhole extends React.Component{
                                 this.formRow(i)
                             ))
                         }
-                            <button className="button play" onClick={() => this.bringInBubos()}>Play!</button>
+                            <button className="button play" onClick={() => this.bringInBubos()}>play!</button>
                         {
                             grid5.map(i => (
                                     this.formRow(i)

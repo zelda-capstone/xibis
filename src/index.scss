@@ -308,7 +308,7 @@ body {
   font-family: $gameFont;
   font-size: 1rem;
   padding: 5px;
-  width: 5vw;
+  width: 6vw;
   margin-left: 1vw;
   border: 1px solid #aaa;
   border-radius: .3em;
@@ -589,9 +589,14 @@ body {
 
 #block-puzzle-main {
   @include flexCenter(column);
+  @include fadeIn(1.5s);
   text-align: center;
   width: 95vw;
   height: 95vh;
   margin: 1em;
   font-size: large;
+}
+
+.background {
+  @include fadeIn(2s);
 }
