@@ -19,12 +19,13 @@ class Transition extends React.Component{
 
 
     render(){
+        console.log("win", this.props.win)
         return(
             <div className="intro-container">
                     {
                         this.props.win
                         ?  <div className='typewriter'>
-                            {this.props.count} you were in the correct order!
+                            {this.props.count} of you were in the correct order!
                             You WON! Play again?
                             </div>
                         :  <div className='typewriter'>
