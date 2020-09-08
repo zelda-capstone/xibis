@@ -1,5 +1,5 @@
 import React from 'react'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Redirect} from 'react-router-dom'
 import * as ROUTES from '../../constants/routes';
 
 class Transition extends React.Component{
@@ -23,8 +23,7 @@ class Transition extends React.Component{
                     {
                         this.props.win
                         ?  <div className='typewriter'>
-                            {this.props.count} of you were in the correct order!
-                            You WON! Play again?
+                            <Redirect to={ROUTES.WIN}/>
                             </div>
                         :  <div className='typewriter'>
                             Only {this.props.count} of you were in the correct order!

@@ -1072,6 +1072,7 @@ body {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  text-align: center;
   margin-top: 20vh;
   margin-left: 25vw;
   margin-right: 25vw;
