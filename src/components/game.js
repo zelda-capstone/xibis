@@ -39,21 +39,22 @@ class Game extends React.Component {
       vol: 0.0,
       loop: true,
       sprite: {
-        'sad_bubos': [  199000,
-          70661.22448979593
+        'bubos_atmosphere': [ 0,
+          122932.24489795919
         ],
         'bubos_170bpm': [ 130000,
-          67422.04081632652
+            67422.04081632652
         ],
-        'bubos_atmosphere': [ 0,
-          122932.24489795919],
-        'bubos_theme': [ 271000,
+        'sad_bubos': [ 201000,
+          70661.22448979593
+        ],
+        'bubos_theme': [ 273000,
           88685.71428571432
         ],
-        'bubos_tropics': [ 361000,
+        'bubos_tropics': [ 363000,
           32052.24489795921
         ],
-        'bubos_doodle': [ 402000,
+        'bubos_doodle': [ 405000,
           60055.51020408166
         ]
       }
@@ -63,15 +64,15 @@ class Game extends React.Component {
       vol: 1.0,
       sprite: {
         'LF_correct': [ 124000,
-          2000
+          2063.6734693877515
         ],
-        'LF_incorrect': [ 127000,
-          2000
+        'LF_incorrect': [ 128000,
+          2063.6734693877656
         ],
-        'win_sound': [ 395000,
-          3008.480725623599
+        'win_sound': [ 397000,
+          4519.183673469399
         ],
-        'wormhole_FX': [ 400000,
+        'wormhole_FX': [ 403000,
           204.17233560090153
         ]
       }

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Timer, CustomizableBubo } from '..'
 import { getBubosCollection } from '../../store/reducers/bubo'
 import { unlockPuzzleInDb } from '../../store/reducers/puzzle'
-import Typewriter from 'typewriter-effect'
+//import Typewriter from 'typewriter-effect'
 
 class LostAndFound extends Component {
   constructor(props) {
