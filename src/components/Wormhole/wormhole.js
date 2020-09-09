@@ -158,7 +158,7 @@ class Wormhole extends React.Component{
             const {bool, num} = this.checkForWin()
 
             return (bool
-            ? (<Transition win={true} history={this.props.history} count={num} replay={this.bringInBubos}/>)
+            ? (<Transition effects={this.props.effects} win={true} history={this.props.history} count={num} replay={this.bringInBubos}/>)
             : (<Transition win={false} history={this.props.history} count={num} replay={this.bringInBubos}/>))
         }else{
 

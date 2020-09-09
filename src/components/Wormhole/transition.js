@@ -1,5 +1,5 @@
 import React from 'react'
-import {withRouter, Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 import * as ROUTES from '../../constants/routes';
 
 class Transition extends React.Component{
@@ -13,7 +13,7 @@ class Transition extends React.Component{
 
         event.target.value === "yes"
         ? this.props.replay()
-        : this.props.history.push(ROUTES.WIN) /////CHANGE to render win page
+        : this.props.history.push(ROUTES.MAP) /////CHANGE to render win page
     }
 
 
@@ -23,6 +23,7 @@ class Transition extends React.Component{
                     {
                         this.props.win
                         ?  <div className='typewriter'>
+                            {this.props.effects.play('win_sound')}
                             <Redirect to={ROUTES.WIN}/>
                             </div>
                         :  <div className='typewriter'>
@@ -45,4 +46,4 @@ class Transition extends React.Component{
     }
 }
 
-export default withRouter(Transition)
+export default Transition
