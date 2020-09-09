@@ -122,8 +122,8 @@ class Wormhole extends React.Component{
             }
         }
 
-        let bool = num >= 7 
-        
+        let bool = num >= 7
+
         return {bool,num}
     }
 
@@ -156,7 +156,7 @@ class Wormhole extends React.Component{
 
         if(this.state.winBubos.length === 10){
             const {bool, num} = this.checkForWin()
-            
+
             return (bool
             ? (<Transition win={true} history={this.props.history} count={num} replay={this.bringInBubos}/>)
             : (<Transition win={false} history={this.props.history} count={num} replay={this.bringInBubos}/>))
@@ -267,16 +267,15 @@ class Wormhole extends React.Component{
                             />
                             </Grid>
                         </Grid>
-                <Grid container item alignItems="center" justify="center">    
+                <Grid container item alignItems="center" justify="center">
                     {this.state.play
                         ?<div id="landing">
                             <div className="container">
-                            Deep in the Maatvan wilderness, natural wormholes scatter the visible perception of order. Using the wormholes to cross over the Loognatil falls, arrange your Xibis on the opposite bank according to the sequence hidden in the brush. Remember how your Xibis entered the forest! 
+                            Deep in the Maatvan wilderness, natural wormholes scatter the visible perception of order. Using the wormholes to cross over the Loognatil falls, arrange your Xibis on the opposite bank according to the sequence hidden in the brush. Remember how your Xibis entered the forest!
                             The Maatvanese will not let you proceed through their land without order!
-
                             </div>
                             <span>
-                                <button className="button play" onClick={() => this.bringInBubos()}>Play!</button>
+                                <button className="button play" onClick={() => this.bringInBubos()}>play!</button>
                             </span>
                         </div>
                         :null}
@@ -286,10 +285,10 @@ class Wormhole extends React.Component{
                             grid2.map(i => (
                                 this.formRow(i)
                             ))
-                        }  
+                        }
                         {this.state.portalBubos[3]
-                                ?<Portal bubo={this.state.portalBubos[3]} 
-                                    order={this.state.order} 
+                                ?<Portal bubo={this.state.portalBubos[3]}
+                                    order={this.state.order}
                                     onMove={this.onMove}/>
                                 :null}
                         <div className="Click-reverse">
@@ -308,12 +307,12 @@ class Wormhole extends React.Component{
                                         spritesheet.play()}}
                                 />
                             </Grid>
-                        </div> 
+                        </div>
                         {
                             grid2.map(i => (
                                 this.formRow(i)
                             ))
-                        }  
+                        }
                         <Grid
                             item height={73.5} width={73.5}
                         >

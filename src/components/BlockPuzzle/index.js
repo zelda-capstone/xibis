@@ -5,6 +5,7 @@ import AllPieces from './allPieces'
 import Destination from './ImageAssets/pawel-czerwinski-F_dg3zc95Jc-unsplash.jpg'
 import BuboContainer from './bubo-container'
 import {unlockPuzzleInDb} from '../../store/reducers/puzzle'
+import Typewriter from 'typewriter-effect'
 
 export class BlockPuzzle extends React.Component {
   constructor() {
@@ -38,11 +39,16 @@ export class BlockPuzzle extends React.Component {
   render() {
     if (this.state.puzzleState === 'intro') {
       return (
-        <div id="block-puzzle-main">
+        <>
+        <div id="block-puzzle-main" >
           You can see the planet Tessera in the distance. It glows with marbled
           brilliance among the twinkling stars. Your destination is near, but
           just out of reach. You will need to build a celestial bridge for your
-          bubos. Are you ready to begin?
+          Xibis.
+          <Typewriter className='typewriter' onInit={typewriter => {
+            typewriter.typeString('Are you ready to begin?')
+            .start();
+          }} />
           <div>
             <button
               className="button"
@@ -54,7 +60,8 @@ export class BlockPuzzle extends React.Component {
               yes!
             </button>
           </div>
-        </div>
+                </div>
+        </>
       )
     }
 

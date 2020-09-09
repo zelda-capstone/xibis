@@ -1,32 +1,29 @@
 import React from 'react'
+import {withRouter, Redirect} from 'react-router-dom'
 import * as ROUTES from '../../constants/routes';
-
-
 
 class Transition extends React.Component{
     constructor(props){
         super(props)
         this.state = {}
     }
-   
+
 
     handleClick = (event) => {
 
-        event.target.value === "yes" 
+        event.target.value === "yes"
         ? this.props.replay()
-        : this.props.history.push(ROUTES.MAP) /////CHANGE to render win page 
+        : this.props.history.push(ROUTES.WIN) /////CHANGE to render win page
     }
 
 
     render(){
-       
         return(
             <div className="intro-container">
                     {
                         this.props.win
                         ?  <div className='typewriter'>
-                            {this.props.count} of you were in the correct order!
-                            You WON! Play again?
+                            <Redirect to={ROUTES.WIN}/>
                             </div>
                         :  <div className='typewriter'>
                             Only {this.props.count} of you were in the correct order!
@@ -34,18 +31,18 @@ class Transition extends React.Component{
                             </div>
                     }
                 <div>
-                    <button 
-                        value="yes" 
-                        className="button" 
-                        onClick={(e) => this.handleClick(e)}>Yes!</button>
-                    <button    
+                    <button
+                        value="yes"
+                        className="button"
+                        onClick={(e) => this.handleClick(e)}>yes!</button>
+                    <button
                         value="no"
-                        className="button" 
-                        onClick={(e) => this.handleClick(e)}>No..</button>
+                        className="button"
+                        onClick={(e) => this.handleClick(e)}>no..</button>
                 </div>
             </div>
         )
     }
 }
 
-export default Transition
+export default withRouter(Transition)
