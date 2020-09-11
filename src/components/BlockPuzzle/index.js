@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Howl} from 'howler'
 import Board from './board'
 import AllPieces from './allPieces'
 import Destination from './ImageAssets/pawel-czerwinski-F_dg3zc95Jc-unsplash.jpg'
@@ -15,15 +16,20 @@ export class BlockPuzzle extends React.Component {
     }
     this.startPlaying = this.startPlaying.bind(this)
     this.handleWin = this.handleWin.bind(this)
-    this.music = 0;
+    this.source = 0;
+    this.music = new Howl({
+      src: ['audio/music/block_puzzle.webm', 'audio/music/block_puzzle.mp3'],
+      html5: true,
+      loop: true
+    })
   }
 
   componentDidMount() {
-    this.music = this.props.sounds.play('bubos_doodle')
+    this.source = this.music.play()
   }
 
   componentWillUnmount() {
-    this.props.sounds.fade(this.props.sounds.volume(), 0, 1000, this.music)
+    this.music.fade(this.music.volume(), 0, 1000, this.source)
   }
 
   startPlaying() {

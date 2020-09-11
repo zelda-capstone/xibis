@@ -1,4 +1,5 @@
 import React from 'react'
+import {Howl} from 'howler'
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { resetBubosCollection, getBubosCollection } from '../store/reducers/bubo'
@@ -8,21 +9,27 @@ class StartGame extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      loadingGame: false,
+      //loadingGame: false,
       activeGame: false,
       msg: '',
       music: 0
     }
+    this.theme = new Howl({
+      src: ['audio/music/theme.webm', 'audio/music/theme.mp3'],
+      html5: true,
+      loop: true
+    })
     this.bubosRef = this.props.user.bubosRef
     this.puzzlesRef = this.props.user.puzzlesRef
   }
 
   componentDidMount() {
-    this.setState({ music: this.props.sounds.play('bubos_theme') })
+    this.music = this.theme.play();
+    //this.setState({ music: this.theme.play() })
   }
 
   componentWillUnmount() {
-    this.props.sounds.fade(this.props.sounds.volume(), 0, 1000, this.state.music)
+    this.theme.fade(this.theme.volume(), 0, 1000, this.music)
   }
 
   startGame = () => {

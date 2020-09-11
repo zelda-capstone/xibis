@@ -1,4 +1,5 @@
 import React from 'react'
+import {Howl} from 'howler'
 import {connect} from 'react-redux'
 import {MapIcon} from '../components'
 import {getUnlockedPuzzles} from '../store/reducers/puzzle'
@@ -6,17 +7,22 @@ import {getUnlockedPuzzles} from '../store/reducers/puzzle'
 class Map extends React.Component {
   constructor() {
     super()
-    this.music = 0;
+    this.music = new Howl({
+      src: ['audio/music/map.webm', 'audio/music/map.mp3'],
+      html5: true,
+      loop: true
+    })
+    this.source = 0;
   }
 
   componentDidMount() {
     const puzzlesRef = this.props.user.puzzlesRef
     this.props.getPuzzles(puzzlesRef)
-    this.music = this.props.sounds.play('sad_bubos')
+    this.source = this.music.play()
   }
 
   componentWillUnmount() {
-    this.props.sounds.fade(this.props.sounds.volume(), 0, 800, this.music)
+    this.music.fade(this.music.volume(), 0, 800)
   }
 
   render() {

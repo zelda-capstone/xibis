@@ -34,27 +34,18 @@ class Game extends React.Component {
       }
       this.props.setUser(this.user)
     }
-    this.sounds = new Howl({
-      src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
-      vol: 0.0,
-      loop: true,
-      sprite: {
-        bubos_atmosphere: [0, 122932.24489795919],
-        bubos_170bpm: [130000, 67422.04081632652],
-        sad_bubos: [201000, 70661.22448979593],
-        bubos_theme: [273000, 88685.71428571432],
-        bubos_tropics: [363000, 32052.24489795921],
-        bubos_doodle: [405000, 60055.51020408166],
-      },
-    })
     this.effects = new Howl({
-      src: ['sounds/sounds.webm', 'sounds/sounds.mp3'],
+      src: ['audio/effects/effects.webm', 'audio/effects/effects.mp3'],
       vol: 1.0,
       sprite: {
-        LF_correct: [124000, 2063.6734693877515],
-        LF_incorrect: [128000, 2063.6734693877656],
-        win_sound: [397000, 4519.183673469399],
-        wormhole_FX: [403000, 204.17233560090153],
+        'LF_correct': [  0,
+          2063.673469387755],
+        'LF_incorrect': [ 4000,
+          2063.673469387755],
+        'win_sound': [ 8000,
+          4519.183673469389],
+        'wormhole_FX': [ 14000,
+          204.17233560090688],
       },
     })
   }
@@ -69,45 +60,37 @@ class Game extends React.Component {
           <Route component={NavBar} />
           {bubos.length === 10 && <Route component={Menu} />}
           <Switch>
-            <Route
-              exact
-              path={ROUTES.LANDING}
-              render={() => <StartGame sounds={this.sounds} />}
-            />
-            <Route
-              exact
-              path={ROUTES.INTRO}
-              render={() => <Intro sounds={this.sounds} />}
-            />
+            <Route exact path={ROUTES.LANDING} component={StartGame} />
+            <Route path={ROUTES.INTRO} component={Intro} />
             <Route
               exact
               path={ROUTES.ASSEMBLE_BUBOS}
-              render={() => <BuboSelector sounds={this.sounds} />}
+              render={() => <BuboSelector />}
             />
             <Route
               exact
               path={ROUTES.MAP}
-              render={() => <Map sounds={this.sounds} />}
+              render={() => <Map />}
             />
             <Route
               exact
               path={ROUTES.WORMHOLE}
               render={() => (
-                <Wormhole sounds={this.sounds} effects={this.effects} />
+                <Wormhole effects={this.effects} />
               )}
             />
             <Route
               exact
               path={ROUTES.REFLECTION}
               render={() => (
-                <LostAndFound sounds={this.sounds} effects={this.effects} />
+                <LostAndFound effects={this.effects} />
               )}
             />
             <Route
               exact
               path={ROUTES.BLOCK_PUZZLE}
               render={() => (
-                <BlockPuzzle sounds={this.sounds} effects={this.effects} />
+                <BlockPuzzle effects={this.effects} />
               )}
             />
             <Route exact path={ROUTES.WIN} component={GameWin} />
