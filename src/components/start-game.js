@@ -1,5 +1,4 @@
 import React from 'react'
-import {Howl} from 'howler'
 import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { resetBubosCollection, getBubosCollection } from '../store/reducers/bubo'
@@ -11,9 +10,9 @@ class StartGame extends React.Component {
     this.state = {
       //loadingGame: false,
       activeGame: false,
-      msg: ''
+      msg: '',
+      music: 0
     }
-    this.music = 0;
     this.bubosRef = this.props.user.bubosRef
     this.puzzlesRef = this.props.user.puzzlesRef
   }

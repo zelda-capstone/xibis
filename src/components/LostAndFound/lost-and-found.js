@@ -7,8 +7,8 @@ import { unlockPuzzleInDb } from '../../store/reducers/puzzle'
 //import Typewriter from 'typewriter-effect'
 
 class LostAndFound extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       playing: false,
       gameOver: false,
@@ -17,7 +17,6 @@ class LostAndFound extends Component {
       lost: this.props.bubos || [],
       found: 0
     }
-    this.source = 0;
     this.music = new Howl({
       src: ['audio/music/reflection.webm', 'audio/music/reflection.mp3'],
       html5: true,
@@ -28,11 +27,12 @@ class LostAndFound extends Component {
   componentDidMount() {
     const bubosRef = this.props.user.bubosRef
     this.props.getBubos(bubosRef)
-    this.source = this.music.play()
+
+    this.music.play()
   }
 
   componentWillUnmount() {
-    this.music.fade(this.music.volume(), 0, 1000, this.source)
+    this.music.fade(this.music.volume(), 0, 1000)
   }
 
   shuffleOrder = () => {

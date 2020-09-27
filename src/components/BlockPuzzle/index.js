@@ -16,7 +16,6 @@ export class BlockPuzzle extends React.Component {
     }
     this.startPlaying = this.startPlaying.bind(this)
     this.handleWin = this.handleWin.bind(this)
-    this.source = 0;
     this.music = new Howl({
       src: ['audio/music/block_puzzle.webm', 'audio/music/block_puzzle.mp3'],
       html5: true,
@@ -25,11 +24,11 @@ export class BlockPuzzle extends React.Component {
   }
 
   componentDidMount() {
-    this.source = this.music.play()
+    this.music.play()
   }
 
   componentWillUnmount() {
-    this.music.fade(this.music.volume(), 0, 1000, this.source)
+    this.music.fade(this.music.volume(), 0, 1000)
   }
 
   startPlaying() {

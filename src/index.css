@@ -456,6 +456,12 @@ body {
   margin: 0.75rem;
 }
 
+.warning {
+  color: #911212;
+  position: absolute;
+  top: 61vh;
+}
+
 .custom-bubo-container {
   display: -webkit-box;
   display: -ms-flexbox;

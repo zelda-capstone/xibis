@@ -16,8 +16,8 @@ import {Howl} from 'howler'
 
 
 class Wormhole extends React.Component{
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.state = {
             ogBubos: [],
             winBubos: [],
@@ -26,7 +26,6 @@ class Wormhole extends React.Component{
             play: true,
             count: 0
         }
-        this.source = 0;
         this.music = new Howl({
             src: ['audio/music/wormhole.webm', 'audio/music/wormhole.mp3'],
             html5: true,
@@ -40,11 +39,11 @@ class Wormhole extends React.Component{
         this.props.getBubos(user.bubosRef);
 
         this.getWinOrder();
-        this.source = this.music.play()
+        this.music.play()
     }
 
     componentWillUnmount() {
-        this.music.fade(this.music.volume(), 0, 1000, this.source)
+        this.music.fade(this.music.volume(), 0, 1000)
     }
 
 
