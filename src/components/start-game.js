@@ -21,6 +21,10 @@ class StartGame extends React.Component {
     this.setState({ music: this.props.theme.play() })
   }
 
+  componentWillUnmount() {
+    this.props.theme.fade(this.props.theme.volume(), 0, 500)
+  }
+
   startGame = () => {
     this.props.resetPuzzles(this.puzzlesRef);
     this.props.resetBubos(this.bubosRef)

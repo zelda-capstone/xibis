@@ -268,13 +268,15 @@ body {
 .warning {
   color: rgb(145, 18, 18);
   position: absolute;
-  top: 61vh;
-  //left: 25vw;
+  top: 30rem;
+  //left: 35rem;
+  width: 8rem;
+  text-align: center;
 }
 
 .bubo-count {
-  //align-self: flex-end;
-  //margin-top: 2.5rem;
+  align-self: flex-end;
+  margin-top: 2.5rem;
 }
 
 .custom-bubo-container {

@@ -16,8 +16,8 @@ import {Howl} from 'howler'
 
 
 class Wormhole extends React.Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             ogBubos: [],
             winBubos: [],

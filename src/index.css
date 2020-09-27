@@ -459,7 +459,15 @@ body {
 .warning {
   color: #911212;
   position: absolute;
-  top: 61vh;
+  top: 30rem;
+  width: 8rem;
+  text-align: center;
+}
+
+.bubo-count {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-top: 2.5rem;
 }
 
 .custom-bubo-container {

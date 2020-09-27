@@ -9,8 +9,8 @@ import {unlockPuzzleInDb} from '../../store/reducers/puzzle'
 import Typewriter from 'typewriter-effect'
 
 export class BlockPuzzle extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       puzzleState: 'intro',
     }

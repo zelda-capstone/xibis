@@ -141,12 +141,17 @@ class BuboSelector extends React.Component {
                 <option>patient</option>
               </select>
               </div>
-            <CustomizableBubo {...this.state} hover={false} />
             {
               this.state.warning &&
               <div className='warning'>all traits are required</div>
             }
-
+            <CustomizableBubo {...this.state} hover={false} />
+            {
+              <div
+                className='bubo-count'>
+                  {10 - this.state.bubos.length} remaining
+              </div>
+            }
           </div>
           <div>
             <button className="button" onClick={this.handleRandom}>
@@ -156,12 +161,6 @@ class BuboSelector extends React.Component {
               create
             </button>
           </div>
-          {
-              <div
-                className='bubo-count'>
-                  {10 - this.state.bubos.length} remaining
-              </div>
-            }
         </div>
         <div className="line-bottom">
           {bubos
