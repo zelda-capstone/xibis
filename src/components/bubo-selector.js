@@ -17,7 +17,7 @@ class BuboSelector extends React.Component {
       warning: false
     }
     this.music = new Howl({
-      src: ['audio/music/selector.webm', 'audio/music/selector.mp3'],
+      src: ['audio/music/bubos_170bpm.mp3'],
       html5: true,
       loop: true
     })
