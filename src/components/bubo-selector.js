@@ -13,6 +13,7 @@ class BuboSelector extends React.Component {
       accessory: '',
       personality: [],
       bubos: this.props.bubos || [],
+      warning: false
     }
     this.music = 0;
   }
@@ -56,7 +57,9 @@ class BuboSelector extends React.Component {
     const {color, accessory, personality} = this.state
     const bubo = {color, accessory, personality}
 
-    if (this.state.bubos.length < 10) {
+    if (!color || !accessory || !personality) {
+      this.setState({ warning: true })
+    } else if (this.state.bubos.length < 10) {
       const bubosRef = this.props.user.bubosRef
       this.props.addBubo(bubo, bubosRef)
 
@@ -75,9 +78,11 @@ class BuboSelector extends React.Component {
     return (
       <>
         <div className="bubo-selector-container">
-          {bubos.length === 10 ? (
+          {
+            bubos.length &&
             <div>no more than 10 Xibis allowed</div>
-          ) : null}
+          }
+          { this.state.warning && <div>all traits are required!</div> }
           <h2>assemble your Xibis</h2>
           <div className="bubo-selector">
             <div>

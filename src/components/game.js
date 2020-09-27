@@ -34,6 +34,11 @@ class Game extends React.Component {
       }
       this.props.setUser(this.user)
     }
+    this.theme = new Howl({
+      src: ['audio/music/theme.webm', 'audio/music/theme.mp3'],
+      html5: true,
+      loop: true
+    })
     this.effects = new Howl({
       src: ['audio/effects/effects.webm', 'audio/effects/effects.mp3'],
       vol: 1.0,
@@ -60,8 +65,12 @@ class Game extends React.Component {
           <Route component={NavBar} />
           {bubos.length === 10 && <Route component={Menu} />}
           <Switch>
-            <Route exact path={ROUTES.LANDING} component={StartGame} />
-            <Route path={ROUTES.INTRO} component={Intro} />
+            <Route
+              exact path={ROUTES.LANDING}
+              render={() => <StartGame theme={this.theme}/>} />
+            <Route
+              path={ROUTES.INTRO}
+              render={() => <Intro theme={this.theme}/>} />
             <Route
               exact
               path={ROUTES.ASSEMBLE_BUBOS}

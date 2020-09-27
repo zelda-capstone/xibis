@@ -11,25 +11,15 @@ class StartGame extends React.Component {
     this.state = {
       //loadingGame: false,
       activeGame: false,
-      msg: '',
-      music: 0
+      msg: ''
     }
-    this.theme = new Howl({
-      src: ['audio/music/theme.webm', 'audio/music/theme.mp3'],
-      html5: true,
-      loop: true
-    })
+    this.music = 0;
     this.bubosRef = this.props.user.bubosRef
     this.puzzlesRef = this.props.user.puzzlesRef
   }
 
   componentDidMount() {
-    this.music = this.theme.play();
-    //this.setState({ music: this.theme.play() })
-  }
-
-  componentWillUnmount() {
-    this.theme.fade(this.theme.volume(), 0, 1000, this.music)
+    this.setState({ music: this.props.theme.play() })
   }
 
   startGame = () => {

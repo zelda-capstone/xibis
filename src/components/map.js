@@ -12,13 +12,13 @@ class Map extends React.Component {
       html5: true,
       loop: true
     })
-    this.source = 0;
+    //this.source = 0;
   }
 
   componentDidMount() {
     const puzzlesRef = this.props.user.puzzlesRef
     this.props.getPuzzles(puzzlesRef)
-    this.source = this.music.play()
+    this.music.play()
   }
 
   componentWillUnmount() {
