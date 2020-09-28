@@ -14,7 +14,8 @@ class BuboSelector extends React.Component {
       accessory: '',
       personality: [],
       bubos: this.props.bubos || [],
-      warning: false
+      warning: false,
+      bubosAssembled: false
     }
     this.music = new Howl({
       src: ['audio/music/bubos_170bpm.mp3'],
@@ -24,7 +25,7 @@ class BuboSelector extends React.Component {
   }
 
   componentDidMount() {
-    this.source = this.music.play()
+    this.music.play()
   }
 
   componentWillUnmount() {
@@ -63,7 +64,11 @@ class BuboSelector extends React.Component {
     const bubo = {color, accessory, personality}
 
     if (!color || !accessory || !(personality.length === 2)) {
-      this.setState({ warning: true })
+      if (this.state.bubos.length === 10) {
+        this.setState({ bubosAssembled: true })
+      } else {
+        this.setState({ warning: true })
+      }
     } else if (this.state.bubos.length < 10) {
       const bubosRef = this.props.user.bubosRef
       this.props.addBubo(bubo, bubosRef)
@@ -75,6 +80,8 @@ class BuboSelector extends React.Component {
         bubos: [...this.state.bubos, bubo],
         warning: false
       })
+    } else {
+      this.setState({ bubosAssembled: true })
     }
   }
 
@@ -84,10 +91,6 @@ class BuboSelector extends React.Component {
     return (
       <>
         <div className="bubo-selector-container">
-          {
-            bubos.length === 10 ?
-            <div>no more than 10 Xibis allowed</div> : null
-          }
           <h2>assemble your Xibis</h2>
           <div className="bubo-selector">
             <div>
@@ -145,11 +148,17 @@ class BuboSelector extends React.Component {
               this.state.warning &&
               <div className='warning'>all traits are required</div>
             }
+             {
+              this.state.bubosAssembled ?
+              <div className='warning'>only 10 Xibis are allowed</div> : null
+            }
             <CustomizableBubo {...this.state} hover={false} />
             {
               <div
                 className='bubo-count'>
-                  {10 - this.state.bubos.length} remaining
+                  {
+                    this.state.bubos.length === 10 ? <div>assembled!</div> : <div>{10 - this.state.bubos.length} remaining</div>
+                  }
               </div>
             }
           </div>

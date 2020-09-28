@@ -7,8 +7,8 @@ import { unlockPuzzleInDb } from '../../store/reducers/puzzle'
 //import Typewriter from 'typewriter-effect'
 
 class LostAndFound extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       playing: false,
       gameOver: false,

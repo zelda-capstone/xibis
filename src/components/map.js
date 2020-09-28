@@ -12,7 +12,6 @@ class Map extends React.Component {
       html5: true,
       loop: true
     })
-    //this.source = 0;
   }
 
   componentDidMount() {
@@ -23,6 +22,7 @@ class Map extends React.Component {
 
   componentWillUnmount() {
     this.music.fade(this.music.volume(), 0, 800)
+    this.music.stop()
   }
 
   render() {
