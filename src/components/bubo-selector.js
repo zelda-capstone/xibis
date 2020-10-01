@@ -1,4 +1,5 @@
 import React from 'react'
+import {Howl} from 'howler'
 import {connect} from 'react-redux'
 import {withFirebase} from '../firebase'
 import {CustomizableBubo, SelectTrait} from '../components'
@@ -13,17 +14,22 @@ class BuboSelector extends React.Component {
       accessory: '',
       personality: [],
       bubos: this.props.bubos || [],
+      warning: false,
+      bubosAssembled: false
     }
-    this.music = 0;
+    this.music = new Howl({
+      src: ['audio/music/bubos_170bpm.mp3'],
+      html5: true,
+      loop: true
+    })
   }
 
   componentDidMount() {
-    this.music = this.props.sounds.play('bubos_170bpm')
-    this.props.sounds.fade(0, this.props.sounds.volume(), 500, this.music)
+    this.music.play()
   }
 
   componentWillUnmount() {
-    this.props.sounds.fade(this.props.sounds.volume(), 0, 1000, this.music)
+    this.music.fade(this.music.volume(), 0, 1000)
   }
 
   handleColor = (evt) => {
@@ -49,6 +55,7 @@ class BuboSelector extends React.Component {
       color: newRandom.color,
       accessory: newRandom.accessory,
       personality: newRandom.personality,
+      warning: false
     })
   }
 
@@ -56,7 +63,13 @@ class BuboSelector extends React.Component {
     const {color, accessory, personality} = this.state
     const bubo = {color, accessory, personality}
 
-    if (this.state.bubos.length < 10) {
+    if (!color || !accessory || !(personality.length === 2)) {
+      if (this.state.bubos.length === 10) {
+        this.setState({ bubosAssembled: true })
+      } else {
+        this.setState({ warning: true })
+      }
+    } else if (this.state.bubos.length < 10) {
       const bubosRef = this.props.user.bubosRef
       this.props.addBubo(bubo, bubosRef)
 
@@ -65,7 +78,10 @@ class BuboSelector extends React.Component {
         accessory: '',
         personality: [],
         bubos: [...this.state.bubos, bubo],
+        warning: false
       })
+    } else {
+      this.setState({ bubosAssembled: true })
     }
   }
 
@@ -75,9 +91,6 @@ class BuboSelector extends React.Component {
     return (
       <>
         <div className="bubo-selector-container">
-          {bubos.length === 10 ? (
-            <div>no more than 10 Xibis allowed</div>
-          ) : null}
           <h2>assemble your Xibis</h2>
           <div className="bubo-selector">
             <div>
@@ -131,7 +144,23 @@ class BuboSelector extends React.Component {
                 <option>patient</option>
               </select>
               </div>
+            {
+              this.state.warning &&
+              <div className='warning'>all traits are required</div>
+            }
+             {
+              this.state.bubosAssembled ?
+              <div className='warning'>only 10 Xibis are allowed</div> : null
+            }
             <CustomizableBubo {...this.state} hover={false} />
+            {
+              <div
+                className='bubo-count'>
+                  {
+                    this.state.bubos.length === 10 ? <div>assembled!</div> : <div>{10 - this.state.bubos.length} remaining</div>
+                  }
+              </div>
+            }
           </div>
           <div>
             <button className="button" onClick={this.handleRandom}>

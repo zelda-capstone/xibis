@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 const MapIcon = (props) => {
   const puzzle = props.puzzle;
-  console.log(puzzle.name)
 
   return (
     <div className={`${puzzle.name}-map-container`} >
@@ -14,12 +13,12 @@ const MapIcon = (props) => {
         </div>
         <div className='puzzle-stats'>
           <div>
-            <span><strong>PUZZLE</strong>:</span>
-            <span> {puzzle.name}</span>
-          </div>
-          <div>
             <span><strong>PLANET</strong>:</span>
             <span> {puzzle.planet}</span>
+          </div>
+          <div>
+            <span><strong>PUZZLE</strong>:</span>
+            <span> {puzzle.name}</span>
           </div>
         </div>
       </Link>

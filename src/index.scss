@@ -265,6 +265,19 @@ body {
   }
 }
 
+.warning {
+  color: rgb(145, 18, 18);
+  position: absolute;
+  top: 62vh;
+  width: 9rem;
+  text-align: center;
+}
+
+.bubo-count {
+  align-self: flex-end;
+  margin-top: 2.5rem;
+}
+
 .custom-bubo-container {
   @include flexCenter(column);
   height: 9rem;
@@ -430,8 +443,8 @@ body {
 }
 
 .map-icon {
-  height: 300px;
-  width: 300px;
+  height: 250px;
+  width: 250px;
   background-size: contain;
   &:hover + div {
     @include fadeIn(1s);

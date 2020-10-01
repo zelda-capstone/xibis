@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Howl} from 'howler'
 import { connect } from 'react-redux'
 import { Timer, CustomizableBubo } from '..'
 import { getBubosCollection } from '../../store/reducers/bubo'
@@ -16,17 +17,22 @@ class LostAndFound extends Component {
       lost: this.props.bubos || [],
       found: 0
     }
-    this.music = 0;
+    this.music = new Howl({
+      src: ['audio/music/reflection.webm', 'audio/music/reflection.mp3'],
+      html5: true,
+      loop: true
+    })
   }
 
   componentDidMount() {
     const bubosRef = this.props.user.bubosRef
     this.props.getBubos(bubosRef)
-    this.music = this.props.sounds.play('bubos_atmosphere')
+
+    this.music.play()
   }
 
   componentWillUnmount() {
-    this.props.sounds.fade(this.props.sounds.volume(), 0, 1000, this.music)
+    this.music.fade(this.music.volume(), 0, 1000)
   }
 
   shuffleOrder = () => {

@@ -4,18 +4,13 @@ import Typewriter from 'typewriter-effect'
 import * as ROUTES from '../constants/routes'
 
 class Intro extends React.Component {
-  constructor(props) {
-    super(props)
-    this.music = 0
-  }
-
   componentDidMount() {
-    this.music = this.props.location.state.music
-    this.props.sounds.fade(0, this.props.sounds.volume(), 800, this.music)
+    this.props.theme.fade(0, this.props.theme.volume(), 500)
   }
 
   componentWillUnmount() {
-    this.props.sounds.fade(this.props.sounds.volume(), 0, 800, this.music)
+    this.props.theme.fade(this.props.theme.volume(), 0, 1000)
+    this.props.theme.stop();
   }
 
   render() {

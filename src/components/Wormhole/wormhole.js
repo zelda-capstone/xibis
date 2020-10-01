@@ -12,6 +12,7 @@ import Item from './GridItem'
 import BuboRow from './BuboRow'
 import {Portal} from './Portals'
 import Transition from './transition'
+import {Howl} from 'howler'
 
 
 class Wormhole extends React.Component{
@@ -25,7 +26,11 @@ class Wormhole extends React.Component{
             play: true,
             count: 0
         }
-        this.music = 0;
+        this.music = new Howl({
+            src: ['audio/music/wormhole.webm', 'audio/music/wormhole.mp3'],
+            html5: true,
+            loop: true
+          })
     }
 
 
@@ -34,11 +39,11 @@ class Wormhole extends React.Component{
         this.props.getBubos(user.bubosRef);
 
         this.getWinOrder();
-        this.music = this.props.sounds.play('bubos_tropics')
+        this.music.play()
     }
 
     componentWillUnmount() {
-        this.props.sounds.fade(this.props.sounds.volume(), 0, 1000, this.music)
+        this.music.fade(this.music.volume(), 0, 1000)
     }
 
 
@@ -158,7 +163,7 @@ class Wormhole extends React.Component{
             const {bool, num} = this.checkForWin()
 
             return (bool
-            ? (<Transition win={true} history={this.props.history} count={num} replay={this.bringInBubos}/>)
+            ? (<Transition effects={this.props.effects} win={true} history={this.props.history} count={num} replay={this.bringInBubos}/>)
             : (<Transition win={false} history={this.props.history} count={num} replay={this.bringInBubos}/>))
         }else{
 

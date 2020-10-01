@@ -8,7 +8,7 @@ class StartGame extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      loadingGame: false,
+      //loadingGame: false,
       activeGame: false,
       msg: '',
       music: 0
@@ -18,11 +18,11 @@ class StartGame extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ music: this.props.sounds.play('bubos_theme') })
+    this.setState({ music: this.props.theme.play() })
   }
 
   componentWillUnmount() {
-    this.props.sounds.fade(this.props.sounds.volume(), 0, 1000, this.state.music)
+    this.props.theme.fade(this.props.theme.volume(), 0, 500)
   }
 
   startGame = () => {
